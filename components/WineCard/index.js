@@ -1,6 +1,6 @@
 import Image from "next/image";
 import CheckMark from "../CheckMark.js";
-import image from "../../public/Rectangle.png";
+import image from "../../public/Wine.png";
 import {
   CheckboxContainer,
   HiddenCheckbox,
@@ -8,9 +8,11 @@ import {
   Label,
   TextContainer,
   SubContainer,
+  Circle,
+  CircleContainer,
 } from "./styled.js";
 
-const BeerCard = (props) => {
+const WineCard = (props) => {
   return (
     <>
       <Label checked={props.checked}>
@@ -23,16 +25,22 @@ const BeerCard = (props) => {
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
-          <Image src={image} width={104} height={210} />
+          <Image src={image} width={119} height={241} />
           <TextContainer checked={props.checked}>
-            <div>{"Budweiser (5%)"}</div>
-            <div> {"Lager américaine"} </div>
+            <div>{"Robert Mondavi Private Selection"}</div>
+            <div> {"Cuvée Centenaire,Languedoc-Rousillon"} </div>
+            <div>{"Québec, Canada"}</div>
+            <CircleContainer>
+              {" "}
+              {"AROMATIQUE ET CHARNU"} <Circle />{" "}
+            </CircleContainer>
+
             <table>
               <tbody>
                 <tr>
-                  <th scope="col">Bouteille / Cannette</th>
-                  <th scope="col">Presion 20oz</th>
-                  <th scope="col">Pichet 60oz</th>
+                  <th scope="col">6oz</th>
+                  <th scope="col">9oz</th>
+                  <th scope="col">Bouteille</th>
                 </tr>
                 <tr>
                   <td>9,99 $</td>
@@ -49,4 +57,4 @@ const BeerCard = (props) => {
   );
 };
 
-export default BeerCard;
+export default WineCard;
