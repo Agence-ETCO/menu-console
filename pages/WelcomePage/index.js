@@ -8,7 +8,7 @@ const WelcomePage = () => {
   return (
     <div>
       <Header />
-      <Stepper />
+      <Stepper step={0} />
       <Greeting>{welcomePage.greeting}</Greeting>
       <Title>{welcomePage.title}</Title>
       <Body>{welcomePage.body}</Body>

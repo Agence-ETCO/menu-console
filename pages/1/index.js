@@ -10,7 +10,7 @@ const WelcomePage = () => {
     <>
       <Header />
 
-      <Stepper />
+      <Stepper step={1} />
       <Container>
         <Rectangle />
         <Subcontainer>
