@@ -4,7 +4,7 @@ import Rectangle from "../../components/Rectangle";
 import { Page1 } from "../../fr";
 import { Container, Subcontainer, Title, Body, Date, Ending } from "./styled";
 
-const Page1 = () => {
+const WelcomePage = () => {
   const date = "le 30 septembre 2022";
   return (
     <>
@@ -25,4 +25,4 @@ const Page1 = () => {
   );
 };
 
-export default Page1;
+export default WelcomePage;
