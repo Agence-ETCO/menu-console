@@ -2,15 +2,17 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Label = styled.label`
-  background-color: ${(props) => (props.checked ? "#3C3C3C" : "white")};
+  background-color: ${(props) => (props.checked ? "#231F20" : "white")};
   border: 1px solid #3c3c3c;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
   width: 413px;
-  height: 385px;
+  height: 400px;
   position: relative;
   padding-top: 15px;
+  margin-left: 40px;
+  margin-bottom: 40px;
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -52,58 +54,65 @@ export const StyledCheckbox = styled.div`
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
-  margin-left: 15px;
-  margin-right: 35px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 25px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-size: 19px;
-    line-height: 23px;
+    font-family: "GTWalsheimBold";
+    font-style: normal;
+    font-weight: 700;
   }
   div:nth-child(2) {
-    color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
+    color: ${(props) =>
+      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.75)"};
     padding-bottom: 20px;
-    margin-bottom: 15px;
+    margin-bottom: -5px;
+    font-family: "GTWalsheimRegular";
+    font-style: normal;
+    font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    border-bottom: 1px solid #939598;
   }
 
   div:nth-child(3) {
+    font-family: "GTWalsheimMedium";
+    font-weight: 600;
     font-size: 13px;
     line-height: 15px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
   div:nth-child(4) {
-    font-size: 13px;
-    line-height: 15px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border-bottom: 1px solid #939598;
-    margin-bottom: 18px;
-    margin-top: 5px;
-    padding-bottom: 20px;
   }
 
   div:nth-child(6) {
-    color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
+    font-family: "GTWalsheimRegular";
+    font-weight: 400;
+    color: ${(props) =>
+      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
     font-size: 13px;
     line-height: 15px;
     text-transform: uppercase;
   }
 
   table {
-    margin-bottom: 45px;
+    margin-bottom: 25px;
     td {
       width: 70px;
     }
     th {
+      font-family: "GTWalsheimRegular";
+      font-weight: 400;
       color: ${(props) =>
-        props.checked ? "rgba(255,255,255, 0.5)" : "#231f20"};
+        props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
       font-size: 14px;
       line-height: 17px;
     }
     tr {
+      font-family: "GTWalsheimBold";
+      font-weight: 700;
       font-size: 15px;
       line-height: 18px;
     }
@@ -116,6 +125,20 @@ export const SubContainer = styled.div`
 `;
 export const CircleContainer = styled.div`
   position: relative;
+  color: ${(props) =>
+    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(147, 149, 152, 0.5);
+  border-bottom: 1px solid rgba(147, 149, 152, 0.5);
+  margin-bottom: 18px;
+  margin-top: 15px;
+  padding-bottom: 20px;
+  padding-top: 20px;
 `;
 
 export const Circle = styled.div`
@@ -126,9 +149,9 @@ export const Circle = styled.div`
   opacity: 0.2;
   border-radius: 50%;
   position: absolute;
-  top: 0;
+  top: 25%;
   border: 1px solid #a39161;
-  right: 5%;
+  right: 3%;
 `;
 
 export const IconContainer = styled.div`

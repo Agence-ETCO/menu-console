@@ -23,6 +23,7 @@ const WineCard = (props) => {
           <HiddenCheckbox
             checked={props.checked}
             onChange={props.handleCheckboxChange}
+            value={props.value}
           />
           <CheckMark />
           <StyledCheckbox></StyledCheckbox>
@@ -33,9 +34,9 @@ const WineCard = (props) => {
             <div>{"Robert Mondavi Private Selection"}</div>
             <div> {"Cuvée Centenaire,Languedoc-Rousillon"} </div>
             <div>{"Québec, Canada"}</div>
-            <CircleContainer>
+            <CircleContainer checked={props.checked}>
               {" "}
-              {"AROMATIQUE ET CHARNU"} <Circle />{" "}
+              {"AROMATIQUE ET CHARNU"} <Circle /> {"Sucre : 12.5g/L"}
             </CircleContainer>
             <table>
               <tbody>

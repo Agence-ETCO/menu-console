@@ -13,6 +13,7 @@ const Footer = (props) => {
       <Link href={props.href}>
         <StyledLink>{props.buttonText}</StyledLink>
       </Link>
+      {props.selection && <span>{props.selection}</span>}
     </Container>
   );
 };

@@ -36,8 +36,9 @@ export const Body = styled.div`
   }
 `;
 export const Date = styled.div`
-font-family: "GTWalsheimBold";
+  font-family: "GTWalsheimBold";
   font-style: normal;
   font-weight: 700;
   font-size: 17px;
-  line-height: 23px;f`;
+  line-height: 23px;
+`;

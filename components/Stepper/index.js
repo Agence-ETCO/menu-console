@@ -19,7 +19,7 @@ const Stepper = (props) => {
             props.step === element
               ? `${colors.orange}`
               : props.step > element
-              ? `${colors.orange}`
+              ? "rgba(147, 149, 152, 0.15)"
               : `${colors.black}`
           }
         >

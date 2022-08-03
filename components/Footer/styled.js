@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Button = styled.button`
+  font-family: "GTWalsheimMedium";
+  font-style: normal;
+  font-weight: 600;
   font-size: 21px;
   line-height: 25px;
   color: black;
@@ -24,6 +27,8 @@ export const StyledLink = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  margin-left: 110px;
+  margin-right: 100px;
 `;
 
 export const Container = styled.div`
@@ -35,4 +40,14 @@ export const Container = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
+
+  span {
+    font-family: "GTWalsheimMedium";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 23px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
 `;
