@@ -8,10 +8,17 @@ export const welcomePage = {
   buttonText: "débuter",
 };
 
-export const Page1 = {
+export const page1 = {
   title: "Votre nouveau menu",
   body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
   date: "Votre nouveau menu au format 8.5x11.5 vous sera expédié après ",
+  buttonText: "continuer ->",
+};
+
+export const page2 = {
+  title: "Vins blanc",
+  select: "vins blancs disponibles",
+  return: "retour",
   buttonText: "continuer ->",
 };
 
