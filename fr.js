@@ -15,6 +15,13 @@ export const Page1 = {
   buttonText: "continuer ->",
 };
 
+export const Page2 = {
+  title: "Vins blanc",
+  subtitle: "vins blancs disponibles",
+  return: "retour",
+  buttonText: "continuer ->",
+};
+
 export const alertBox = {
   title: "attention",
   body: "Une fois soumise, vous ne pourrez plus changer vos choix.",
