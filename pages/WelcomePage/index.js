@@ -1,7 +1,6 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import Stepper from "../../components/Stepper";
-import BeerCard from "../../components/BeerCard";
 import { welcomePage } from "../../fr";
 import { Greeting, Title, Body, Date, Ending } from "./styled";
 
@@ -11,7 +10,6 @@ const WelcomePage = () => {
       <Header />
       <Stepper step={0} />
       <Greeting>{welcomePage.greeting}</Greeting>
-      <BeerCard />
       <Title>{welcomePage.title}</Title>
       <Body>{welcomePage.body}</Body>
       <Date>{welcomePage.date}</Date>

@@ -15,3 +15,11 @@ export const Page1 = {
   buttonText1: "retour",
   buttonText2: "continuer ->",
 };
+
+export const alertBox = {
+  title: "attention",
+  body: "Une fois soumise, vous ne pourrez plus changer vos choix.",
+  question: "Êtes-vous certain de vouloir soumettre votre sélection?",
+  buttonText1: "soumettre maintenant",
+  buttonText2: "annuler",
+};
