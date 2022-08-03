@@ -3,8 +3,8 @@ export const welcomePage = {
   title: "Titre lorem ipsum",
   body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
   dateLimite: "Date limite",
-  help: "besoin d'aide",
-  conatct: "contactez-nous",
+  help: "Besoin d'aide?",
+  contact: "Contactez-nous",
   buttonText: "débuter",
 };
 
@@ -22,4 +22,9 @@ export const alertBox = {
   question: "Êtes-vous certain de vouloir soumettre votre sélection?",
   buttonText1: "soumettre maintenant",
   buttonText2: "annuler",
+};
+
+export const nav = {
+  help: "besoin d'aide?",
+  language: "english",
 };

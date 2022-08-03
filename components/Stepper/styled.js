@@ -9,6 +9,8 @@ export const TextButton = styled.button`
   line-height: 20px;
   color: ${(props) =>
     props.color === colors.orange ? colors.black : colors.grey};
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
@@ -23,17 +25,20 @@ export const NumberButton = styled.button`
   line-height: 20px;
   color: ${(props) =>
     props.color === colors.orange ? colors.black : colors.grey};
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
+  border-radius: 3px;
   outline: none;
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 75px;
-  margin-bottom: 37px;
+  margin-top: 50px;
+  margin-bottom: 48px;
   padding-bottom: 36px;
   border-bottom: 1px solid #939598;
   width: 562px;

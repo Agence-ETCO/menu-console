@@ -1,24 +1,37 @@
+import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
-import Stepper from "../../components/Stepper";
 import { welcomePage } from "../../fr";
-import { Greeting, Title, Body, Date, Ending } from "./styled";
+import {
+  Greeting,
+  Title,
+  Body,
+  Date,
+  DateLimit,
+  Ending,
+  Container,
+} from "./styled";
 
 const WelcomePage = () => {
+  const date = "12 septembre 2022";
   return (
-    <div>
-      <Header />
-      <Stepper step={0} />
-      <Greeting>{welcomePage.greeting}</Greeting>
-      <Title>{welcomePage.title}</Title>
-      <Body>{welcomePage.body}</Body>
-      <Date>{welcomePage.date}</Date>
-      <Ending>
-        {welcomePage.help} {welcomePage.conatct}
-      </Ending>
-
+    <>
+      <Header step={0} />
+      <Container>
+        <Greeting>{welcomePage.greeting}</Greeting>
+        <Title>{welcomePage.title}</Title>
+        <Body>{welcomePage.body}</Body>
+        <DateLimit>{welcomePage.dateLimite}</DateLimit>
+        <Date>{date}</Date>
+        <Ending>
+          {welcomePage.help}
+          <Link href={"/"}>
+            <span>{welcomePage.contact}</span>
+          </Link>
+        </Ending>
+      </Container>
       <Footer buttonText={welcomePage.buttonText} href={"/1"} />
-    </div>
+    </>
   );
 };
 

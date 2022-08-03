@@ -17,6 +17,9 @@ export const StyledLink = styled.button`
   width: 272px;
   height: 69px;
   border-radius: 9px;
+  font-family: "GTWalsheimBold";
+  font-style: normal;
+  font-weight: 700;
   font-size: 27px;
   line-height: 32px;
   letter-spacing: 0.1em;

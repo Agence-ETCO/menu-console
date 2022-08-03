@@ -1,9 +1,29 @@
+@font-face {
+  font-family: 'GTWalsheimMedium';
+  src: url('/fonts/GTWalsheimMedium.otf'); 
+ }
+
+ @font-face {
+  font-family: 'GTWalsheimRegular';
+  src: url('/fonts/GTWalsheimRegular.otf'); 
+ }
+
+ @font-face {
+  font-family: 'GTWalsheimBold';
+  src: url('/fonts/GTWalsheimBold.otf'); 
+ }
+
+ @font-face {
+  font-family: 'GTWalsheimBlack';
+  src: url('/fonts/GTWalsheimBlack.otf'); 
+ }
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow: scroll;
+ 
 }
 
 a {
@@ -20,7 +40,7 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
-    background: black;
+    color:black;
+    background: white ;
   }
 }
