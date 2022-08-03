@@ -1,5 +1,7 @@
 import Image from "next/image";
 import CheckMark from "../CheckMark.js";
+import Icon1 from "../Icon1";
+import Icon2 from "../Icon2";
 import image from "../../public/Wine.png";
 import {
   CheckboxContainer,
@@ -10,6 +12,7 @@ import {
   SubContainer,
   Circle,
   CircleContainer,
+  IconContainer,
 } from "./styled.js";
 
 const WineCard = (props) => {
@@ -25,7 +28,7 @@ const WineCard = (props) => {
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
-          <Image src={image} width={119} height={241} />
+          <Image src={image} width={240} height={300} />
           <TextContainer checked={props.checked}>
             <div>{"Robert Mondavi Private Selection"}</div>
             <div> {"Cuvée Centenaire,Languedoc-Rousillon"} </div>
@@ -34,7 +37,6 @@ const WineCard = (props) => {
               {" "}
               {"AROMATIQUE ET CHARNU"} <Circle />{" "}
             </CircleContainer>
-
             <table>
               <tbody>
                 <tr>
@@ -49,7 +51,12 @@ const WineCard = (props) => {
                 </tr>
               </tbody>
             </table>
-            <div>Saq code {12824197}</div>
+
+            <IconContainer>
+              Saq code {12824197}
+              <Icon1 />
+              <Icon2 />
+            </IconContainer>
           </TextContainer>
         </SubContainer>
       </Label>

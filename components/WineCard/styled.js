@@ -52,7 +52,7 @@ export const StyledCheckbox = styled.div`
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
-  margin-left: 25px;
+  margin-left: 15px;
   margin-right: 35px;
   div:nth-child(1) {
     margin-bottom: 5px;
@@ -129,4 +129,10 @@ export const Circle = styled.div`
   top: 0;
   border: 1px solid #a39161;
   right: 5%;
+`;
+
+export const IconContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
 `;
