@@ -7,7 +7,9 @@ const Stepper = (props) => {
   return (
     <Container>
       <TextButton
-        color={props.step === 0 ? `${colors.orange}` : `${colors.grey}`}
+        color={
+          props.step === 0 ? `${colors.orange}` : "rgba(147, 149, 152, 0.15)"
+        }
       >
         {"bienvenue"}
       </TextButton>
