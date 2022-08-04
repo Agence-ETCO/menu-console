@@ -51,6 +51,8 @@ export const nav = {
 export const footer = {
   return: "retour",
   buttonText: "continuer ->",
+  view: "Prévisualiser",
+  submit: "soumettre",
 };
 
 export const option1 = {

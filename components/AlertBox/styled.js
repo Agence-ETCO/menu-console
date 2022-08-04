@@ -7,6 +7,8 @@ export const Button = styled.button`
   color: white;
   background-color: #231f20;
   text-transform: uppercase;
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
   font-size: 19px;
   line-height: 22px;
   text-align: center;
@@ -17,13 +19,15 @@ export const Button = styled.button`
   margin-bottom: 15px;
 `;
 
-export const StyledLink = styled.button`
+export const StyledButton = styled.button`
   color: ${colors.black};
   background-color: white;
   width: 423px;
   height: 51px;
   border: 1px solid #231f20;
   border-radius: 9px;
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
   font-size: 19px;
   line-height: 22px;
   letter-spacing: 0.03em;
@@ -31,11 +35,11 @@ export const StyledLink = styled.button`
 `;
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(35, 31, 32, 0.9);
   z-index: 100;
 `;
@@ -55,12 +59,15 @@ export const BoxContainer = styled.div`
   margin-top: 25%;
   opacity: 1 !important;
   div {
+    font-family: "GTWalsheimRegular";
+    font-weight: 400;
     font-size: 19px;
     line-height: 22px;
     color: #262626;
   }
   div:nth-child(3) {
     margin-top: 20px;
+    font-family: "GTWalsheimBold";
     font-weight: 700;
   }
 `;
@@ -76,6 +83,10 @@ export const Title = styled.div`
   text-align: center;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  font-family: "GTWalsheimBold" ;
+  font-weight: 700;
+  font-size: 31px!important;
+  line-height: 37px !important;
   color: #ffffff !important;
   padding-top: 24px;
   margin-bottom: 33px:

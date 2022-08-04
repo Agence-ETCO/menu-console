@@ -11,7 +11,7 @@ export const Label = styled.label`
   height: 305px;
   position: relative;
   padding-top: 15px;
-  margin-left: 40px;
+  margin-right: 40px;
   margin-bottom: 40px;
 `;
 

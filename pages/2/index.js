@@ -43,9 +43,8 @@ const Page2 = () => {
       </Container>
 
       <Footer
-        secondButton
-        buttonText1={page2.return}
-        href1={"/1"}
+        returnButtonText={page2.return}
+        returnHref={"/1"}
         buttonText={page2.buttonText}
         href={"/3"}
         selection={selection}
