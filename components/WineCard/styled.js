@@ -45,7 +45,7 @@ export const StyledCheckbox = styled.div`
   width: 32px;
   height: 32px;
   background-color: #d9d9d9;
-  opacity: 0.2;
+  opacity: 0.4;
   border-radius: 50%;
   transition: all 150ms;
   position: relative;
@@ -146,7 +146,6 @@ export const Circle = styled.div`
   width: 18px;
   height: 18px;
   background-color: #f1bdd8;
-  opacity: 0.2;
   border-radius: 50%;
   position: absolute;
   top: 25%;

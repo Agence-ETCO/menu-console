@@ -2,6 +2,8 @@ import Image from "next/image";
 import CheckMark from "../CheckMark.js";
 import Icon1 from "../Icon1";
 import Icon2 from "../Icon2";
+import Icon1Dark from "../Icon1Dark";
+import Icon2Dark from "../Icon2Dark";
 import image from "../../public/Wine.png";
 import {
   CheckboxContainer,
@@ -55,8 +57,8 @@ const WineCard = (props) => {
 
             <IconContainer>
               Saq code {12824197}
-              <Icon1 />
-              <Icon2 />
+              {props.checked ? <Icon1Dark /> : <Icon1 />}
+              {props.checked ? <Icon2Dark /> : <Icon2 />}
             </IconContainer>
           </TextContainer>
         </SubContainer>
