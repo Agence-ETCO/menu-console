@@ -22,7 +22,7 @@ const Header = ({ step }) => {
           </ul>
         </Nav>
       </Container>
-      <Stepper step={step} />
+      {step && <Stepper step={step} />}
     </HeaderContainer>
   );
 };

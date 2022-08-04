@@ -35,6 +35,13 @@ export const page4 = {
   body: "Sélectionnez 1 des 2 options  plus haut afin de continuer.",
 };
 
+export const page6 = {
+  title: "Merci",
+  body: "Votre sélection à été reçue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
+  download: "télécharger ",
+  print: "IMPRIMER ",
+  share: "PARTAGER",
+};
 export const alertBox = {
   title: "attention",
   body: "Une fois soumise, vous ne pourrez plus changer vos choix.",
