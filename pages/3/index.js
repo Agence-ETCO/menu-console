@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
-import { page2 } from "../../fr";
+import { page3 } from "../../fr";
 import {
   Container,
   Subcontainer1,
@@ -11,28 +11,28 @@ import {
   Select,
 } from "./styled";
 
-const Page2 = () => {
-  const min = 3;
-  const max = 6;
-  const quantity = 18;
+const Page3 = () => {
+  const min = 4;
+  const max = 8;
+  const quantity = 12;
   const counter = 0;
   const selection = `Séléctionnez ${min - counter} vins pour continuer`;
   return (
     <>
-      <Header step={2} />
+      <Header step={3} />
       <Container>
         <Subcontainer1>
           <div>
-            <Title>{page2.title}</Title>
+            <Title>{page3.title}</Title>
             <SubTitle>
               Veuillez sélectionner entre{" "}
               <span>
-                {min} et {max} vins blancs.
+                {min} et {max} vins rouges.
               </span>
             </SubTitle>
           </div>
           <Select>
-            <span>{quantity}</span> {page2.select}
+            <span>{quantity}</span> {page3.select}
           </Select>
         </Subcontainer1>
         <Subcontainer2>
@@ -44,14 +44,14 @@ const Page2 = () => {
 
       <Footer
         secondButton
-        buttonText1={page2.return}
-        href1={"/1"}
-        buttonText={page2.buttonText}
-        href={"/3"}
+        buttonText1={page3.return}
+        href1={"/2"}
+        buttonText={page3.buttonText}
+        href={"/4"}
         selection={selection}
       />
     </>
   );
 };
 
-export default Page2;
+export default Page3;

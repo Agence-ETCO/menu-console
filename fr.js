@@ -16,10 +16,23 @@ export const page1 = {
 };
 
 export const page2 = {
-  title: "Vins blanc",
+  title: "Vins blancs",
   select: "vins blancs disponibles",
   return: "retour",
   buttonText: "continuer ->",
+};
+
+export const page3 = {
+  title: "Vins rouges",
+  select: "vins rouges disponibles",
+  return: "retour",
+  buttonText: "continuer ->",
+};
+
+export const page4 = {
+  title: "Bières",
+  subtitle: "Veuillez sélectionner",
+  body: "Sélectionnez 1 des 2 options  plus haut afin de continuer.",
 };
 
 export const alertBox = {
@@ -33,4 +46,14 @@ export const alertBox = {
 export const nav = {
   help: "besoin d'aide?",
   language: "english",
+};
+
+export const footer = {
+  return: "retour",
+  buttonText: "continuer ->",
+};
+
+export const beerList = {
+  title: "Produits Labatt",
+  select: "bières disponibles",
 };

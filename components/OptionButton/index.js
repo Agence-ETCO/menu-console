@@ -5,7 +5,7 @@ import {
   HiddenCheckbox,
   StyledCheckbox,
   Label,
-  TextContainer1,
+  TextContainer,
 } from "./styled.js";
 
 const OptionButton = (props) => {
@@ -20,10 +20,10 @@ const OptionButton = (props) => {
           <CheckMark />
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
-        <TextContainer1>
-          <span>{"option1"}</span>
-          <span> {"1 Labatt + 1 de microbrasserie"} </span>
-        </TextContainer1>
+        <TextContainer>
+          <span>{props.option}</span>
+          <span> {props.description} </span>
+        </TextContainer>
       </Label>
     </>
   );

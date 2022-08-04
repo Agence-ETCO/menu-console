@@ -34,7 +34,7 @@ export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
 export const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
-
+  position: relative;
   svg {
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     position: absolute;
@@ -53,6 +53,28 @@ export const StyledCheckbox = styled.div`
   position: relative;
 `;
 
-export const TextContainer1 = styled.div`
+export const TextContainer = styled.div`
   margin-left: 25px;
+  span:nth-child(1) {
+    font-family: "GTWalsheimBold";
+
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 23px;
+
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+
+    color: ${colors.white};
+  }
+
+  span:nth-child(2) {
+    font-family: "GTWalsheimRegular";
+
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+
+    color: ${colors.white};
+  }
 `;

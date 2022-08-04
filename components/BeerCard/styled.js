@@ -3,7 +3,7 @@ import { colors } from "../../constants";
 
 export const Label = styled.label`
   background-color: ${(props) => (props.checked ? "#3C3C3C" : "white")};
-  border: 1px solid #3c3c3c;
+  border: 1px solid rgba(147, 149, 152, 0.75);
   border-radius: 9px;
   display: flex;
   flex-direction: column;
@@ -11,6 +11,8 @@ export const Label = styled.label`
   height: 305px;
   position: relative;
   padding-top: 15px;
+  margin-left: 40px;
+  margin-bottom: 40px;
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -51,25 +53,30 @@ export const StyledCheckbox = styled.div`
 
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
-  text-align: center;
+  text-align: left;
   div:nth-child(1) {
     margin-bottom: 5px;
+    font-family: "GTWalsheimBold";
+    font-weight: 700;
     font-size: 19px;
     line-height: 23px;
   }
   div:nth-child(2) {
     color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
     margin-bottom: 35px;
+    font-family: "GTWalsheimRegular";
+    font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     padding-bottom: 25px;
-    border-bottom: 1px solid #939598;
-    margin-left: 35px;
-    margin-right: 35px;
+    border-bottom: 1px solid rgba(147, 149, 152, 0.5);
   }
 
   div:nth-child(4) {
-    color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
+    color: ${(props) =>
+      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+    font-family: "GTWalsheimRegular";
+    font-weight: 400;
     font-size: 13px;
     line-height: 15px;
     text-transform: uppercase;
@@ -81,11 +88,16 @@ export const TextContainer = styled.div`
 
     th {
       color: ${(props) =>
-        props.checked ? "rgba(255,255,255, 0.5)" : "#231f20"};
+        props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+      font-family: "GTWalsheimRegular";
+      font-weight: 400;
       font-size: 14px;
       line-height: 15px;
+      width: 70px;
     }
     tr {
+      font-family: "GTWalsheimBold";
+      font-weight: 700;
       font-size: 15px;
       line-height: 18px;
     }
