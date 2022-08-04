@@ -53,7 +53,13 @@ export const footer = {
   buttonText: "continuer ->",
 };
 
-export const beerList = {
+export const option1 = {
   title: "Produits Labatt",
+  title2: "Microbrasserie",
+  select: "bières disponibles",
+};
+
+export const option2 = {
+  title: "Microbrasserie",
   select: "bières disponibles",
 };

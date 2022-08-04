@@ -2,7 +2,8 @@ import { useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import OptionButton from "../../components/OptionButton";
-import BeerList from "../../components/BeerList";
+import Option1 from "../../components/Option1";
+import Option2 from "../../components/Option2";
 import { page4, footer } from "../../fr";
 import {
   Container1,
@@ -44,10 +45,13 @@ const Page4 = () => {
       </Container1>
 
       {selectedOption === 1 ? (
-        <BeerList />
+        <Option1 />
+      ) : selectedOption === 2 ? (
+        <Option2 />
       ) : (
         <Container2>{page4.body}</Container2>
       )}
+
       <Footer
         secondButton
         buttonText1={footer.return}

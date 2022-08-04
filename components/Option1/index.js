@@ -1,5 +1,6 @@
 import BeerCard from "../../components/BeerCard";
-import { beerList } from "../../fr";
+import { option1 } from "../../fr";
+import DropDown from "../DropDown";
 import {
   Container,
   Subcontainer1,
@@ -8,20 +9,22 @@ import {
   Select,
 } from "./styled";
 
-const BeerList = () => {
-  const min = 4;
-  const max = 8;
+const Option1 = () => {
   const quantity = 10;
-
+  const options = [
+    "La Mcrobrasserie, Montréal, QC",
+    "La Mcrobrasserie, Montréal, QC",
+    "La Mcrobrasserie, Montréal, QC",
+  ];
   return (
     <>
       <Container>
         <Subcontainer1>
           <div>
-            <Title>{beerList.title}</Title>
+            <Title>{option1.title}</Title>
           </div>
           <Select>
-            <span>{quantity}</span> {beerList.select}
+            <span>{quantity}</span> {option1.select}
           </Select>
         </Subcontainer1>
         <Subcontainer2>
@@ -29,9 +32,13 @@ const BeerList = () => {
           <BeerCard />
           <BeerCard />
         </Subcontainer2>
+        <div>
+          <Title>{option1.title2}</Title>
+          <DropDown options={options} />
+        </div>
       </Container>
     </>
   );
 };
 
-export default BeerList;
+export default Option1;
