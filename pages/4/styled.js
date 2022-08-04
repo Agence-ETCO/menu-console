@@ -6,7 +6,7 @@ export const Container1 = styled.div`
 `;
 
 export const Container2 = styled.div`
-  teaxt-align: center;
+  text-align: center;
   font-family: "GTWalsheimRegular";
   font-weight: 400;
   font-size: 31px;
@@ -15,6 +15,7 @@ export const Container2 = styled.div`
   color: #e30826;
   padding-top: 160px;
   padding-bottom: 80px;
+  min-height: 500px;
 `;
 
 export const Subcontainer = styled.div`

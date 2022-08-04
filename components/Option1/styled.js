@@ -4,7 +4,7 @@ import { colors } from "../../constants";
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;
-  padding-bottom: 100px;
+  height: 150vh;
 `;
 
 export const Subcontainer1 = styled.div`
