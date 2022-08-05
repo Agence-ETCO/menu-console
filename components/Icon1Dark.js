@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const Icon1 = (props) => (
+const Icon1Dark = (props) => (
   <svg
     width={14}
     height={23}
@@ -15,4 +15,4 @@ const Icon1 = (props) => (
   </svg>
 );
 
-export default Icon1;
+export default Icon1Dark;

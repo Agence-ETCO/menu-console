@@ -44,8 +44,8 @@ export const StyledButton = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-left: 110px;
-  margin-right: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
 `;
 
 export const Container = styled.div`
