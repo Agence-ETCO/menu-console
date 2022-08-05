@@ -12,21 +12,21 @@ export const page1 = {
   title: "Votre nouveau menu",
   body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
   date: "Votre nouveau menu au format 8.5x11.5 vous sera expédié après ",
-  buttonText: "continuer ->",
+  buttonText: "continuer",
 };
 
 export const page2 = {
   title: "Vins blancs",
   select: "vins blancs disponibles",
   return: "retour",
-  buttonText: "continuer ->",
+  buttonText: "continuer",
 };
 
 export const page3 = {
   title: "Vins rouges",
   select: "vins rouges disponibles",
   return: "retour",
-  buttonText: "continuer ->",
+  buttonText: "continuer",
 };
 
 export const page4 = {
@@ -57,7 +57,7 @@ export const nav = {
 
 export const footer = {
   return: "retour",
-  buttonText: "continuer ->",
+  buttonText: "continuer",
   view: "Prévisualiser",
   submit: "soumettre",
 };

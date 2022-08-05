@@ -29,6 +29,9 @@ export const StyledLink = styled.button`
   text-transform: uppercase;
   margin-left: 110px;
   margin-right: 100px;
+  svg {
+    margin-left: 20px;
+  }
 `;
 
 export const StyledButton = styled.button`

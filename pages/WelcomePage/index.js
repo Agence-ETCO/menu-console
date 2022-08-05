@@ -16,7 +16,7 @@ const WelcomePage = () => {
   const date = "12 septembre 2022";
   return (
     <>
-      <Header step={0} />
+      <Header step={-1} />
       <Container>
         <Greeting>{welcomePage.greeting}</Greeting>
         <Title>{welcomePage.title}</Title>
@@ -30,7 +30,7 @@ const WelcomePage = () => {
           </Link>
         </Ending>
       </Container>
-      <Footer buttonText={welcomePage.buttonText} href={"/1"} />
+      <Footer startText={welcomePage.buttonText} href={"/1"} />
     </>
   );
 };

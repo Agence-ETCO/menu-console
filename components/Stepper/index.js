@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { colors } from "../../constants";
 import { TextButton, NumberButton, Container } from "./styled";
 
@@ -6,31 +7,37 @@ const Stepper = (props) => {
 
   return (
     <Container>
-      <TextButton
-        color={
-          props.step === 0 ? `${colors.orange}` : "rgba(147, 149, 152, 0.15)"
-        }
-      >
-        {"bienvenue"}
-      </TextButton>
-      {buttonOptions.map((element) => (
-        <NumberButton
+      <Link href={props.step > -1 ? "/" : "#"}>
+        <TextButton
           color={
-            props.step === element
-              ? `${colors.orange}`
-              : props.step > element
-              ? "rgba(147, 149, 152, 0.15)"
-              : `${colors.black}`
+            props.step === -1 ? `${colors.orange}` : "rgba(147, 149, 152, 0.15)"
           }
         >
-          {element}
-        </NumberButton>
+          {"bienvenue"}
+        </TextButton>
+      </Link>
+      {buttonOptions.map((element) => (
+        <Link href={props.step > element ? `/${element}` : " #"}>
+          <NumberButton
+            color={
+              props.step === element
+                ? `${colors.orange}`
+                : props.step > element
+                ? "rgba(147, 149, 152, 0.15)"
+                : `${colors.black}`
+            }
+          >
+            {element}
+          </NumberButton>
+        </Link>
       ))}
-      <TextButton
-        color={props.step === 5 ? `${colors.orange}` : `${colors.black}`}
-      >
-        {"resume"}
-      </TextButton>
+      <Link href={props.step > 5 ? "/5" : "#"}>
+        <TextButton
+          color={props.step === 5 ? `${colors.orange}` : `${colors.black}`}
+        >
+          {"resume"}
+        </TextButton>
+      </Link>
     </Container>
   );
 };

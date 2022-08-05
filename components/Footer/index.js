@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Arrow from "../Arrow";
 import { Container, Button, StyledLink, StyledButton } from "./styled.js";
 
 const Footer = (props) => {
@@ -9,9 +10,17 @@ const Footer = (props) => {
           <Button>{props.returnButtonText}</Button>
         </Link>
       )}
+      {props.startText && (
+        <Link href={props.href}>
+          <StyledLink>{props.startText}</StyledLink>
+        </Link>
+      )}
       {props.buttonText && (
         <Link href={props.href}>
-          <StyledLink>{props.buttonText}</StyledLink>
+          <StyledLink>
+            {props.buttonText}
+            <Arrow />
+          </StyledLink>
         </Link>
       )}
       {props.selection && <span>{props.selection}</span>}
