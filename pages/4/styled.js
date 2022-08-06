@@ -55,3 +55,6 @@ export const OptionsContainer = styled.div`
   padding-left: 20px;
   padding-right: 20px;
 `;
+
+const Empty = () => {};
+export default Empty;

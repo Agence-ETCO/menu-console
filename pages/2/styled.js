@@ -55,3 +55,6 @@ export const Select = styled.div`
   width: 325px;
   height: 67px;
 `;
+
+const Empty = () => {};
+export default Empty;

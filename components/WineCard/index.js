@@ -31,7 +31,7 @@ const WineCard = (props) => {
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
-          <Image src={image} width={240} height={300} />
+          <Image src={image} width={240} height={300} alt="" />
           <TextContainer checked={props.checked}>
             <div>{"Robert Mondavi Private Selection"}</div>
             <div> {"Cuvée Centenaire,Languedoc-Rousillon"} </div>

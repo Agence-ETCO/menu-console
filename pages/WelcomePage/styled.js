@@ -59,3 +59,6 @@ export const Ending = styled.div`
     text-decoration: underline;
   }
 `;
+
+const Empty = () => {};
+export default Empty;

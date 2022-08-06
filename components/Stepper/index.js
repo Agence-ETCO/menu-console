@@ -16,8 +16,8 @@ const Stepper = (props) => {
           {"bienvenue"}
         </TextButton>
       </Link>
-      {buttonOptions.map((element) => (
-        <Link href={props.step > element ? `/${element}` : " #"}>
+      {buttonOptions.map((element, key) => (
+        <Link href={props.step > element ? `/${element}` : " #"} key={`link_${key}`}>
           <NumberButton
             color={
               props.step === element
