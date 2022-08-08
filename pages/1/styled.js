@@ -42,3 +42,6 @@ export const Date = styled.div`
   font-size: 17px;
   line-height: 23px;
 `;
+
+const Empty = () => {};
+export default Empty;

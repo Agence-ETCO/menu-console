@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "display-version": "node --version && npm --version",
+    "prebuild": "npm run display-version",
     "build": "next build",
+    "prestart": "npm run display-version",
     "start": "next start",
     "lint": "next lint"
   },

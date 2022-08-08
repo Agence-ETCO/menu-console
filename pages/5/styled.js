@@ -23,3 +23,6 @@ export const Title = styled.div`
   line-height: 23px;
   margin-bottom: 10px;
 `;
+
+const Empty = () => {};
+export default Empty;

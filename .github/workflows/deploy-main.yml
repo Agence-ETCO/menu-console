@@ -1,0 +1,12 @@
+name: Deploy main branch
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: muinmomin/webhook-action@v1.0.0
+        with:
+          url: https://api.vercel.com/v1/integrations/deploy/prj_dO8aq9SmoKuzhNLziuo0RKTEHIQX/6f7UHrtbMv

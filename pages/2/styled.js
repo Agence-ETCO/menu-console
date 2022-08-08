@@ -58,3 +58,6 @@ export const Select = styled.div`
     margin-right: 5px;
   }
 `;
+
+const Empty = () => {};
+export default Empty;
