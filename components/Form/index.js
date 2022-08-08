@@ -33,9 +33,7 @@ const Form = (props) => {
       alcohol: alcohol,
     });
     localStorage.setItem(`microbrasserie${props.order}`, data);
-    if (props.order === "01") {
-      props.onOptionSelect();
-    }
+
     props.count();
   };
 

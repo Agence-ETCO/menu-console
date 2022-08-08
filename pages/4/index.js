@@ -21,12 +21,12 @@ const Page4 = () => {
   const [selections, setSelections] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
-  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [dropDownCounter, setDropdownCounter] = useState(0);
   const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 12;
   const quantity = 6;
   const selected = counter - 2;
+  const selected2 = selections.length - 4 >= 0;
   /* const selection = `Séléctionnez ${counter} bières pour continuer`; */
 
   const handleCheckboxChange = (option) => {
@@ -53,22 +53,16 @@ const Page4 = () => {
   useEffect(() => {
     const updatedCounter =
       min - selections.length - dropDownCounter > 0
-        ? min - selections.length
+        ? min - selections.length - dropDownCounter
         : 0;
     setCounter(updatedCounter);
-  }, [selections]);
+  }, [selections, dropDownCounter]);
 
   const dropDownOptions = [
     "La Mcrobrasserie, Montréal, QC",
     "La Mcrobrasserie, Montréal, QC",
     "La Mcrobrasserie, Montréal, QC",
   ];
-
-  const [disabled, setDisabled] = useState(true);
-
-  const onOptionSelect = () => {
-    setDisabled(false);
-  };
 
   const count = () => setDropdownCounter(dropDownCounter + 1);
 
@@ -118,15 +112,13 @@ const Page4 = () => {
           <DropDown
             disabled={selected > 2}
             options={dropDownOptions}
-            onOptionSelect={onOptionSelect}
             count={count}
             order="01"
           />
           <DropDown
             options={dropDownOptions}
-            onOptionSelect={onOptionSelect}
             count={count}
-            disabled={disabled}
+            disabled={!selected2}
             order="02"
           />
         </Subcontainer3>

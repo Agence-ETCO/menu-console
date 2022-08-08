@@ -38,11 +38,7 @@ const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
   const onOptionClick = (value) => {
     setIsOpen(false);
     setSelectedOption(value);
-
     localStorage.setItem(`microbrasserie${order}`, value);
-    if (order === "01") {
-      onOptionSelect();
-    }
     count();
   };
 
@@ -67,7 +63,6 @@ const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
         handleClick={handleClick}
         order={order}
         count={count}
-        onOptionSelect={onOptionSelect}
       />
       <Container disabled={disabled}>
         <DropDownContainer>
