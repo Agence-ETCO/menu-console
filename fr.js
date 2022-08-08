@@ -62,7 +62,7 @@ export const footer = {
   submit: "soumettre",
 };
 
-export const option1 = {
+export const beerList = {
   title: "Produits Labatt",
   title2: "Microbrasserie",
   select: "bières disponibles",

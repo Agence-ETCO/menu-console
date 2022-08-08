@@ -54,4 +54,7 @@ export const Select = styled.div`
   align-items: center;
   width: 325px;
   height: 67px;
+  span {
+    margin-right: 5px;
+  }
 `;

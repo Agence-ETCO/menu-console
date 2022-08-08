@@ -1,33 +1,16 @@
 import styled from "styled-components";
 import { colors } from "../../constants";
 
-export const Container1 = styled.div`
-  background-color: ${colors.black};
-`;
-
-export const Container2 = styled.div`
-  text-align: center;
-  font-family: "GTWalsheimRegular";
-  font-weight: 400;
-  font-size: 31px;
-  line-height: 37px;
-  text-align: center;
-  color: #e30826;
-  padding-top: 160px;
-  padding-bottom: 80px;
-  min-height: 500px;
-`;
-
 export const Subcontainer = styled.div`
-  background-color: ${colors.black};
-  height: 200px;
-  width: 562px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-directon: row;
+  margin-top: 60px;
+  margin-left: 60px;
+  margin-right: 60px;
 `;
 
-export const Title = styled.div`
-  color: ${colors.white};
+export const Title1 = styled.div`
+  color: ${colors.black};
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
@@ -35,23 +18,68 @@ export const Title = styled.div`
 `;
 
 export const SubTitle = styled.div`
-  color: ${colors.white};
+  color: ${colors.black};
   font-family: "GTWalsheimRegular";
   font-weight: 400;
   font-size: 17px;
   line-height: 23px;
+  span {
+    font-family: "GTWalsheimBold";
+    font-weight: 700;
+    color: ${colors.orange};
+  }
 `;
 
-export const OptionsContainer = styled.div`
-  width: 562px;
-  height: 83px;
-  background-color: rgba(60, 60, 60, 0.75);
+export const Select = styled.div`
+  font-family: "GTWalsheimMedium";
+  font-size: 21px;
+  line-height: 25px;
+  letter-spacing: 0.03em;
+  margin-left: auto;
+  background: #ffe110;
   border-radius: 9px;
-  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 325px;
+  height: 67px;
+  span {
+    margin-right: 5px;
+  }
+`;
+
+export const Container = styled.div`
+  margin-left: 60px;
+  margin-right: 60px;
+  height: 200vh;
+  padding-bottom: 600px;
+`;
+
+export const Subcontainer1 = styled.div`
   display: flex;
   flex-directon: row;
-  justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+`;
+
+export const Subcontainer2 = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+export const Subcontainer3 = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
+export const Title = styled.div`
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 23px;
+  margin-bottom: 10px;
 `;

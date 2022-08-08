@@ -1,10 +1,30 @@
 import styled from "styled-components";
-import { colors } from "../../constants";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  background-color: rgba(147, 149, 152, 0.08);
+  border-radius: 9px;
+  margin-left: 50px;
+`;
+
+export const Container1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Container3 = styled.div`
+  position: absolute;
+`;
 export const DropDownContainer = styled.div`
+  width: 528px;
+  height: 286px;
   margin-top: 24px;
-  margin-left: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
 `;
 export const DropDownHeader = styled.div`
   width: 413px;
@@ -13,10 +33,15 @@ export const DropDownHeader = styled.div`
   border-radius: 9px;
   display: flex;
   padding-left: 25px;
+  order: 2;
+  background-color: ${(props) =>
+    props.disabled ? "rgba(147, 149, 152, 0.08)" : "white"};
 `;
 
 export const DropDownListContainer = styled.div`
-  width: 413px; ;
+  width: 413px;
+  z-index: 40;
+  background-color: white;
 `;
 
 export const DropDownList = styled.ul`
@@ -80,11 +105,13 @@ export const Header = styled.span`
   font-weight: 700;
   font-size: 19px;
   line-height: 23px;
-  color: #231f20;
+  color: ${(props) => (props.disabled ? "rgba(60, 60, 60, 0.5)" : "#231f20")};
   margin-top: 24px;
+  padding-left: 60px;
+  padding-top: 40px;
 `;
 
-export const Input = styled.input`
+export const Button = styled.button`
   width: 100%;
   height: 68px;
   font-family: "GTWalsheimBold";
@@ -97,7 +124,31 @@ export const Input = styled.input`
   border: 1px solid #939598;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
-  ::placeholder {
-    color: #231f20;
+  background-color: white;
+`;
+
+export const Text = styled.div`
+  display: flex;
+  flex-direction: row;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  color: ${(props) => (props.disabled ? "#E30826" : "#3c3c3c")};
+  width: 420px;
+  text-align: center;
+  margin-bottom: 25px;
+  svg {
+    width: 50px;
   }
+`;
+
+export const Text1 = styled.span`
+  order: 1;
+  font-family: "GTWalsheimMedium";
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 23px;
+  color: ${(props) => (props.disabled ? "rgba(60, 60, 60, 0.5)" : "#3c3c3c")};
+  margin-right: 20px;
 `;

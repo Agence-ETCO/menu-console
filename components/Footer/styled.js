@@ -32,6 +32,9 @@ export const StyledLink = styled.button`
   svg {
     margin-left: 20px;
   }
+  :disabled {
+    opacity: 0.3;
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -60,6 +63,7 @@ export const Container = styled.div`
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 50;
 
   span {
     font-family: "GTWalsheimMedium";

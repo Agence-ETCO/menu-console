@@ -1,19 +1,31 @@
+import { useState } from "react";
 import Link from "next/link";
 import Logo from "../Logo";
 import Stepper from "../Stepper";
+import Help from "../Help";
 import { Container, HeaderContainer, Nav } from "./styled";
 import { nav } from "../../fr";
 
 const Header = ({ step }) => {
+  const [showHelp, setShowHelp] = useState(false);
+
+  const handleClick = () => {
+    setShowHelp(!showHelp);
+  };
+
   return (
     <HeaderContainer>
       <Container>
         <Logo />
+
+        <Help
+          showHelp={showHelp}
+          handleClick={handleClick}
+          /* handleSubmit={handleSubmit}  */
+        />
         <Nav>
           <ul>
-            <Link href={"/"}>
-              <li>{nav.help}</li>
-            </Link>
+            <li onClick={() => handleClick()}>{nav.help}</li>
           </ul>
           <ul>
             <Link href={"/"}>
