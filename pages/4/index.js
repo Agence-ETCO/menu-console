@@ -17,16 +17,16 @@ import {
 } from "./styled";
 
 const Page4 = () => {
-  const min = 6;
+  const min = 1;
   const [selections, setSelections] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
   const [dropDownCounter, setDropdownCounter] = useState(0);
   const options = [1, 2, 3, 4, 5, 6, 7];
-  const max = 12;
-  const quantity = 6;
-  const selected = counter - 2;
-  const selected2 = selections.length - 4 >= 0;
+  const max = 6;
+
+  const selected = selections.length - 1 >= 0;
+  const selected2 = selections.length - 2 >= 0;
   /* const selection = `Séléctionnez ${counter} bières pour continuer`; */
 
   const handleCheckboxChange = (option) => {
@@ -79,16 +79,13 @@ const Page4 = () => {
         <div>
           <Title1>{page4.title}</Title1>
           <SubTitle>
-            Veuillez sélectionner entre{" "}
-            <span>
-              {min} et {max} bières
-            </span>
-            parmis les produits Labatt et de microbrasseries
+            Encourageons le commerce local ! Sélectionnez 2 bières Labatt pour
+            inscrire<span>2 bières</span> de microbrasserie de votre choix
           </SubTitle>
         </div>
 
         <Select>
-          <span>{quantity}</span> {beerList.select}
+          Minimum {min} - Maximum {max}
         </Select>
       </Subcontainer>
       <Container>
@@ -110,7 +107,7 @@ const Page4 = () => {
         <Subcontainer3>
           <Title>{beerList.title2}</Title>
           <DropDown
-            disabled={selected > 2}
+            disabled={!selected}
             options={dropDownOptions}
             count={count}
             order="01"

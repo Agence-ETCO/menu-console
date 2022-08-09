@@ -26,7 +26,9 @@ export const SubTitle = styled.div`
   span {
     font-family: "GTWalsheimBold";
     font-weight: 700;
-    color: ${colors.orange};
+    color: ${colors.black};
+    margin-left: 5px;
+    margin-right: 5px;
   }
 `;
 
@@ -43,9 +45,6 @@ export const Select = styled.div`
   align-items: center;
   width: 325px;
   height: 67px;
-  span {
-    margin-right: 5px;
-  }
 `;
 
 export const Container = styled.div`

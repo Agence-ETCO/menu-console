@@ -16,6 +16,31 @@ export const Subcontainer = styled.div`
   margin-bottom: 100px;
 `;
 
+export const Subcontainer1 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
+
+export const Title1 = styled.div`
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 40px;
+  color: #f5ba18;
+  text-align: center;
+  margin-bottom: 30px;
+`;
+export const Subtitle1 = styled.div`
+  font-family: "GTWalsheimBold";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  color: #231f20;
+  margin-bottom: 30px;
+`;
 export const Title = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;

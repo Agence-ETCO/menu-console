@@ -22,8 +22,6 @@ const Page6 = () => {
         </Subcontainer>
         <Subcontainer1>
           <Button>{page6.download}</Button>
-          <Button>{page6.print}</Button>
-          <Button>{page6.share}</Button>
         </Subcontainer1>
       </Container>
     </>

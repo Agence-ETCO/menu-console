@@ -5,7 +5,6 @@ import { page1 } from "../../fr";
 import { Container, Subcontainer, Title, Body, Date, Ending } from "./styled";
 
 const Page1 = () => {
-  const date = "le 30 septembre 2022";
   return (
     <>
       <Header step={1} />
@@ -14,9 +13,8 @@ const Page1 = () => {
         <Subcontainer>
           <Title>{page1.title}</Title>
           <Body>{page1.body}</Body>
-          <Body>
-            {page1.date} <span>{date}</span>
-          </Body>
+          <Body>{page1.body1}</Body>
+          <Body>{page1.body2}</Body>
         </Subcontainer>
       </Container>
 

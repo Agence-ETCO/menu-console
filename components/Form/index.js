@@ -48,7 +48,7 @@ const Form = (props) => {
             <Title>{"Ajouter une bière de microbrasserie"}</Title>
             <Subtitle>
               {
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elitulvinar acultricies sed non consequat malesuada libero."
+                "Vous désirez nous faire part d’une demande particulière ? C’est possible ! Pour cela, il vous suffit de renseigner quelques informations."
               }
             </Subtitle>
             <Label>

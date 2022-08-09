@@ -72,8 +72,8 @@ const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
                 <>
                   <Lock />
                   <span>
-                    Sélectionnez au moins 2 produits Labatt pour débloquer un
-                    premier choix de microbrasserie.
+                    Vous devez sélectionner un autre produit Labatt pour ajouter
+                    une 2e microbrasserie.
                   </span>
                 </>
               ) : (

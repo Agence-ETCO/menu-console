@@ -6,10 +6,12 @@ import {
   Greeting,
   Title,
   Body,
+  Body1,
   Date,
   DateLimit,
   Ending,
   Container,
+  Subcontainer,
 } from "./styled";
 
 const WelcomePage = () => {
@@ -21,8 +23,12 @@ const WelcomePage = () => {
         <Greeting>{welcomePage.greeting}</Greeting>
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
-        <DateLimit>{welcomePage.dateLimite}</DateLimit>
-        <Date>{date}</Date>
+        <Subcontainer>
+          <DateLimit>{welcomePage.dateLimite}</DateLimit>
+          <Body1>{welcomePage.body1}</Body1>
+          <Date>{date}</Date>
+          <Body1>{welcomePage.body2}</Body1>
+        </Subcontainer>
         <Ending>
           {welcomePage.help}
           <Link href={"/"}>

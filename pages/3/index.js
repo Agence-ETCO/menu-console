@@ -13,14 +13,14 @@ import {
 } from "./styled";
 
 const Page3 = () => {
-  const min = 4;
+  const min = 3;
   const [selections, setSelections] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
   const options = [1, 2, 3, 4, 5, 6, 7];
-  const max = 8;
+  const max = 6;
   const quantity = 12;
-  const selection = `Séléctionnez ${counter} vins pour continuer`;
+  const selection = `Séléctionnez au minimum ${counter} vins pour continuer`;
 
   const handleCheckboxChange = (option) => {
     let updatedSelections = [];
@@ -60,14 +60,12 @@ const Page3 = () => {
           <div>
             <Title>{page3.title}</Title>
             <SubTitle>
-              Veuillez sélectionner entre{" "}
-              <span>
-                {min} et {max} vins rouges.
-              </span>
+              Veuillez sélectionner entre <span>{quantity} références</span>
+              disponibles
             </SubTitle>
           </div>
           <Select>
-            <span>{quantity}</span> {page3.select}
+            Minimum {min} - Maximum {max}
           </Select>
         </Subcontainer1>
         <Subcontainer2>

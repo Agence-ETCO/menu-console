@@ -6,7 +6,14 @@ import BeerCard from "../../components/BeerCard";
 import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { page2, page3, beerList, option2, footer } from "../../fr";
-import { Container, Subcontainer, Title } from "./styled";
+import {
+  Container,
+  Subcontainer,
+  Title,
+  Subcontainer1,
+  Subtitle1,
+  Title1,
+} from "./styled";
 
 const Page5 = () => {
   const router = useRouter();
@@ -63,6 +70,16 @@ const Page5 = () => {
       />
       <Header step={5} />
       <Container>
+        <Subcontainer1>
+          <Title1>Nous y sommes presque !</Title1>
+          <Subtitle1>
+            Voici votre sélection. Relisez vos choix avec attention !
+          </Subtitle1>
+          <Subtitle1>
+            Une fois votre sélection soumise, vous ne pourrez plus la modifier.
+            Assurez-vous de bien relire vos choix.
+          </Subtitle1>
+        </Subcontainer1>
         <Title>{page2.title}</Title>
         <Subcontainer>
           {white &&
@@ -115,6 +132,7 @@ const Page5 = () => {
               />
             ))}
         </Subcontainer>
+        <Title1>Êtes-vous sûr de votre sélection ?</Title1>
       </Container>
 
       <Footer
