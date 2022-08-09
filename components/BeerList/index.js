@@ -32,7 +32,7 @@ const BeerList = () => {
     if (updated && value !== null) {
       setDisabled(false);
     }
-  }, [value]);
+  }, [updated, value]);
 
   return (
     <>

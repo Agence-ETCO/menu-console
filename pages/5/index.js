@@ -60,7 +60,7 @@ const Page5 = () => {
     if (value5 !== null) {
       setMicro([1, 2]);
     }
-  }, []);
+  }, [value1, value2, value3, value4, value5]);
   return (
     <>
       <AlertBox

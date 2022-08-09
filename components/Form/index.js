@@ -43,7 +43,7 @@ const Form = (props) => {
         <Container>
           <BoxContainer>
             <CloseButton onClick={props.handleClick}>
-              <Image src={image} width={25} height={25} />
+              <Image src={image} width={25} height={25} alt="" />
             </CloseButton>
             <Title>{"Ajouter une bière de microbrasserie"}</Title>
             <Subtitle>

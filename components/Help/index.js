@@ -16,7 +16,7 @@ const Help = (props) => {
         <Container>
           <BoxContainer>
             <CloseButton onClick={props.handleClick}>
-              <Image src={image} width={25} height={25} />
+              <Image src={image} width={25} height={25} alt="" />
             </CloseButton>
             <Title>{"Besoin d’aide?"}</Title>
             <Subtitle>
