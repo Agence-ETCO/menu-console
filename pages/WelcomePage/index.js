@@ -1,7 +1,9 @@
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import { welcomePage } from "../../fr";
+import { getToken } from "../../lib/api";
 import {
   Greeting,
   Title,
@@ -16,6 +18,20 @@ import {
 
 const WelcomePage = () => {
   const date = "12 septembre 2022";
+
+  /* useEffect(() => {
+    getToken()
+      .then(({ data }) => {
+        const userName = data.user.username;
+        const token = data.jwt;
+        localStorage.setItem("user", JSON.stringify(userName));
+        localStorage.setItem("token", JSON.stringify(token));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); */
+
   return (
     <>
       <Header step={-1} />

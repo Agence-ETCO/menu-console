@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
 import { page2 } from "../../fr";
+/* import { fetchAPI } from "../../lib/api"; */
 import {
   Container,
   Subcontainer1,
@@ -53,6 +54,19 @@ const Page2 = () => {
       min - selections.length > 0 ? min - selections.length : 0;
     setCounter(updatedCounter);
   }, [selections]);
+
+  /* useEffect(() => {
+    const token =
+      typeof window !== "undefined" &&
+      JSON.parse(localStorage.getItem("token"));
+    fetchAPI("/api/menu-items?populate=*", token)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []); */
 
   return (
     <>
