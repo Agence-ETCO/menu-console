@@ -20,7 +20,11 @@ const Page3 = () => {
   const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 6;
   const quantity = 12;
-  const selection = `Séléctionnez au minimum ${counter} vins pour continuer`;
+  const selection = (
+    <span style={{ fontSize: "21px" }}>
+      {counter}/{min}
+    </span>
+  );
 
   const handleCheckboxChange = (option) => {
     let updatedSelections = [];
@@ -48,8 +52,7 @@ const Page3 = () => {
   }, []);
 
   useEffect(() => {
-    const updatedCounter =
-      min - selections.length > 0 ? min - selections.length : 0;
+    const updatedCounter = selections.length <= min ? selections.length : min;
     setCounter(updatedCounter);
   }, [selections]);
   return (
@@ -86,7 +89,7 @@ const Page3 = () => {
         buttonText={page3.buttonText}
         href={"/4"}
         selection={selection}
-        disabled={counter !== 0}
+        disabled={counter !== min}
       />
     </>
   );

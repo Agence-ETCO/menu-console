@@ -42,10 +42,13 @@ export const page4 = {
 
 export const page6 = {
   title: "Merci",
-  body: "Votre sélection à été reçue. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
+  subtitle:
+    "Votre sélection a bien été envoyée, nous allons donc pouvoir imprimer votre nouveau menu.",
+  body1:
+    "En attendant, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
+  body2:
+    "S'il vous plaît, n'imprimez pas le résumé pour l'utiliser dans votre restaurant. Nous vous ferons parvenir votre nouveau menu au plus tôt.",
   download: "télécharger ",
-  print: "IMPRIMER ",
-  share: "PARTAGER",
 };
 export const alertBox = {
   title: "attention",

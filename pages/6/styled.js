@@ -29,8 +29,17 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 27px;
   line-height: 32px;
-  color: ${colors.yellow};
+  color: ${colors.white};
 `;
+export const Subtitle = styled.div`
+  font-family: "GT WalsheimBold";
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 24px;
+  color: ${colors.white};
+  margin-bottom: 20px;
+`;
+
 export const Body = styled.div`
   font-family: "GTWalsheimRegular";
   font-style: normal;
@@ -38,6 +47,7 @@ export const Body = styled.div`
   font-size: 17px;
   line-height: 24px;
   color: white;
+  margin-bottom: 10px;
 `;
 
 export const Button = styled.button`
@@ -48,7 +58,7 @@ export const Button = styled.button`
   font-size: 17px;
   line-height: 20px;
   letter-spacing: 0.03em;
-  color: white;
+  color: ${colors.yellow};
   background-color: #231f20;
   text-transform: uppercase;
   font-family: "GTWalsheimBold";
@@ -57,9 +67,6 @@ export const Button = styled.button`
   line-height: 22px;
   text-align: center;
   letter-spacing: 0.03em;
-  border: 1px solid #ffffff;
+  border: 1px solid ${colors.yellow};
   border-radius: 9px;
 `;
-
-const Empty = () => {};
-export default Empty;

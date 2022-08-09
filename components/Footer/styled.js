@@ -75,3 +75,14 @@ export const Container = styled.div`
     text-transform: uppercase;
   }
 `;
+
+export const Select = styled.span`
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 21px;
+  width: 300px;
+  span {
+    font-family: "GTWalsheimBold";
+    font-weight: 700;
+  }
+`;

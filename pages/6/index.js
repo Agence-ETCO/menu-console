@@ -5,6 +5,7 @@ import {
   Container,
   Subcontainer,
   Title,
+  Subtitle,
   Body,
   Subcontainer1,
   Button,
@@ -18,7 +19,9 @@ const Page6 = () => {
       <Container>
         <Subcontainer>
           <Title>{page6.title}</Title>
-          <Body>{page6.body}</Body>
+          <Subtitle>{page6.subtitle}</Subtitle>
+          <Body>{page6.body1}</Body>
+          <Body>{page6.body2}</Body>
         </Subcontainer>
         <Subcontainer1>
           <Button>{page6.download}</Button>

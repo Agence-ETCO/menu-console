@@ -27,7 +27,16 @@ const Page4 = () => {
 
   const selected = selections.length - 1 >= 0;
   const selected2 = selections.length - 2 >= 0;
-  /* const selection = `Séléctionnez ${counter} bières pour continuer`; */
+  const selection =
+    counter < min ? (
+      <>
+        Séléctionnez au miniMum <span>1 bière</span> pour continuer
+      </>
+    ) : (
+      <>
+        Vous avez débloquÉ <span>1 choix de microbrassereie</span>
+      </>
+    );
 
   const handleCheckboxChange = (option) => {
     let updatedSelections = [];
@@ -51,12 +60,9 @@ const Page4 = () => {
   };
 
   useEffect(() => {
-    const updatedCounter =
-      min - selections.length - dropDownCounter > 0
-        ? min - selections.length - dropDownCounter
-        : 0;
+    const updatedCounter = selections.length <= min ? selections.length : min;
     setCounter(updatedCounter);
-  }, [selections, dropDownCounter]);
+  }, [selections]);
 
   const dropDownOptions = [
     "La Mcrobrasserie, Montréal, QC",
@@ -126,8 +132,8 @@ const Page4 = () => {
         returnHref={"/3"}
         buttonText={footer.buttonText}
         href={"/5"}
-        /* selection={selection} */
-        disabled={counter !== 0}
+        selection={selection}
+        disabled={counter !== min}
       />
     </>
   );
