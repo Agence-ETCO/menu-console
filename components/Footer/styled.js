@@ -19,6 +19,7 @@ export const StyledLink = styled.button`
   background-color: ${colors.black};
   width: 272px;
   height: 69px;
+  border: 0;
   border-radius: 9px;
   font-family: "GTWalsheimBold";
   font-style: normal;
@@ -43,6 +44,7 @@ export const StyledButton = styled.button`
   width: 272px;
   height: 69px;
   border-radius: 9px;
+  border: 0;
   font-family: "GTWalsheimBold";
   font-style: normal;
   font-weight: 700;

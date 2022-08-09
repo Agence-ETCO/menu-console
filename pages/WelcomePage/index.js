@@ -47,9 +47,10 @@ const WelcomePage = () => {
         </Subcontainer>
         <Ending>
           {welcomePage.help}
-          <Link href={"/"}>
+          &nbsp;
+          <a href="mailto:info@st-hubert.com">
             <span>{welcomePage.contact}</span>
-          </Link>
+          </a>
         </Ending>
       </Container>
       <Footer startText={welcomePage.buttonText} href={"/1"} />

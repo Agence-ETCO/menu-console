@@ -50,7 +50,7 @@ export const Select = styled.div`
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;
-  height: 200vh;
+  min-height: 200vh;
   padding-bottom: 600px;
 `;
 
