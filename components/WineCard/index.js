@@ -33,30 +33,50 @@ const WineCard = (props) => {
         <SubContainer>
           <Image src={image} width={240} height={300} alt="" />
           <TextContainer checked={props.checked}>
-            <div>{"Robert Mondavi Private Selection"}</div>
-            <div> {"Cuvée Centenaire,Languedoc-Rousillon"} </div>
-            <div>{"Québec, Canada"}</div>
+            <div>{props.title || "Robert Mondavi Private Selection"}</div>
+            <div>
+              {" "}
+              {props.description || "Cuvée Centenaire,Languedoc-Rousillon"}{" "}
+            </div>
+            <div>{props.location || "Québec, Canada"}</div>
             <CircleContainer checked={props.checked}>
               {" "}
-              {"AROMATIQUE ET CHARNU"} <Circle /> {"Sucre : 12.5g/L"}
+              {props.taste || "AROMATIQUE ET CHARNU"} <Circle />{" "}
+              {`Sucre : ${props.sugar || 12.5} g/L`}
             </CircleContainer>
-            <table>
-              <tbody>
-                <tr>
-                  <th scope="col">6oz</th>
-                  <th scope="col">9oz</th>
-                  <th scope="col">Bouteille</th>
-                </tr>
-                <tr>
-                  <td>9,99 $</td>
-                  <td>19,99 $</td>
-                  <td>29,99 $</td>
-                </tr>
-              </tbody>
-            </table>
-
+            {props.prices ? (
+              <table>
+                <tbody>
+                  <tr>
+                    <th scope="col">{props.prices[0].size}</th>
+                    <th scope="col">{props.prices[1].size}</th>
+                    <th scope="col">{props.prices[2].size}</th>
+                  </tr>
+                  <tr>
+                    <td>{props.prices[0].Price}</td>
+                    <td>{props.prices[1].Price}</td>
+                    <td>{props.prices[2].Price}</td>
+                  </tr>
+                </tbody>
+              </table>
+            ) : (
+              <table>
+                <tbody>
+                  <tr>
+                    <th scope="col">6oz</th>
+                    <th scope="col">9oz</th>
+                    <th scope="col">Bouteille</th>
+                  </tr>
+                  <tr>
+                    <td>9,99 $</td>
+                    <td>19,99 $</td>
+                    <td>29,99 $</td>
+                  </tr>
+                </tbody>
+              </table>
+            )}
             <IconContainer>
-              Saq code {12824197}
+              Saq code {props.saqCode || 12824197}
               {props.checked ? <Icon1Dark /> : <Icon1 />}
               {props.checked ? <Icon2Dark /> : <Icon2 />}
             </IconContainer>

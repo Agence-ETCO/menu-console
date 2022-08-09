@@ -16,6 +16,7 @@ import {
 const Page2 = () => {
   const min = 1;
   const [selections, setSelections] = useState([]);
+  const [data, setData] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
   const options = [1, 2, 3, 4, 5, 6, 7];
@@ -61,7 +62,7 @@ const Page2 = () => {
       JSON.parse(localStorage.getItem("token"));
     fetchAPI("/api/menu-items?populate=*", token)
       .then((res) => {
-        console.log(res.data);
+        setData(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -87,6 +88,25 @@ const Page2 = () => {
           </Select>
         </Subcontainer1>
         <Subcontainer2>
+          {/* {data &&
+            data
+              .filter((option) => option.attributes.category === "White Wine")
+              .map((option) => (
+                <WineCard
+                  key={option.id}
+                  checked={!!selections.find((sel) => sel.id === option.id)}
+                  handleCheckboxChange={() => handleCheckboxChange(option)}
+                  value={option.id}
+                  title={option.attributes.title}
+                  description={option.attributes.description}
+                  taste={option.attributes.taste}
+                  location={option.attributes.location}
+                  sugar={option.attributes.sugar}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                />
+              ))}
+ */}
           {options.map((option, i) => (
             <WineCard
               key={i}

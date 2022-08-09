@@ -150,7 +150,7 @@ export const Circle = styled.div`
   position: absolute;
   top: 25%;
   border: 1px solid #a39161;
-  right: 3%;
+  right: -10px;
 `;
 
 export const IconContainer = styled.div`
