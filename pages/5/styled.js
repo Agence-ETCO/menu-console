@@ -3,8 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   margin-top: 60px;
+  min-height: 200vh;
 `;
 
 export const Subcontainer = styled.div`
@@ -22,6 +23,9 @@ export const Subcontainer1 = styled.div`
   justify-content: center;
   margin-top: 50px;
   margin-bottom: 50px;
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Title1 = styled.div`

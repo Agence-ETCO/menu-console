@@ -19,7 +19,6 @@ export const DropDownContainer = styled.div`
   width: 528px;
   height: 286px;
   margin-top: 24px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,19 +41,45 @@ export const DropDownListContainer = styled.div`
   width: 413px;
   z-index: 40;
   background-color: white;
+  border: none;
 `;
 
 export const DropDownList = styled.ul`
   border: 1px solid #939598;
   border-radius: 9px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  overflow-y: scroll;
+  padding-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+  height: 413px;
+
+  :first-child {
+    margin-top: 0;
+  }
 `;
 
 export const ListItem = styled.li`
-  list-style: none;
-  margin-bottom: 0.8em;
   border-bottom: 1px solid #939598;
+  padding-left: 40px;
+  margin-right: 30px;
+  background-color: ${(props) => props.checked && "black"};
+  padding-top: 5px;
+  padding-bottom: 5px;
+  span {
+    color: ${(props) => props.checked && "rgba(255, 255, 255, 0.5)"};
+  }
+  div:first-child {
+    color: ${(props) => props.checked && "rgba(255, 255, 255, 0.5)"};
+
+    span {
+      color: ${(props) => props.checked && "white !important"};
+    }
+  }
   :last-child {
-    border-bottom: none;
+    border-bottom: none !important;
+    padding-bottom: 10px;
   }
 `;
 
@@ -75,7 +100,7 @@ export const SubContainer1 = styled.div`
   font-size: 17px;
   line-height: 23px;
   color: rgba(35, 31, 32, 0.75);
-
+  position: relative;
   span {
     display: block;
     font-family: "GTWalsheimBold";
@@ -122,9 +147,12 @@ export const Button = styled.button`
   margin-top: -20px;
   padding-left: 24px;
   border: 1px solid #939598;
+  border-top: none;
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
-  background-color: white;
+  background-color: rgba(60, 60, 60, 0.25);
+  text-align: left;
+  z-index: 50;
 `;
 
 export const Text = styled.div`
@@ -151,4 +179,30 @@ export const Text1 = styled.span`
   line-height: 23px;
   color: ${(props) => (props.disabled ? "rgba(60, 60, 60, 0.5)" : "#3c3c3c")};
   margin-right: 20px;
+`;
+
+export const SubContainer3 = styled.div`
+  position: absolute;
+  right: 0;
+`;
+export const CheckboxContainer = styled.div`
+  display: inline-block;
+  vertical-align: middle;
+  position: absolute;
+  right: 10px;
+  svg {
+    position: absolute;
+    left: 0;
+  }
+`;
+
+export const StyledCheckbox = styled.div`
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-color: #d9d9d9;
+  opacity: 0.4;
+  border-radius: 50%;
+  transition: all 150ms;
+  position: relative;
 `;

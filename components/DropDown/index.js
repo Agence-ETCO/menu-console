@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Lock from "../Lock";
 import Lock1 from "../Lock1";
 import Form from "../Form";
+import CheckMark from "../CheckMark.js";
 import RectangleSmall from "../RectangleSmall";
 import {
   Container,
@@ -13,19 +14,23 @@ import {
   SubContainer,
   SubContainer1,
   SubContainer2,
+  SubContainer3,
   Header,
   Button,
   Text,
   Text1,
   Container1,
   Container3,
+  CheckboxContainer,
+  StyledCheckbox,
 } from "./styled";
 
-const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
+const DropDown = ({ options, disabled, order, count }) => {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showForm, setShowForm] = useState(false);
+
   const handleClick = () => {
     setShowForm(!showForm);
   };
@@ -67,22 +72,37 @@ const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
       <Container disabled={disabled}>
         <DropDownContainer>
           <Container3>
-            <Text disabled={disabled}>
+            <Text disabled={disabled} order={order}>
               {disabled ? (
                 <>
                   <Lock />
-                  <span>
-                    Vous devez sélectionner un autre produit Labatt pour ajouter
-                    une 2e microbrasserie.
-                  </span>
+                  {order === "01" ? (
+                    <span>
+                      {" "}
+                      Sélectionnez au moins 1 référence Labatt pour débloquer un
+                      choix de microbrasserie{" "}
+                    </span>
+                  ) : (
+                    <span>
+                      Vous devez sélectionner un autre produit Labatt pour
+                      ajouter une 2e microbrasserie.
+                    </span>
+                  )}
                 </>
               ) : (
                 <>
                   <Lock1 />
-                  <span>
-                    Vous pouvez maintenent choisir une microbrasserie de votre
-                    choix
-                  </span>
+                  {order === "01" ? (
+                    <span>
+                      Vous pouvez maintenent selectionner une microbrasserie de
+                      votre choix
+                    </span>
+                  ) : (
+                    <span>
+                      Vous pouvez maintanent sélectionner une seconde
+                      microbrasserie de votre choix
+                    </span>
+                  )}
                 </>
               )}
             </Text>
@@ -117,8 +137,17 @@ const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
                   <ListItem
                     onClick={() => onOptionClick(option)}
                     key={Math.random()}
+                    checked={option === selectedOption}
                   >
                     <SubContainer1>
+                      {option === selectedOption && (
+                        <SubContainer3>
+                          <CheckboxContainer>
+                            <CheckMark />
+                            <StyledCheckbox></StyledCheckbox>
+                          </CheckboxContainer>
+                        </SubContainer3>
+                      )}
                       <span>{"Nom de la bière"}</span>
                       {option}
                     </SubContainer1>
@@ -130,7 +159,7 @@ const DropDown = ({ options, disabled, order, onOptionSelect, count }) => {
                 ))}
               </DropDownList>
               <Button onClick={handleClick}>
-                {"Nom de la bière de votre choix"}
+                {"Ajouter votre microbrasserie"}
               </Button>
             </DropDownListContainer>
           )}

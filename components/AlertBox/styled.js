@@ -56,7 +56,7 @@ export const BoxContainer = styled.div`
   border-radius: 9px;
   position: relative;
   margin: auto;
-  margin-top: 25%;
+  margin-top: 5%;
   opacity: 1 !important;
   div {
     font-family: "GTWalsheimRegular";

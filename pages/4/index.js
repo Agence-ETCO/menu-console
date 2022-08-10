@@ -65,9 +65,11 @@ const Page4 = () => {
   }, [selections]);
 
   const dropDownOptions = [
-    "La Mcrobrasserie, Montréal, QC",
-    "La Mcrobrasserie, Montréal, QC",
-    "La Mcrobrasserie, Montréal, QC",
+    "La Mcrobrasserie1, Montréal, QC",
+    "La Mcrobrasserie2, Montréal, QC",
+    "La Mcrobrasserie3, Montréal, QC",
+    "La Mcrobrasserie4, Montréal, QC",
+    "La Mcrobrasserie5, Montréal, QC",
   ];
 
   const count = () => setDropdownCounter(dropDownCounter + 1);

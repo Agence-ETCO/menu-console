@@ -32,7 +32,7 @@ export const Title = styled.div`
   color: ${colors.white};
 `;
 export const Subtitle = styled.div`
-  font-family: "GT WalsheimBold";
+  font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 19px;
   line-height: 24px;

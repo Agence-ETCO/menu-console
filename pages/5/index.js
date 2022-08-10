@@ -78,7 +78,6 @@ const Page5 = () => {
           </Subtitle1>
           <Subtitle1>
             Une fois votre sélection soumise, vous ne pourrez plus la modifier.
-            Assurez-vous de bien relire vos choix.
           </Subtitle1>
         </Subcontainer1>
         <Title>{page2.title}</Title>
