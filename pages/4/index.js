@@ -3,11 +3,11 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
+import MinMax from "../../components/MinMax";
 import { beerList, page4, footer } from "../../fr";
 import {
   Title1,
   SubTitle,
-  Select,
   Subcontainer,
   Container,
   Subcontainer1,
@@ -89,10 +89,7 @@ const Page4 = () => {
             inscrire<span>2 bières</span> de microbrasserie de votre choix
           </SubTitle>
         </div>
-
-        <Select>
-          Minimum {min} - Maximum {max}
-        </Select>
+        <MinMax beer />
       </Subcontainer>
       <Container>
         <Subcontainer1>

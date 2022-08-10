@@ -17,7 +17,9 @@ export const Button = styled.button`
 export const StyledLink = styled.button`
   color: ${colors.yellow};
   background-color: ${colors.black};
-  width: 272px;
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
   height: 69px;
   border: 0;
   border-radius: 9px;

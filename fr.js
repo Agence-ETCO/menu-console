@@ -17,21 +17,21 @@ export const page1 = {
     "Nous concevrons votre nouveau menu une fois votre sélection validée et vous l’enverrons après le 30 septembre ",
   body2:
     "Afin de préserver notre bonne notre bonne réputation et la qualité de nos restaurants, nous vous prions de bien vouloir attendre la réception de votre menu pour l’utiliser.",
-  buttonText: "continuer",
+  buttonText: "Choisir les vins blancs",
 };
 
 export const page2 = {
   title: "Vins blancs",
   select: "vins blancs disponibles",
   return: "retour",
-  buttonText: "continuer",
+  buttonText: "Choisir les vins ROUGES",
 };
 
 export const page3 = {
   title: "Vins rouges",
   select: "vins rouges disponibles",
   return: "retour",
-  buttonText: "continuer",
+  buttonText: "Choisir les BIÈRES",
 };
 
 export const page4 = {
@@ -67,7 +67,8 @@ export const footer = {
   return: "retour",
   buttonText: "continuer",
   view: "Prévisualiser",
-  submit: "valider",
+  submit: "SOUMETTRE",
+  change: "modifier",
 };
 
 export const beerList = {

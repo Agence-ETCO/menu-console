@@ -60,7 +60,7 @@ const Page5 = () => {
     if (value5 !== null) {
       setMicro([1, 2]);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -137,7 +137,7 @@ const Page5 = () => {
       </Container>
 
       <Footer
-        returnButtonText={page3.return}
+        returnButtonText={footer.change}
         returnHref={"/4"}
         viewButtonText={footer.view}
         submitButtonText={footer.submit}

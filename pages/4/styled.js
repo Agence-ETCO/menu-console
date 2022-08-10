@@ -32,21 +32,6 @@ export const SubTitle = styled.div`
   }
 `;
 
-export const Select = styled.div`
-  font-family: "GTWalsheimMedium";
-  font-size: 21px;
-  line-height: 25px;
-  letter-spacing: 0.03em;
-  margin-left: auto;
-  background: #ffe110;
-  border-radius: 9px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 325px;
-  height: 67px;
-`;
-
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;

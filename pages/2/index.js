@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
+import MinMax from "../../components/MinMax";
 import { page2 } from "../../fr";
 /* import { fetchAPI } from "../../lib/api"; */
 import {
@@ -25,7 +26,7 @@ const Page2 = () => {
 
   const selection = (
     <span style={{ fontSize: "21px" }}>
-      {counter}/{min}
+      {counter}/{max}
     </span>
   );
 
@@ -55,7 +56,7 @@ const Page2 = () => {
   }, []);
 
   useEffect(() => {
-    const updatedCounter = selections.length <= min ? selections.length : min;
+    const updatedCounter = selections.length;
     setCounter(updatedCounter);
   }, [selections]);
 
@@ -84,11 +85,7 @@ const Page2 = () => {
               disponibles
             </SubTitle>
           </div>
-          <Select>
-            <span>
-              Minimum {min} - Maximum {max}
-            </span>{" "}
-          </Select>
+          <MinMax min={min} max={max} />
         </Subcontainer1>
         <Subcontainer2>
           {/* {data &&
@@ -127,7 +124,7 @@ const Page2 = () => {
         buttonText={page2.buttonText}
         href={"/3"}
         selection={selection}
-        disabled={counter !== min}
+        disabled={counter < min}
       />
     </>
   );
