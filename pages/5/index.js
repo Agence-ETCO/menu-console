@@ -132,7 +132,7 @@ const Page5 = () => {
               />
             ))}
         </Subcontainer>
-        <Title1>Êtes-vous sûr de votre sélection ?</Title1>
+        <Title1>Êtes-vous prêt à valider votre sélection?</Title1>
       </Container>
 
       <Footer
