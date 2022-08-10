@@ -13,6 +13,7 @@ import {
 
 const Page6 = () => {
   const date = "le 30 septembre 2022";
+  const user = JSON.parse(localStorage.getItem("user") || '{}');
   return (
     <>
       <Header />
@@ -24,7 +25,7 @@ const Page6 = () => {
           <Body>{page6.body2}</Body>
         </Subcontainer>
         <Subcontainer1>
-          <Button>{page6.download}</Button>
+          <Button onClick={() => window.open(`http://pdf.etco.tk/${user.id || 1}`)}>{page6.download}</Button>
         </Subcontainer1>
       </Container>
     </>

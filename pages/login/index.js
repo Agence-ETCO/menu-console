@@ -13,9 +13,9 @@ const Page = () => {
         .then(({ data }) => {
           const { jwt, user } = data;
           localStorage.setItem('jwt', jwt);
-          localStorage.setItem('user', user);
-          setDisplay(`Successfully logged in as ${JSON.stringify(user, null, 2)}`);
-          // router.push('/');
+          localStorage.setItem('user', JSON.stringify(user));
+          // setDisplay(`Successfully logged in as ${JSON.stringify(user, null, 2)}`);
+          router.push('/');
         })
         .catch(err => {
           console.log(err);
