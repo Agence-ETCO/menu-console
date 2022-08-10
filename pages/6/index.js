@@ -13,7 +13,7 @@ import {
 
 const Page6 = () => {
   const date = "le 30 septembre 2022";
-  const user = JSON.parse(localStorage.getItem("user") || '{}');
+  const user = typeof window !== "undefined" && JSON.parse(localStorage.getItem("user") || '{}');
   return (
     <>
       <Header />
