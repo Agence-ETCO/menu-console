@@ -22,23 +22,12 @@ const Page4 = () => {
   const [selections, setSelections] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
-  const [dropDownCounter, setDropdownCounter] = useState(0);
 
   const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 6;
 
   const selected = selections.length - 1 >= 0;
   const selected2 = selections.length - 2 >= 0;
-  const selection =
-    counter < min ? (
-      <>
-        Séléctionnez au miniMum <span>1 bière</span> pour continuer
-      </>
-    ) : (
-      <>
-        Vous avez débloquÉ <span>1 choix de microbrassereie</span>
-      </>
-    );
 
   const handleCheckboxChange = (option) => {
     let updatedSelections = [];
@@ -73,8 +62,6 @@ const Page4 = () => {
     "La Mcrobrasserie4, Montréal, QC",
     "La Mcrobrasserie5, Montréal, QC",
   ];
-
-  const count = () => setDropdownCounter(dropDownCounter + 1);
 
   useEffect(() => {
     localStorage.removeItem("beer");
@@ -113,15 +100,9 @@ const Page4 = () => {
         </Subcontainer2>
         <Title>{beerList.title2}</Title>
         <Subcontainer3>
-          <DropDown
-            disabled={!selected}
-            options={dropDownOptions}
-            count={count}
-            order="01"
-          />
+          <DropDown disabled={!selected} options={dropDownOptions} order="01" />
           <DropDown
             options={dropDownOptions}
-            count={count}
             disabled={!selected2}
             order="02"
           />

@@ -30,7 +30,28 @@ const DropDown = ({ options, disabled, order, count }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [beer, setBeer] = useState(null);
+  const [producer, setProducer] = useState(null);
+  const [type, setType] = useState(null);
+  const [format, setFormat] = useState(null);
+  const [alcohol, setAlcohol] = useState(null);
 
+  const onBeerChange = (e) => setBeer(e.target.value);
+  const onProducerChange = (e) => setProducer(e.target.value);
+  const onTypeChange = (e) => setType(e.target.value);
+  const onFormatChange = (e) => {
+    const value = e.target.value
+      .replace(/[^0-9,]/g, "")
+      .replace(/(,.*?),(.*,)?/, "$1");
+    setFormat(value);
+  };
+  const onAlcoholChange = (e) => {
+    const value = e.target.value
+      .replace(/[^0-9,]/g, "")
+      .replace(/(,.*?),(.*,)?/, "$1");
+    setAlcohol(value);
+  };
+  const onFormSubmit = () => setSelectedOption(null);
   const handleClick = () => {
     setShowForm(!showForm);
   };
@@ -68,6 +89,17 @@ const DropDown = ({ options, disabled, order, count }) => {
         handleClick={handleClick}
         order={order}
         count={count}
+        beer={beer}
+        producer={producer}
+        type={type}
+        format={format}
+        alcohol={alcohol}
+        onBeerChange={onBeerChange}
+        onProducerChange={onProducerChange}
+        onTypeChange={onTypeChange}
+        onFormatChange={onFormatChange}
+        onAlcoholChange={onAlcoholChange}
+        onFormSubmit={onFormSubmit}
       />
       <Container disabled={disabled}>
         <DropDownContainer>
@@ -109,15 +141,16 @@ const DropDown = ({ options, disabled, order, count }) => {
             <Container1>
               <Text1 disabled={disabled}>{order}</Text1>
               <DropDownHeader disabled={disabled} onClick={toggling} ref={ref}>
-                {selectedOption ? (
+                {selectedOption || beer ? (
                   <div>
                     <SubContainer1>
-                      <span>{"Nom de la bière"}</span>
-                      {selectedOption || options[0]}
+                      <span>{beer || "Nom de la bière"}</span>
+                      {selectedOption ? selectedOption : producer}
                     </SubContainer1>
                     <SubContainer2>
-                      <span> {"Blonde"}</span> <span>{"341ml"} </span>{" "}
-                      <span>{"4.5%"}</span>
+                      <span> {selectedOption ? "Blonde" : type}</span>{" "}
+                      <span>{selectedOption ? "341ml" : format} </span>{" "}
+                      <span>{selectedOption ? "4.5%" : alcohol}</span>
                     </SubContainer2>
                   </div>
                 ) : (

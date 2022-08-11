@@ -14,27 +14,26 @@ import {
 } from "./styled.js";
 
 const Form = (props) => {
-  const [beer, setBeer] = useState("");
-  const [producer, setProducer] = useState("");
-  const [type, setType] = useState("");
-  const [format, setFormat] = useState("");
-  const [alcohol, setAlcohol] = useState("");
-
-  const disabled = !beer && !producer && !type && !format && !alcohol;
+  const disabled =
+    !props.beer &&
+    !props.producer &&
+    !props.type &&
+    !props.format &&
+    !props.alcohol;
 
   const handleSubmit = () => {
     props.handleClick();
 
     const data = JSON.stringify({
-      beer: beer,
-      producer: producer,
-      type: type,
-      format: format,
-      alcohol: alcohol,
+      beer: props.beer,
+      producer: props.producer,
+      type: props.type,
+      format: props.format,
+      alcohol: props.alcohol,
     });
     localStorage.setItem(`microbrasserie${props.order}`, data);
 
-    props.count();
+    props.onFormSubmit();
   };
 
   return (
@@ -56,8 +55,8 @@ const Form = (props) => {
               <Input
                 name="beer"
                 type="text"
-                value={beer}
-                onChange={(e) => setBeer(e.target.value)}
+                value={props.beer}
+                onChange={props.onBeerChange}
               />
             </Label>
             <Label>
@@ -65,8 +64,8 @@ const Form = (props) => {
               <Input
                 name="producer"
                 type="text"
-                value={producer}
-                onChange={(e) => setProducer(e.target.value)}
+                value={props.producer}
+                onChange={props.onProducerChange}
               />
             </Label>
             <Label>
@@ -74,8 +73,8 @@ const Form = (props) => {
               <Input
                 name="type"
                 type="text"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
+                value={props.type}
+                onChange={props.onTypeChange}
               />
             </Label>
             <Label>
@@ -84,8 +83,8 @@ const Form = (props) => {
                 <InputSmall
                   name="format"
                   type="text"
-                  value={format}
-                  onChange={(e) => setFormat(e.target.value)}
+                  value={props.format}
+                  onChange={props.onFormatChange}
                   placeholder="241"
                 />
                 <span>ml</span>
@@ -97,9 +96,9 @@ const Form = (props) => {
                 <InputSmall
                   name="alcohol"
                   type="text"
-                  value={alcohol}
-                  onChange={(e) => setAlcohol(e.target.value)}
-                  placeholder="5.6"
+                  value={props.alcohol}
+                  onChange={props.onAlcoholChange}
+                  placeholder="5,6"
                 />
                 <span>%</span>
               </div>
