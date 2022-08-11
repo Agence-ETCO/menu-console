@@ -73,9 +73,9 @@ export const Subcontainer3 = styled.div`
   margin-left: -30px;
   position: relative;
   ${Select} {
-    position: absolute;
-    bottom: 1px;
-    right: -100px;
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
   }
 `;
 
