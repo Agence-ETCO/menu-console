@@ -100,6 +100,7 @@ const Page5 = () => {
             red.map((option, i) => (
               <WineCard
                 key={i}
+                red
                 checked
                 handleCheckboxChange={() => {}}
                 value={option}
