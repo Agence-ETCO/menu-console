@@ -7,6 +7,7 @@
     "display-version": "node --version && npm --version",
     "prebuild": "npm run display-version",
     "build": "next build",
+    "export": "npm run build && next export -o _static",
     "prestart": "npm run display-version",
     "start": "next start",
     "lint": "next lint"
