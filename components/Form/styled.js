@@ -83,6 +83,9 @@ export const Label = styled.label`
   line-height: 20px;
 
   color: #231f20;
+  span {
+    margin-left: 15px;
+  }
 `;
 export const Input = styled.input`
   width: 453px;
@@ -91,8 +94,9 @@ export const Input = styled.input`
   color: #231f20;
   border: 1px solid #939598;
   border-radius: 9px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding-left: 10px;
 `;
 
 export const InputSmall = styled.input`
@@ -104,5 +108,14 @@ export const InputSmall = styled.input`
   border: 1px solid #939598;
   border-radius: 9px;
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  padding-left: 10px;
+  :placeholder {
+    font-family: "GTWalsheimRegular";
+
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #939598;
+  }
 `;

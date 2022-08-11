@@ -81,7 +81,7 @@ const Page2 = () => {
           <div>
             <Title>{page2.title}</Title>
             <SubTitle>
-              Veuillez sélectionner entre <span>{quantity} références</span>
+              Choisissez parmi les <span>{quantity} produits</span>
               disponibles
             </SubTitle>
           </div>
@@ -124,6 +124,7 @@ const Page2 = () => {
         buttonText={page2.buttonText}
         href={"/3"}
         selection={selection}
+        stage={"VINS ROUGES"}
         disabled={counter < min}
       />
     </>

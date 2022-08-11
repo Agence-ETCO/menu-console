@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
+import Bubble from "../../components/Bubble";
 import { beerList, page4, footer } from "../../fr";
 import {
   Title1,
@@ -20,8 +21,9 @@ const Page4 = () => {
   const min = 1;
   const [selections, setSelections] = useState([]);
   const [updated, setUpdated] = useState(false);
-  const [counter, setCounter] = useState(min);
+  const [counter, setCounter] = useState(0);
   const [dropDownCounter, setDropdownCounter] = useState(0);
+
   const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 6;
 
@@ -109,8 +111,8 @@ const Page4 = () => {
             />
           ))}
         </Subcontainer2>
+        <Title>{beerList.title2}</Title>
         <Subcontainer3>
-          <Title>{beerList.title2}</Title>
           <DropDown
             disabled={!selected}
             options={dropDownOptions}
@@ -123,6 +125,8 @@ const Page4 = () => {
             disabled={!selected2}
             order="02"
           />
+          <Bubble count={selections.length} show={counter === 1} />
+          <Bubble count={selections.length} show={selections.length === 2} />
         </Subcontainer3>
       </Container>
 
@@ -131,7 +135,7 @@ const Page4 = () => {
         returnHref={"/3"}
         buttonText={footer.buttonText}
         href={"/5"}
-        selection={selection}
+        stage={"RÉSUMÉ"}
         disabled={counter !== min}
       />
     </>

@@ -80,21 +80,29 @@ const Form = (props) => {
             </Label>
             <Label>
               Format *
-              <InputSmall
-                name="format"
-                type="text"
-                value={format}
-                onChange={(e) => setFormat(e.target.value)}
-              />
+              <div>
+                <InputSmall
+                  name="format"
+                  type="text"
+                  value={format}
+                  onChange={(e) => setFormat(e.target.value)}
+                  placeholder="241"
+                />
+                <span>ml</span>
+              </div>
             </Label>
             <Label>
               Alcool *
-              <InputSmall
-                name="alcohol"
-                type="text"
-                value={alcohol}
-                onChange={(e) => setAlcohol(e.target.value)}
-              />
+              <div>
+                <InputSmall
+                  name="alcohol"
+                  type="text"
+                  value={alcohol}
+                  onChange={(e) => setAlcohol(e.target.value)}
+                  placeholder="5.6"
+                />
+                <span>%</span>
+              </div>
             </Label>
             <Button disabled={disabled} onClick={() => handleSubmit()}>
               {"ajouter"}

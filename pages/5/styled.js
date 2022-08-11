@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-left: 60px;
-  margin-right: 60px;
+  padding-left: 60px;
+  padding-right: 60px;
   padding-bottom: 200px;
   margin-top: 60px;
   min-height: 200vh;
+  max-width: 1480px;
 `;
 
 export const Subcontainer = styled.div`
@@ -15,12 +16,17 @@ export const Subcontainer = styled.div`
   justify-content: left;
   margin-top: 50px;
   margin-bottom: 100px;
+  justify-content: left;
+
+  label {
+    margin-left: 30px;
+  }
 `;
 
 export const Subcontainer1 = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   margin-top: 50px;
   margin-bottom: 50px;
   width: 650px;
@@ -38,12 +44,13 @@ export const Title1 = styled.div`
   margin-bottom: 30px;
 `;
 export const Subtitle1 = styled.div`
-  font-family: "GTWalsheimBold";
+  font-family: "GTWalsheimRegular";
   font-weight: 600;
   font-size: 24px;
   line-height: 28px;
   color: #231f20;
   margin-bottom: 30px;
+  margin-left: 30px;
 `;
 export const Title = styled.div`
   font-family: "GTWalsheimBold";
@@ -51,6 +58,7 @@ export const Title = styled.div`
   font-size: 27px;
   line-height: 23px;
   margin-bottom: 10px;
+  margin-left: 30px;
 `;
 
 const Empty = () => {};

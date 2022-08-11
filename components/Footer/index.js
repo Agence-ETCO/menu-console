@@ -1,11 +1,13 @@
 import Link from "next/link";
-import Arrow from "../Arrow";
+import Vector from "../Vector";
 import {
   Container,
   Button,
   StyledLink,
   StyledButton,
   Select,
+  Select1,
+  Stage,
 } from "./styled.js";
 
 const Footer = (props) => {
@@ -18,18 +20,25 @@ const Footer = (props) => {
       )}
       {props.startText && (
         <Link href={props.href}>
-          <StyledLink>{props.startText}</StyledLink>
+          <StyledLink first={props.first}>{props.startText}</StyledLink>
         </Link>
       )}
       {props.buttonText && (
         <Link href={props.href}>
-          <StyledLink disabled={props.disabled}>
-            {props.buttonText}
-            <Arrow />
-          </StyledLink>
+          <StyledLink disabled={props.disabled}>{props.buttonText}</StyledLink>
         </Link>
       )}
       {props.selection && <Select>{props.selection}</Select>}
+
+      {props.stage && (
+        <Stage>
+          <div>PROCHAINE ÉTAPE</div>
+          <Select1>
+            <Vector />
+            <span>{props.stage}</span>
+          </Select1>
+        </Stage>
+      )}
       {props.viewButtonText && (
         <StyledButton>{props.viewButtonText}</StyledButton>
       )}

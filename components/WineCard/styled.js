@@ -3,7 +3,7 @@ import { colors } from "../../constants";
 
 export const Label = styled.label`
   background-color: ${(props) => (props.checked ? "#231F20" : "white")};
-  border: 1px solid #3c3c3c;
+  border: 1px solid #939598;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,6 @@ export const Label = styled.label`
   height: 400px;
   position: relative;
   padding-top: 15px;
-  margin-right: 40px;
   margin-bottom: 40px;
 `;
 
@@ -37,6 +36,7 @@ export const CheckboxContainer = styled.div`
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     position: absolute;
     left: 0;
+    z-index::50;
   }
 `;
 
@@ -51,6 +51,17 @@ export const StyledCheckbox = styled.div`
   position: relative;
 `;
 
+export const Desc = styled.div`
+  color: ${(props) =>
+    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+  padding-bottom: 20px;
+  margin-bottom: -5px;
+  font-family: "GTWalsheimRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+`;
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
@@ -63,17 +74,6 @@ export const TextContainer = styled.div`
     font-family: "GTWalsheimBold";
     font-style: normal;
     font-weight: 700;
-  }
-  div:nth-child(2) {
-    color: ${(props) =>
-      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.75)"};
-    padding-bottom: 20px;
-    margin-bottom: -5px;
-    font-family: "GTWalsheimRegular";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
   }
 
   div:nth-child(3) {
@@ -100,7 +100,7 @@ export const TextContainer = styled.div`
   table {
     margin-bottom: 25px;
     td {
-      width: 70px;
+      width: 90px;
     }
     th {
       font-family: "GTWalsheimRegular";
@@ -121,7 +121,8 @@ export const TextContainer = styled.div`
 export const SubContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 35px;
 `;
 export const CircleContainer = styled.div`
   position: relative;
@@ -135,10 +136,11 @@ export const CircleContainer = styled.div`
   text-transform: uppercase;
   border-top: 1px solid rgba(147, 149, 152, 0.5);
   border-bottom: 1px solid rgba(147, 149, 152, 0.5);
-  margin-bottom: 18px;
-  margin-top: 15px;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-right: 25px;
 `;
 
 export const Circle = styled.div`
@@ -150,11 +152,39 @@ export const Circle = styled.div`
   position: absolute;
   top: 25%;
   border: 1px solid #a39161;
-  right: -10px;
+  right: 0;
 `;
 
 export const IconContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  margin: auto;
+
+  span {
+    margin-top: 10px;
+    margin-left: -20px;
+  }
+`;
+export const Icons = styled.div`
+  svg:first-child {
+    margin-right: 25px;
+  }
+`;
+
+export const ImageContainer = styled.div`
+  height: 241px;
+  width: 119px;
+  margin-top: 15px;
+`;
+
+export const Sugar = styled.div`
+  color: ${(props) =>
+    props.checked
+      ? "rgba(255,255,255, 0.5)"
+      : "rgba(35, 31, 32, 0.5)"} !important;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 `;

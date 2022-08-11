@@ -53,7 +53,7 @@ const WelcomePage = () => {
           </a>
         </Ending>
       </Container>
-      <Footer startText={welcomePage.buttonText} href={"/1"} />
+      <Footer first startText={welcomePage.buttonText} href={"/1"} />
     </>
   );
 };

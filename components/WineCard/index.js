@@ -5,6 +5,7 @@ import Icon2 from "../Icon2";
 import Icon1Dark from "../Icon1Dark";
 import Icon2Dark from "../Icon2Dark";
 import image from "../../public/Wine.png";
+import red from "../../public/red.png";
 import {
   CheckboxContainer,
   HiddenCheckbox,
@@ -15,6 +16,10 @@ import {
   Circle,
   CircleContainer,
   IconContainer,
+  Icons,
+  ImageContainer,
+  Sugar,
+  Desc,
 } from "./styled.js";
 
 const WineCard = (props) => {
@@ -31,18 +36,26 @@ const WineCard = (props) => {
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
-          <Image src={image} width={240} height={300} alt="" />
+          <ImageContainer>
+            {props.red ? (
+              <Image src={red} width={150} height={350} alt="" />
+            ) : (
+              <Image src={image} width={150} height={350} alt="" />
+            )}
+          </ImageContainer>
           <TextContainer checked={props.checked}>
             <div>{props.title || "Robert Mondavi Private Selection"}</div>
-            <div>
+            <Desc checked={props.checked}>
               {" "}
               {props.description || "Cuvée Centenaire,Languedoc-Rousillon"}{" "}
-            </div>
+            </Desc>
             <div>{props.location || "Québec, Canada"}</div>
             <CircleContainer checked={props.checked}>
               {" "}
               {props.taste || "AROMATIQUE ET CHARNU"} <Circle />{" "}
-              {`Sucre : ${props.sugar || 12.5} g/L`}
+              <Sugar checked={props.checked}>{`Sucre : ${
+                props.sugar || 12.5
+              } g/L`}</Sugar>
             </CircleContainer>
             {props.prices ? (
               <table>
@@ -76,9 +89,11 @@ const WineCard = (props) => {
               </table>
             )}
             <IconContainer>
-              Saq code {props.saqCode || 12824197}
-              {props.checked ? <Icon1Dark /> : <Icon1 />}
-              {props.checked ? <Icon2Dark /> : <Icon2 />}
+              <span> Saq code {props.saqCode || 12824197}</span>
+              <Icons>
+                {props.checked ? <Icon1Dark /> : <Icon1 />}
+                {props.checked ? <Icon2Dark /> : <Icon2 />}
+              </Icons>
             </IconContainer>
           </TextContainer>
         </SubContainer>

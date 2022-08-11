@@ -17,6 +17,7 @@ export const Button = styled.button`
 export const StyledLink = styled.button`
   color: ${colors.yellow};
   background-color: ${colors.black};
+  min-width: 260px;
   width: auto;
   padding-left: 10px;
   padding-right: 10px;
@@ -30,8 +31,12 @@ export const StyledLink = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-left: 110px;
+  margin-left: ${(props) => (props.first ? "-150px" : "110px")};
   margin-right: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
   svg {
     margin-left: 20px;
   }
@@ -62,6 +67,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-left: 200px;
   height: 129px;
   background-color: ${colors.yellow};
   position: fixed;
@@ -88,5 +94,27 @@ export const Select = styled.span`
   span {
     font-family: "GTWalsheimBold";
     font-weight: 700;
+  }
+`;
+
+export const Stage = styled.div`
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  width: 300px;
+  div {
+    padding-left: 15px;
+  }
+`;
+export const Select1 = styled.span`
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  width: 300px;
+  span {
+    font-family: "GTWalsheimBold";
+    font-weight: 700;
+    margin-left: 10px;
   }
 `;

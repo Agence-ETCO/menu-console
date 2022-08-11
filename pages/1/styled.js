@@ -4,16 +4,22 @@ import { colors } from "../../constants";
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   height: 100vh;
-  svg {
-    margin-top: 90px;
-  }
+  width: 1440px;
+`;
+
+export const ImageContainer = styled.div`
+  width: 279.55px;
+  height: 402px;
+  margin-top: 30px;
+  margin-left: 100px;
 `;
 
 export const Subcontainer = styled.div`
-  width: 50%;
+  width: 562px;
   color: ${colors.black};
+  margin-left: 100px;
+  margin-right: auto;
 `;
 
 export const Title = styled.div`

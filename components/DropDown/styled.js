@@ -14,6 +14,7 @@ export const Container1 = styled.div`
 
 export const Container3 = styled.div`
   position: absolute;
+  top: 25px;
 `;
 export const DropDownContainer = styled.div`
   width: 528px;
@@ -42,13 +43,15 @@ export const DropDownListContainer = styled.div`
   z-index: 40;
   background-color: white;
   border: none;
+  margin-left: 50px;
 `;
 
 export const DropDownList = styled.ul`
   border: 1px solid #939598;
-  border-radius: 9px;
+
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom: none;
   overflow-y: scroll;
   padding-bottom: 0;
   padding-left: 0;
@@ -164,10 +167,12 @@ export const Text = styled.div`
   line-height: 21px;
   color: ${(props) => (props.disabled ? "#E30826" : "#3c3c3c")};
   width: 420px;
-  text-align: center;
+  text-align: left;
   margin-bottom: 25px;
   svg {
-    width: 50px;
+    width: 60px;
+    margin-right: 15px;
+    margin-left: 40px;
   }
 `;
 

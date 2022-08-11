@@ -15,6 +15,7 @@ export const TextButton = styled.button`
   text-transform: uppercase;
   border: none;
   outline: none;
+  border-radius: 3px;
 `;
 
 export const NumberButton = styled.button`

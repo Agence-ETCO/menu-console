@@ -8,6 +8,7 @@ import {
   Label,
   TextContainer,
   SubContainer,
+  ImageContainer,
 } from "./styled.js";
 
 const BeerCard = (props) => {
@@ -23,7 +24,9 @@ const BeerCard = (props) => {
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
-          <Image src={image} width={104} height={210} alt="" />
+          <ImageContainer>
+            <Image src={image} width={104} height={210} alt="" />
+          </ImageContainer>
           <TextContainer checked={props.checked}>
             <div>{props.title || "Budweiser (5%)"}</div>
             <div> {props.description || "Lager américaine"} </div>

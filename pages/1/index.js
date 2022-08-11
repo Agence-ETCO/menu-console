@@ -1,15 +1,18 @@
+import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
-import Rectangle from "../../components/Rectangle";
-import { page1 } from "../../fr";
-import { Container, Subcontainer, Title, Body, Date, Ending } from "./styled";
+import image from "../../public/Menu.png";
+import { page1, page2 } from "../../fr";
+import { Container, Subcontainer, Title, Body, ImageContainer } from "./styled";
 
 const Page1 = () => {
   return (
     <>
       <Header step={1} />
       <Container>
-        <Rectangle />
+        <ImageContainer>
+          <Image src={image} width={300} height={450} alt="" />
+        </ImageContainer>
         <Subcontainer>
           <Title>{page1.title}</Title>
           <Body>
@@ -21,7 +24,13 @@ const Page1 = () => {
         </Subcontainer>
       </Container>
 
-      <Footer buttonText={page1.buttonText} href={"/2"} />
+      <Footer
+        returnButtonText={page2.return}
+        returnHref={"/"}
+        buttonText={page1.buttonText}
+        href={"/2"}
+        stage={"VINS BLANCS"}
+      />
     </>
   );
 };

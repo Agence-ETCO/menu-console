@@ -63,7 +63,7 @@ const Page3 = () => {
           <div>
             <Title>{page3.title}</Title>
             <SubTitle>
-              Veuillez sélectionner entre <span>{quantity} références</span>
+              Choisissez parmi les <span>{quantity} produits</span>
               disponibles
             </SubTitle>
           </div>
@@ -73,6 +73,7 @@ const Page3 = () => {
           {options.map((option, i) => (
             <WineCard
               key={i}
+              red
               checked={!!selections.includes(option)}
               handleCheckboxChange={() => handleCheckboxChange(option)}
               value={option}
@@ -87,6 +88,7 @@ const Page3 = () => {
         buttonText={page3.buttonText}
         href={"/4"}
         selection={selection}
+        stage={"BIÈRES"}
         disabled={counter < min}
       />
     </>

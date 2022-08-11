@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Label = styled.label`
-  background-color: ${(props) => (props.checked ? "#3C3C3C" : "white")};
+  background-color: ${(props) => (props.checked ? "#231F20" : "white")};
   border: 1px solid rgba(147, 149, 152, 0.75);
   border-radius: 9px;
   display: flex;
@@ -11,7 +11,6 @@ export const Label = styled.label`
   height: 305px;
   position: relative;
   padding-top: 15px;
-  margin-right: 40px;
   margin-bottom: 40px;
 `;
 
@@ -54,6 +53,7 @@ export const StyledCheckbox = styled.div`
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
+  margin-left: 20px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-family: "GTWalsheimBold";
@@ -63,12 +63,12 @@ export const TextContainer = styled.div`
   }
   div:nth-child(2) {
     color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
-    margin-bottom: 35px;
+    margin-bottom: 5px;
     font-family: "GTWalsheimRegular";
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     border-bottom: 1px solid rgba(147, 149, 152, 0.5);
   }
 
@@ -93,7 +93,7 @@ export const TextContainer = styled.div`
       font-weight: 400;
       font-size: 14px;
       line-height: 15px;
-      width: 70px;
+      width: 90px;
     }
     tr {
       font-family: "GTWalsheimBold";
@@ -106,5 +106,13 @@ export const TextContainer = styled.div`
 export const SubContainer = styled.div`
   display: flex;
   flex-direction: row;
-  margin: auto;
+  margin-right: 40px;
+  margin-left: 40px;
+  margin-top: 30px;
+`;
+export const ImageContainer = styled.div`
+  height: 241px;
+  width: 119px;
+  margin-top: 15px;
+  margin-left: -20px;
 `;
