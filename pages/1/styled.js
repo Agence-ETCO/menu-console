@@ -2,24 +2,27 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
   height: 100vh;
-  width: 1440px;
+  display: flex;
+  justify-content: center;
 `;
 
 export const ImageContainer = styled.div`
-  width: 279.55px;
+  position: absolute;
+  top: 300px;
+  left: 40px;
+  width: 380px;
   height: 402px;
   margin-top: 30px;
-  margin-left: 100px;
+  margin-right: auto;
 `;
 
 export const Subcontainer = styled.div`
-  width: 562px;
   color: ${colors.black};
-  margin-left: 100px;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 570px;
 `;
 
 export const Title = styled.div`
@@ -37,6 +40,7 @@ export const Body = styled.div`
   font-size: 17px;
   line-height: 23px;
   margin-bottom: 45px;
+
   span {
     font-family: "GTWalsheimBold";
     font-weight: 700;
