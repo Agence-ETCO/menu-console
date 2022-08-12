@@ -33,5 +33,5 @@ export const Select = styled.div`
   }
   opacity: 0;
   animation: ${(props) => props.show && outEffect};
-  animation-duration: 2.5s;
+  animation-duration: ${(props) => props.duration};
 `;

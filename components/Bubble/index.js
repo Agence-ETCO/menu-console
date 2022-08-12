@@ -4,7 +4,7 @@ import { Select } from "./styled.js";
 const Bubble = (props) => {
   return (
     <>
-      <Select show={props.show}>
+      <Select show={props.show} duration={props.duration}>
         {props.count >= 2 ? (
           <>
             <Lock2 />

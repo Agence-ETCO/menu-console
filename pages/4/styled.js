@@ -74,7 +74,7 @@ export const Subcontainer3 = styled.div`
   position: relative;
   ${Select} {
     position: fixed;
-    bottom: 100px;
+    bottom: 140px;
     right: 100px;
   }
 `;

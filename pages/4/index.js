@@ -106,8 +106,16 @@ const Page4 = () => {
             disabled={!selected2}
             order="02"
           />
-          <Bubble count={selections.length} show={counter === 1} />
-          <Bubble count={selections.length} show={selections.length === 2} />
+          <Bubble
+            count={selections.length}
+            show={counter === 1}
+            duration={"4s"}
+          />
+          <Bubble
+            count={selections.length}
+            show={selections.length === 2}
+            duration={"4s"}
+          />
         </Subcontainer3>
       </Container>
 
