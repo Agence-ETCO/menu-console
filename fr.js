@@ -17,14 +17,14 @@ export const page1 = {
     "Une fois votre sélection validée, nous concevrons votre nouveau menu, le ferons imprimer, puis parvenir après le 30 septembre. ",
   body2:
     "Afin de préserver notre bonne notre bonne réputation et la qualité de nos restaurants, nous vous prions de bien vouloir attendre la réception de votre menu pour l’utiliser.",
-  buttonText: "CONTINUER",
+  buttonText: "VALIDER",
 };
 
 export const page2 = {
   title: "Vins blancs",
   select: "vins blancs disponibles",
   return: "retour",
-  buttonText: "CONTINUER",
+  buttonText: "VALIDER",
 };
 
 export const page3 = {
