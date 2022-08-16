@@ -54,6 +54,7 @@ export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
   margin-left: 20px;
+  width: 250px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-family: "GTWalsheimBold";
@@ -113,6 +114,6 @@ export const SubContainer = styled.div`
 export const ImageContainer = styled.div`
   height: 241px;
   width: 119px;
-  margin-top: 15px;
+  margin-top: -5px;
   margin-left: -20px;
 `;

@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
+import { AppContext } from "../../context/AppContext";
 import { welcomePage } from "../../fr";
+import { useRouter } from "next/router";
 import { getToken } from "../../lib/api";
 import {
   Greeting,
@@ -15,23 +17,30 @@ import {
   Container,
   Subcontainer,
 } from "./styled";
+import { JoinFullTwoTone } from "@mui/icons-material";
 
 const WelcomePage = () => {
   const date = "12 septembre 2022";
+  const {
+    state,
+    actions: { addUser },
+  } = useContext(AppContext);
 
   /* useEffect(() => {
     getToken()
       .then(({ data }) => {
-        const userName = data.user.username;
-        const token = data.jwt;
-        localStorage.setItem("user", JSON.stringify(userName));
-        localStorage.setItem("token", JSON.stringify(token));
+        addUser(data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []); */
 
+  /* console.log(
+    state.userData.jwt,
+    state.userData.user.id,
+    state.userData.user.username
+  ); */
   return (
     <>
       <Header step={-1} />

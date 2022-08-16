@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
+import { AppContext } from "../../context/AppContext";
+import { fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { beerList, page4, footer } from "../../fr";
 import {
@@ -18,37 +20,23 @@ import {
 } from "./styled";
 
 const Page4 = () => {
+  const {
+    state,
+    actions: { receiveData, addPreviousStep },
+  } = useContext(AppContext);
   const min = 1;
-  const [selections, setSelections] = useState([]);
-  const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
+  const selections = state.selections.filter(
+    (option) => option.attributes.category === "Beer"
+  );
+  const craftOptions = state.data.filter(
+    (option) => option.attributes.category === "Craft Beer"
+  );
 
-  const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 6;
-
   const selected = selections.length - 1 >= 0;
   const selected2 = selections.length - 2 >= 0;
-
-  const handleCheckboxChange = (option) => {
-    let updatedSelections = [];
-    let checked = selections.find((selection) => selection === option);
-    let limit = max - selections.length - 1 >= 0;
-
-    if (checked) {
-      updatedSelections = selections.filter(
-        (selection) => selection !== option
-      );
-    } else if (!checked && limit) {
-      updatedSelections = [...selections, option];
-    } else if (!checked && !limit) {
-      updatedSelections = [...selections];
-    }
-
-    setSelections(updatedSelections);
-
-    setUpdated(!updated);
-    localStorage.setItem("beer", JSON.stringify(updatedSelections));
-  };
+  const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
     const updatedCounter = selections.length <= min ? selections.length : min;
@@ -64,9 +52,21 @@ const Page4 = () => {
   ];
 
   useEffect(() => {
-    localStorage.removeItem("beer");
-    localStorage.removeItem("microbrasserie01");
-    localStorage.removeItem("microbrasserie02");
+    const token = "";
+
+    fetchAPI("/api/menu-items?populate=deep", token)
+      .then((res) => {
+        receiveData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (state.previousStep < 3) {
+      addPreviousStep(3);
+    }
   }, []);
 
   return (
@@ -89,18 +89,29 @@ const Page4 = () => {
           </div>
         </Subcontainer1>
         <Subcontainer2>
-          {options.map((option, i) => (
-            <BeerCard
-              key={i}
-              checked={!!selections.includes(option)}
-              handleCheckboxChange={() => handleCheckboxChange(option)}
-              value={option}
-            />
-          ))}
+          {state.data &&
+            state.data
+              .filter((option) => option.attributes.category === "Beer")
+              .map((option) => (
+                <BeerCard
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  description={option.attributes.description}
+                  taste={option.attributes.taste}
+                  location={option.attributes.location}
+                  sugar={option.attributes.sugar}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  limit={limit}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                />
+              ))}
         </Subcontainer2>
         <Title>{beerList.title2}</Title>
         <Subcontainer3>
-          <DropDown disabled={!selected} options={dropDownOptions} order="01" />
+          <DropDown disabled={!selected} options={craftOptions} order="01" />
           <DropDown
             options={dropDownOptions}
             disabled={!selected2}

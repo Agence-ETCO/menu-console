@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import BeerCard from "../../components/BeerCard";
 import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
+import { AppContext } from "../../context/AppContext";
+import { postAPI } from "../../lib/api";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
   Container,
@@ -16,52 +18,160 @@ import {
 } from "./styled";
 
 const Page5 = () => {
+  const {
+    state,
+    actions: { addPreviousStep },
+  } = useContext(AppContext);
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
-  const [white, setWhite] = useState(null);
-  const [red, setRed] = useState(null);
-  const [beer, setBeer] = useState(null);
-  const [micro, setMicro] = useState(null);
+  const [craftBeerId, setCraftBeerId] = useState([]);
+  const [craftBeer, setCraftBeer] = useState([]);
+
+  const step = 5;
+
   const handleClick = () => {
     setShowAlert(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    router.push("/6");
+  const data = state.micro1.title && {
+    title: state.micro1.title,
+    description: state.micro1.description,
+    beerOptions: "Microbrasserie",
+    category: "Caesar",
+    alcohol: state.micro1.alcohol,
+    cost: [
+      {
+        Price: "",
+        region: "",
+        size: state.micro1.size,
+      },
+    ],
   };
 
+  const data2 = state.micro2.title && {
+    title: state.micro2.title,
+    description: state.micro2.description,
+    beerOptions: "Microbrasserie",
+    category: "Caesar",
+    alcohol: state.micro2.alcohol,
+    cost: [
+      {
+        Price: "",
+        region: "",
+        size: state.micro2.size,
+      },
+    ],
+  };
+
+  const handleSubmit = (e) => {
+    const menuItems = state.selections.map((option) => option.id);
+    e.preventDefault();
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwNzQ1OTU1LCJleHAiOjE2NjA4MzIzNTV9.ZNKjMEObwi2-ETVOCIjSefrV16UH5fOfQhEndAYhqwg";
+    if (state.micro1.title && !state.micro2.title) {
+      postAPI("api/menu-items?populate=deep", token, data)
+        .then((response) => {
+          const menuData = {
+            data: {
+              menu_items: [...menuItems, response.data.id],
+              franchisee: 4,
+            },
+          };
+          return postAPI("api/franchisees-menus", token, menuData);
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (!state.micro1.title && state.micro2.title) {
+      postAPI("api/menu-items?populate=deep", token, data2)
+        .then((response) => {
+          const menuData = {
+            data: {
+              menu_items: [...menuItems, response.data.id],
+              franchisee: 4,
+            },
+          };
+          return postAPI("api/franchisees-menus", token, menuData);
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (state.micro1.title && state.micro2.title) {
+      const id = "";
+      postAPI("api/menu-items?populate=deep", token, data)
+        .then((response) => {
+          id = response.data.id;
+          return postAPI("api/menu-items?populate=deep", token, data2);
+        })
+        .then((response) => {
+          const menuData = {
+            data: {
+              menu_items: [...menuItems, id, response.data.id],
+              franchisee: 4,
+            },
+          };
+          return postAPI("api/franchisees-menus", token, menuData);
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (!state.micro1.title && !state.micro2.title) {
+      const menuData = {
+        data: {
+          menu_items:
+            craftBeerId.length > 0
+              ? [...menuItems, ...craftBeerId]
+              : [...menuItems],
+          franchisee: 4,
+        },
+      };
+      postAPI("api/franchisees-menus", token, menuData)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    router.push("/6");
+  };
   const onCancel = () => {
     setShowAlert(false);
   };
 
-  const value1 =
-    typeof window !== "undefined" && JSON.parse(localStorage.getItem("white"));
-
-  const value2 =
-    typeof window !== "undefined" && JSON.parse(localStorage.getItem("red"));
-
-  const value3 =
-    typeof window !== "undefined" && JSON.parse(localStorage.getItem("beer"));
-
-  const value4 =
-    typeof window !== "undefined" && localStorage.getItem("microbrasserie01");
-
-  const value5 =
-    typeof window !== "undefined" && localStorage.getItem("microbrasserie02");
-
   useEffect(() => {
-    setWhite(value1);
-    setRed(value2);
-    setBeer(value3);
-    if (value4 !== null) {
-      setMicro([1]);
+    if (state.micro1.id || state.micro1.title) {
+      setCraftBeer([state.micro1]);
     }
-    if (value5 !== null) {
-      setMicro([1, 2]);
+    if (state.micro2.id || state.micro2.title) {
+      setCraftBeer([...craftBeer, state.micro2]);
     }
+
+    if (state.micro1.id) {
+      setCraftBeerId([state.micro1.id]);
+    }
+    if (state.micro2.id) {
+      setCraftBeerId([...craftBeerId, state.micro2.id]);
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (state.previousStep < 4) {
+      addPreviousStep(4);
+    }
+  }, []);
+
   return (
     <>
       <AlertBox
@@ -82,54 +192,81 @@ const Page5 = () => {
         </Subcontainer1>
         <Title>{page2.title}</Title>
         <Subcontainer>
-          {white &&
-            white.length > 0 &&
-            white.map((option, i) => (
-              <WineCard
-                key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
+          {state.selections &&
+            state.selections
+              .filter((option) => option.attributes.category === "White Wine")
+              .map((option, i) => (
+                <WineCard
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  description={option.attributes.description}
+                  taste={option.attributes.taste}
+                  location={option.attributes.location}
+                  sugar={option.attributes.sugar}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                  step={step}
+                />
+              ))}
         </Subcontainer>
         <Title>{page3.title}</Title>
         <Subcontainer>
-          {red &&
-            red.length > 0 &&
-            red.map((option, i) => (
-              <WineCard
-                key={i}
-                red
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
+          {state.selections &&
+            state.selections
+              .filter((option) => option.attributes.category === "Red Wine")
+              .map((option, i) => (
+                <WineCard
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  description={option.attributes.description}
+                  taste={option.attributes.taste}
+                  location={option.attributes.location}
+                  sugar={option.attributes.sugar}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                  step={step}
+                />
+              ))}
         </Subcontainer>
         <Title>{beerList.title}</Title>
         <Subcontainer>
-          {beer &&
-            beer.length > 0 &&
-            beer.map((option, i) => (
-              <BeerCard
-                key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
+          {state.selections &&
+            state.selections
+              .filter((option) => option.attributes.category === "Beer")
+              .map((option, i) => (
+                <BeerCard
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  description={option.attributes.description}
+                  taste={option.attributes.taste}
+                  location={option.attributes.location}
+                  sugar={option.attributes.sugar}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                  step={step}
+                />
+              ))}
         </Subcontainer>
         <Title>{option2.title}</Title>{" "}
         <Subcontainer>
-          {micro &&
-            micro.length > 0 &&
-            micro.map((option, i) => (
+          {craftBeer &&
+            craftBeer.map((option, i) => (
               <BeerCard
                 key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
+                value={option.id}
+                title={option.title}
+                description={option.description}
+                option={option}
+                step={step}
               />
             ))}
         </Subcontainer>

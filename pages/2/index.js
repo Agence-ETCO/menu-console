@@ -1,58 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
+import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
-/* import { fetchAPI } from "../../lib/api"; */
+import { fetchAPI } from "../../lib/api";
 import {
   Container,
   Subcontainer1,
   Subcontainer2,
   Title,
   SubTitle,
-  Select,
 } from "./styled";
 
 const Page2 = () => {
+  const {
+    state,
+    actions: { receiveData, addPreviousStep },
+  } = useContext(AppContext);
+
   const min = 1;
-  const [selections, setSelections] = useState([]);
-  const [data, setData] = useState([]);
-  const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
-  const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 3;
   const quantity = 18;
-
+  const selections = state.selections.filter(
+    (option) => option.attributes.category === "White Wine"
+  );
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
-
-  const handleCheckboxChange = (option) => {
-    let updatedSelections = [];
-    let checked = selections.find((selection) => selection === option);
-    let limit = max - selections.length - 1 >= 0;
-
-    if (checked) {
-      updatedSelections = selections.filter(
-        (selection) => selection !== option
-      );
-    } else if (!checked && limit) {
-      updatedSelections = [...selections, option];
-    } else if (!checked && !limit) {
-      updatedSelections = [...selections];
-    }
-
-    setSelections(updatedSelections);
-
-    setUpdated(!updated);
-    localStorage.setItem("white", JSON.stringify(updatedSelections));
-  };
+  const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
-    localStorage.removeItem("white");
+    if (state.previousStep < 1) {
+      addPreviousStep(1);
+    }
   }, []);
 
   useEffect(() => {
@@ -60,18 +45,16 @@ const Page2 = () => {
     setCounter(updatedCounter);
   }, [selections]);
 
-  /* useEffect(() => {
-    const token =
-      typeof window !== "undefined" &&
-      JSON.parse(localStorage.getItem("token"));
-    fetchAPI("/api/menu-items?populate=*", token)
+  useEffect(() => {
+    const token = "";
+    fetchAPI("/api/menu-items?populate=deep", token)
       .then((res) => {
-        setData(res.data);
+        receiveData(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []); */
+  }, []);
 
   return (
     <>
@@ -79,7 +62,7 @@ const Page2 = () => {
       <Container>
         <Subcontainer1>
           <div>
-            <Title>{page2.title}</Title>
+            <Title>{page2.title} </Title>
             <SubTitle>
               Choisissez parmi les <span>{quantity} produits</span>
               disponibles
@@ -88,14 +71,12 @@ const Page2 = () => {
           <MinMax min={min} max={max} />
         </Subcontainer1>
         <Subcontainer2>
-          {/* {data &&
-            data
+          {state.data &&
+            state.data
               .filter((option) => option.attributes.category === "White Wine")
               .map((option) => (
                 <WineCard
                   key={option.id}
-                  checked={!!selections.find((sel) => sel.id === option.id)}
-                  handleCheckboxChange={() => handleCheckboxChange(option)}
                   value={option.id}
                   title={option.attributes.title}
                   description={option.attributes.description}
@@ -104,17 +85,11 @@ const Page2 = () => {
                   sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}
+                  limit={limit}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
                 />
               ))}
- */}
-          {options.map((option, i) => (
-            <WineCard
-              key={i}
-              checked={!!selections.includes(option)}
-              handleCheckboxChange={() => handleCheckboxChange(option)}
-              value={option}
-            />
-          ))}
         </Subcontainer2>
       </Container>
 

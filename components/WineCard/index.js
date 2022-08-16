@@ -1,4 +1,6 @@
+import React, { useEffect, useContext } from "react";
 import Image from "next/image";
+import { AppContext } from "../../context/AppContext";
 import CheckMark from "../CheckMark.js";
 import Icon1 from "../Icon1";
 import Icon2 from "../Icon2";
@@ -20,16 +22,50 @@ import {
   ImageContainer,
   Sugar,
   Desc,
+  Title,
 } from "./styled.js";
 
 const WineCard = (props) => {
+  const {
+    state,
+    actions: { addSelection, removeSelection },
+  } = useContext(AppContext);
+
+  const isChecked = (option) => {
+    if (
+      option &&
+      state.selections.find((selection) => selection.id === option.id)
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleCheckboxChange = (option) => {
+    if (props.step === 5) {
+      return null;
+    }
+
+    let checked = state.selections.find(
+      (selection) => selection.id === option.id
+    );
+
+    if (checked) {
+      removeSelection(option.id);
+    } else if (!checked && props.limit) {
+      addSelection(option);
+    } else if (!checked && !props.limit) {
+      return;
+    }
+  };
+
   return (
     <>
-      <Label checked={props.checked}>
-        <CheckboxContainer checked={props.checked}>
+      <Label checked={isChecked(props.option)}>
+        <CheckboxContainer checked={isChecked(props.option)}>
           <HiddenCheckbox
-            checked={props.checked}
-            onChange={props.handleCheckboxChange}
+            checked={isChecked(props.option)}
+            onChange={() => handleCheckboxChange(props.option)}
             value={props.value}
           />
           <CheckMark />
@@ -37,38 +73,44 @@ const WineCard = (props) => {
         </CheckboxContainer>
         <SubContainer>
           <ImageContainer>
-            {props.red ? (
+            {
+              /* props.red ? (
               <Image src={red} width={150} height={350} alt="" />
-            ) : (
-              <Image src={image} width={150} height={350} alt="" />
-            )}
+            ) : */ <Image
+                src={props.imageUrl}
+                width={150}
+                height={255}
+                alt=""
+                layout="intrinsic"
+              />
+            }
           </ImageContainer>
-          <TextContainer checked={props.checked}>
-            <div>{props.title || "Robert Mondavi Private Selection"}</div>
-            <Desc checked={props.checked}>
+          <TextContainer checked={isChecked(props.option)}>
+            <Title>{props.title || "Robert Mondavi Private Selection"}</Title>
+            <Desc checked={isChecked(props.option)}>
               {" "}
               {props.description || "Cuvée Centenaire,Languedoc-Rousillon"}{" "}
             </Desc>
             <div>{props.location || "Québec, Canada"}</div>
-            <CircleContainer checked={props.checked}>
+            <CircleContainer checked={isChecked(props.option)}>
               {" "}
               {props.taste || "AROMATIQUE ET CHARNU"} <Circle />{" "}
-              <Sugar checked={props.checked}>{`Sucre : ${
+              <Sugar checked={isChecked(props.option)}>{`Sucre : ${
                 props.sugar || 12.5
-              } g/L`}</Sugar>
+              }`}</Sugar>
             </CircleContainer>
             {props.prices ? (
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">{props.prices[0].size}</th>
-                    <th scope="col">{props.prices[1].size}</th>
-                    <th scope="col">{props.prices[2].size}</th>
+                    <th scope="col">6oz</th>
+                    <th scope="col">9oz</th>
+                    <th scope="col">Bouteille</th>
                   </tr>
                   <tr>
-                    <td>{props.prices[0].Price}</td>
-                    <td>{props.prices[1].Price}</td>
                     <td>{props.prices[2].Price}</td>
+                    <td>{props.prices[1].Price}</td>
+                    <td>{props.prices[0].Price}</td>
                   </tr>
                 </tbody>
               </table>
@@ -76,7 +118,7 @@ const WineCard = (props) => {
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">6oz</th>
+                    <th scope="col"></th>
                     <th scope="col">9oz</th>
                     <th scope="col">Bouteille</th>
                   </tr>
@@ -91,8 +133,8 @@ const WineCard = (props) => {
             <IconContainer>
               <span> Saq code {props.saqCode || 12824197}</span>
               <Icons>
-                {props.checked ? <Icon1Dark /> : <Icon1 />}
-                {props.checked ? <Icon2Dark /> : <Icon2 />}
+                {isChecked(props.option) ? <Icon1Dark /> : <Icon1 />}
+                {isChecked(props.option) ? <Icon2Dark /> : <Icon2 />}
               </Icons>
             </IconContainer>
           </TextContainer>
