@@ -39,25 +39,40 @@ export const DropDownHeader = styled.div`
 `;
 
 export const DropDownListContainer = styled.div`
-  width: 413px;
+  width: 420px;
   z-index: 40;
   background-color: white;
-  border: none;
   margin-left: 50px;
+  padding-top: 5px;
+  padding-right: 5px;
+  border-top: 1px solid #939598;
+  border-right: 1px solid #939598;
+  border-bottom: none;
+  border-left: none;
+  border-radius: 9px;
 `;
 
 export const DropDownList = styled.ul`
   border: 1px solid #939598;
-
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: none;
+  border-top: none;
+  border-right: none;
   overflow-y: scroll;
   padding-bottom: 0;
   padding-left: 0;
   list-style: none;
   height: 413px;
-
+  ::-webkit-scrollbar {
+    border: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #3c3c3c;
+    border-radius: 25px;
+  }
   :first-child {
     margin-top: 0;
   }
@@ -140,14 +155,14 @@ export const Header = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 100%;
+  width: 420px;
   height: 68px;
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 19px;
   line-height: 23px;
   color: #231f20;
-  margin-top: -20px;
+  margin-top: -15px;
   padding-left: 24px;
   border: 1px solid #939598;
   border-top: none;

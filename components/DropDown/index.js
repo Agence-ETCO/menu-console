@@ -65,7 +65,6 @@ const DropDown = ({ options, disabled, order, count }) => {
     setIsOpen(false);
     setSelectedOption(value);
     localStorage.setItem(`microbrasserie${order}`, value);
-    count();
   };
 
   useEffect(() => {
