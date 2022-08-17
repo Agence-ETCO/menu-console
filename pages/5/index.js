@@ -76,7 +76,7 @@ const Page5 = () => {
           const menuData = {
             data: {
               menu_items: [...menuItems, response.data.id],
-              franchisee: state.userData.user.id || 4,
+              franchisee: (state.userData.user && state.userData.user.id) || 4,
             },
           };
           return postAPI("api/franchisees-menus", token, menuData);
@@ -93,7 +93,7 @@ const Page5 = () => {
           const menuData = {
             data: {
               menu_items: [...menuItems, response.data.id],
-              franchisee: state.userData.user.id || 4,
+              franchisee: (state.userData.user && state.userData.user.id) || 4,
             },
           };
           return postAPI("api/franchisees-menus", token, menuData);
@@ -115,7 +115,7 @@ const Page5 = () => {
           const menuData = {
             data: {
               menu_items: [...menuItems, id, response.data.id],
-              franchisee: state.userData.user.id || 4,
+              franchisee: (state.userData.user && state.userData.user.id) || 4,
             },
           };
           return postAPI("api/franchisees-menus", token, menuData);
@@ -133,7 +133,7 @@ const Page5 = () => {
             craftBeerId.length > 0
               ? [...menuItems, ...craftBeerId]
               : [...menuItems],
-          franchisee: state.userData.user.id || 4,
+          franchisee: (state.userData.user && state.userData.user.id) || 4,
         },
       };
       postAPI("api/franchisees-menus", token, menuData)
