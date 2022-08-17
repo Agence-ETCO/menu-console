@@ -32,16 +32,6 @@ const DropDown = ({ options, disabled, order }) => {
     actions: { addMicro01, addMicro02 },
   } = useContext(AppContext);
 
-  const isSelected = (option) => {
-    if (
-      (state.micro1.id && state.micro1.id === option.id) ||
-      (state.micro2.id && state.micro2.id === option.id)
-    ) {
-      return true;
-    }
-    return false;
-  };
-
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
@@ -67,6 +57,16 @@ const DropDown = ({ options, disabled, order }) => {
       .replace(/(,.*?),(.*,)?/, "$1");
     setAlcohol(value);
   };
+  const isSelected = (option) => {
+    if (
+      (state.micro1.id && state.micro1.id === option.id) ||
+      (state.micro2.id && state.micro2.id === option.id)
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   const onFormSubmit = () => {
     setSelectedOption(null);
     const data = {
@@ -75,7 +75,6 @@ const DropDown = ({ options, disabled, order }) => {
       type,
       size: format,
       alcohol,
-      category: "Craft Beer",
     };
     if (order === "01") {
       addMicro01(data);
@@ -94,7 +93,11 @@ const DropDown = ({ options, disabled, order }) => {
   };
 
   const onOptionClick = (value) => {
+    if (isSelected(value)) {
+      return null;
+    }
     setIsOpen(false);
+
     setSelectedOption(value);
 
     if (order === "01") {

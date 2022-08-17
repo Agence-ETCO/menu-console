@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/index";
 import { AppContext } from "../../context/AppContext";
 import { welcomePage } from "../../fr";
 import { useRouter } from "next/router";
-import { getToken } from "../../lib/api";
+import { login } from "../../lib/api";
 import {
   Greeting,
   Title,
@@ -17,7 +17,6 @@ import {
   Container,
   Subcontainer,
 } from "./styled";
-import { JoinFullTwoTone } from "@mui/icons-material";
 
 const WelcomePage = () => {
   const date = "12 septembre 2022";
@@ -25,22 +24,22 @@ const WelcomePage = () => {
     state,
     actions: { addUser },
   } = useContext(AppContext);
+  const router = useRouter();
+  const { loginToken } = router.query;
 
-  /* useEffect(() => {
-    getToken()
-      .then(({ data }) => {
-        addUser(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []); */
+  useEffect(() => {
+    if (loginToken) {
+      login(loginToken)
+        .then(({ data }) => {
+          addUser(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [router, loginToken]);
 
-  /* console.log(
-    state.userData.jwt,
-    state.userData.user.id,
-    state.userData.user.username
-  ); */
+  /* console.log(state.userData.user && state.userData.user.username); */
   return (
     <>
       <Header step={-1} />

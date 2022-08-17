@@ -64,17 +64,19 @@ const Page5 = () => {
   };
 
   const handleSubmit = (e) => {
-    const menuItems = state.selections.map((option) => option.id);
     e.preventDefault();
+
+    const menuItems = state.selections.map((option) => option.id);
     const token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwNzQ1OTU1LCJleHAiOjE2NjA4MzIzNTV9.ZNKjMEObwi2-ETVOCIjSefrV16UH5fOfQhEndAYhqwg";
+
     if (state.micro1.title && !state.micro2.title) {
       postAPI("api/menu-items?populate=deep", token, data)
         .then((response) => {
           const menuData = {
             data: {
               menu_items: [...menuItems, response.data.id],
-              franchisee: 4,
+              franchisee: state.userData.user.id || 4,
             },
           };
           return postAPI("api/franchisees-menus", token, menuData);
@@ -91,7 +93,7 @@ const Page5 = () => {
           const menuData = {
             data: {
               menu_items: [...menuItems, response.data.id],
-              franchisee: 4,
+              franchisee: state.userData.user.id || 4,
             },
           };
           return postAPI("api/franchisees-menus", token, menuData);
@@ -113,7 +115,7 @@ const Page5 = () => {
           const menuData = {
             data: {
               menu_items: [...menuItems, id, response.data.id],
-              franchisee: 4,
+              franchisee: state.userData.user.id || 4,
             },
           };
           return postAPI("api/franchisees-menus", token, menuData);
@@ -131,7 +133,7 @@ const Page5 = () => {
             craftBeerId.length > 0
               ? [...menuItems, ...craftBeerId]
               : [...menuItems],
-          franchisee: 4,
+          franchisee: state.userData.user.id || 4,
         },
       };
       postAPI("api/franchisees-menus", token, menuData)
@@ -144,6 +146,7 @@ const Page5 = () => {
     }
     router.push("/6");
   };
+
   const onCancel = () => {
     setShowAlert(false);
   };
@@ -245,9 +248,6 @@ const Page5 = () => {
                   value={option.id}
                   title={option.attributes.title}
                   description={option.attributes.description}
-                  taste={option.attributes.taste}
-                  location={option.attributes.location}
-                  sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}
                   option={option}
