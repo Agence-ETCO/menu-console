@@ -32,16 +32,18 @@ const Page3 = () => {
     (option) => option.attributes.category === "Red Wine"
   );
   const limit = max - selections.length - 1 >= 0;
-  useEffect(() => {
-    const token = "";
 
-    fetchAPI("/api/menu-items?populate=deep", token)
-      .then((res) => {
-        receiveData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  useEffect(() => {
+    if (state.data.length === 0) {
+      const token = state.userData.jwt || "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   useEffect(() => {

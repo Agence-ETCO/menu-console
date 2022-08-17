@@ -24,11 +24,13 @@ const reducer = (state, action) => {
         ...state,
         data: action.value,
       };
+
     case "add-selection":
       return {
         ...state,
         selections: [...state.selections, action.value],
       };
+
     case "remove-selection":
       return {
         ...state,
@@ -36,21 +38,25 @@ const reducer = (state, action) => {
           (selection) => selection.id !== action.value
         ),
       };
+
     case "add-micro1":
       return {
         ...state,
         micro1: action.value,
       };
+
     case "add-micro2":
       return {
         ...state,
         micro2: action.value,
       };
+
     case "add-step":
       return {
         ...state,
         previousStep: action.value,
       };
+
     default:
       throw new Error(`Unrecognized action: ${action.type}`);
   }
@@ -93,6 +99,7 @@ export const AppProvider = ({ children }) => {
       value: value,
     });
   };
+
   const addMicro02 = (value) => {
     dispatch({
       type: "add-micro2",
@@ -106,6 +113,7 @@ export const AppProvider = ({ children }) => {
       value: value,
     });
   };
+
   return (
     <AppContext.Provider
       value={{

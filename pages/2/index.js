@@ -46,14 +46,16 @@ const Page2 = () => {
   }, [selections]);
 
   useEffect(() => {
-    const token = "";
-    fetchAPI("/api/menu-items?populate=deep", token)
-      .then((res) => {
-        receiveData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (state.data.length === 0) {
+      const token = state.userData.jwt || "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   return (

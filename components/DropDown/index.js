@@ -75,7 +75,6 @@ const DropDown = ({ options, disabled, order }) => {
       type,
       size: format,
       alcohol,
-      category: "Craft Beer",
     };
     if (order === "01") {
       addMicro01(data);

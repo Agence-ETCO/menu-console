@@ -21,7 +21,7 @@ const Stepper = (props) => {
       </Link>
       {buttonOptions.map((element, key) => (
         <Link
-          href={state.previousStep + 1 >= element ? `/${element}` : ""}
+          href={state.previousStep >= element ? `/${element}` : ""}
           key={`link_${key}`}
         >
           <NumberButton
@@ -37,11 +37,11 @@ const Stepper = (props) => {
           </NumberButton>
         </Link>
       ))}
-      <Link href={state.previousStep >= 5 ? "/5" : ""}>
+      <Link href={state.previousStep >= 4 ? "/5" : ""}>
         <TextButton
           color={props.step === 5 ? `${colors.orange}` : `${colors.black}`}
         >
-          {"resume"}
+          {"Résumé"}
         </TextButton>
       </Link>
     </Container>

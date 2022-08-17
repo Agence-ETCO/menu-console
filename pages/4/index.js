@@ -43,24 +43,17 @@ const Page4 = () => {
     setCounter(updatedCounter);
   }, [selections]);
 
-  const dropDownOptions = [
-    "La Mcrobrasserie1, Montréal, QC",
-    "La Mcrobrasserie2, Montréal, QC",
-    "La Mcrobrasserie3, Montréal, QC",
-    "La Mcrobrasserie4, Montréal, QC",
-    "La Mcrobrasserie5, Montréal, QC",
-  ];
-
   useEffect(() => {
-    const token = "";
-
-    fetchAPI("/api/menu-items?populate=deep", token)
-      .then((res) => {
-        receiveData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (state.data.length === 0) {
+      const token = state.userData.jwt || "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []);
 
   useEffect(() => {
@@ -98,9 +91,6 @@ const Page4 = () => {
                   value={option.id}
                   title={option.attributes.title}
                   description={option.attributes.description}
-                  taste={option.attributes.taste}
-                  location={option.attributes.location}
-                  sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}
                   limit={limit}
@@ -112,11 +102,7 @@ const Page4 = () => {
         <Title>{beerList.title2}</Title>
         <Subcontainer3>
           <DropDown disabled={!selected} options={craftOptions} order="01" />
-          <DropDown
-            options={dropDownOptions}
-            disabled={!selected2}
-            order="02"
-          />
+          <DropDown options={craftOptions} disabled={!selected2} order="02" />
           <Bubble
             count={selections.length}
             show={counter === 1}
