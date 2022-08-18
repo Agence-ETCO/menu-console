@@ -75,7 +75,10 @@ const Page5 = () => {
         .then((response) => {
           const menuData = {
             data: {
-              menu_items: [...menuItems, response.data.id],
+              menu_items:
+                craftBeerId.length > 0
+                  ? [...menuItems, ...craftBeerId, response.data.id]
+                  : [...menuItems, response.data.id],
               franchisee: (state.userData.user && state.userData.user.id) || 4,
             },
           };
@@ -92,7 +95,10 @@ const Page5 = () => {
         .then((response) => {
           const menuData = {
             data: {
-              menu_items: [...menuItems, response.data.id],
+              menu_items:
+                craftBeerId.length > 0
+                  ? [...menuItems, ...craftBeerId, response.data.id]
+                  : [...menuItems, response.data.id],
               franchisee: (state.userData.user && state.userData.user.id) || 4,
             },
           };
@@ -153,17 +159,21 @@ const Page5 = () => {
 
   useEffect(() => {
     if (state.micro1.id || state.micro1.title) {
-      setCraftBeer([state.micro1]);
+      setCraftBeer([...craftBeer, state.micro1]);
     }
     if (state.micro2.id || state.micro2.title) {
-      setCraftBeer([...craftBeer, state.micro2]);
+      setCraftBeer([...craftBeer, state.micro1, state.micro2]);
     }
 
     if (state.micro1.id) {
-      setCraftBeerId([state.micro1.id]);
+      setCraftBeerId([...craftBeerId, state.micro1.id]);
     }
     if (state.micro2.id) {
-      setCraftBeerId([...craftBeerId, state.micro2.id]);
+      setCraftBeerId([
+        ...craftBeerId,
+        state.micro1.id && state.micro1.id,
+        state.micro2.id,
+      ]);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
