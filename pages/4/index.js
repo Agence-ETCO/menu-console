@@ -27,7 +27,7 @@ const Page4 = () => {
   const min = 1;
   const [counter, setCounter] = useState(0);
   const selections = state.selections.filter(
-    (option) => option.attributes.category === "Beer"
+    (option) => option.attributes && option.attributes.category === "Beer"
   );
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"

@@ -207,7 +207,11 @@ const Page5 = () => {
         <Subcontainer>
           {state.selections &&
             state.selections
-              .filter((option) => option.attributes.category === "White Wine")
+              .filter(
+                (option) =>
+                  option.attributes &&
+                  option.attributes.category === "White Wine"
+              )
               .map((option, i) => (
                 <WineCard
                   key={option.id}
@@ -229,7 +233,10 @@ const Page5 = () => {
         <Subcontainer>
           {state.selections &&
             state.selections
-              .filter((option) => option.attributes.category === "Red Wine")
+              .filter(
+                (option) =>
+                  option.attributes && option.attributes.category === "Red Wine"
+              )
               .map((option, i) => (
                 <WineCard
                   key={option.id}
@@ -251,7 +258,10 @@ const Page5 = () => {
         <Subcontainer>
           {state.selections &&
             state.selections
-              .filter((option) => option.attributes.category === "Beer")
+              .filter(
+                (option) =>
+                  option.attributes && option.attributes.category === "Beer"
+              )
               .map((option, i) => (
                 <BeerCard
                   key={option.id}

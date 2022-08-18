@@ -5,7 +5,7 @@ import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
-import { fetchAPI } from "../../lib/api";
+import { postAPI, fetchAPI } from "../../lib/api";
 import {
   Container,
   Subcontainer1,
@@ -17,7 +17,7 @@ import {
 const Page2 = () => {
   const {
     state,
-    actions: { receiveData, addPreviousStep },
+    actions: { receiveData, addPreviousStep, addSelection },
   } = useContext(AppContext);
 
   const min = 1;
@@ -25,7 +25,9 @@ const Page2 = () => {
   const max = 3;
   const quantity = 18;
   const selections = state.selections.filter(
-    (option) => option.attributes.category === "White Wine"
+    (option) =>
+      (option.attributes && option.attributes.category === "White Wine") ||
+      option.category === "White Wine"
   );
   const selection = (
     <span style={{ fontSize: "21px" }}>
@@ -33,6 +35,26 @@ const Page2 = () => {
     </span>
   );
   const limit = max - selections.length - 1 >= 0;
+
+  const token =
+    state.userData.jwt ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
+
+  const handleClick = async () => {
+    const menuItems = state.selections.map((option) => option.id);
+    const menuData = {
+      menu_items: [...menuItems],
+      franchisee: 4,
+    };
+
+    postAPI("api/franchisees-menus?populate=deep", token, menuData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     if (state.previousStep < 1) {
@@ -51,6 +73,23 @@ const Page2 = () => {
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
+  useEffect(() => {
+    if (selections.length === 0) {
+      const token =
+        state.userData.jwt ||
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
+      const userId = 4;
+
+      fetchAPI("/api/users/4?populate=deep", token)
+        .then((res) => {
+          addSelection(...res.franchisee_s_menu.menu_items);
         })
         .catch((err) => {
           console.log(err);
@@ -99,6 +138,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
+        handleClick={handleClick}
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}

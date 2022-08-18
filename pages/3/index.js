@@ -29,7 +29,7 @@ const Page3 = () => {
     </span>
   );
   const selections = state.selections.filter(
-    (option) => option.attributes.category === "Red Wine"
+    (option) => option.attributes && option.attributes.category === "Red Wine"
   );
   const limit = max - selections.length - 1 >= 0;
 

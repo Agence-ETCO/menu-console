@@ -25,7 +25,9 @@ const Footer = (props) => {
       )}
       {props.buttonText && (
         <Link href={props.href}>
-          <StyledLink disabled={props.disabled}>{props.buttonText}</StyledLink>
+          <StyledLink disabled={props.disabled} onClick={props.handleClick}>
+            {props.buttonText}
+          </StyledLink>
         </Link>
       )}
       {props.selection && <Select>{props.selection}</Select>}

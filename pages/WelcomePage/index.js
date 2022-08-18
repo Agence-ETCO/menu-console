@@ -32,6 +32,9 @@ const WelcomePage = () => {
       login(loginToken)
         .then(({ data }) => {
           addUser(data);
+          const { jwt, user } = data;
+          localStorage.setItem("jwt", jwt);
+          localStorage.setItem("user", JSON.stringify(user));
         })
         .catch((err) => {
           console.log(err);
