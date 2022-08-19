@@ -35,7 +35,7 @@ const Page4 = () => {
   const min = 1;
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
-  const [active, setActive] = useState(true);
+
   const selections = state.selections.filter(
     (option) => option.attributes && option.attributes.category === "Beer"
   );
@@ -45,19 +45,9 @@ const Page4 = () => {
   const disabled = selectedPack === 0;
   const max = 2;
   const selected =
-    (selectedPack === 8 && selections.length === 1) || selectedPack >= 10;
+    (selectedPack === 8 && selections.length >= 1) || selectedPack >= 10;
   const selected2 = selectedPack >= 10;
   const limit = max - selections.length - 1 >= 0;
-
-  /* useEffect(() => {
-    if (selectedPack === 8 && selections.length === 1) {
-      setActive(true);
-    } else if (selectedPack === 8 && selections.length === 2) {
-      setActive(false);
-    } else if (selectedPack >= 10) {
-      return true;
-    }
-  }, [selectedPack, selections]); */
 
   useEffect(() => {
     const updatedCounter = selections.length <= min ? selections.length : min;
@@ -169,11 +159,7 @@ const Page4 = () => {
                 show={selected}
                 duration={"4s"}
               />
-              <Bubble
-                count={selections.length}
-                show={selected2}
-                duration={"4s"}
-              />
+              <Bubble count={selected2} show={selected2} duration={"4s"} />
             </Subcontainer3>
           </>
         )}

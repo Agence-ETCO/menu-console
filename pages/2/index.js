@@ -140,7 +140,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
-        handleClick={handleClick}
+        /*   handleClick={handleClick} */
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}
