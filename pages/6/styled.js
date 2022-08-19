@@ -1,74 +1,64 @@
 import styled from "styled-components";
-import { colors } from "../../constants";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${colors.black};
-  min-height: 100vh;
-  margin-top: 0;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 200px;
+  margin-top: 60px;
+  min-height: 200vh;
+  max-width: 1480px;
 `;
 
 export const Subcontainer = styled.div`
-  width: 638px;
-  color: ${colors.black};
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  justify-content: left;
+
+  label {
+    margin-left: 30px;
+  }
 `;
 
 export const Subcontainer1 = styled.div`
-  margin-top: 40px;
-  width: 638px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
+export const Title1 = styled.div`
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 40px;
+  color: #f5ba18;
+  text-align: center;
+  margin-bottom: 30px;
+`;
+export const Subtitle1 = styled.div`
+  font-family: "GTWalsheimRegular";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  color: #231f20;
+  margin-bottom: 30px;
+  margin-left: 30px;
+`;
 export const Title = styled.div`
-  margin-top: 60px;
-  margin-bottom: 40px;
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
-  line-height: 32px;
-  color: ${colors.white};
-`;
-export const Subtitle = styled.div`
-  font-family: "GTWalsheimBold";
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 24px;
-  color: ${colors.white};
-  margin-bottom: 20px;
-`;
-
-export const Body = styled.div`
-  font-family: "GTWalsheimRegular";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 24px;
-  color: white;
+  line-height: 23px;
   margin-bottom: 10px;
-`;
-
-export const Button = styled.button`
-  width: 187px;
-  height: 51px;
-  font-family: "GTWalsheimBold";
-  font-weight: 700;
-  font-size: 17px;
-  line-height: 20px;
-  letter-spacing: 0.03em;
-  color: ${colors.yellow};
-  background-color: #231f20;
-  text-transform: uppercase;
-  font-family: "GTWalsheimBold";
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 22px;
-  text-align: center;
-  letter-spacing: 0.03em;
-  border: 1px solid ${colors.yellow};
-  border-radius: 9px;
+  margin-left: 30px;
 `;
 
 const Empty = () => {};

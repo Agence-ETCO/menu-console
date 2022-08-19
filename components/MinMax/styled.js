@@ -6,7 +6,7 @@ export const Select = styled.div`
   font-size: 19px;
   line-height: 21px;
   margin-left: auto;
-  background-color: rgba(147, 149, 152, 0.15);
+  background-color: #ffe110;
   border-radius: 82px;
   display: flex;
   justify-content: center;

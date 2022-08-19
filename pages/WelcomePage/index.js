@@ -27,7 +27,7 @@ const WelcomePage = () => {
   const router = useRouter();
   const { loginToken } = router.query;
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (loginToken) {
       login(loginToken)
         .then(({ data }) => {
@@ -40,7 +40,7 @@ const WelcomePage = () => {
           console.log(err);
         });
     }
-  }, [router, loginToken]);
+  }, [router, loginToken]); */
 
   /* console.log(state.userData.user && state.userData.user.username); */
   return (

@@ -5,6 +5,7 @@ const initialState = {
   previousStep: 0,
   data: [],
   selections: [],
+  micro: [],
   micro1: {},
   micro2: {},
 };
@@ -31,6 +32,17 @@ const reducer = (state, action) => {
         selections: [...state.selections, action.value],
       };
 
+    case "add-micro":
+      return {
+        ...state,
+        micro: [...state.micro, action.value],
+      };
+
+    case "remove-micro":
+      return {
+        ...state,
+        micro: state.micro.filter((selection) => selection !== action.value),
+      };
     case "remove-selection":
       return {
         ...state,
@@ -93,6 +105,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const addMicro = (value) => {
+    dispatch({
+      type: "add-micro",
+      value: value,
+    });
+  };
+
+  const removeMicro = (value) => {
+    dispatch({
+      type: "remove-micro",
+      value: value,
+    });
+  };
+
   const addMicro01 = (value) => {
     dispatch({
       type: "add-micro1",
@@ -122,6 +148,8 @@ export const AppProvider = ({ children }) => {
           receiveData,
           addSelection,
           removeSelection,
+          addMicro,
+          removeMicro,
           addMicro01,
           addMicro02,
           addPreviousStep,

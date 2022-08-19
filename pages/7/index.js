@@ -1,26 +1,36 @@
 import Header from "../../components/Header";
-import { welcomePage, page6 } from "../../fr";
-import { Container, Subcontainer, Title, Body } from "./styled";
+import Footer from "../../components/Footer/index";
+import { page6 } from "../../fr";
+import {
+  Container,
+  Subcontainer,
+  Title,
+  Subtitle,
+  Body,
+  Subcontainer1,
+  Button,
+} from "./styled";
 
 const Page6 = () => {
+  const date = "le 30 septembre 2022";
+  /* const user =
+    typeof window !== "undefined" &&
+    JSON.parse(localStorage.getItem("user") || "{}"); */
   return (
     <>
       <Header />
       <Container>
         <Subcontainer>
-          <Title>Votre sélection a déjà été envoyée !</Title>
-          <Body>
-            Nous avons bien reçu vos choix et allons préparer votre menu pour
-            l’impression.
-          </Body>
-          <Body>
-            {welcomePage.help}
-            &nbsp;
-            <a href="mailto:info@st-hubert.com">
-              <span>{welcomePage.contact}</span>
-            </a>
-          </Body>
+          <Title>{page6.title}</Title>
+          <Subtitle>{page6.subtitle}</Subtitle>
+          <Body>{page6.body1}</Body>
+          <Body>{page6.body2}</Body>
         </Subcontainer>
+        <Subcontainer1>
+          <Button onClick={() => window.open(`http://pdf.etco.tk/${1}`)}>
+            {page6.download}
+          </Button>
+        </Subcontainer1>
       </Container>
     </>
   );

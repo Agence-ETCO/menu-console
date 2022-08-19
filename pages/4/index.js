@@ -17,6 +17,12 @@ import {
   Subcontainer2,
   Subcontainer3,
   Title,
+  ButtonContainer1,
+  ButtonContainer2,
+  StyledButton,
+  Buttons,
+  Square,
+  SubTitle1,
 } from "./styled";
 
 const Page4 = () => {
@@ -24,19 +30,34 @@ const Page4 = () => {
     state,
     actions: { receiveData, addPreviousStep },
   } = useContext(AppContext);
+  const buttons1 = [2, 4, 6];
+  const buttons2 = [8, 10, 12];
   const min = 1;
   const [counter, setCounter] = useState(0);
+  const [selectedPack, setSelectedPack] = useState(0);
+  const [active, setActive] = useState(true);
   const selections = state.selections.filter(
     (option) => option.attributes && option.attributes.category === "Beer"
   );
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"
   );
-
-  const max = 6;
-  const selected = selections.length - 1 >= 0;
-  const selected2 = selections.length - 2 >= 0;
+  const disabled = selectedPack === 0;
+  const max = 2;
+  const selected =
+    (selectedPack === 8 && selections.length === 1) || selectedPack >= 10;
+  const selected2 = selectedPack >= 10;
   const limit = max - selections.length - 1 >= 0;
+
+  /* useEffect(() => {
+    if (selectedPack === 8 && selections.length === 1) {
+      setActive(true);
+    } else if (selectedPack === 8 && selections.length === 2) {
+      setActive(false);
+    } else if (selectedPack >= 10) {
+      return true;
+    }
+  }, [selectedPack, selections]); */
 
   useEffect(() => {
     const updatedCounter = selections.length <= min ? selections.length : min;
@@ -54,12 +75,14 @@ const Page4 = () => {
           console.log(err);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (state.previousStep < 3) {
       addPreviousStep(3);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -67,53 +90,93 @@ const Page4 = () => {
       <Header step={4} />
       <Subcontainer>
         <div>
-          <Title1>{page4.title}</Title1>
+          <Title1>Bières en fût </Title1>
           <SubTitle>
-            Encourageons le commerce local ! Sélectionnez 2 bières Labatt pour
-            inscrire<span>2 bières</span> de microbrasserie de votre choix
+            Lorem ipsum doloris exuvaduis iradum quavodis zarominis{" "}
           </SubTitle>
         </div>
         <MinMax beer />
       </Subcontainer>
       <Container>
-        <Subcontainer1>
-          <div>
-            <Title>{beerList.title}</Title>
-          </div>
-        </Subcontainer1>
-        <Subcontainer2>
-          {state.data &&
-            state.data
-              .filter((option) => option.attributes.category === "Beer")
-              .map((option) => (
-                <BeerCard
-                  key={option.id}
-                  value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
-                  limit={limit}
-                  option={option}
-                  imageUrl={option.attributes.imageURL}
-                />
-              ))}
-        </Subcontainer2>
-        <Title>{beerList.title2}</Title>
-        <Subcontainer3>
-          <DropDown disabled={!selected} options={craftOptions} order="01" />
-          <DropDown options={craftOptions} disabled={!selected2} order="02" />
-          <Bubble
-            count={selections.length}
-            show={counter === 1}
-            duration={"4s"}
-          />
-          <Bubble
-            count={selections.length}
-            show={selections.length === 2}
-            duration={"4s"}
-          />
-        </Subcontainer3>
+        <SubTitle1>
+          Combien de lignes de fût de bières avez vous ? Ne pas compter les
+          lignes de vins
+        </SubTitle1>
+        <Buttons>
+          <ButtonContainer1>
+            {buttons1.map((item, i) => (
+              <button key={i} onClick={() => setSelectedPack(item)}>
+                {item}
+              </button>
+            ))}
+          </ButtonContainer1>
+          <ButtonContainer2>
+            {buttons2.map((item, i) => (
+              <StyledButton
+                key={i}
+                active={selectedPack === item}
+                onClick={() => setSelectedPack(item)}
+              >
+                {item}
+              </StyledButton>
+            ))}
+          </ButtonContainer2>
+          <Square>
+            Tout d’abord, vous devez sélectionner 2 produits en fût de Labatt
+            pour vous permettre d’ajouter 2 bières en fût de microbrasserie.
+          </Square>
+        </Buttons>
+
+        {selectedPack > 6 && (
+          <>
+            <Subcontainer1>
+              <div>
+                <Title>{beerList.title}</Title>
+              </div>
+            </Subcontainer1>
+            <Subcontainer2>
+              {state.data &&
+                state.data
+                  .filter((option) => option.attributes.category === "Beer")
+                  .map((option) => (
+                    <BeerCard
+                      key={option.id}
+                      value={option.id}
+                      title={option.attributes.title}
+                      description={option.attributes.description}
+                      saqCode={option.attributes.saqCode}
+                      prices={option.attributes.cost}
+                      limit={limit}
+                      option={option}
+                      imageUrl={option.attributes.imageURL}
+                    />
+                  ))}
+            </Subcontainer2>
+            <Title>{beerList.title2}</Title>
+            <Subcontainer3>
+              <DropDown
+                disabled={!selected}
+                options={craftOptions}
+                order="01"
+              />
+              <DropDown
+                options={craftOptions}
+                disabled={!selected2}
+                order="02"
+              />
+              <Bubble
+                count={selections.length}
+                show={selected}
+                duration={"4s"}
+              />
+              <Bubble
+                count={selections.length}
+                show={selected2}
+                duration={"4s"}
+              />
+            </Subcontainer3>
+          </>
+        )}
       </Container>
 
       <Footer
@@ -122,7 +185,7 @@ const Page4 = () => {
         buttonText={footer.buttonText}
         href={"/5"}
         stage={"RÉSUMÉ"}
-        disabled={counter !== min}
+        disabled={disabled /* counter !== min */}
       />
     </>
   );

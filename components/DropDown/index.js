@@ -4,6 +4,7 @@ import Lock from "../Lock";
 import Lock1 from "../Lock1";
 import Form from "../Form";
 import CheckMark from "../CheckMark.js";
+import CraftList from "../CraftList";
 import RectangleSmall from "../RectangleSmall";
 import {
   Container,
@@ -41,7 +42,7 @@ const DropDown = ({ options, disabled, order }) => {
   const [type, setType] = useState("");
   const [format, setFormat] = useState("");
   const [alcohol, setAlcohol] = useState("");
-
+  const [showCraft, setShowCraft] = useState(false);
   const onBeerChange = (e) => setBeer(e.target.value);
   const onProducerChange = (e) => setProducer(e.target.value);
   const onTypeChange = (e) => setType(e.target.value);
@@ -81,6 +82,10 @@ const DropDown = ({ options, disabled, order }) => {
     } else {
       addMicro02(data);
     }
+  };
+
+  const handleClick1 = () => {
+    setShowCraft(!showCraft);
   };
 
   const handleClick = () => {
@@ -123,6 +128,12 @@ const DropDown = ({ options, disabled, order }) => {
 
   return (
     <>
+      <CraftList
+        showCraft={showCraft}
+        handleClick={handleClick1}
+        /* onCancel={onCancel}
+        handleSubmit={handleSubmit} */
+      />
       <Form
         showForm={showForm}
         handleClick={handleClick}
@@ -178,8 +189,12 @@ const DropDown = ({ options, disabled, order }) => {
             </Text>
             <Container1>
               <Text1 disabled={disabled}>{order}</Text1>
-              <DropDownHeader disabled={disabled} onClick={toggling} ref={ref}>
-                {(selectedOption && selectedOption.id) || beer ? (
+              <DropDownHeader
+                disabled={disabled}
+                onClick={handleClick1}
+                ref={ref}
+              >
+                {/*   {(selectedOption && selectedOption.id) || beer ? (
                   <div>
                     <SubContainer1>
                       <span>
@@ -204,9 +219,9 @@ const DropDown = ({ options, disabled, order }) => {
                       </span>
                     </SubContainer2>
                   </div>
-                ) : (
-                  <Header disabled={disabled}>{"Veuillez choisir"}</Header>
-                )}
+                ) : ( */}
+                <Header disabled={disabled}>{"Veuillez choisir"}</Header>
+                {/*  )} */}
 
                 <SubContainer>
                   <RectangleSmall />
@@ -214,7 +229,7 @@ const DropDown = ({ options, disabled, order }) => {
               </DropDownHeader>
             </Container1>
           </Container3>
-          {isOpen && (
+          {/*   {isOpen && (
             <DropDownListContainer>
               <DropDownList>
                 {options.map((option) => (
@@ -233,7 +248,7 @@ const DropDown = ({ options, disabled, order }) => {
                         </SubContainer3>
                       )}
                       <span>{option.attributes.title}</span>
-                      {/* {option} */}
+                      
                     </SubContainer1>
                     <SubContainer2>
                       <span> {"Blonde"}</span> <span>{"341ml"} </span>{" "}
@@ -246,7 +261,7 @@ const DropDown = ({ options, disabled, order }) => {
                 {"Ajouter votre microbrasserie"}
               </Button>
             </DropDownListContainer>
-          )}
+          )} */}
         </DropDownContainer>
       </Container>
     </>

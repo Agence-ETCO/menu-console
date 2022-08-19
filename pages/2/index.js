@@ -40,7 +40,7 @@ const Page2 = () => {
     state.userData.jwt ||
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
 
-  const handleClick = async () => {
+  /*  const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
@@ -54,12 +54,13 @@ const Page2 = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
+  }; */
 
   useEffect(() => {
     if (state.previousStep < 1) {
       addPreviousStep(1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -78,9 +79,10 @@ const Page2 = () => {
           console.log(err);
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (selections.length === 0) {
       const token =
         state.userData.jwt ||
@@ -95,7 +97,7 @@ const Page2 = () => {
           console.log(err);
         });
     }
-  }, []);
+  }, []); */
 
   return (
     <>
