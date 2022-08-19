@@ -29,6 +29,7 @@ export const SubTitle = styled.div`
   line-height: 23px;
   margin-left: 30px;
   max-width: 622px;
+  margin-top: 40px;
 
   span {
     font-family: "GTWalsheimBold";
