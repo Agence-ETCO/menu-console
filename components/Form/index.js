@@ -44,7 +44,7 @@ const Form = (props) => {
             <CloseButton onClick={props.handleClick}>
               <Image src={image} width={25} height={25} alt="" />
             </CloseButton>
-            <Title>{"Ajouter une bière de microbrasserie"}</Title>
+            <Title>{"Vous désirez ajouter un produit en particulier ?"}</Title>
             <Subtitle>
               {
                 "Vous désirez nous faire part d’une demande particulière ? C’est possible ! Pour cela, il vous suffit de renseigner quelques informations."

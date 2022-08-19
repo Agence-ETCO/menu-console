@@ -204,7 +204,7 @@ const Page5 = () => {
             Une fois votre sélection soumise, il vous sera impossible de faire
             des modifications.
           </Subtitle1>
-          <Subtitle1>erci de votre collaboration.</Subtitle1>
+          <Subtitle1>Merci de votre collaboration.</Subtitle1>
         </Subcontainer1>
         <Title>{page2.title}</Title>
         <Subcontainer>

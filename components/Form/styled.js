@@ -60,6 +60,7 @@ export const Title = styled.div`
   color: #231f20;
   margin-top: 75px;
   margin-bottom: 15px;
+  width: 400px;
 `;
 
 export const Subtitle = styled.div`
