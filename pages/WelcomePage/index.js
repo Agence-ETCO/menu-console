@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
+import { AppContext } from "../../context/AppContext";
 import { welcomePage } from "../../fr";
-import { getToken } from "../../lib/api";
+import { useRouter } from "next/router";
+import { login } from "../../lib/api";
 import {
   Greeting,
   Title,
@@ -17,21 +19,30 @@ import {
 } from "./styled";
 
 const WelcomePage = () => {
-  const date = "12 septembre 2022";
+  const date = "14 septembre 2022";
+  const {
+    state,
+    actions: { addUser },
+  } = useContext(AppContext);
+  const router = useRouter();
+  const { loginToken } = router.query;
 
   /* useEffect(() => {
-    getToken()
-      .then(({ data }) => {
-        const userName = data.user.username;
-        const token = data.jwt;
-        localStorage.setItem("user", JSON.stringify(userName));
-        localStorage.setItem("token", JSON.stringify(token));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []); */
+    if (loginToken) {
+      login(loginToken)
+        .then(({ data }) => {
+          addUser(data);
+          const { jwt, user } = data;
+          localStorage.setItem("jwt", jwt);
+          localStorage.setItem("user", JSON.stringify(user));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [router, loginToken]); */
 
+  /* console.log(state.userData.user && state.userData.user.username); */
   return (
     <>
       <Header step={-1} />
@@ -44,6 +55,7 @@ const WelcomePage = () => {
           <Body1>{welcomePage.body1}</Body1>
           <Date>{date}</Date>
           <Body1>{welcomePage.body2}</Body1>
+          <Body>Merci de votre collaboration, </Body>
         </Subcontainer>
         <Ending>
           {welcomePage.help}

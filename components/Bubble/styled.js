@@ -1,9 +1,10 @@
 import styled, { keyframes } from "styled-components";
 
 const outEffect = keyframes`
-
-  0%   { opacity: 1; }
- 100% { opacity: 0; }
+   0%   { opacity: 1; }
+  50% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
 
 `;
 export const Select = styled.div`

@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
+import { AppContext } from "../../context/AppContext";
+import { fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { beerList, page4, footer } from "../../fr";
 import {
@@ -15,58 +17,62 @@ import {
   Subcontainer2,
   Subcontainer3,
   Title,
+  ButtonContainer1,
+  ButtonContainer2,
+  StyledButton,
+  Buttons,
+  Square,
+  SubTitle1,
 } from "./styled";
 
 const Page4 = () => {
+  const {
+    state,
+    actions: { receiveData, addPreviousStep },
+  } = useContext(AppContext);
+  const buttons1 = [2, 4, 6];
+  const buttons2 = [8, 10, 12];
   const min = 1;
-  const [selections, setSelections] = useState([]);
-  const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [selectedPack, setSelectedPack] = useState(0);
 
-  const options = [1, 2, 3, 4, 5, 6, 7];
-  const max = 6;
-
-  const selected = selections.length - 1 >= 0;
-  const selected2 = selections.length - 2 >= 0;
-
-  const handleCheckboxChange = (option) => {
-    let updatedSelections = [];
-    let checked = selections.find((selection) => selection === option);
-    let limit = max - selections.length - 1 >= 0;
-
-    if (checked) {
-      updatedSelections = selections.filter(
-        (selection) => selection !== option
-      );
-    } else if (!checked && limit) {
-      updatedSelections = [...selections, option];
-    } else if (!checked && !limit) {
-      updatedSelections = [...selections];
-    }
-
-    setSelections(updatedSelections);
-
-    setUpdated(!updated);
-    localStorage.setItem("beer", JSON.stringify(updatedSelections));
-  };
+  const selections = state.selections.filter(
+    (option) => option.attributes && option.attributes.category === "Beer"
+  );
+  const craftOptions = state.data.filter(
+    (option) => option.attributes.category === "Craft Beer"
+  );
+  const disabled = selectedPack === 0;
+  const max = 2;
+  const selected =
+    (selectedPack === 8 && selections.length >= 1) || selectedPack >= 10;
+  const selected2 = selectedPack >= 10;
+  const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
     const updatedCounter = selections.length <= min ? selections.length : min;
     setCounter(updatedCounter);
   }, [selections]);
 
-  const dropDownOptions = [
-    "La Mcrobrasserie1, Montréal, QC",
-    "La Mcrobrasserie2, Montréal, QC",
-    "La Mcrobrasserie3, Montréal, QC",
-    "La Mcrobrasserie4, Montréal, QC",
-    "La Mcrobrasserie5, Montréal, QC",
-  ];
+  useEffect(() => {
+    if (state.data.length === 0) {
+      const token = state.userData.jwt || "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    localStorage.removeItem("beer");
-    localStorage.removeItem("microbrasserie01");
-    localStorage.removeItem("microbrasserie02");
+    if (state.previousStep < 3) {
+      addPreviousStep(3);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -74,49 +80,89 @@ const Page4 = () => {
       <Header step={4} />
       <Subcontainer>
         <div>
-          <Title1>{page4.title}</Title1>
+          <Title1>Bières en fût </Title1>
           <SubTitle>
-            Encourageons le commerce local ! Sélectionnez 2 bières Labatt pour
-            inscrire<span>2 bières</span> de microbrasserie de votre choix
+            Lorem ipsum doloris exuvaduis iradum quavodis zarominis{" "}
           </SubTitle>
         </div>
         <MinMax beer />
       </Subcontainer>
       <Container>
-        <Subcontainer1>
-          <div>
-            <Title>{beerList.title}</Title>
-          </div>
-        </Subcontainer1>
-        <Subcontainer2>
-          {options.map((option, i) => (
-            <BeerCard
-              key={i}
-              checked={!!selections.includes(option)}
-              handleCheckboxChange={() => handleCheckboxChange(option)}
-              value={option}
-            />
-          ))}
-        </Subcontainer2>
-        <Title>{beerList.title2}</Title>
-        <Subcontainer3>
-          <DropDown disabled={!selected} options={dropDownOptions} order="01" />
-          <DropDown
-            options={dropDownOptions}
-            disabled={!selected2}
-            order="02"
-          />
-          <Bubble
-            count={selections.length}
-            show={counter === 1}
-            duration={"4s"}
-          />
-          <Bubble
-            count={selections.length}
-            show={selections.length === 2}
-            duration={"4s"}
-          />
-        </Subcontainer3>
+        <SubTitle1>
+          Combien de lignes de fût de bières avez vous ? Ne pas compter les
+          lignes de vins
+        </SubTitle1>
+        <Buttons>
+          <ButtonContainer1>
+            {buttons1.map((item, i) => (
+              <button key={i} onClick={() => setSelectedPack(item)}>
+                {item}
+              </button>
+            ))}
+          </ButtonContainer1>
+          <ButtonContainer2>
+            {buttons2.map((item, i) => (
+              <StyledButton
+                key={i}
+                active={selectedPack === item}
+                onClick={() => setSelectedPack(item)}
+              >
+                {item}
+              </StyledButton>
+            ))}
+          </ButtonContainer2>
+          <Square>
+            Tout d’abord, vous devez sélectionner 2 produits en fût de Labatt
+            pour vous permettre d’ajouter 2 bières en fût de microbrasserie.
+          </Square>
+        </Buttons>
+
+        {selectedPack > 6 && (
+          <>
+            <Subcontainer1>
+              <div>
+                <Title>{beerList.title}</Title>
+              </div>
+            </Subcontainer1>
+            <Subcontainer2>
+              {state.data &&
+                state.data
+                  .filter((option) => option.attributes.category === "Beer")
+                  .map((option) => (
+                    <BeerCard
+                      key={option.id}
+                      value={option.id}
+                      title={option.attributes.title}
+                      description={option.attributes.description}
+                      saqCode={option.attributes.saqCode}
+                      prices={option.attributes.cost}
+                      limit={limit}
+                      option={option}
+                      imageUrl={option.attributes.imageURL}
+                    />
+                  ))}
+            </Subcontainer2>
+            <Title>{beerList.title2}</Title>
+            <Subcontainer3>
+              <DropDown
+                disabled={!selected}
+                options={craftOptions}
+                order="01"
+              />
+              <DropDown
+                options={craftOptions}
+                disabled={!selected2}
+                order="02"
+              />
+              <Bubble
+                count={selections.length}
+                show={selected}
+                duration={"4s"}
+              />
+              <Bubble count={selected2} show={selected2} duration={"4s"} />
+            </Subcontainer3>
+          </>
+        )}
       </Container>
 
       <Footer
@@ -125,7 +171,7 @@ const Page4 = () => {
         buttonText={footer.buttonText}
         href={"/5"}
         stage={"RÉSUMÉ"}
-        disabled={counter !== min}
+        disabled={disabled /* counter !== min */}
       />
     </>
   );

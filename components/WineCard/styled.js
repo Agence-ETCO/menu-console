@@ -68,13 +68,7 @@ export const TextContainer = styled.div`
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 25px;
-  div:nth-child(1) {
-    margin-bottom: 5px;
-    font-size: 19px;
-    font-family: "GTWalsheimBold";
-    font-style: normal;
-    font-weight: 700;
-  }
+  width: 300px;
 
   div:nth-child(3) {
     font-family: "GTWalsheimMedium";
@@ -150,9 +144,9 @@ export const Circle = styled.div`
   background-color: #f1bdd8;
   border-radius: 50%;
   position: absolute;
-  top: 25%;
+  top: 10%;
   border: 1px solid #a39161;
-  right: 0;
+  right: 10px;
 `;
 
 export const IconContainer = styled.div`
@@ -171,8 +165,6 @@ export const Icons = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  height: 241px;
-  width: 119px;
   margin-top: 15px;
 `;
 
@@ -187,4 +179,13 @@ export const Sugar = styled.div`
   line-height: 20px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+`;
+
+export const Title = styled.div`
+  margin-bottom: 5px;
+  font-size: 19px;
+  font-family: "GTWalsheimBold";
+  font-style: normal;
+  font-weight: 700;
+  height: 60px;
 `;

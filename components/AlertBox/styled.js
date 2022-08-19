@@ -69,6 +69,7 @@ export const BoxContainer = styled.div`
     margin-top: 20px;
     font-family: "GTWalsheimBold";
     font-weight: 700;
+    width: 423px;
   }
 `;
 

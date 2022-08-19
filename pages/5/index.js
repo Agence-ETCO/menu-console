@@ -1,150 +1,97 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
-import Footer from "../../components/Footer/index";
-import BeerCard from "../../components/BeerCard";
-import WineCard from "../../components/WineCard";
-import AlertBox from "../../components/AlertBox";
-import { page2, page3, beerList, option2, footer } from "../../fr";
+import Footer from "../../components/Footer";
+import BeerCard2 from "../../components/BeerCard2";
+import DropDown from "../../components/DropDown";
+import MinMax from "../../components/MinMax";
+import Bubble from "../../components/Bubble";
+import { beerList, page4, footer } from "../../fr";
 import {
-  Container,
-  Subcontainer,
-  Title,
-  Subcontainer1,
-  Subtitle1,
   Title1,
+  SubTitle,
+  Subcontainer,
+  Container,
+  Subcontainer1,
+  Subcontainer2,
+  Subcontainer3,
+  Title,
 } from "./styled";
 
-const Page5 = () => {
-  const router = useRouter();
-  const [showAlert, setShowAlert] = useState(false);
-  const [white, setWhite] = useState(null);
-  const [red, setRed] = useState(null);
-  const [beer, setBeer] = useState(null);
-  const [micro, setMicro] = useState(null);
-  const handleClick = () => {
-    setShowAlert(true);
+const Page4 = () => {
+  const min = 1;
+  const [selections, setSelections] = useState([]);
+  const [updated, setUpdated] = useState(false);
+  const [counter, setCounter] = useState(0);
+
+  const options = [1, 2];
+  const max = 2;
+
+  const selected = selections.length - 1 >= 0;
+  const selected2 = selections.length - 2 >= 0;
+
+  const handleCheckboxChange = (option) => {
+    let updatedSelections = [];
+    let checked = selections.find((selection) => selection === option);
+    let limit = max - selections.length - 1 >= 0;
+
+    if (checked) {
+      updatedSelections = selections.filter(
+        (selection) => selection !== option
+      );
+    } else if (!checked && limit) {
+      updatedSelections = [...selections, option];
+    } else if (!checked && !limit) {
+      updatedSelections = [...selections];
+    }
+
+    setSelections(updatedSelections);
+
+    setUpdated(!updated);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    router.push("/6");
-  };
-
-  const onCancel = () => {
-    setShowAlert(false);
-  };
-
-  const value1 =
-    typeof window !== "undefined" && JSON.parse(localStorage.getItem("white"));
-
-  const value2 =
-    typeof window !== "undefined" && JSON.parse(localStorage.getItem("red"));
-
-  const value3 =
-    typeof window !== "undefined" && JSON.parse(localStorage.getItem("beer"));
-
-  const value4 =
-    typeof window !== "undefined" && localStorage.getItem("microbrasserie01");
-
-  const value5 =
-    typeof window !== "undefined" && localStorage.getItem("microbrasserie02");
 
   useEffect(() => {
-    setWhite(value1);
-    setRed(value2);
-    setBeer(value3);
-    if (value4 !== null) {
-      setMicro([1]);
-    }
-    if (value5 !== null) {
-      setMicro([1, 2]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const updatedCounter = selections.length <= min ? selections.length : min;
+    setCounter(updatedCounter);
+  }, [selections]);
+
   return (
     <>
-      <AlertBox
-        showAlert={showAlert}
-        onCancel={onCancel}
-        handleSubmit={handleSubmit}
-      />
-      <Header step={5} />
+      <Header step={4} />
+      <Subcontainer>
+        <div>
+          <Title>Bières non-alcoolisés </Title>
+          <SubTitle>
+            Lorem ipsum doloris exuvaduis iradum quavodis zarominis
+          </SubTitle>
+        </div>
+        <MinMax beer />
+      </Subcontainer>
       <Container>
         <Subcontainer1>
-          <Title1>Nous y sommes presque !</Title1>
-          <Subtitle1>
-            Voici votre sélection. Relisez vos choix avec attention !
-          </Subtitle1>
-          <Subtitle1>
-            Une fois votre sélection soumise, vous ne pourrez plus la modifier.
-          </Subtitle1>
+          <div></div>
         </Subcontainer1>
-        <Title>{page2.title}</Title>
-        <Subcontainer>
-          {white &&
-            white.length > 0 &&
-            white.map((option, i) => (
-              <WineCard
-                key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
-        </Subcontainer>
-        <Title>{page3.title}</Title>
-        <Subcontainer>
-          {red &&
-            red.length > 0 &&
-            red.map((option, i) => (
-              <WineCard
-                key={i}
-                red
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
-        </Subcontainer>
-        <Title>{beerList.title}</Title>
-        <Subcontainer>
-          {beer &&
-            beer.length > 0 &&
-            beer.map((option, i) => (
-              <BeerCard
-                key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
-        </Subcontainer>
-        <Title>{option2.title}</Title>{" "}
-        <Subcontainer>
-          {micro &&
-            micro.length > 0 &&
-            micro.map((option, i) => (
-              <BeerCard
-                key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))}
-        </Subcontainer>
-        <Title1>Êtes-vous prêt à valider votre sélection?</Title1>
+        <Subcontainer2>
+          {options.map((option, i) => (
+            <BeerCard2
+              key={i}
+              checked={!!selections.includes(option)}
+              handleCheckboxChange={() => handleCheckboxChange(option)}
+              value={option}
+            />
+          ))}
+        </Subcontainer2>
       </Container>
 
       <Footer
-        returnButtonText={footer.change}
+        returnButtonText={footer.return}
         returnHref={"/4"}
-        viewButtonText={footer.view}
-        submitButtonText={footer.submit}
-        handleSubmit={handleClick}
+        buttonText={footer.buttonText}
+        href={"/6"}
+        stage={"RÉSUMÉ"}
+        disabled={counter !== min}
       />
     </>
   );
 };
 
-export default Page5;
+export default Page4;

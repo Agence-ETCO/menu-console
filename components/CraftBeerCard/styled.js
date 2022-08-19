@@ -8,10 +8,11 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   width: 413px;
-  height: 305px;
+  height: 212px;
   position: relative;
   padding-top: 15px;
   margin-bottom: 40px;
+  margin-right: 20px;
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -50,17 +51,20 @@ export const StyledCheckbox = styled.div`
   position: relative;
 `;
 
+export const Title = styled.div`
+  margin-bottom: 5px;
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+`;
+
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
   margin-left: 20px;
   width: 250px;
   div:nth-child(1) {
-    margin-bottom: 5px;
-    font-family: "GTWalsheimBold";
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 23px;
   }
   div:nth-child(2) {
     color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
@@ -69,39 +73,6 @@ export const TextContainer = styled.div`
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(147, 149, 152, 0.5);
-  }
-
-  div:nth-child(4) {
-    color: ${(props) =>
-      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
-    font-family: "GTWalsheimRegular";
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 15px;
-    text-transform: uppercase;
-  }
-
-  table {
-    margin-bottom: 45px;
-    margin-top: 25px;
-
-    th {
-      color: ${(props) =>
-        props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
-      font-family: "GTWalsheimRegular";
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 15px;
-      width: 90px;
-    }
-    tr {
-      font-family: "GTWalsheimBold";
-      font-weight: 700;
-      font-size: 15px;
-      line-height: 18px;
-    }
   }
 `;
 export const SubContainer = styled.div`
@@ -109,11 +80,63 @@ export const SubContainer = styled.div`
   flex-direction: row;
   margin-right: 40px;
   margin-left: 40px;
-  margin-top: 30px;
+  margin-top: 10px;
 `;
-export const ImageContainer = styled.div`
-  height: 241px;
-  width: 119px;
-  margin-top: -5px;
-  margin-left: -20px;
+export const Type = styled.div`
+  color: ${(props) =>
+    props.checked
+      ? "rgba(255,255,255, 0.5)"
+      : "rgba(35, 31, 32, 0.5)"} !important;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(147, 149, 152, 0.5);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+`;
+
+export const Format = styled.div`
+  color: ${(props) => (props.checked ? "#F5BA18" : "#3C3C3C")} !important;
+  font-family: "GtWalsheimRegular";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+`;
+
+export const Size = styled.div`
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
+  font-size: 14px;
+  line-height: 15px;
+`;
+
+export const Price = styled.div`
+  color: ${(props) => (props.checked ? "white" : "#231f20")} !important;
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+`;
+
+export const Container1 = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const SubContainer1 = styled.div`
+  display: flex;
+  flex-directon: row;
+  justify-content: left;
+  div:nth-child(1) {
+    margin-right: 10px;
+  }
 `;

@@ -54,7 +54,6 @@ export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
   margin-left: 20px;
-  width: 250px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-family: "GTWalsheimBold";
@@ -72,7 +71,6 @@ export const TextContainer = styled.div`
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(147, 149, 152, 0.5);
   }
-
   div:nth-child(4) {
     color: ${(props) =>
       props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
@@ -82,11 +80,9 @@ export const TextContainer = styled.div`
     line-height: 15px;
     text-transform: uppercase;
   }
-
   table {
     margin-bottom: 45px;
     margin-top: 25px;
-
     th {
       color: ${(props) =>
         props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
@@ -114,6 +110,6 @@ export const SubContainer = styled.div`
 export const ImageContainer = styled.div`
   height: 241px;
   width: 119px;
-  margin-top: -5px;
+  margin-top: 15px;
   margin-left: -20px;
 `;

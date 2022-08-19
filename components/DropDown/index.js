@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 import Lock from "../Lock";
 import Lock1 from "../Lock1";
 import Form from "../Form";
 import CheckMark from "../CheckMark.js";
+import CraftList from "../CraftList";
 import RectangleSmall from "../RectangleSmall";
 import {
   Container,
@@ -25,17 +27,22 @@ import {
   StyledCheckbox,
 } from "./styled";
 
-const DropDown = ({ options, disabled, order, count }) => {
+const DropDown = ({ options, disabled, order }) => {
+  const {
+    state,
+    actions: { addMicro01, addMicro02 },
+  } = useContext(AppContext);
+
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState({});
   const [showForm, setShowForm] = useState(false);
-  const [beer, setBeer] = useState(null);
-  const [producer, setProducer] = useState(null);
-  const [type, setType] = useState(null);
-  const [format, setFormat] = useState(null);
-  const [alcohol, setAlcohol] = useState(null);
-
+  const [beer, setBeer] = useState("");
+  const [producer, setProducer] = useState("");
+  const [type, setType] = useState("");
+  const [format, setFormat] = useState("");
+  const [alcohol, setAlcohol] = useState("");
+  const [showCraft, setShowCraft] = useState(false);
   const onBeerChange = (e) => setBeer(e.target.value);
   const onProducerChange = (e) => setProducer(e.target.value);
   const onTypeChange = (e) => setType(e.target.value);
@@ -51,7 +58,36 @@ const DropDown = ({ options, disabled, order, count }) => {
       .replace(/(,.*?),(.*,)?/, "$1");
     setAlcohol(value);
   };
-  const onFormSubmit = () => setSelectedOption(null);
+  const isSelected = (option) => {
+    if (
+      (state.micro1.id && state.micro1.id === option.id) ||
+      (state.micro2.id && state.micro2.id === option.id)
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const onFormSubmit = () => {
+    setSelectedOption(null);
+    const data = {
+      description: beer,
+      title: producer,
+      type,
+      size: format,
+      alcohol,
+    };
+    if (order === "01") {
+      addMicro01(data);
+    } else {
+      addMicro02(data);
+    }
+  };
+
+  const handleClick1 = () => {
+    setShowCraft(!showCraft);
+  };
+
   const handleClick = () => {
     setShowForm(!showForm);
   };
@@ -62,9 +98,18 @@ const DropDown = ({ options, disabled, order, count }) => {
   };
 
   const onOptionClick = (value) => {
+    if (isSelected(value)) {
+      return null;
+    }
     setIsOpen(false);
+
     setSelectedOption(value);
-    localStorage.setItem(`microbrasserie${order}`, value);
+
+    if (order === "01") {
+      addMicro01(value);
+    } else {
+      addMicro02(value);
+    }
   };
 
   useEffect(() => {
@@ -83,11 +128,16 @@ const DropDown = ({ options, disabled, order, count }) => {
 
   return (
     <>
+      <CraftList
+        showCraft={showCraft}
+        handleClick={handleClick1}
+        /* onCancel={onCancel}
+        handleSubmit={handleSubmit} */
+      />
       <Form
         showForm={showForm}
         handleClick={handleClick}
         order={order}
-        count={count}
         beer={beer}
         producer={producer}
         type={type}
@@ -139,22 +189,39 @@ const DropDown = ({ options, disabled, order, count }) => {
             </Text>
             <Container1>
               <Text1 disabled={disabled}>{order}</Text1>
-              <DropDownHeader disabled={disabled} onClick={toggling} ref={ref}>
-                {selectedOption || beer ? (
+              <DropDownHeader
+                disabled={disabled}
+                onClick={handleClick1}
+                ref={ref}
+              >
+                {/*   {(selectedOption && selectedOption.id) || beer ? (
                   <div>
                     <SubContainer1>
-                      <span>{beer || "Nom de la bière"}</span>
-                      {selectedOption ? selectedOption : producer}
+                      <span>
+                        {selectedOption && selectedOption.id
+                          ? "Nom de la bière"
+                          : beer}
+                      </span>
+                      {selectedOption && selectedOption.id
+                        ? selectedOption.attributes.title
+                        : producer}
                     </SubContainer1>
                     <SubContainer2>
-                      <span> {selectedOption ? "Blonde" : type}</span>{" "}
-                      <span>{selectedOption ? "341ml" : format} </span>{" "}
-                      <span>{selectedOption ? "4.5%" : alcohol}</span>
+                      <span>
+                        {" "}
+                        {selectedOption && selectedOption.id ? "Blonde" : type}
+                      </span>{" "}
+                      <span>
+                        {selectedOption && selectedOption.id ? "341ml" : format}{" "}
+                      </span>{" "}
+                      <span>
+                        {selectedOption && selectedOption.id ? "4.5%" : alcohol}
+                      </span>
                     </SubContainer2>
                   </div>
-                ) : (
-                  <Header disabled={disabled}>{"Veuillez choisir"}</Header>
-                )}
+                ) : ( */}
+                <Header disabled={disabled}>{"Veuillez choisir"}</Header>
+                {/*  )} */}
 
                 <SubContainer>
                   <RectangleSmall />
@@ -162,17 +229,17 @@ const DropDown = ({ options, disabled, order, count }) => {
               </DropDownHeader>
             </Container1>
           </Container3>
-          {isOpen && (
+          {/*   {isOpen && (
             <DropDownListContainer>
               <DropDownList>
                 {options.map((option) => (
                   <ListItem
                     onClick={() => onOptionClick(option)}
                     key={Math.random()}
-                    checked={option === selectedOption}
+                    checked={isSelected(option)}
                   >
                     <SubContainer1>
-                      {option === selectedOption && (
+                      {isSelected(option) && (
                         <SubContainer3>
                           <CheckboxContainer>
                             <CheckMark />
@@ -180,8 +247,8 @@ const DropDown = ({ options, disabled, order, count }) => {
                           </CheckboxContainer>
                         </SubContainer3>
                       )}
-                      <span>{"Nom de la bière"}</span>
-                      {option}
+                      <span>{option.attributes.title}</span>
+                      
                     </SubContainer1>
                     <SubContainer2>
                       <span> {"Blonde"}</span> <span>{"341ml"} </span>{" "}
@@ -194,7 +261,7 @@ const DropDown = ({ options, disabled, order, count }) => {
                 {"Ajouter votre microbrasserie"}
               </Button>
             </DropDownListContainer>
-          )}
+          )} */}
         </DropDownContainer>
       </Container>
     </>

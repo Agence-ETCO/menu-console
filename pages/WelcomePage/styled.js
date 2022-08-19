@@ -25,8 +25,7 @@ export const Title = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
-  line-height: 23px;
-  margin-bottom: 40px;
+  line-height: 33px;
 `;
 export const Body = styled.div`
   font-family: "GTWalsheimRegular";
@@ -34,6 +33,7 @@ export const Body = styled.div`
   font-weight: 400;
   font-size: 17px;
   line-height: 23px;
+  margin-top: 40px;
 `;
 export const Body1 = styled.span`
   font-family: "GTWalsheimRegular";

@@ -1,28 +1,29 @@
 export const welcomePage = {
   greeting: "Bonjour, Succursale 456,",
-  title: "Créons ensemble votre nouveau menu de breuvages alcoolisés",
-  body: "Afin que nos clients puissent toujours goûter au choix et au service qui façonne notre réputation, nous vous invitons à sélectionner les alcools de votre nouveau menu.",
-  dateLimite: "Attention :",
-  body1: "vous avez jusqu'au",
-  body2: "pour faire votre sélection et celle-ci est définitive",
+  title: "Créons ensemble votre nouvelle carte des alcools",
+  body: "Afin de rehausser votre offre et d'offrir une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les produits pour personnaliser votre carte des alcools.",
+  dateLimite: "IMPORTANT :",
+  body1: "veuillez compléter votre sélection au plus tard le ",
+  body2:
+    "afin de vous assurer d'obtenir votre carte des alcools dans les délais prévus.",
   help: "Besoin d'aide?",
   contact: "Contactez-nous",
   buttonText: "débuter",
 };
 
 export const page1 = {
-  title: "Voici à quoi ressemblera votre nouveau menu de breuvages alcoolisés",
+  title: "Voici à quoi ressemblera votre nouvelle carte des alcools",
   body: "Au format 8.5 x 11.5, il permettra à vos clients de choisir facilement leurs boissons.em ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
   body1:
-    "Une fois votre sélection validée, nous concevrons votre nouveau menu, le ferons imprimer, puis parvenir après le 30 septembre. ",
+    "La carte des alcools devra être insérée dans votre cartable menu salle à manger et permettra à vos clients de sélectionner facilement leurs boissons. ",
   body2:
-    "Afin de préserver notre bonne notre bonne réputation et la qualité de nos restaurants, nous vous prions de bien vouloir attendre la réception de votre menu pour l’utiliser.",
+    "Une fois votre sélection validée, nous concevrons votre carte des alcools personnalisées, la ferons imprimer, puis parvenir d'ici le 25 octobre.",
   buttonText: "VALIDER",
 };
 
 export const page2 = {
   title: "Vins blancs",
-  select: "vins blancs disponibles",
+  select: "disponibles",
   return: "retour",
   buttonText: "VALIDER",
 };
@@ -43,17 +44,18 @@ export const page4 = {
 export const page6 = {
   title: "Merci",
   subtitle:
-    "Votre sélection a bien été envoyée, nous allons donc pouvoir imprimer votre nouveau menu.",
+    "Votre sélection a bien été envoyée, nous allons donc procéder à l'impression de votre cartes des alcools personnalisées. ",
   body1:
-    "En attendant, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
+    " Entre-temps, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
   body2:
     "S'il vous plaît, n'imprimez pas le résumé pour l'utiliser dans votre restaurant. Nous vous ferons parvenir votre nouveau menu au plus tôt.",
   download: "télécharger ",
 };
 export const alertBox = {
-  title: "attention",
+  title: "IMPORTANT",
   body: "Une fois soumise, vous ne pourrez plus changer vos choix.",
-  question: "Êtes-vous certain de vouloir soumettre votre menu?",
+  question:
+    " Êtes-vous certain de vouloir soumettre votre sélection pour votre carte des alcools.",
   buttonText1: "soumettre maintenant",
   buttonText2: "annuler",
 };

@@ -7,6 +7,7 @@ export const TextButton = styled.button`
   height: 45px;
   size: 17px;
   line-height: 20px;
+  letter-spacing: 0.05em;
   color: ${(props) =>
     props.color === colors.orange ? colors.black : colors.grey};
   font-family: "GTWalsheimBold";

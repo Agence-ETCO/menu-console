@@ -1,58 +1,66 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
+import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
-/* import { fetchAPI } from "../../lib/api"; */
+import { postAPI, fetchAPI } from "../../lib/api";
 import {
   Container,
   Subcontainer1,
   Subcontainer2,
   Title,
   SubTitle,
-  Select,
 } from "./styled";
 
 const Page2 = () => {
+  const {
+    state,
+    actions: { receiveData, addPreviousStep, addSelection },
+  } = useContext(AppContext);
+
   const min = 1;
-  const [selections, setSelections] = useState([]);
-  const [data, setData] = useState([]);
-  const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
-  const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 3;
   const quantity = 18;
-
+  const selections = state.selections.filter(
+    (option) =>
+      (option.attributes && option.attributes.category === "White Wine") ||
+      option.category === "White Wine"
+  );
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
+  const limit = max - selections.length - 1 >= 0;
 
-  const handleCheckboxChange = (option) => {
-    let updatedSelections = [];
-    let checked = selections.find((selection) => selection === option);
-    let limit = max - selections.length - 1 >= 0;
+  const token =
+    state.userData.jwt ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
 
-    if (checked) {
-      updatedSelections = selections.filter(
-        (selection) => selection !== option
-      );
-    } else if (!checked && limit) {
-      updatedSelections = [...selections, option];
-    } else if (!checked && !limit) {
-      updatedSelections = [...selections];
-    }
+  /*  const handleClick = async () => {
+    const menuItems = state.selections.map((option) => option.id);
+    const menuData = {
+      menu_items: [...menuItems],
+      franchisee: 4,
+    };
 
-    setSelections(updatedSelections);
-
-    setUpdated(!updated);
-    localStorage.setItem("white", JSON.stringify(updatedSelections));
-  };
+    postAPI("api/franchisees-menus?populate=deep", token, menuData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }; */
 
   useEffect(() => {
-    localStorage.removeItem("white");
+    if (state.previousStep < 1) {
+      addPreviousStep(1);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -60,17 +68,35 @@ const Page2 = () => {
     setCounter(updatedCounter);
   }, [selections]);
 
+  useEffect(() => {
+    if (state.data.length === 0) {
+      const token = state.userData.jwt || "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   /* useEffect(() => {
-    const token =
-      typeof window !== "undefined" &&
-      JSON.parse(localStorage.getItem("token"));
-    fetchAPI("/api/menu-items?populate=*", token)
-      .then((res) => {
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (selections.length === 0) {
+      const token =
+        state.userData.jwt ||
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
+      const userId = 4;
+
+      fetchAPI("/api/users/4?populate=deep", token)
+        .then((res) => {
+          addSelection(...res.franchisee_s_menu.menu_items);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }, []); */
 
   return (
@@ -79,23 +105,21 @@ const Page2 = () => {
       <Container>
         <Subcontainer1>
           <div>
-            <Title>{page2.title}</Title>
+            <Title>{page2.title} </Title>
             <SubTitle>
-              Choisissez parmi les <span>{quantity} produits</span>
+              Choisissez parmi les <span>{quantity} vins blancs Cellier</span>
               disponibles
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />
         </Subcontainer1>
         <Subcontainer2>
-          {/* {data &&
-            data
+          {state.data &&
+            state.data
               .filter((option) => option.attributes.category === "White Wine")
               .map((option) => (
                 <WineCard
                   key={option.id}
-                  checked={!!selections.find((sel) => sel.id === option.id)}
-                  handleCheckboxChange={() => handleCheckboxChange(option)}
                   value={option.id}
                   title={option.attributes.title}
                   description={option.attributes.description}
@@ -104,17 +128,11 @@ const Page2 = () => {
                   sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}
+                  limit={limit}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
                 />
               ))}
- */}
-          {options.map((option, i) => (
-            <WineCard
-              key={i}
-              checked={!!selections.includes(option)}
-              handleCheckboxChange={() => handleCheckboxChange(option)}
-              value={option}
-            />
-          ))}
         </Subcontainer2>
       </Container>
 
@@ -122,6 +140,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
+        /*   handleClick={handleClick} */
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}

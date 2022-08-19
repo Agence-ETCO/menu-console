@@ -1,4 +1,6 @@
+import React, { useEffect, useContext } from "react";
 import Image from "next/image";
+import { AppContext } from "../../context/AppContext";
 import CheckMark from "../CheckMark.js";
 import image from "../../public/Rectangle.png";
 import {
@@ -12,22 +14,62 @@ import {
 } from "./styled.js";
 
 const BeerCard = (props) => {
+  const {
+    state,
+    actions: { addSelection, removeSelection },
+  } = useContext(AppContext);
+
+  const isChecked = (option) => {
+    if (
+      (option &&
+        state.selections.find((selection) => selection.id === option.id)) ||
+      state.micro1.id === option.id ||
+      state.micro2.id === option.id
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleCheckboxChange = (option) => {
+    if (props.step === 5) {
+      return null;
+    }
+
+    let checked = state.selections.find(
+      (selection) => selection.id === option.id
+    );
+
+    if (checked) {
+      removeSelection(option.id);
+    } else if (!checked && props.limit) {
+      addSelection(option);
+    } else if (!checked && !props.limit) {
+      return;
+    }
+  };
   return (
     <>
-      <Label checked={props.checked}>
-        <CheckboxContainer checked={props.checked}>
+      <Label checked={isChecked(props.option)}>
+        <CheckboxContainer checked={isChecked(props.option)}>
           <HiddenCheckbox
-            checked={props.checked}
-            onChange={props.handleCheckboxChange}
+            checked={isChecked(props.option)}
+            onChange={() => handleCheckboxChange(props.option)}
           />
           <CheckMark />
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
           <ImageContainer>
-            <Image src={image} width={104} height={210} alt="" />
+            <Image
+              src={props.imageUrl || image}
+              width={115}
+              height={200}
+              alt=""
+              layout="intrinsic"
+            />
           </ImageContainer>
-          <TextContainer checked={props.checked}>
+          <TextContainer checked={isChecked(props.option)}>
             <div>{props.title || "Budweiser (5%)"}</div>
             <div> {props.description || "Lager américaine"} </div>
             {props.prices ? (
@@ -35,13 +77,17 @@ const BeerCard = (props) => {
                 <tbody>
                   <tr>
                     <th scope="col">{props.prices[0].size}</th>
-                    <th scope="col">{props.prices[1].size}</th>
-                    <th scope="col">{props.prices[2].size}</th>
+                    <th scope="col">
+                      {props.prices[1] && props.prices[1].size}
+                    </th>
+                    <th scope="col">
+                      {props.prices[2] && props.prices[2].size}
+                    </th>
                   </tr>
                   <tr>
                     <td>{props.prices[0].Price}</td>
-                    <td>{props.prices[1].Price}</td>
-                    <td>{props.prices[2].Price}</td>
+                    <td>{props.prices[1] && props.prices[1].Price}</td>
+                    <td>{props.prices[2] && props.prices[2].Price}</td>
                   </tr>
                 </tbody>
               </table>

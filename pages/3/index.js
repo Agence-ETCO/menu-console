@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import MinMax from "../../components/MinMax";
+import { AppContext } from "../../context/AppContext";
+import { fetchAPI } from "../../lib/api";
 import WineCard from "../../components/WineCard";
 import { page3 } from "../../fr";
 import {
@@ -13,11 +15,12 @@ import {
 } from "./styled";
 
 const Page3 = () => {
+  const {
+    state,
+    actions: { receiveData, addPreviousStep },
+  } = useContext(AppContext);
   const min = 3;
-  const [selections, setSelections] = useState([]);
-  const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(min);
-  const options = [1, 2, 3, 4, 5, 6, 7];
   const max = 6;
   const quantity = 12;
   const selection = (
@@ -25,30 +28,30 @@ const Page3 = () => {
       {counter}/{max}
     </span>
   );
-
-  const handleCheckboxChange = (option) => {
-    let updatedSelections = [];
-    let checked = selections.find((selection) => selection === option);
-    let limit = max - selections.length - 1 >= 0;
-
-    if (checked) {
-      updatedSelections = selections.filter(
-        (selection) => selection !== option
-      );
-    } else if (!checked && limit) {
-      updatedSelections = [...selections, option];
-    } else if (!checked && !limit) {
-      updatedSelections = [...selections];
-    }
-
-    setSelections(updatedSelections);
-
-    setUpdated(!updated);
-    localStorage.setItem("red", JSON.stringify(updatedSelections));
-  };
+  const selections = state.selections.filter(
+    (option) => option.attributes && option.attributes.category === "Red Wine"
+  );
+  const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
-    localStorage.removeItem("red");
+    if (state.data.length === 0) {
+      const token = state.userData.jwt || "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (state.previousStep < 2) {
+      addPreviousStep(2);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -63,22 +66,33 @@ const Page3 = () => {
           <div>
             <Title>{page3.title}</Title>
             <SubTitle>
-              Choisissez parmi les <span>{quantity} produits</span>
+              Choisissez parmi les <span>{quantity} vins rouges Cellier</span>
               disponibles
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />
         </Subcontainer1>
         <Subcontainer2>
-          {options.map((option, i) => (
-            <WineCard
-              key={i}
-              red
-              checked={!!selections.includes(option)}
-              handleCheckboxChange={() => handleCheckboxChange(option)}
-              value={option}
-            />
-          ))}
+          {state.data &&
+            state.data
+              .filter((option) => option.attributes.category === "Red Wine")
+              .map((option) => (
+                <WineCard
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  description={option.attributes.description}
+                  taste={option.attributes.taste}
+                  location={option.attributes.location}
+                  sugar={option.attributes.sugar}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  limit={limit}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                  red
+                />
+              ))}
         </Subcontainer2>
       </Container>
 
