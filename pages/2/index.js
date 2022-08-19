@@ -107,7 +107,7 @@ const Page2 = () => {
           <div>
             <Title>{page2.title} </Title>
             <SubTitle>
-              Choisissez parmi les <span>{quantity} produits</span>
+              Choisissez parmi les <span>{quantity} vins blancs Cellier</span>
               disponibles
             </SubTitle>
           </div>

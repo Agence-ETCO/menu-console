@@ -66,7 +66,7 @@ const Page3 = () => {
           <div>
             <Title>{page3.title}</Title>
             <SubTitle>
-              Choisissez parmi les <span>{quantity} produits</span>
+              Choisissez parmi les <span>{quantity} vins rouges Cellier</span>
               disponibles
             </SubTitle>
           </div>

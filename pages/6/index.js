@@ -150,7 +150,7 @@ const Page5 = () => {
           console.log(err);
         });
     }
-    router.push("/6");
+    router.push("/7");
   };
 
   const onCancel = () => {
@@ -198,11 +198,13 @@ const Page5 = () => {
         <Subcontainer1>
           <Title1>Nous y sommes presque !</Title1>
           <Subtitle1>
-            Voici votre sélection. Relisez vos choix avec attention !
+            Voici votre sélection. Révisez vos choix avec attention !
           </Subtitle1>
           <Subtitle1>
-            Une fois votre sélection soumise, vous ne pourrez plus la modifier.
+            Une fois votre sélection soumise, il vous sera impossible de faire
+            des modifications.
           </Subtitle1>
+          <Subtitle1>erci de votre collaboration.</Subtitle1>
         </Subcontainer1>
         <Title>{page2.title}</Title>
         <Subcontainer>

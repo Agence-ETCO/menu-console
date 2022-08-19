@@ -19,7 +19,7 @@ import {
 } from "./styled";
 
 const WelcomePage = () => {
-  const date = "12 septembre 2022";
+  const date = "14 septembre 2022";
   const {
     state,
     actions: { addUser },
@@ -55,6 +55,7 @@ const WelcomePage = () => {
           <Body1>{welcomePage.body1}</Body1>
           <Date>{date}</Date>
           <Body1>{welcomePage.body2}</Body1>
+          <Body>Merci de votre collaboration, </Body>
         </Subcontainer>
         <Ending>
           {welcomePage.help}

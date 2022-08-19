@@ -24,7 +24,6 @@ const Page6 = () => {
           <Title>{page6.title}</Title>
           <Subtitle>{page6.subtitle}</Subtitle>
           <Body>{page6.body1}</Body>
-          <Body>{page6.body2}</Body>
         </Subcontainer>
         <Subcontainer1>
           <Button onClick={() => window.open(`http://pdf.etco.tk/${1}`)}>

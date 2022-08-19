@@ -15,7 +15,11 @@ const AlertBox = (props) => {
         <Container>
           <BoxContainer>
             <Title>{alertBox.title}</Title>
-            <div>{alertBox.body}</div>
+            <div style={{ width: "423px", marginTop: "30px" }}>
+              Une fois soumise,{" "}
+              <span style={{ fontWeight: "700" }}>vous ne pourrez plus</span>{" "}
+              faire de modifications.
+            </div>
             <div>{alertBox.question}</div>
             <Button onClick={props.handleSubmit}>{alertBox.buttonText1}</Button>
             <StyledButton onClick={props.onCancel}>
