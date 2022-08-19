@@ -109,6 +109,11 @@ export const StyledButton = styled.button`
   background: none;
   border: none;
   width: 233px;
+  height: 67px;
+  background-color: #f5ba18;
+  border-radius: 82px;
+  margin-top: 75px;
+  margin-left: 150px;
 `;
 export const Container1 = styled.div`
   display: flex;

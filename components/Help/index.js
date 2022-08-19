@@ -20,9 +20,7 @@ const Help = (props) => {
             </CloseButton>
             <Title>{"Besoin d’aide?"}</Title>
             <Subtitle>
-              {
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-              }
+              {"Nous serons heureux de répondre à vos demandes et vous aider."}
             </Subtitle>
             <Subtitle2>
               {" "}
