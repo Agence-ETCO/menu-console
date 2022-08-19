@@ -28,16 +28,10 @@ export const SubTitle = styled.div`
   font-size: 17px;
   line-height: 23px;
   margin-left: 30px;
-  max-width: 622px;
+  width: 630px;
   margin-top: 40px;
-
-  span {
-    font-family: "GTWalsheimBold";
-    font-weight: 700;
-    color: ${colors.black};
-    margin-left: 5px;
-    margin-right: 5px;
-  }
+  padding-bottom: 35px;
+  border-bottom: 1px solid #939598;
 `;
 export const SubTitle1 = styled.div`
   color: ${colors.black};
@@ -124,9 +118,7 @@ export const ButtonContainer1 = styled.div`
     line-height: 38px;
     color: #ffffff;
     background: none;
-
     border: none;
-
     width: 78px;
     height: 75px;
   }
@@ -160,21 +152,58 @@ export const StyledButton = styled.button`
 `;
 
 export const Square = styled.div`
-padding:45px;
-width:420px;
-height:84px
-font-family: "GTWalsheimBold";
-font-style: normal;
-font-weight: 700;
-font-size: 17px;
-line-height: 23px;
-color: #231F20;
-background-color:#F5BA18;
-border: 9px solid #F5BA18;
-border-radius: 9px;
-margin-left: auto;
-margin-right:30px;
- `;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+  width: 506px;
+  height: 173px;
+  font-family: "GTWalsheimBold";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 23px;
+  color: #231f20;
+  background-color: #f5ba18;
+  border: 9px solid #f5ba18;
+  border-radius: 9px;
+  margin-left: auto;
+  margin-right: 30px;
+  margin-top: -20px;
+  text-align: center;
+`;
+
+export const Container2 = styled.div`
+  div:first-child {
+    font-family: "GTWalsheimRegular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #939598;
+    margin-bottom: 20px;
+  }
+`;
+export const Container3 = styled.div`
+  div:first-child {
+    font-family: "GTWalsheimRegular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #939598;
+    margin-left: 50px;
+    margin-bottom: 20px;
+  }
+`;
+export const Container4 = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 630px;
+  padding-bottom: 65px;
+  border-bottom: 1px solid #939598;
+`;
 
 const Empty = () => {};
 export default Empty;

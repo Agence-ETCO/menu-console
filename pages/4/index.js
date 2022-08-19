@@ -23,6 +23,9 @@ import {
   Buttons,
   Square,
   SubTitle1,
+  Container2,
+  Container3,
+  Container4,
 } from "./styled";
 
 const Page4 = () => {
@@ -92,25 +95,34 @@ const Page4 = () => {
           Combien de lignes de fût de bières avez vous ? Ne pas compter les
           lignes de vins
         </SubTitle1>
+
         <Buttons>
-          <ButtonContainer1>
-            {buttons1.map((item, i) => (
-              <button key={i} onClick={() => setSelectedPack(item)}>
-                {item}
-              </button>
-            ))}
-          </ButtonContainer1>
-          <ButtonContainer2>
-            {buttons2.map((item, i) => (
-              <StyledButton
-                key={i}
-                active={selectedPack === item}
-                onClick={() => setSelectedPack(item)}
-              >
-                {item}
-              </StyledButton>
-            ))}
-          </ButtonContainer2>
+          <Container4>
+            <Container2>
+              <div>Produits Labatt</div>
+              <ButtonContainer1>
+                {buttons1.map((item, i) => (
+                  <button key={i} onClick={() => setSelectedPack(item)}>
+                    {item}
+                  </button>
+                ))}
+              </ButtonContainer1>
+            </Container2>
+            <Container3>
+              <div>Jusqu’à 2 microbrasseries</div>
+              <ButtonContainer2>
+                {buttons2.map((item, i) => (
+                  <StyledButton
+                    key={i}
+                    active={selectedPack === item}
+                    onClick={() => setSelectedPack(item)}
+                  >
+                    {item}
+                  </StyledButton>
+                ))}
+              </ButtonContainer2>
+            </Container3>
+          </Container4>
           <Square>
             Tout d’abord, vous devez sélectionner 2 produits en fût de Labatt
             pour vous permettre d’ajouter 2 bières en fût de microbrasserie.
@@ -166,7 +178,7 @@ const Page4 = () => {
         returnHref={"/3"}
         buttonText={footer.buttonText}
         href={"/5"}
-        stage={"RÉSUMÉ"}
+        stage={"BIÈRES NON-ALCOOLISÉS"}
         disabled={disabled /* counter !== min */}
       />
     </>
