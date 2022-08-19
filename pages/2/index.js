@@ -23,7 +23,7 @@ const Page2 = () => {
   const min = 1;
   const [counter, setCounter] = useState(min);
   const max = 3;
-  const quantity = 18;
+  const quantity = 3;
   const selections = state.selections.filter(
     (option) =>
       (option.attributes && option.attributes.category === "White Wine") ||

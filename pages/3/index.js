@@ -22,7 +22,7 @@ const Page3 = () => {
   const min = 3;
   const [counter, setCounter] = useState(min);
   const max = 6;
-  const quantity = 12;
+  const quantity = 18;
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
