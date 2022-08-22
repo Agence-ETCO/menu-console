@@ -193,7 +193,7 @@ const Page5 = () => {
         onCancel={onCancel}
         handleSubmit={handleSubmit}
       />
-      <Header step={5} />
+      <Header step={6} />
       <Container>
         <Subcontainer1>
           <Title1>Nous y sommes presque !</Title1>

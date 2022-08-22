@@ -39,6 +39,18 @@ export const CheckboxContainer = styled.div`
     left: 0;
   }
 `;
+export const CheckboxContainer1 = styled.button`
+  order: 1;
+
+  border: none;
+  background: none;
+  svg {
+    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
+    position: absolute;
+    left: 8%;
+    top: 25%;
+  }
+`;
 
 export const StyledCheckbox = styled.div`
   display: inline-block;
@@ -49,10 +61,11 @@ export const StyledCheckbox = styled.div`
   border-radius: 50%;
   transition: all 150ms;
   position: relative;
+  margin-left: -5px;
 `;
 
 export const Title = styled.div`
-  margin-bottom: 5px;
+  margin-bottom: 0;
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 19px;
@@ -64,6 +77,7 @@ export const TextContainer = styled.div`
   text-align: left;
   margin-left: 20px;
   width: 250px;
+  position: relative;
   div:nth-child(1) {
   }
   div:nth-child(2) {
@@ -95,12 +109,13 @@ export const Type = styled.div`
   text-transform: uppercase;
   border-bottom: 1px solid rgba(147, 149, 152, 0.5);
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 0px;
   padding-bottom: 5px;
+  width: 275px;
 `;
 
 export const Format = styled.div`
-  color: ${(props) => (props.checked ? "#F5BA18" : "#3C3C3C")} !important;
+  color: ${(props) => (props.checked ? "white" : "#3C3C3C")} !important;
   font-family: "GtWalsheimRegular";
   font-style: normal;
   font-weight: 600;
@@ -111,10 +126,16 @@ export const Format = styled.div`
   text-transform: uppercase;
 `;
 
+export const Cell = styled.div`
+  order: 2;
+  width: 100px;
+`;
+
 export const Size = styled.div`
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
+  color: ${(props) =>
+    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
   font-size: 14px;
   line-height: 15px;
 `;
@@ -133,10 +154,34 @@ export const Container1 = styled.div`
 `;
 
 export const SubContainer1 = styled.div`
+  position: relative;
   display: flex;
-  flex-directon: row;
+  flex-direction: row;
   justify-content: left;
-  div:nth-child(1) {
-    margin-right: 10px;
+`;
+
+export const Container2 = styled.div`
+  background-color: white;
+  position: absolute;
+  top: 70px;
+  bottom: -24px;
+  left: -60px;
+  right: 0;
+  width: 413px;
+  border: 1px solid rgba(147, 149, 152, 0.75);
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  padding-top: 10px;
+  span {
+    font-family: "GtWalsheimRegular";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    margin-left: 60px;
   }
 `;

@@ -18,6 +18,9 @@ import {
   Container1,
   SubContainer1,
   Title,
+  Cell,
+  CheckboxContainer1,
+  Container2,
 } from "./styled.js";
 
 const CraftBeerCard = (props) => {
@@ -28,7 +31,7 @@ const CraftBeerCard = (props) => {
 
   const max = 2;
   const limit = state.micro && max - state.micro.length - 1 >= 0;
-  const [priceOption, setPriceOption] = useState(1);
+  const [priceOption, setPriceOption] = useState(0);
   const isChecked = (option) => {
     if (option && state.micro.find((selection) => selection === option)) {
       return true;
@@ -43,8 +46,9 @@ const CraftBeerCard = (props) => {
     return false;
   };
 
-  const handlePriceChange = (option) => {
+  const handlePriceChange = (value) => {
     setPriceOption(value);
+    console.log(!isSelected(1) || !isSelected(2));
   };
 
   const handleCheckboxChange = (option) => {
@@ -84,40 +88,77 @@ const CraftBeerCard = (props) => {
               {" "}
               {"Lager américaine"}{" "}
             </Type>
-            <Format checked={isChecked(props.option)}>
+            {isChecked(props.option) && !(isSelected(1) || isSelected(2)) && (
+              <>
+                <Container2>
+                  <span style={{ color: "#F5BA18 " }}>
+                    CHOISIR VOTRE FORMAT
+                  </span>
+                </Container2>
+              </>
+            )}
+            <Format checked={isSelected(1) || isSelected(2)}>
               {" "}
-              {"FORMATS DISPONIBLE"}{" "}
+              {isChecked(props.option) && !(isSelected(1) || isSelected(2)) ? (
+                <span>"CHOISIR VOTRE FORMAT"</span>
+              ) : (
+                "FORMATS DISPONIBLE"
+              )}
             </Format>
             <Container1>
+              {}
               <SubContainer1>
-                {/*  <CheckboxContainer checked={isSelected(1)}>
-                  <HiddenCheckbox
-                    checked={isSelected()}
-                    onChange={() => handlePriceChange(1)}
-                  /> */}
-                {/*  <Circle /> */}
-                <StyledCheckbox></StyledCheckbox>
-                {/*   </CheckboxContainer> */}
-                <div>
-                  <Size checked={isChecked(props.option)}>
+                <CheckboxContainer1
+                  checked={isSelected(1)}
+                  onClick={() => handlePriceChange(1)}
+                >
+                  <Circle /> <StyledCheckbox></StyledCheckbox>
+                </CheckboxContainer1>
+                <Cell>
+                  <Size
+                    checked={
+                      isChecked(props.option) &&
+                      (isSelected(1) || isSelected(2))
+                    }
+                  >
                     {"Presion 20oz"}
                   </Size>
-                  <Price checked={isChecked(props.option)}>{"19,99 $"}</Price>
-                </div>
+                  <Price
+                    checked={
+                      isChecked(props.option) &&
+                      (isSelected(1) || isSelected(2))
+                    }
+                  >
+                    {"19,99 $"}
+                  </Price>
+                </Cell>
               </SubContainer1>
               <SubContainer1>
-                {/* <CheckboxContainer checked={isSelected(2)}>
-                  <HiddenCheckbox
-                    checked={isSelected(2)}
-                    onChange={() => handlePriceChange(2)}
-                  /> */}
-                {/*  <Circle /> */}
-                <StyledCheckbox></StyledCheckbox>
-                {/*  </CheckboxContainer> */}
-                <div>
-                  <Size checked={isChecked(props.option)}>{"Pichet 60oz"}</Size>
-                  <Price checked={isChecked(props.option)}>{"19,99 $"}</Price>
-                </div>
+                <CheckboxContainer1
+                  checked={isSelected(2)}
+                  onClick={() => handlePriceChange(2)}
+                >
+                  <Circle />
+                  <StyledCheckbox></StyledCheckbox>
+                </CheckboxContainer1>
+                <Cell>
+                  <Size
+                    checked={
+                      isChecked(props.option) &&
+                      (isSelected(1) || isSelected(2))
+                    }
+                  >
+                    {"Pichet 60oz"}
+                  </Size>
+                  <Price
+                    checked={
+                      isChecked(props.option) &&
+                      (isSelected(1) || isSelected(2))
+                    }
+                  >
+                    {"19,99 $"}
+                  </Price>
+                </Cell>
               </SubContainer1>
             </Container1>
           </TextContainer>

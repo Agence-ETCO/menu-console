@@ -33,8 +33,8 @@ const Page4 = () => {
     state,
     actions: { receiveData, addPreviousStep },
   } = useContext(AppContext);
-  const buttons1 = [2, 4, 6];
-  const buttons2 = [8, 10, 12];
+  const buttons1 = [2, 4];
+  const buttons2 = [6, 8, 10, 12];
   const min = 1;
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
@@ -88,7 +88,7 @@ const Page4 = () => {
             Lorem ipsum doloris exuvaduis iradum quavodis zarominis{" "}
           </SubTitle>
         </div>
-        <MinMax beer />
+        <MinMax stage={4} />
       </Subcontainer>
       <Container>
         <SubTitle1>
@@ -112,11 +112,7 @@ const Page4 = () => {
               <div>Jusqu’à 2 microbrasseries</div>
               <ButtonContainer2>
                 {buttons2.map((item, i) => (
-                  <StyledButton
-                    key={i}
-                    active={selectedPack === item}
-                    onClick={() => setSelectedPack(item)}
-                  >
+                  <StyledButton key={i} onClick={() => setSelectedPack(item)}>
                     {item}
                   </StyledButton>
                 ))}
@@ -129,7 +125,7 @@ const Page4 = () => {
           </Square>
         </Buttons>
 
-        {selectedPack > 6 && (
+        {selectedPack > 0 && (
           <>
             <Subcontainer1>
               <div>

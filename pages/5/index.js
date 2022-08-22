@@ -13,21 +13,22 @@ import {
   Container,
   Subcontainer1,
   Subcontainer2,
-  Subcontainer3,
+  Container1,
   Title,
 } from "./styled";
 
-const Page4 = () => {
+const Page5 = () => {
   const min = 1;
+  const max = 2;
+  const options = [1, 2];
   const [selections, setSelections] = useState([]);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
-
-  const options = [1, 2];
-  const max = 2;
-
-  const selected = selections.length - 1 >= 0;
-  const selected2 = selections.length - 2 >= 0;
+  const selection = (
+    <span style={{ fontSize: "21px" }}>
+      {counter}/{max}
+    </span>
+  );
 
   const handleCheckboxChange = (option) => {
     let updatedSelections = [];
@@ -56,15 +57,15 @@ const Page4 = () => {
 
   return (
     <>
-      <Header step={4} />
+      <Header step={5} />
       <Subcontainer>
-        <div>
+        <Container1>
           <Title>Bières non-alcoolisés </Title>
           <SubTitle>
             Lorem ipsum doloris exuvaduis iradum quavodis zarominis
           </SubTitle>
-        </div>
-        <MinMax beer />
+        </Container1>
+        <MinMax stage={5} />
       </Subcontainer>
       <Container>
         <Subcontainer1>
@@ -88,10 +89,11 @@ const Page4 = () => {
         buttonText={footer.buttonText}
         href={"/6"}
         stage={"RÉSUMÉ"}
-        disabled={counter !== min}
+        selection={selection}
+        disabled={counter < min}
       />
     </>
   );
 };
 
-export default Page4;
+export default Page5;

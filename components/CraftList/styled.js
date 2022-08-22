@@ -2,25 +2,37 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Button = styled.button`
-  color: ${colors.black};
-  background-color: ${colors.yellow};
-  width: 248px;
-  height: 68px;
+  color: ${colors.yellow};
+  background-color: ${colors.black};
+  min-width: 260px;
+  width: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 69px;
+  border: 0;
+  border-radius: 9px;
   font-family: "GTWalsheimBold";
+  font-style: normal;
   font-weight: 700;
-  font-size: 19px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
+  font-size: 27px;
+  line-height: 32px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  border: none;
-  border-radius: 8px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: ${(props) => (props.first ? "-150px" : "110px")};
+  margin-right: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+
+  :disabled {
+    opacity: 0.3;
+  }
 `;
 export const CloseButton = styled.button`
   z-index: 200;
   border: none;
-  background-color: white;
+  background-color: transparent;
   position: absolute;
   right: 15px;
   top: 15px;
@@ -40,8 +52,6 @@ export const BoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 560px;
-  height: 313px;
   background-color: #ffffff;
   box-shadow: 0px 4px 91px #000000;
   border-radius: 9px;
@@ -49,7 +59,7 @@ export const BoxContainer = styled.div`
   margin: auto;
   margin-top: 0;
   width: 1022px;
-  height: 983px;
+  height: 95%;
   opacity: 1 !important;
 `;
 
@@ -114,6 +124,20 @@ export const StyledButton = styled.button`
   border-radius: 82px;
   margin-top: 75px;
   margin-left: 150px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  svg {
+    margin-right: 10px;
+    width: 40px;
+  }
+
+  span {
+    text-align: left;
+  }
 `;
 export const Container1 = styled.div`
   display: flex;
@@ -125,4 +149,7 @@ export const Container2 = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  height: 800px;
+  overflow-y: scroll;
+  padding-bottom: 100px;
 `;

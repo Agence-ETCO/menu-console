@@ -35,7 +35,7 @@ export const SubTitle = styled.div`
 `;
 export const SubTitle1 = styled.div`
   color: ${colors.black};
-  font-family: "GTWalsheimBold";
+  font-family: "InterBold";
   font-weight: 700;
   font-size: 21px;
   line-height: 27px;
@@ -105,7 +105,7 @@ export const ButtonContainer1 = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 274px;
+  width: 185px;
   height: 78px;
   background: #939598;
   opacity: 0.3;
@@ -145,9 +145,9 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: ${(props) => (props.active ? "#ffe110" : "white")}; 
+  background-color: white; 
   margin-right: 15px;
-  border:${(props) => (props.active ? "none" : "1.2381px solid #3c3c3c")};  
+  border:1.2381px solid #3c3c3c;  
   }
 `;
 
@@ -158,7 +158,7 @@ export const Square = styled.div`
   padding: 45px;
   width: 506px;
   height: 173px;
-  font-family: "GTWalsheimBold";
+  font-family: "InterBold";
   font-style: normal;
   font-weight: 700;
   font-size: 17px;

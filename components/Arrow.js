@@ -15,7 +15,7 @@ const Arrow = (props) => (
     xmlSpace="preserve"
     {...props}
   >
-    <style>{".st0{fill:none;stroke:#ffe110;stroke-width:3}"}</style>
+    <style>{".st0{fill:none;stroke:black;stroke-width:3}"}</style>
     <path className="st0" d="M.9 10h23.2M16.3 18l8-8-8-8" />
   </svg>
 );

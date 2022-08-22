@@ -5,7 +5,7 @@ import { colors } from "../../constants";
 import { TextButton, NumberButton, Container } from "./styled";
 
 const Stepper = (props) => {
-  const buttonOptions = [1, 2, 3, 4];
+  const buttonOptions = [1, 2, 3, 4, 5];
   const { state } = useContext(AppContext);
 
   return (
@@ -37,9 +37,9 @@ const Stepper = (props) => {
           </NumberButton>
         </Link>
       ))}
-      <Link href={state.previousStep >= 4 ? "/5" : ""}>
+      <Link href={state.previousStep >= 5 ? "/6" : ""}>
         <TextButton
-          color={props.step === 5 ? `${colors.orange}` : `${colors.black}`}
+          color={props.step === 6 ? `${colors.orange}` : `${colors.black}`}
         >
           {"Résumé"}
         </TextButton>

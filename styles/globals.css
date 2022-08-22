@@ -18,6 +18,10 @@
   src: url('/fonts/GTWalsheimBlack.otf'); 
  }
 
+ @font-face {
+  font-family: 'InterBold';
+  src: url('/fonts/InterBold.otf'); 
+ }
 html,
 body {
   padding: 0;

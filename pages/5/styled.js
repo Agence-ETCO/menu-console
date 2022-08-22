@@ -45,6 +45,12 @@ export const Container = styled.div`
   padding-bottom: 600px;
 `;
 
+export const Container1 = styled.div`
+  width: 700px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #939598;
+`;
+
 export const Subcontainer1 = styled.div`
   display: flex;
   flex-directon: row;

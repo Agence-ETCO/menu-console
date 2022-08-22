@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useContext } from "react";
 import Image from "next/image";
 import image from "../../public/close.svg";
 import CraftBeerCard from "../../components/CraftBeerCard";
+import Arrow from "../../components/Arrow";
 import Form from "../../components/Form";
 import {
   Container,
@@ -12,6 +13,8 @@ import {
   Subtitle,
   Container1,
   Container2,
+  Button,
+  ButtonContainer,
 } from "./styled.js";
 
 const CraftList = (props) => {
@@ -39,7 +42,8 @@ const CraftList = (props) => {
                 </Subtitle>
               </div>
               <StyledButton onClick={handleClick}>
-                {"Ajouter votre microbrasserie"}
+                <Arrow />
+                <span>{"Ajouter votre microbrasserie"}</span>
               </StyledButton>
             </Container1>
             <Container2>
@@ -47,11 +51,11 @@ const CraftList = (props) => {
                 <CraftBeerCard key={i} value={option} option={option} />
               ))}
             </Container2>
-            {/* <ButtonContainer>
-              <Button disabled={disabled} onClick={() => handleSubmit()}>
+            <ButtonContainer>
+              <Button /* disabled={disabled} */ onClick={() => handleSubmit()}>
                 {"ajouter"}
               </Button>
-            </ButtonContainer> */}
+            </ButtonContainer>
           </BoxContainer>
         </Container>
       ) : null}
