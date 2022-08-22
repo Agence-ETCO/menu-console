@@ -5,7 +5,6 @@ const initialState = {
   previousStep: 0,
   data: [],
   selections: [],
-  micro: [],
   micro1: {},
   micro2: {},
 };
@@ -32,17 +31,6 @@ const reducer = (state, action) => {
         selections: [...state.selections, action.value],
       };
 
-    case "add-micro":
-      return {
-        ...state,
-        micro: [...state.micro, action.value],
-      };
-
-    case "remove-micro":
-      return {
-        ...state,
-        micro: state.micro.filter((selection) => selection !== action.value),
-      };
     case "remove-selection":
       return {
         ...state,
@@ -58,6 +46,18 @@ const reducer = (state, action) => {
       };
 
     case "add-micro2":
+      return {
+        ...state,
+        micro2: action.value,
+      };
+
+    case "remove-micro1":
+      return {
+        ...state,
+        micro1: action.value,
+      };
+
+    case "remove-micro2":
       return {
         ...state,
         micro2: action.value,
@@ -105,20 +105,6 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const addMicro = (value) => {
-    dispatch({
-      type: "add-micro",
-      value: value,
-    });
-  };
-
-  const removeMicro = (value) => {
-    dispatch({
-      type: "remove-micro",
-      value: value,
-    });
-  };
-
   const addMicro01 = (value) => {
     dispatch({
       type: "add-micro1",
@@ -130,6 +116,17 @@ export const AppProvider = ({ children }) => {
     dispatch({
       type: "add-micro2",
       value: value,
+    });
+  };
+
+  const removeMicro01 = () => {
+    dispatch({
+      type: "remove-micro1",
+    });
+  };
+  const removeMicro02 = () => {
+    dispatch({
+      type: "remove-micro2",
     });
   };
 
@@ -148,8 +145,8 @@ export const AppProvider = ({ children }) => {
           receiveData,
           addSelection,
           removeSelection,
-          addMicro,
-          removeMicro,
+          removeMicro01,
+          removeMicro02,
           addMicro01,
           addMicro02,
           addPreviousStep,

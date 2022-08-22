@@ -131,10 +131,22 @@ const DropDown = ({ options, disabled, order }) => {
       <CraftList
         showCraft={showCraft}
         handleClick={handleClick1}
+        order={order}
+        beer={beer}
+        producer={producer}
+        type={type}
+        format={format}
+        alcohol={alcohol}
+        onBeerChange={onBeerChange}
+        onProducerChange={onProducerChange}
+        onTypeChange={onTypeChange}
+        onFormatChange={onFormatChange}
+        onAlcoholChange={onAlcoholChange}
+        onFormSubmit={onFormSubmit}
         /* onCancel={onCancel}
         handleSubmit={handleSubmit} */
       />
-      <Form
+      {/* <Form
         showForm={showForm}
         handleClick={handleClick}
         order={order}
@@ -149,7 +161,7 @@ const DropDown = ({ options, disabled, order }) => {
         onFormatChange={onFormatChange}
         onAlcoholChange={onAlcoholChange}
         onFormSubmit={onFormSubmit}
-      />
+      /> */}
       <Container disabled={disabled}>
         <DropDownContainer>
           <Container3>
@@ -194,34 +206,52 @@ const DropDown = ({ options, disabled, order }) => {
                 onClick={handleClick1}
                 ref={ref}
               >
-                {/*   {(selectedOption && selectedOption.id) || beer ? (
+                {(order === "01" && state.micro1.id) || state.micro1.title ? (
                   <div>
                     <SubContainer1>
-                      <span>
-                        {selectedOption && selectedOption.id
-                          ? "Nom de la bière"
-                          : beer}
-                      </span>
-                      {selectedOption && selectedOption.id
-                        ? selectedOption.attributes.title
-                        : producer}
+                      <span>Nom de la bière</span>
+                      {state.micro1.id
+                        ? state.micro1.attributes.title
+                        : state.micro1.title}
                     </SubContainer1>
                     <SubContainer2>
                       <span>
                         {" "}
-                        {selectedOption && selectedOption.id ? "Blonde" : type}
+                        {state.micro1.id ? "Blonde" : state.micro1.type}
                       </span>{" "}
                       <span>
-                        {selectedOption && selectedOption.id ? "341ml" : format}{" "}
+                        {state.micro1.id ? "341ml" : state.micro1.format}{" "}
                       </span>{" "}
                       <span>
-                        {selectedOption && selectedOption.id ? "4.5%" : alcohol}
+                        {state.micro1.id ? "4.5%" : state.micro1.alcohol}
                       </span>
                     </SubContainer2>
                   </div>
-                ) : ( */}
-                <Header disabled={disabled}>{"Veuillez choisir"}</Header>
-                {/*  )} */}
+                ) : (order === "02" && state.micro2.id) ||
+                  state.micro2.title ? (
+                  <div>
+                    <SubContainer1>
+                      <span>Nom de la bière</span>
+                      {state.micro2.id
+                        ? state.micro2.attributes.title
+                        : state.micro2.producer}
+                    </SubContainer1>
+                    <SubContainer2>
+                      <span>
+                        {" "}
+                        {state.micro2.id ? "Blonde" : state.micro2.type}
+                      </span>{" "}
+                      <span>
+                        {state.micro2.id ? "341ml" : state.micro2.format}{" "}
+                      </span>{" "}
+                      <span>
+                        {state.micro2.id ? "4.5%" : state.micro2.alcohol}
+                      </span>
+                    </SubContainer2>
+                  </div>
+                ) : (
+                  <Header disabled={disabled}>{"Veuillez choisir"}</Header>
+                )}
 
                 <SubContainer>
                   <RectangleSmall />

@@ -4,6 +4,7 @@ import image from "../../public/close.svg";
 import CraftBeerCard from "../../components/CraftBeerCard";
 import Arrow from "../../components/Arrow";
 import Form from "../../components/Form";
+import { AppContext } from "../../context/AppContext";
 import {
   Container,
   BoxContainer,
@@ -18,16 +19,210 @@ import {
 } from "./styled.js";
 
 const CraftList = (props) => {
+  const {
+    state,
+    actions: { addMicro01, addMicro02 },
+  } = useContext(AppContext);
   const [showForm, setShowForm] = useState(false);
-  const options = ["01", "02", "03", "04", "05", "06"];
+  const [beer, setBeer] = useState("");
+  const [producer, setProducer] = useState("");
+  const [type, setType] = useState("");
+  const [format, setFormat] = useState("");
+  const [alcohol, setAlcohol] = useState("");
+
+  const onBeerChange = (e) => setBeer(e.target.value);
+  const onProducerChange = (e) => setProducer(e.target.value);
+  const onTypeChange = (e) => setType(e.target.value);
+  const onFormatChange = (e) => {
+    const value = e.target.value
+      .replace(/[^0-9,]/g, "")
+      .replace(/(,.*?),(.*,)?/, "$1");
+    setFormat(value);
+  };
+  const onAlcoholChange = (e) => {
+    const value = e.target.value
+      .replace(/[^0-9,]/g, "")
+      .replace(/(,.*?),(.*,)?/, "$1");
+    setAlcohol(value);
+  };
+  const onFormSubmit = () => {
+    const data = {
+      description: beer,
+      title: producer,
+      type,
+      size: format,
+      alcohol,
+    };
+    if (props.order === "01") {
+      addMicro01(data);
+    } else {
+      addMicro02(data);
+    }
+    props.handleClick();
+  };
+
+  const options = [
+    {
+      id: 25,
+      attributes: {
+        title: "Lagabière",
+        isOrganic: true,
+        isFromQuebec: true,
+        taste: "",
+        description: "",
+        saqCode: "",
+        beerOptions: "",
+        category: "Craft Beer",
+        location: "",
+        alcohol: "",
+        imageURL: "",
+        titleFr: "Lagabière",
+        tasteFr: "",
+        descriptionFr: "",
+        locationFr: "",
+        country: "",
+        countryFr: "",
+        sugar: "",
+        createdAt: "2022-08-11T17:17:49.565Z",
+        updatedAt: "2022-08-11T17:44:09.716Z",
+        cost: [
+          {
+            id: 388,
+            Price: "29,00",
+            region: "QC1",
+            size: "Pitcher",
+          },
+          {
+            id: 387,
+            Price: "11,75",
+            region: "QC1",
+            size: "Glass 20 oz",
+          },
+          {
+            id: 386,
+            Price: "9,50",
+            region: "QC1",
+            size: "Glass 10 oz",
+          },
+        ],
+      },
+    },
+    {
+      id: 26,
+      attributes: {
+        title: "Lagabière",
+        isOrganic: true,
+        isFromQuebec: true,
+        taste: "",
+        description: "",
+        saqCode: "",
+        beerOptions: "",
+        category: "Craft Beer",
+        location: "",
+        alcohol: "",
+        imageURL: "",
+        titleFr: "Lagabière",
+        tasteFr: "",
+        descriptionFr: "",
+        locationFr: "",
+        country: "",
+        countryFr: "",
+        sugar: "",
+        createdAt: "2022-08-11T17:17:49.565Z",
+        updatedAt: "2022-08-11T17:44:09.716Z",
+        cost: [
+          {
+            id: 388,
+            Price: "29,00",
+            region: "QC1",
+            size: "Pitcher",
+          },
+          {
+            id: 387,
+            Price: "11,75",
+            region: "QC1",
+            size: "Glass 20 oz",
+          },
+          {
+            id: 386,
+            Price: "9,50",
+            region: "QC1",
+            size: "Glass 10 oz",
+          },
+        ],
+      },
+    },
+    {
+      id: 27,
+      attributes: {
+        title: "Lagabière",
+        isOrganic: true,
+        isFromQuebec: true,
+        taste: "",
+        description: "",
+        saqCode: "",
+        beerOptions: "",
+        category: "Craft Beer",
+        location: "",
+        alcohol: "",
+        imageURL: "",
+        titleFr: "Lagabière",
+        tasteFr: "",
+        descriptionFr: "",
+        locationFr: "",
+        country: "",
+        countryFr: "",
+        sugar: "",
+        createdAt: "2022-08-11T17:17:49.565Z",
+        updatedAt: "2022-08-11T17:44:09.716Z",
+        cost: [
+          {
+            id: 388,
+            Price: "29,00",
+            region: "QC1",
+            size: "Pitcher",
+          },
+          {
+            id: 387,
+            Price: "11,75",
+            region: "QC1",
+            size: "Glass 20 oz",
+          },
+          {
+            id: 386,
+            Price: "9,50",
+            region: "QC1",
+            size: "Glass 10 oz",
+          },
+        ],
+      },
+    },
+  ];
+  /* const options = ["01", "02", "03", "04", "05", "06"]; */
   const handleClick = () => {
     setShowForm(!showForm);
   };
+
   return (
     <>
       {props.showCraft ? (
         <Container>
-          <Form showForm={showForm} handleClick={handleClick} />
+          <Form
+            showForm={showForm}
+            handleClick={handleClick}
+            order={props.order}
+            beer={beer}
+            producer={producer}
+            type={type}
+            format={format}
+            alcohol={alcohol}
+            onBeerChange={onBeerChange}
+            onProducerChange={onProducerChange}
+            onTypeChange={onTypeChange}
+            onFormatChange={onFormatChange}
+            onAlcoholChange={onAlcoholChange}
+            onFormSubmit={onFormSubmit}
+          />
           <BoxContainer>
             <CloseButton onClick={props.handleClick}>
               <Image src={image} width={25} height={25} alt="" />
@@ -48,11 +243,16 @@ const CraftList = (props) => {
             </Container1>
             <Container2>
               {options.map((option, i) => (
-                <CraftBeerCard key={i} value={option} option={option} />
+                <CraftBeerCard
+                  key={i}
+                  value={option}
+                  option={option}
+                  order={props.order}
+                />
               ))}
             </Container2>
             <ButtonContainer>
-              <Button /* disabled={disabled} */ onClick={() => handleSubmit()}>
+              <Button /* disabled={disabled} */ onClick={props.handleClick}>
                 {"ajouter"}
               </Button>
             </ButtonContainer>

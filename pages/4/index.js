@@ -45,11 +45,11 @@ const Page4 = () => {
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"
   );
+
   const disabled = selectedPack === 0;
   const max = 2;
-  const selected =
-    (selectedPack === 8 && selections.length >= 1) || selectedPack >= 10;
-  const selected2 = selectedPack >= 10;
+  const selected = selections.length - 1 >= 0;
+  const selected2 = selections.length - 2 >= 0;
   const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
@@ -162,8 +162,16 @@ const Page4 = () => {
                 disabled={!selected2}
                 order="02"
               />
-              <Bubble count={selections.length} show={false} duration={"4s"} />
-              <Bubble count={selected2} show={false} duration={"4s"} />
+              <Bubble
+                count={selections.length}
+                show={selections.length === 1}
+                duration={"4s"}
+              />
+              <Bubble
+                count={selections.length}
+                show={selections.length === 2}
+                duration={"4s"}
+              />
             </Subcontainer3>
           </>
         )}

@@ -26,14 +26,20 @@ import {
 const CraftBeerCard = (props) => {
   const {
     state,
-    actions: { addMicro, removeMicro },
+    actions: { addMicro01, addMicro02, removeMicro01, removeMicro02 },
   } = useContext(AppContext);
 
-  const max = 2;
-  const limit = state.micro && max - state.micro.length - 1 >= 0;
+  /* const max = 1;
+  const limit =
+    (props.order === "01" && state.micro1) ||
+    (props.order === "02" && state.micro2); */
   const [priceOption, setPriceOption] = useState(0);
   const isChecked = (option) => {
-    if (option && state.micro.find((selection) => selection === option)) {
+    console.log(option.id);
+    if (
+      (state.micro1.id && state.micro1.id === option.id) ||
+      (state.micro2.id && state.micro2.id === option.id)
+    ) {
       return true;
     }
     return false;
@@ -48,7 +54,6 @@ const CraftBeerCard = (props) => {
 
   const handlePriceChange = (value) => {
     setPriceOption(value);
-    console.log(!isSelected(1) || !isSelected(2));
   };
 
   const handleCheckboxChange = (option) => {
@@ -56,16 +61,25 @@ const CraftBeerCard = (props) => {
       return null;
     }*/
 
-    let checked = state.micro.find((selection) => selection === option);
+    let checked =
+      (state.micro1.id && state.micro1.id === option.id) ||
+      (state.micro2.id && state.micro2.id === option.id);
 
     if (checked) {
-      removeMicro(option);
-    } else if (!checked && limit) {
-      addMicro(option);
-    } else if (!checked && !limit) {
-      return;
+      if (props.order === "01") {
+        removeMicro01(option);
+      } else {
+        removeMicro02(option);
+      }
+    } else {
+      if (props.order === "01") {
+        addMicro01(option);
+      } else {
+        addMicro02(option);
+      }
     }
   };
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
