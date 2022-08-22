@@ -25,6 +25,12 @@ const reducer = (state, action) => {
         data: action.value,
       };
 
+    case "receive-selections":
+      return {
+        ...state,
+        selections: action.value,
+      };
+
     case "add-selection":
       return {
         ...state,
@@ -91,6 +97,13 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const receiveSelections = (value) => {
+    dispatch({
+      type: "receive-selections",
+      value: value,
+    });
+  };
+
   const addSelection = (value) => {
     dispatch({
       type: "add-selection",
@@ -143,6 +156,7 @@ export const AppProvider = ({ children }) => {
         state,
         actions: {
           receiveData,
+          receiveSelections,
           addSelection,
           removeSelection,
           removeMicro01,

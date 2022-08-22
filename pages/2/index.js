@@ -17,18 +17,20 @@ import {
 const Page2 = () => {
   const {
     state,
-    actions: { receiveData, addPreviousStep, addSelection },
+    actions: { receiveData, receiveSelections, addPreviousStep, addSelection },
   } = useContext(AppContext);
 
   const min = 1;
   const [counter, setCounter] = useState(min);
   const max = 3;
   const quantity = 3;
-  const selections = state.selections.filter(
-    (option) =>
-      (option.attributes && option.attributes.category === "White Wine") ||
-      option.category === "White Wine"
-  );
+  const selections =
+    state.selections.length > 0 &&
+    state.selections.filter(
+      (option) =>
+        (option.attributes && option.attributes.category === "White Wine") ||
+        option.category === "White Wine"
+    );
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
@@ -38,9 +40,9 @@ const Page2 = () => {
 
   const token =
     state.userData.jwt ||
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMTg3NTA4LCJleHAiOjE2NjEyNzM5MDh9.f11eBpkZU0kW6vpMVZiQ595V2gH9yl-bmRxn8UWOggM";
 
-  /*  const handleClick = async () => {
+  const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
@@ -54,7 +56,7 @@ const Page2 = () => {
       .catch((err) => {
         console.log(err);
       });
-  }; */
+  };
 
   useEffect(() => {
     if (state.previousStep < 1) {
@@ -82,22 +84,19 @@ const Page2 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* useEffect(() => {
-    if (selections.length === 0) {
-      const token =
-        state.userData.jwt ||
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwODM1ODI2LCJleHAiOjE2NjA5MjIyMjZ9.uueoCXqhn2oWhBBJUX2FenOkj4KRGB_DmJUQ7O8nOxo";
-      const userId = 4;
-
+  useEffect(() => {
+    const userId = 4;
+    if (state.selections.length === 0) {
       fetchAPI("/api/users/4?populate=deep", token)
         .then((res) => {
-          addSelection(...res.franchisee_s_menu.menu_items);
+          receiveSelections(res.franchisee_s_menu.menu_items);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  }, []); */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -140,7 +139,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
-        /*   handleClick={handleClick} */
+        handleClick={handleClick}
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}
