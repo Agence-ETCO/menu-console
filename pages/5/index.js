@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
 import Bubble from "../../components/Bubble";
+import { AppContext } from "../../context/AppContext";
 import { beerList, page4, footer } from "../../fr";
 import {
   Title1,
@@ -18,6 +19,10 @@ import {
 } from "./styled";
 
 const Page5 = () => {
+  const {
+    state,
+    actions: { receiveData, addPreviousStep },
+  } = useContext(AppContext);
   const min = 1;
   const max = 2;
   const options = [1, 2];
