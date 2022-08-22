@@ -56,10 +56,6 @@ const CraftBeerCard = (props) => {
   };
 
   const handleCheckboxChange = (option) => {
-    /*   if (props.step === 5) {
-      return null;
-    }*/
-
     let checked =
       (state.micro1 && state.micro1.id === option.id) ||
       (state.micro2 && state.micro2.id === option.id);

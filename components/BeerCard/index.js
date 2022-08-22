@@ -21,10 +21,8 @@ const BeerCard = (props) => {
 
   const isChecked = (option) => {
     if (
-      (option &&
-        state.selections.find((selection) => selection.id === option.id)) ||
-      state.micro1 ||
-      state.micro2
+      option &&
+      state.selections.find((selection) => selection.id === option.id)
     ) {
       return true;
     }
@@ -32,7 +30,7 @@ const BeerCard = (props) => {
   };
 
   const handleCheckboxChange = (option) => {
-    if (props.step === 5) {
+    if (props.step === 6) {
       return null;
     }
 
