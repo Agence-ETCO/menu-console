@@ -47,7 +47,7 @@ export const CheckboxContainer1 = styled.button`
   svg {
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     position: absolute;
-    left: 8%;
+    left: 7.5%;
     top: 25%;
   }
 `;
@@ -167,8 +167,8 @@ export const Container2 = styled.div`
   bottom: -24px;
   left: -60px;
   right: 0;
-  width: 413px;
-  border: 1px solid rgba(147, 149, 152, 0.75);
+  width: 411px;
+  border-bottom: 1px solid rgba(147, 149, 152, 0.1);
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
   padding-top: 10px;

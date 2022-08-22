@@ -18,8 +18,6 @@ export const Button = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-left: ${(props) => (props.first ? "-150px" : "110px")};
-  margin-right: 100px;
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 20px;
@@ -148,8 +146,9 @@ export const Container2 = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
   height: 800px;
   overflow-y: scroll;
   padding-bottom: 100px;
+  margin-left: 100px;
 `;

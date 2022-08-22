@@ -206,7 +206,9 @@ const DropDown = ({ options, disabled, order }) => {
                 onClick={handleClick1}
                 ref={ref}
               >
-                {(order === "01" && state.micro1.id) || state.micro1.title ? (
+                {order === "01" &&
+                state.micro1 &&
+                (state.micro1.id || state.micro1.title) ? (
                   <div>
                     <SubContainer1>
                       <span>Nom de la bière</span>
@@ -227,8 +229,9 @@ const DropDown = ({ options, disabled, order }) => {
                       </span>
                     </SubContainer2>
                   </div>
-                ) : (order === "02" && state.micro2.id) ||
-                  state.micro2.title ? (
+                ) : order === "02" &&
+                  state.micro2 &&
+                  (state.micro2.id || state.micro2.title) ? (
                   <div>
                     <SubContainer1>
                       <span>Nom de la bière</span>

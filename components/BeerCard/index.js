@@ -21,10 +21,8 @@ const BeerCard = (props) => {
 
   const isChecked = (option) => {
     if (
-      (option &&
-        state.selections.find((selection) => selection.id === option.id)) ||
-      state.micro1.id === option.id ||
-      state.micro2.id === option.id
+      option &&
+      state.selections.find((selection) => selection.id === option.id)
     ) {
       return true;
     }

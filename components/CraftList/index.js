@@ -58,7 +58,6 @@ const CraftList = (props) => {
     } else {
       addMicro02(data);
     }
-    props.handleClick();
   };
 
   const options = [
@@ -252,7 +251,11 @@ const CraftList = (props) => {
               ))}
             </Container2>
             <ButtonContainer>
-              <Button /* disabled={disabled} */ onClick={props.handleClick}>
+              <Button
+                /* disabled={state.micro1.id || state.micro2.id} */ onClick={
+                  props.handleClick
+                }
+              >
                 {"ajouter"}
               </Button>
             </ButtonContainer>

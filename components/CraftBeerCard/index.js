@@ -35,10 +35,9 @@ const CraftBeerCard = (props) => {
     (props.order === "02" && state.micro2); */
   const [priceOption, setPriceOption] = useState(0);
   const isChecked = (option) => {
-    console.log(option.id);
     if (
-      (state.micro1.id && state.micro1.id === option.id) ||
-      (state.micro2.id && state.micro2.id === option.id)
+      (state.micro1 && state.micro1.id === option.id) ||
+      (state.micro2 && state.micro2.id === option.id)
     ) {
       return true;
     }
@@ -62,8 +61,8 @@ const CraftBeerCard = (props) => {
     }*/
 
     let checked =
-      (state.micro1.id && state.micro1.id === option.id) ||
-      (state.micro2.id && state.micro2.id === option.id);
+      (state.micro1 && state.micro1.id === option.id) ||
+      (state.micro2 && state.micro2.id === option.id);
 
     if (checked) {
       if (props.order === "01") {

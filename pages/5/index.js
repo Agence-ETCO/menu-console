@@ -49,7 +49,12 @@ const Page5 = () => {
 
     setUpdated(!updated);
   };
-
+  useEffect(() => {
+    if (state.previousStep < 4) {
+      addPreviousStep(4);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   useEffect(() => {
     const updatedCounter = selections.length <= min ? selections.length : min;
     setCounter(updatedCounter);
