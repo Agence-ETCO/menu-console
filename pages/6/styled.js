@@ -26,7 +26,6 @@ export const Subcontainer = styled.div`
 export const Subcontainer1 = styled.div`
   display: flex;
   flex-direction: column;
-
   margin-top: 50px;
   margin-bottom: 50px;
   width: 650px;
@@ -40,7 +39,8 @@ export const Title1 = styled.div`
   font-size: 34px;
   line-height: 40px;
   color: #f5ba18;
-  text-align: center;
+  text-align: left;
+  margin-left: 30px;
   margin-bottom: 30px;
 `;
 export const Subtitle1 = styled.div`
@@ -59,6 +59,11 @@ export const Title = styled.div`
   line-height: 23px;
   margin-bottom: 10px;
   margin-left: 30px;
+`;
+
+export const Container1 = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
 const Empty = () => {};

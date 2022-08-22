@@ -91,7 +91,10 @@ const WineCard = (props) => {
               {" "}
               {props.description || "Cuvée Centenaire,Languedoc-Rousillon"}{" "}
             </Desc>
-            <div>{props.location || "Québec, Canada"}</div>
+            <div>
+              {props.location}
+              {props.location && ","} {props.country}{" "}
+            </div>
             <CircleContainer checked={isChecked(props.option)}>
               {" "}
               {props.taste || "AROMATIQUE ET CHARNU"} <Circle />{" "}

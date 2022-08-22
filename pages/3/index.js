@@ -82,8 +82,9 @@ const Page3 = () => {
                   value={option.id}
                   title={option.attributes.title}
                   description={option.attributes.description}
-                  taste={option.attributes.taste}
+                  taste={option.attributes.tasteFr}
                   location={option.attributes.location}
+                  country={option.attributes.country}
                   sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}

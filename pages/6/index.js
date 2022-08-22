@@ -15,6 +15,7 @@ import {
   Subcontainer1,
   Subtitle1,
   Title1,
+  Container1,
 } from "./styled";
 
 const Page5 = () => {
@@ -293,12 +294,14 @@ const Page5 = () => {
               />
             ))}
         </Subcontainer>
-        <Title1>Êtes-vous prêt à valider votre sélection?</Title1>
+        <Container1>
+          <Title1>Êtes-vous prêt à valider votre sélection?</Title1>
+        </Container1>
       </Container>
 
       <Footer
         returnButtonText={footer.change}
-        returnHref={"/4"}
+        returnHref={"/5"}
         viewButtonText={footer.view}
         submitButtonText={footer.submit}
         handleSubmit={handleClick}
