@@ -187,5 +187,5 @@ export const Title = styled.div`
   font-family: "GTWalsheimBold";
   font-style: normal;
   font-weight: 700;
-  height: 60px;
+  max-height: 65px;
 `;
