@@ -31,8 +31,8 @@ export const StyledLink = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-left: ${(props) => (props.first ? "-150px" : "110px")};
-  margin-right: 100px;
+  margin-left: ${(props) => (props.first ? "auto" : "auto")};
+  margin-right: ${(props) => (props.first ? "auto" : "")};
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 20px;
@@ -66,7 +66,7 @@ export const StyledButton = styled.button`
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding-left: 200px;
   height: 129px;
   background-color: ${colors.yellow};
@@ -90,7 +90,9 @@ export const Select = styled.span`
   font-weight: 400;
   font-size: 17px;
   line-height: 21px;
-  width: 300px;
+
+  margin-left: auto;
+  margin-right: auto;
   span {
     font-family: "GTWalsheimBold";
     font-weight: 700;
