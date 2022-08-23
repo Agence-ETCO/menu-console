@@ -110,9 +110,7 @@ const CraftBeerCard = (props) => {
             {isChecked(props.option) && !(isSelected(1) || isSelected(0)) && (
               <>
                 <Container2>
-                  <span style={{ color: "#F5BA18 " }}>
-                    CHOISIR VOTRE FORMAT
-                  </span>
+                  <span style={{ color: "#F5BA18" }}>CHOISIR VOTRE FORMAT</span>
                 </Container2>
               </>
             )}

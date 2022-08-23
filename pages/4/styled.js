@@ -2,6 +2,12 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 import { Select } from "../../components/Bubble/styled";
 
+export const Main = styled.div`
+  width: 1460px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 export const Subcontainer = styled.div`
   display: flex;
   flex-directon: row;

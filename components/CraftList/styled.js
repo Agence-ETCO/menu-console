@@ -124,10 +124,10 @@ export const StyledButton = styled.button`
   margin-left: 150px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding-left: 20px;
   padding-right: 10px;
-  padding-top: 20px;
-  padding-bottom: 15px;
+
   svg {
     margin-right: 10px;
     width: 40px;

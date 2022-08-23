@@ -173,7 +173,7 @@ export const Container2 = styled.div`
   border-bottom-right-radius: 9px;
   padding-top: 10px;
   span {
-    font-family: "GtWalsheimRegular";
+    font-family: "GtWalsheimBold";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -181,7 +181,6 @@ export const Container2 = styled.div`
     margin-bottom: 10px;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-
     margin-left: 60px;
   }
 `;
