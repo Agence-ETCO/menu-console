@@ -113,8 +113,8 @@ export const SubContainer = styled.div`
   margin-top: 30px;
 `;
 export const ImageContainer = styled.div`
-  height: 241px;
-  width: 119px;
+  height: 210px;
+  width: 190px;
   margin-top: -5px;
   margin-left: -20px;
 `;

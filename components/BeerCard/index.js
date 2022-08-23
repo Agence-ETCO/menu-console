@@ -64,8 +64,8 @@ const BeerCard = (props) => {
           <ImageContainer>
             <Image
               src={props.imageUrl || image}
-              width={150}
-              height={200}
+              width={185}
+              height={235}
               alt=""
               layout="intrinsic"
             />
