@@ -10,6 +10,8 @@ export const Subcontainer = styled.div`
   padding-right: 80px;
   margin-right: 10px;
   max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Title1 = styled.div`
@@ -43,6 +45,9 @@ export const Container = styled.div`
   margin-right: 60px;
   min-height: 200vh;
   padding-bottom: 600px;
+  max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Container1 = styled.div`

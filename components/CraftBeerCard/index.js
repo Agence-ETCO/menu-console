@@ -83,7 +83,7 @@ const CraftBeerCard = (props) => {
       }
     }
   };
-  console.log(state.micro1);
+
   return (
     <>
       <Label checked={isChecked(props.option)}>

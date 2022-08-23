@@ -5,8 +5,9 @@ export const Container = styled.div`
   padding-right: 60px;
   padding-bottom: 200px;
   margin-top: 60px;
-  min-height: 200vh;
   max-width: 1480px;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Subcontainer = styled.div`

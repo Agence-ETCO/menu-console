@@ -8,6 +8,8 @@ export const Container = styled.div`
   background-color: ${colors.black};
   min-height: 100vh;
   margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Subcontainer = styled.div`

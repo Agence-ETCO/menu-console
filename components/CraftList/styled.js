@@ -127,12 +127,10 @@ export const StyledButton = styled.button`
   align-items: center;
   padding-left: 20px;
   padding-right: 10px;
-
   svg {
     margin-right: 10px;
     width: 40px;
   }
-
   span {
     text-align: left;
   }
@@ -140,6 +138,7 @@ export const StyledButton = styled.button`
 export const Container1 = styled.div`
   display: flex;
   flex-direction: row;
+  margin-left: -20px;
 `;
 
 export const Container2 = styled.div`
@@ -147,7 +146,6 @@ export const Container2 = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: left;
-  height: 800px;
   overflow-y: scroll;
   padding-bottom: 100px;
   margin-left: 70px;

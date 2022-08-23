@@ -66,7 +66,7 @@ export const StyledButton = styled.button`
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding-left: 200px;
   height: 129px;
   background-color: ${colors.yellow};

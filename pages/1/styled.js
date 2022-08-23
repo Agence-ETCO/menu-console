@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const ImageContainer = styled.div`
   position: absolute;
   top: 300px;
-  left: 40px;
+  left: 8%;
   width: 380px;
   height: 402px;
   margin-top: 30px;

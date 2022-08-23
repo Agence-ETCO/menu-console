@@ -20,6 +20,9 @@ const BeerCard = (props) => {
   } = useContext(AppContext);
 
   const isChecked = (option) => {
+    if (props.step === 6) {
+      return true;
+    }
     if (
       option &&
       state.selections.find((selection) => selection.id === option.id)

@@ -25,7 +25,8 @@ const Page2 = () => {
   const max = 3;
   const quantity = 3;
   const selections =
-    state.selections.length > 0 &&
+    /*  state.selections.length > 0 &&
+    state.selections.filter( */
     state.selections.filter(
       (option) =>
         (option.attributes && option.attributes.category === "White Wine") ||
@@ -42,7 +43,7 @@ const Page2 = () => {
     state.userData.jwt ||
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMTg3NTA4LCJleHAiOjE2NjEyNzM5MDh9.f11eBpkZU0kW6vpMVZiQ595V2gH9yl-bmRxn8UWOggM";
 
-  const handleClick = async () => {
+  /* const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
@@ -56,7 +57,7 @@ const Page2 = () => {
       .catch((err) => {
         console.log(err);
       });
-  };
+  }; */
 
   useEffect(() => {
     if (state.previousStep < 1) {
@@ -84,7 +85,7 @@ const Page2 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  /*  useEffect(() => {
     const userId = 4;
     if (state.selections.length === 0) {
       fetchAPI("/api/users/4?populate=deep", token)
@@ -96,7 +97,7 @@ const Page2 = () => {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); */
 
   return (
     <>
@@ -140,7 +141,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
-        handleClick={handleClick}
+        /*    handleClick={handleClick} */
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}

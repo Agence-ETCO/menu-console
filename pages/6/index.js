@@ -28,7 +28,7 @@ const Page5 = () => {
   const [craftBeerId, setCraftBeerId] = useState([]);
   const [craftBeer, setCraftBeer] = useState([]);
 
-  const step = 5;
+  const step = 6;
 
   const handleClick = () => {
     setShowAlert(true);
@@ -286,7 +286,7 @@ const Page5 = () => {
             craftBeer.map((option, i) => (
               <BeerCard
                 key={i}
-                value={option.id}
+                value={option}
                 title={option.title}
                 description={option.description}
                 option={option}

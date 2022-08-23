@@ -103,7 +103,8 @@ const Page4 = () => {
           <div>
             <Title1>Bières en fût </Title1>
             <SubTitle>
-              Lorem ipsum doloris exuvaduis iradum quavodis zarominis{" "}
+              Encourageons le commerce local ! Sélectionnez 2 bières Labatt pour
+              inscrire 2 bières de microbrasserie de votre choix
             </SubTitle>
           </div>
           <MinMax stage={4} number={selectedPack <= 8 ? 1 : 2} />
