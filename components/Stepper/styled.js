@@ -42,7 +42,7 @@ export const Container = styled.div`
   margin-top: 50px;
   margin-bottom: 48px;
   padding-bottom: 36px;
-  border-bottom: 1px solid #939598;
+  border-bottom: 1px solid #3c3c3c;
   width: 562px;
   margin-left: auto;
   margin-right: auto;
