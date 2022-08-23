@@ -145,10 +145,11 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: white; 
+  background-color: ${(props) => (props.active ? "#ffe110" : "white")};
   margin-right: 15px;
-  border:1.2381px solid #3c3c3c;  
-  }
+  border: ${(props) => (props.active ? "none" : "1.2381px solid #3c3c3c")};
+  box-shadow: ${(props) =>
+    props.active ? "0 0 23px rgba(35, 31, 32, 0.2)" : ""};
 `;
 
 export const Square = styled.div`

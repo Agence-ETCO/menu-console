@@ -112,20 +112,26 @@ const Page4 = () => {
               <div>Jusqu’à 2 microbrasseries</div>
               <ButtonContainer2>
                 {buttons2.map((item, i) => (
-                  <StyledButton key={i} onClick={() => setSelectedPack(item)}>
+                  <StyledButton
+                    key={i}
+                    active={selectedPack === item}
+                    onClick={() => setSelectedPack(item)}
+                  >
                     {item}
                   </StyledButton>
                 ))}
               </ButtonContainer2>
             </Container3>
           </Container4>
-          <Square>
-            Tout d’abord, vous devez sélectionner 2 produits en fût de Labatt
-            pour vous permettre d’ajouter 2 bières en fût de microbrasserie.
-          </Square>
+          {selectedPack > 6 && (
+            <Square>
+              Tout d’abord, vous devez sélectionner 2 produits en fût de Labatt
+              pour vous permettre d’ajouter 2 bières en fût de microbrasserie.
+            </Square>
+          )}
         </Buttons>
 
-        {selectedPack > 0 && (
+        {selectedPack > 6 && (
           <>
             <Subcontainer1>
               <div>

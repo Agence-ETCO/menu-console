@@ -55,7 +55,7 @@ const BeerCard = (props) => {
             onChange={() => handleCheckboxChange(props.option)}
           />
           <CheckMark />
-          <StyledCheckbox></StyledCheckbox>
+          <StyledCheckbox checked={isChecked(props.option)}></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
           <ImageContainer>

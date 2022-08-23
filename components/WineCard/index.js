@@ -69,7 +69,7 @@ const WineCard = (props) => {
             value={props.value}
           />
           <CheckMark />
-          <StyledCheckbox></StyledCheckbox>
+          <StyledCheckbox checked={isChecked(props.option)}></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
           <ImageContainer>
