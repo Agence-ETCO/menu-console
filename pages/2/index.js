@@ -21,17 +21,14 @@ const Page2 = () => {
   } = useContext(AppContext);
 
   const min = 1;
-  const [counter, setCounter] = useState(min);
+  const [counter, setCounter] = useState(0);
   const max = 3;
   const quantity = 3;
-  const selections =
-    /*  state.selections.length > 0 &&
-    state.selections.filter( */
-    state.selections.filter(
-      (option) =>
-        (option.attributes && option.attributes.category === "White Wine") ||
-        option.category === "White Wine"
-    );
+  const selections = state.selections.filter(
+    (option) =>
+      (option.attributes && option.attributes.category === "White Wine") ||
+      option.category === "White Wine"
+  );
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
@@ -41,9 +38,9 @@ const Page2 = () => {
 
   const token =
     state.userData.jwt ||
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMTg3NTA4LCJleHAiOjE2NjEyNzM5MDh9.f11eBpkZU0kW6vpMVZiQ595V2gH9yl-bmRxn8UWOggM";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMjgwOTkyLCJleHAiOjE2NjEzNjczOTJ9.uMJQoYU9_DhjJq8gggRfKIN4G1b9N4Y4yaksTCBOw_g";
 
-  /* const handleClick = async () => {
+  /*  const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
@@ -58,6 +55,22 @@ const Page2 = () => {
         console.log(err);
       });
   }; */
+
+  /* useEffect(() => {
+    const userId = 4;
+    if (state.selections.length === 0) {
+      fetchAPI("/api/users/4?populate=deep", token)
+        .then((res) => {
+          if (res.franchisee_s_menu.menu_items.length > 0) {
+            receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); */
 
   useEffect(() => {
     if (state.previousStep < 1) {
@@ -84,20 +97,6 @@ const Page2 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  /*  useEffect(() => {
-    const userId = 4;
-    if (state.selections.length === 0) {
-      fetchAPI("/api/users/4?populate=deep", token)
-        .then((res) => {
-          receiveSelections(res.franchisee_s_menu.menu_items);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
 
   return (
     <>

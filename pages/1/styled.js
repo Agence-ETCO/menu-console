@@ -10,11 +10,15 @@ export const Container = styled.div`
 export const ImageContainer = styled.div`
   position: absolute;
   top: 300px;
-  left: 8%;
+  left: 9%;
   width: 380px;
   height: 402px;
   margin-top: 30px;
   margin-right: auto;
+
+  @media (max-width: 1500px) {
+    left: 0;
+  }
 `;
 
 export const Subcontainer = styled.div`
