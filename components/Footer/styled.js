@@ -102,6 +102,7 @@ export const Stage = styled.div`
   font-weight: 400;
   font-size: 19px;
   line-height: 22px;
+  letter-spacing: 0.05em;
   width: 300px;
   div {
     padding-left: 15px;
@@ -112,9 +113,17 @@ export const Select1 = styled.span`
   font-size: 19px;
   line-height: 22px;
   width: 300px;
+
+  svg {
+    transform: scale(0.75);
+  }
   span {
     font-family: "GTWalsheimBold";
     font-weight: 700;
-    margin-left: 10px;
+    margin-left: 5px;
+    font-size: 19px;
+    line-height: 22px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 `;
