@@ -85,6 +85,9 @@ const DropDown = ({ options, disabled, order }) => {
   };
 
   const handleClick1 = () => {
+    if (disabled) {
+      return;
+    }
     setShowCraft(!showCraft);
   };
 

@@ -12,7 +12,7 @@ export const Label = styled.label`
   position: relative;
   padding-top: 15px;
   margin-bottom: 40px;
-  margin-right: 20px;
+  margin-right: 40px;
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`

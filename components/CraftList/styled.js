@@ -150,5 +150,5 @@ export const Container2 = styled.div`
   height: 800px;
   overflow-y: scroll;
   padding-bottom: 100px;
-  margin-left: 100px;
+  margin-left: 70px;
 `;

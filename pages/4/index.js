@@ -36,8 +36,6 @@ const Page4 = () => {
   } = useContext(AppContext);
   const buttons1 = [2, 4];
   const buttons2 = [6, 8, 10, 12];
-  const min = 1;
-  const max = 2;
 
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
@@ -48,21 +46,33 @@ const Page4 = () => {
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"
   );
-  const selection = (
+  const min =
+    selectedPack === 8 ? 1 : selectedPack === 10 ? 2 : selectedPack === 12 && 4;
+  const max =
+    selectedPack === 8 ? 1 : selectedPack === 10 ? 2 : selectedPack === 12 && 4;
+  const selection = selectedPack > 6 && (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
-  const disabled = selectedPack === 0;
+  const disabled =
+    selectedPack === 0 ||
+    (selectedPack > 6 && selections.length > 0 && counter !== min);
 
-  const selected = selections.length - 1 >= 0;
-  const selected2 = selections.length - 2 >= 0;
+  const selected =
+    selectedPack === 8 || selectedPack === 10
+      ? selections.length - 1 >= 0
+      : selectedPack === 12 && selections.length - 2 >= 0;
+  const selected2 =
+    selectedPack === 12
+      ? selections.length - 4 >= 0
+      : selections.length - 2 >= 0;
   const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
     const updatedCounter = selections.length <= min ? selections.length : min;
     setCounter(updatedCounter);
-  }, [selections]);
+  }, [selections, min]);
 
   useEffect(() => {
     if (state.data.length === 0) {
@@ -96,7 +106,7 @@ const Page4 = () => {
               Lorem ipsum doloris exuvaduis iradum quavodis zarominis{" "}
             </SubTitle>
           </div>
-          <MinMax stage={4} />
+          <MinMax stage={4} number={selectedPack <= 8 ? 1 : 2} />
         </Subcontainer>
         <Container>
           <SubTitle1>
@@ -196,13 +206,14 @@ const Page4 = () => {
         </Container>
       </Main>
       <Footer
+        first={selectedPack < 8}
         selection={selection}
         returnButtonText={footer.return}
         returnHref={"/3"}
         buttonText={footer.buttonText}
         href={"/5"}
         stage={"BIÈRES NON-ALCOOLISÉS"}
-        disabled={disabled /* counter !== min */}
+        disabled={disabled}
       />
     </>
   );
