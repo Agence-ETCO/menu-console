@@ -47,14 +47,27 @@ const Page4 = () => {
     (option) => option.attributes.category === "Craft Beer"
   );
   const min =
-    selectedPack === 8 ? 1 : selectedPack === 10 ? 2 : selectedPack === 12 && 4;
+    selectedPack === 8
+      ? 1
+      : selectedPack === 10
+      ? 2
+      : selectedPack === 12
+      ? 4
+      : 0;
   const max =
-    selectedPack === 8 ? 1 : selectedPack === 10 ? 2 : selectedPack === 12 && 4;
-  const selection = selectedPack > 6 && (
+    selectedPack === 8
+      ? 1
+      : selectedPack === 10
+      ? 2
+      : selectedPack === 12
+      ? 4
+      : 1;
+  const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
+
   const disabled =
     selectedPack === 0 ||
     (selectedPack > 6 && selections.length > 0 && counter !== min);

@@ -10,14 +10,21 @@ export const Container = styled.div`
 export const ImageContainer = styled.div`
   position: absolute;
   top: 300px;
-  left: 9%;
+  left: 23%;
   width: 380px;
   height: 402px;
   margin-top: 30px;
   margin-right: auto;
 
+  @media (max-width: 1900px) {
+    left: 6%;
+  }
   @media (max-width: 1500px) {
-    left: 0;
+    left: -30px;
+  }
+
+  @media (max-width: 1200px) {
+    left: 30px;
   }
 `;
 

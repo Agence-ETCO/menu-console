@@ -109,6 +109,7 @@ export const ButtonContainer = styled.div`
 
 export const StyledButton = styled.button`
   font-family: "GTWalsheimBold";
+  font-weight: 600;
   font-size: 17px;
   line-height: 19px;
   letter-spacing: 0.01em;
@@ -125,8 +126,10 @@ export const StyledButton = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   svg {
     margin-right: 10px;
     width: 40px;

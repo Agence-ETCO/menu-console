@@ -8,14 +8,16 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Container = styled.div`
-  margin-right: 60px;
-  margin-left: 60px;
+  margin-right: auto;
+  margin-left: auto;
   height: 131px;
-  border-bottom: 1px solid #939598;
+  border-bottom: 1px solid rgba(147, 149, 152, 0.75);
   display: flex;
   align-items: center;
-
+  max-width: 1480px;
   background-color: ${colors.black};
+  padding-right: 60px;
+  padding-left: 60px;
 `;
 
 export const Nav = styled.nav`
