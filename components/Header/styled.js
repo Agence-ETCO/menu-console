@@ -7,17 +7,20 @@ export const HeaderContainer = styled.div`
   background-color: ${colors.black};
 `;
 
-export const Container = styled.div`
+export const Container1 = styled.div`
   margin-right: auto;
   margin-left: auto;
+`;
+
+export const Container = styled.div`
   height: 131px;
   border-bottom: 1px solid rgba(147, 149, 152, 0.75);
   display: flex;
   align-items: center;
   max-width: 1480px;
   background-color: ${colors.black};
-  padding-right: 60px;
-  padding-left: 60px;
+  margin-right: 60px;
+  margin-left: 60px;
 `;
 
 export const Nav = styled.nav`
