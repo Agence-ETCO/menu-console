@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
 export const Container1 = styled.div`
   margin-right: auto;
   margin-left: auto;
+  width: 1480px;
 `;
 
 export const Container = styled.div`
