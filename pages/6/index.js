@@ -19,14 +19,13 @@ import {
   Container1,
 } from "./styled";
 
-const Page5 = () => {
+const Page6 = () => {
   const {
     state,
     actions: { addPreviousStep },
   } = useContext(AppContext);
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
-  const [craftBeerId, setCraftBeerId] = useState([]);
   const [craftBeer, setCraftBeer] = useState([]);
 
   const step = 6;
@@ -35,123 +34,8 @@ const Page5 = () => {
     setShowAlert(true);
   };
 
-  const data = state.micro1.title && {
-    title: state.micro1.title,
-    description: state.micro1.description,
-    beerOptions: "Microbrasserie",
-    category: "Caesar",
-    alcohol: state.micro1.alcohol,
-    cost: [
-      {
-        Price: "",
-        region: "",
-        size: state.micro1.size,
-      },
-    ],
-  };
-
-  const data2 = state.micro2.title && {
-    title: state.micro2.title,
-    description: state.micro2.description,
-    beerOptions: "Microbrasserie",
-    category: "Caesar",
-    alcohol: state.micro2.alcohol,
-    cost: [
-      {
-        Price: "",
-        region: "",
-        size: state.micro2.size,
-      },
-    ],
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const menuItems = state.selections.map((option) => option.id);
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYwNzQ1OTU1LCJleHAiOjE2NjA4MzIzNTV9.ZNKjMEObwi2-ETVOCIjSefrV16UH5fOfQhEndAYhqwg";
-
-    if (state.micro1.title && !state.micro2.title) {
-      postAPI("api/menu-items?populate=deep", token, data)
-        .then((response) => {
-          const menuData = {
-            data: {
-              menu_items:
-                craftBeerId.length > 0
-                  ? [...menuItems, ...craftBeerId, response.data.id]
-                  : [...menuItems, response.data.id],
-              franchisee: (state.userData.user && state.userData.user.id) || 4,
-            },
-          };
-          return postAPI("api/franchisees-menus", token, menuData);
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (!state.micro1.title && state.micro2.title) {
-      postAPI("api/menu-items?populate=deep", token, data2)
-        .then((response) => {
-          const menuData = {
-            data: {
-              menu_items:
-                craftBeerId.length > 0
-                  ? [...menuItems, ...craftBeerId, response.data.id]
-                  : [...menuItems, response.data.id],
-              franchisee: (state.userData.user && state.userData.user.id) || 4,
-            },
-          };
-          return postAPI("api/franchisees-menus", token, menuData);
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (state.micro1.title && state.micro2.title) {
-      const id = "";
-      postAPI("api/menu-items?populate=deep", token, data)
-        .then((response) => {
-          id = response.data.id;
-          return postAPI("api/menu-items?populate=deep", token, data2);
-        })
-        .then((response) => {
-          const menuData = {
-            data: {
-              menu_items: [...menuItems, id, response.data.id],
-              franchisee: (state.userData.user && state.userData.user.id) || 4,
-            },
-          };
-          return postAPI("api/franchisees-menus", token, menuData);
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (!state.micro1.title && !state.micro2.title) {
-      const menuData = {
-        data: {
-          menu_items:
-            craftBeerId.length > 0
-              ? [...menuItems, ...craftBeerId]
-              : [...menuItems],
-          franchisee: (state.userData.user && state.userData.user.id) || 4,
-        },
-      };
-      postAPI("api/franchisees-menus", token, menuData)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
     router.push("/7");
   };
 
@@ -165,17 +49,6 @@ const Page5 = () => {
     }
     if (state.micro2.id || state.micro2.title) {
       setCraftBeer([...craftBeer, state.micro1, state.micro2]);
-    }
-
-    if (state.micro1.id) {
-      setCraftBeerId([...craftBeerId, state.micro1.id]);
-    }
-    if (state.micro2.id) {
-      setCraftBeerId([
-        ...craftBeerId,
-        state.micro1.id && state.micro1.id,
-        state.micro2.id,
-      ]);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -321,4 +194,4 @@ const Page5 = () => {
   );
 };
 
-export default Page5;
+export default Page6;

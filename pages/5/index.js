@@ -23,10 +23,11 @@ const Page5 = () => {
     state,
     actions: { addNonAlcohol, addPreviousStep },
   } = useContext(AppContext);
-  const min = 1;
+  const min = 0;
   const max = 2;
   const options = [1, 2];
-  const [selections, setSelections] = useState(state.nonAlcohol);
+  const intialState = state.nonAlcohol.length > 0 ? state.nonAlcohol : [];
+  const [selections, setSelections] = useState(intialState);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
   const selection = (
@@ -61,7 +62,7 @@ const Page5 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    const updatedCounter = selections.length <= min ? selections.length : min;
+    const updatedCounter = selections.length;
     setCounter(updatedCounter);
   }, [selections]);
 
