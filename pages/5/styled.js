@@ -29,7 +29,6 @@ export const SubTitle = styled.div`
   font-weight: 400;
   font-size: 17px;
   line-height: 23px;
-  margin-left: 30px;
   max-width: 622px;
   span {
     font-family: "GTWalsheimBold";
@@ -71,6 +70,7 @@ export const Subcontainer2 = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: left;
+  margin-left: 30px;
   label {
     margin-left: 30px;
   }
@@ -95,7 +95,6 @@ export const Title = styled.div`
   font-size: 27px;
   line-height: 23px;
   margin-bottom: 40px;
-  margin-left: 30px;
 `;
 
 const Empty = () => {};
