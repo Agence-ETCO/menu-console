@@ -293,7 +293,18 @@ const Page5 = () => {
               />
             ))}
         </Subcontainer>
-        <Title>{"Bières non-alcoolisés"}</Title> <Subcontainer></Subcontainer>
+        <Title>{"Bières non-alcoolisés"}</Title>{" "}
+        <Subcontainer>
+          {state.nonAlcohol &&
+            state.nonAlcohol.map((option, i) => (
+              <BeerCard2
+                key={i}
+                checked
+                handleCheckboxChange={() => {}}
+                value={option}
+              />
+            ))}
+        </Subcontainer>
         <Container1>
           <Title1>Êtes-vous prêt à valider votre sélection?</Title1>
         </Container1>

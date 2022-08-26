@@ -21,12 +21,12 @@ import {
 const Page5 = () => {
   const {
     state,
-    actions: { receiveData, addPreviousStep },
+    actions: { addNonAlcohol, addPreviousStep },
   } = useContext(AppContext);
   const min = 1;
   const max = 2;
   const options = [1, 2];
-  const [selections, setSelections] = useState([]);
+  const [selections, setSelections] = useState(state.nonAlcohol);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
   const selection = (
@@ -51,7 +51,7 @@ const Page5 = () => {
     }
 
     setSelections(updatedSelections);
-
+    addNonAlcohol(updatedSelections);
     setUpdated(!updated);
   };
   useEffect(() => {

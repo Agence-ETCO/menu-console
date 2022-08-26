@@ -7,6 +7,7 @@ const initialState = {
   selections: [],
   micro1: {},
   micro2: {},
+  nonAlcohol: 0,
 };
 
 export const AppContext = React.createContext(initialState);
@@ -55,6 +56,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         micro2: action.value,
+      };
+
+    case "add-nonAlcohol":
+      return {
+        ...state,
+        nonAlcohol: action.value,
       };
 
     case "remove-micro1":
@@ -132,6 +139,13 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const addNonAlcohol = (value) => {
+    dispatch({
+      type: "add-nonAlcohol",
+      value: value,
+    });
+  };
+
   const removeMicro01 = () => {
     dispatch({
       type: "remove-micro1",
@@ -163,6 +177,7 @@ export const AppProvider = ({ children }) => {
           removeMicro02,
           addMicro01,
           addMicro02,
+          addNonAlcohol,
           addPreviousStep,
           addUser,
         },
