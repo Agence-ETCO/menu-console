@@ -29,15 +29,11 @@ const CraftBeerCard = (props) => {
     actions: { addMicro01, addMicro02, removeMicro01, removeMicro02 },
   } = useContext(AppContext);
 
-  /* const max = 1;
-  const limit =
-    (props.order === "01" && state.micro1) ||
-    (props.order === "02" && state.micro2); */
-  const [priceOption, setPriceOption] = useState(null);
+  const [priceOptions, setPriceOptions] = useState([]);
   const isChecked = (option) => {
     if (
-      (state.micro1 && state.micro1.id === option.id) ||
-      (state.micro2 && state.micro2.id === option.id)
+      (props.order === "01" && state.micro1 && state.micro1.id === option.id) ||
+      (props.order === "02" && state.micro2 && state.micro2.id === option.id)
     ) {
       return true;
     }
@@ -45,28 +41,54 @@ const CraftBeerCard = (props) => {
   };
 
   const isSelected = (value) => {
-    if (priceOption === value) {
+    if (priceOptions.includes(value)) {
       return true;
     }
     return false;
   };
 
   const handlePriceChange = (value) => {
-    if (!isChecked(props.option)) {
-      return;
-    }
-    setPriceOption(value);
-    if (props.order === "01") {
-      addMicro01({ ...props.option, craftOptions: priceOption });
+    props.onChange(true);
+    if (isSelected(value)) {
+      const updatedOptions = priceOptions.filter((option) => option !== value);
+      setPriceOptions(updatedOptions);
+      if (props.order === "01") {
+        addMicro01({
+          ...props.option,
+          craftOptions: { id: props.option.id, price: updatedOptions },
+        });
+      } else {
+        addMicro02({
+          ...props.option,
+          craftOptions: { id: props.option.id, price: updatedOptions },
+        });
+      }
     } else {
-      addMicro01({ ...props.option, craftOptions: priceOption });
+      setPriceOptions([...priceOptions, value]);
+      if (props.order === "01") {
+        addMicro01({
+          ...props.option,
+          craftOptions: {
+            id: props.option.id,
+            price: [...priceOptions, value],
+          },
+        });
+      } else {
+        addMicro02({
+          ...props.option,
+          craftOptions: {
+            id: props.option.id,
+            price: [...priceOptions, value],
+          },
+        });
+      }
     }
   };
 
   const handleCheckboxChange = (option) => {
     let checked =
-      (state.micro1 && state.micro1.id === option.id) ||
-      (state.micro2 && state.micro2.id === option.id);
+      (props.order === "01" && state.micro1 && state.micro1.id === option.id) ||
+      (props.order === "02" && state.micro2 && state.micro2.id === option.id);
 
     if (checked) {
       if (props.order === "01") {
@@ -74,15 +96,75 @@ const CraftBeerCard = (props) => {
       } else {
         removeMicro02(option);
       }
-      setPriceOption(null);
+      props.onChange(false);
+      setPriceOptions([]);
     } else {
+      props.onChange(false);
       if (props.order === "01") {
         addMicro01(option);
+        setPriceOptions([]);
       } else {
         addMicro02(option);
+        setPriceOptions([]);
       }
     }
   };
+
+  useEffect(() => {
+    if (
+      props.order === "02" &&
+      state.micro1 &&
+      props.option.id === state.micro1.id
+    ) {
+      setPriceOptions(state.micro1.craftOptions.price);
+    }
+    if (
+      props.order === "02" &&
+      state.micro2 &&
+      props.option.id === state.micro2.id
+    ) {
+      setPriceOptions(state.micro2.craftOptions.price);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (
+      props.order === "01" &&
+      state.micro1 &&
+      props.option.id === state.micro1.id
+    ) {
+      setPriceOptions(state.micro1.craftOptions.price);
+    }
+    if (
+      props.order === "02" &&
+      state.micro2 &&
+      props.option.id === state.micro2.id
+    ) {
+      setPriceOptions(state.micro2.craftOptions.price);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (
+      props.order === "01" &&
+      state.micro1 &&
+      state.micro1.craftOptions &&
+      state.micro1.craftOptions.length > 0
+    ) {
+      props.onChange(true);
+    }
+    if (
+      props.order === "02" &&
+      state.micro2 &&
+      state.micro2.craftOptions &&
+      state.micro2.craftOptions.length > 0
+    ) {
+      props.onChange(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -105,17 +187,17 @@ const CraftBeerCard = (props) => {
             </div>
             <Type checked={isChecked(props.option)}>
               {" "}
-              {"Lager américaine"}{" "}
+              {props.option.attributes.descriptionFr}{" "}
             </Type>
-            {isChecked(props.option) && !(isSelected(1) || isSelected(0)) && (
+            {isChecked(props.option) && !(isSelected(1) || isSelected(2)) && (
               <>
                 <Container2>
                   <span style={{ color: "#F5BA18" }}>CHOISIR VOTRE FORMAT</span>
                 </Container2>
               </>
             )}
-            <Format checked={isSelected(1) || isSelected(0)}>
-              {isChecked(props.option) && !(isSelected(1) || isSelected(0)) ? (
+            <Format checked={isSelected(1) || isSelected(2)}>
+              {isChecked(props.option) && !(isSelected(1) || isSelected(2)) ? (
                 <span>CHOISIR VOTRE FORMAT</span>
               ) : (
                 "FORMATS DISPONIBLE"
@@ -125,7 +207,7 @@ const CraftBeerCard = (props) => {
               {}
               <SubContainer1>
                 <CheckboxContainer1
-                  checked={isSelected(1)}
+                  checked={isSelected(1) && isChecked(props.option)}
                   onClick={() => handlePriceChange(1)}
                 >
                   <Circle /> <StyledCheckbox></StyledCheckbox>
@@ -134,7 +216,7 @@ const CraftBeerCard = (props) => {
                   <Size
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0))
+                      (isSelected(1) || isSelected(2))
                     }
                   >
                     {"Presion 20oz"}
@@ -142,7 +224,7 @@ const CraftBeerCard = (props) => {
                   <Price
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0))
+                      (isSelected(1) || isSelected(2))
                     }
                   >
                     {props.option.attributes.cost[1].Price} $
@@ -151,8 +233,8 @@ const CraftBeerCard = (props) => {
               </SubContainer1>
               <SubContainer1>
                 <CheckboxContainer1
-                  checked={isSelected(0)}
-                  onClick={() => handlePriceChange(0)}
+                  checked={isSelected(2) && isChecked(props.option)}
+                  onClick={() => handlePriceChange(2)}
                 >
                   <Circle />
                   <StyledCheckbox></StyledCheckbox>
@@ -161,7 +243,7 @@ const CraftBeerCard = (props) => {
                   <Size
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0))
+                      (isSelected(1) || isSelected(2))
                     }
                   >
                     {"Pichet 60oz"}
@@ -169,10 +251,10 @@ const CraftBeerCard = (props) => {
                   <Price
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0))
+                      (isSelected(1) || isSelected(2))
                     }
                   >
-                    {props.option.attributes.cost[0].Price} $
+                    {props.option.attributes.cost[2].Price} $
                   </Price>
                 </Cell>
               </SubContainer1>

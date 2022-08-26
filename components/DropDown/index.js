@@ -115,19 +115,15 @@ const DropDown = ({ options, disabled, order }) => {
     }
   };
 
-  useEffect(() => {
-    const closeDropDown = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
+  const index1 =
+    state.micro1 &&
+    state.micro1.craftOptions &&
+    state.micro1.craftOptions.price;
 
-    document.addEventListener("click", closeDropDown);
-
-    return () => {
-      document.removeEventListener("click", closeDropDown);
-    };
-  }, []);
+  const index2 =
+    state.micro2 &&
+    state.micro2.craftOptions &&
+    state.micro2.craftOptions.price;
 
   return (
     <>
@@ -222,13 +218,25 @@ const DropDown = ({ options, disabled, order }) => {
                     <SubContainer2>
                       <span>
                         {" "}
-                        {state.micro1.id ? "Blonde" : state.micro1.type}
+                        {state.micro1.id
+                          ? state.micro1.attributes.descriptionFr
+                          : state.micro1.type}
                       </span>{" "}
                       <span>
-                        {state.micro1.id ? "341ml" : state.micro1.format}{" "}
+                        {state.micro1.id
+                          ? index1 &&
+                            index1[0] &&
+                            state.micro1.attributes.cost[
+                              index1[0]
+                            ].size.includes("20")
+                            ? "20oz"
+                            : "Pichet"
+                          : state.micro1.format}{" "}
                       </span>{" "}
                       <span>
-                        {state.micro1.id ? "4.5%" : state.micro1.alcohol}
+                        {state.micro1.id
+                          ? state.micro1.attributes.alcohol
+                          : state.micro1.alcohol}
                       </span>
                     </SubContainer2>
                   </div>
@@ -245,13 +253,25 @@ const DropDown = ({ options, disabled, order }) => {
                     <SubContainer2>
                       <span>
                         {" "}
-                        {state.micro2.id ? "Blonde" : state.micro2.type}
+                        {state.micro2.id
+                          ? state.micro2.attributes.descriptionFr || "Blonde"
+                          : state.micro2.type}
                       </span>{" "}
                       <span>
-                        {state.micro2.id ? "341ml" : state.micro2.format}{" "}
+                        {state.micro2.id
+                          ? index2 &&
+                            index2[0] &&
+                            state.micro2.attributes.cost[
+                              index2[0]
+                            ].size.includes("20")
+                            ? "20oz"
+                            : "Pichet"
+                          : state.micro2.format}{" "}
                       </span>{" "}
                       <span>
-                        {state.micro2.id ? "4.5%" : state.micro2.alcohol}
+                        {state.micro2.id
+                          ? state.micro2.attributes.alcohol
+                          : state.micro2.alcohol}
                       </span>
                     </SubContainer2>
                   </div>
@@ -265,39 +285,6 @@ const DropDown = ({ options, disabled, order }) => {
               </DropDownHeader>
             </Container1>
           </Container3>
-          {/*   {isOpen && (
-            <DropDownListContainer>
-              <DropDownList>
-                {options.map((option) => (
-                  <ListItem
-                    onClick={() => onOptionClick(option)}
-                    key={Math.random()}
-                    checked={isSelected(option)}
-                  >
-                    <SubContainer1>
-                      {isSelected(option) && (
-                        <SubContainer3>
-                          <CheckboxContainer>
-                            <CheckMark />
-                            <StyledCheckbox></StyledCheckbox>
-                          </CheckboxContainer>
-                        </SubContainer3>
-                      )}
-                      <span>{option.attributes.title}</span>
-                      
-                    </SubContainer1>
-                    <SubContainer2>
-                      <span> {"Blonde"}</span> <span>{"341ml"} </span>{" "}
-                      <span>{"4.5%"}</span>
-                    </SubContainer2>
-                  </ListItem>
-                ))}
-              </DropDownList>
-              <Button onClick={handleClick}>
-                {"Ajouter votre microbrasserie"}
-              </Button>
-            </DropDownListContainer>
-          )} */}
         </DropDownContainer>
       </Container>
     </>

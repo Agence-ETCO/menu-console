@@ -67,13 +67,13 @@ const reducer = (state, action) => {
     case "remove-micro1":
       return {
         ...state,
-        micro1: action.value,
+        micro1: {},
       };
 
     case "remove-micro2":
       return {
         ...state,
-        micro2: action.value,
+        micro2: {},
       };
 
     case "add-step":
