@@ -48,8 +48,8 @@ export const Body = styled.div`
   font-family: "GTWalsheimRegular";
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
   margin-bottom: 45px;
 
   span {
@@ -61,8 +61,8 @@ export const Date = styled.div`
   font-family: "GTWalsheimBold";
   font-style: normal;
   font-weight: 700;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
 `;
 
 const Empty = () => {};

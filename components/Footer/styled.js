@@ -90,8 +90,8 @@ export const Container = styled.div`
     font-family: "GTWalsheimMedium";
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
-    line-height: 23px;
+    font-size: 19px;
+    line-height: 25px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
   }
@@ -99,7 +99,7 @@ export const Container = styled.div`
 
 export const Select = styled.span`
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 21px;
 
   margin-left: auto;

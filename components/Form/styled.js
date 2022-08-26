@@ -80,7 +80,7 @@ export const Label = styled.label`
   font-family: "GTWalsheimRegular";
 
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 20px;
 
   color: #231f20;
@@ -104,7 +104,7 @@ export const InputSmall = styled.input`
   width: 123px;
   height: 50px;
   font-size: 19px;
-  line-height: 23px;
+  line-height: 25px;
   color: #231f20;
   border: 1px solid #939598;
   border-radius: 9px;
@@ -115,7 +115,7 @@ export const InputSmall = styled.input`
     font-family: "GTWalsheimRegular";
 
     font-weight: 400;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 20px;
     color: #939598;
   }

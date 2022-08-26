@@ -30,7 +30,7 @@ export const Nav = styled.nav`
   font-family: "GTWalsheimRegular";
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 20px;
 
   ul {

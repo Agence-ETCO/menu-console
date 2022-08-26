@@ -23,7 +23,7 @@ export const Title1 = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
-  line-height: 23px;
+  line-height: 25px;
   margin-left: 30px;
 `;
 
@@ -31,8 +31,8 @@ export const SubTitle = styled.div`
   color: ${colors.black};
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
   margin-left: 30px;
   width: 630px;
   margin-top: 40px;
@@ -96,7 +96,7 @@ export const Title = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
-  line-height: 23px;
+  line-height: 25px;
   margin-bottom: 40px;
   margin-left: 30px;
 `;
@@ -168,8 +168,8 @@ export const Square = styled.div`
   font-family: "InterBold";
   font-style: normal;
   font-weight: 700;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
   color: #231f20;
   background-color: #f5ba18;
   border: 9px solid #f5ba18;
@@ -185,7 +185,7 @@ export const Container2 = styled.div`
     font-family: "GTWalsheimRegular";
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 20px;
     color: #939598;
     margin-bottom: 20px;
@@ -196,7 +196,7 @@ export const Container3 = styled.div`
     font-family: "GTWalsheimRegular";
     font-style: normal;
     font-weight: 400;
-    font-size: 17px;
+    font-size: 19px;
     line-height: 20px;
     color: #939598;
     margin-left: 50px;

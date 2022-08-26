@@ -12,7 +12,7 @@ export const Select = styled.div`
   flex-direction: row;
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 21px;
   margin-left: auto;
   background: #231f20;

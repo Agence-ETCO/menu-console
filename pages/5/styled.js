@@ -18,8 +18,8 @@ export const Title1 = styled.div`
   color: ${colors.black};
   font-family: "GTWalsheimBold";
   font-weight: 700;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
   margin-left: 30px;
 `;
 
@@ -27,8 +27,8 @@ export const SubTitle = styled.div`
   color: ${colors.black};
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
   max-width: 622px;
   span {
     font-family: "GTWalsheimBold";
@@ -93,7 +93,7 @@ export const Title = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
-  line-height: 23px;
+  line-height: 25px;
   margin-bottom: 40px;
 `;
 

@@ -18,7 +18,7 @@ export const page1 = {
     "La carte des alcools devra être insérée dans votre cartable menu salle à manger et permettra à vos clients de sélectionner facilement leurs boissons. ",
   body2:
     "Une fois votre sélection validée, nous concevrons votre carte des alcools personnalisées, la ferons imprimer, puis parvenir d'ici le 25 octobre.",
-  buttonText: "VALIDER",
+  buttonText: "CONTINUER",
 };
 
 export const page2 = {

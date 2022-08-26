@@ -110,7 +110,7 @@ export const ButtonContainer = styled.div`
 export const StyledButton = styled.button`
   font-family: "GTWalsheimBold";
   font-weight: 600;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 19px;
   letter-spacing: 0.01em;
   text-transform: uppercase;

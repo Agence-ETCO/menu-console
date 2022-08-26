@@ -57,7 +57,7 @@ export const Title = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
-  line-height: 23px;
+  line-height: 25px;
   margin-bottom: 10px;
   margin-left: 30px;
 `;

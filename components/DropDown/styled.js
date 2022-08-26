@@ -115,8 +115,8 @@ export const SubContainer1 = styled.div`
   padding-bottom: 11px;
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 17px;
-  line-height: 23px;
+  font-size: 19px;
+  line-height: 25px;
   color: rgba(35, 31, 32, 0.75);
   position: relative;
   span {
@@ -124,7 +124,7 @@ export const SubContainer1 = styled.div`
     font-family: "GTWalsheimBold";
     font-weight: 700;
     font-size: 19px;
-    line-height: 23px;
+    line-height: 25px;
     color: #231f20;
     margin-top: 24px;
   }
@@ -136,7 +136,7 @@ export const SubContainer2 = styled.div`
   font-family: "GTWalsheimRegular";
   font-weight: 400;
   font-size: 15px;
-  line-height: 23px;
+  line-height: 25px;
   color: rgba(35, 31, 32, 0.5);
   text-transform: uppercase;
   padding-top: 18px;
@@ -147,7 +147,7 @@ export const Header = styled.span`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 19px;
-  line-height: 23px;
+  line-height: 25px;
   color: ${(props) => (props.disabled ? "rgba(60, 60, 60, 0.5)" : "#231f20")};
   margin-top: 24px;
   padding-left: 60px;
@@ -160,7 +160,7 @@ export const Button = styled.button`
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 19px;
-  line-height: 23px;
+  line-height: 25px;
   color: #231f20;
   margin-top: -15px;
   padding-left: 24px;
@@ -178,7 +178,7 @@ export const Text = styled.div`
   flex-direction: row;
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 21px;
   color: ${(props) => (props.disabled ? "#E30826" : "#3c3c3c")};
   width: 420px;
@@ -196,7 +196,7 @@ export const Text1 = styled.span`
   font-family: "GTWalsheimMedium";
   font-weight: 600;
   font-size: 21px;
-  line-height: 23px;
+  line-height: 25px;
   color: ${(props) => (props.disabled ? "rgba(60, 60, 60, 0.5)" : "#3c3c3c")};
   margin-right: 20px;
 `;

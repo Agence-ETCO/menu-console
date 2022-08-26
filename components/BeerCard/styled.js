@@ -61,7 +61,7 @@ export const TextContainer = styled.div`
     font-family: "GTWalsheimBold";
     font-weight: 700;
     font-size: 19px;
-    line-height: 23px;
+    line-height: 25px;
   }
   div:nth-child(2) {
     color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};

@@ -46,7 +46,7 @@ export const Body = styled.div`
   font-family: "GTWalsheimRegular";
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 24px;
   color: white;
   margin-bottom: 10px;
@@ -57,7 +57,7 @@ export const Button = styled.button`
   height: 51px;
   font-family: "GTWalsheimBold";
   font-weight: 700;
-  font-size: 17px;
+  font-size: 19px;
   line-height: 20px;
   letter-spacing: 0.03em;
   color: ${colors.yellow};
