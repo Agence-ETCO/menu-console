@@ -42,7 +42,7 @@ const WineCard = (props) => {
   };
 
   const handleCheckboxChange = (option) => {
-    if (props.step === 5) {
+    if (props.step === 6) {
       return null;
     }
 

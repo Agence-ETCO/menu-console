@@ -1,5 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
+import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import BeerCard from "../../components/BeerCard";
@@ -7,6 +9,7 @@ import BeerCard2 from "../../components/BeerCard2";
 import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
+import image from "../../public/edit.svg";
 import { postAPI } from "../../lib/api";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
@@ -17,6 +20,7 @@ import {
   Subtitle1,
   Title1,
   Container1,
+  Button,
 } from "./styled";
 
 const Page6 = () => {
@@ -81,7 +85,14 @@ const Page6 = () => {
           </Subtitle1>
           <Subtitle1>Merci de votre collaboration.</Subtitle1>
         </Subcontainer1>
-        <Title>{page2.title}</Title>
+        <Title>{page2.title}</Title>{" "}
+        <Link href={"/2"}>
+          <Button>
+            {" "}
+            <Image src={image} width={19} height={19} alt="" />
+            <span>ÉDITER</span>
+          </Button>
+        </Link>
         <Subcontainer>
           {state.selections &&
             state.selections
@@ -107,7 +118,14 @@ const Page6 = () => {
                 />
               ))}
         </Subcontainer>
-        <Title>{page3.title}</Title>
+        <Title>{page3.title}</Title>{" "}
+        <Link href={"/3"}>
+          <Button>
+            {" "}
+            <Image src={image} width={19} height={19} alt="" />
+            <span>ÉDITER</span>
+          </Button>
+        </Link>
         <Subcontainer>
           {state.selections &&
             state.selections
@@ -133,6 +151,13 @@ const Page6 = () => {
               ))}
         </Subcontainer>
         <Title>{beerList.title}</Title>
+        <Link href={"/4"}>
+          <Button>
+            {" "}
+            <Image src={image} width={19} height={19} alt="" />
+            <span>ÉDITER</span>
+          </Button>
+        </Link>
         <Subcontainer>
           {state.selections &&
             state.selections
@@ -155,6 +180,13 @@ const Page6 = () => {
               ))}
         </Subcontainer>
         <Title>{option2.title}</Title>{" "}
+        <Link href={"/4"}>
+          <Button>
+            {" "}
+            <Image src={image} width={19} height={19} alt="" />
+            <span>ÉDITER</span>
+          </Button>
+        </Link>
         <Subcontainer>
           {craftBeer &&
             craftBeer.map((option, i) => (
@@ -167,8 +199,15 @@ const Page6 = () => {
             ))}
         </Subcontainer>
         <Title>{"Bières non-alcoolisés"}</Title>{" "}
+        <Link href={"/5"}>
+          <Button>
+            {" "}
+            <Image src={image} width={19} height={19} alt="" />
+            <span>ÉDITER</span>
+          </Button>
+        </Link>
         <Subcontainer>
-          {state.nonAlcohol &&
+          {state.nonAlcohol > 0 &&
             state.nonAlcohol.map((option, i) => (
               <BeerCard2
                 key={i}

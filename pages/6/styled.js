@@ -54,6 +54,7 @@ export const Subtitle1 = styled.div`
   margin-left: 30px;
 `;
 export const Title = styled.div`
+  display: inline-block;
   font-family: "GTWalsheimBold";
   font-weight: 700;
   font-size: 27px;
@@ -65,6 +66,26 @@ export const Title = styled.div`
 export const Container1 = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const Button = styled.button`
+  display: inline-block;
+  width: 134px;
+  height: 44px;
+  background-color: #f5ba18;
+  border: none;
+  border-radius: 9px;
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #231f20;
+  margin-left: 40px;
+
+  span {
+    margin-left: 15px;
+  }
 `;
 
 const Empty = () => {};
