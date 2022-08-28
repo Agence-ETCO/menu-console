@@ -125,6 +125,30 @@ const DropDown = ({ options, disabled, order }) => {
     state.micro2.craftOptions &&
     state.micro2.craftOptions.price;
 
+  const format1 = () => {
+    if (index1 && !index1[1] && index1[0]) {
+      if (state.micro1.attributes.cost[index1[0]].size.includes("20")) {
+        return "20oz";
+      } else {
+        return "Pichet";
+      }
+    } else {
+      return "20oz Pichet";
+    }
+  };
+
+  const format2 = () => {
+    if (index2 && !index2[1] && index2[0]) {
+      if (state.micro2.attributes.cost[index2[0]].size.includes("20")) {
+        return "20oz";
+      } else {
+        return "Pichet";
+      }
+    } else {
+      return "20oz Pichet";
+    }
+  };
+
   return (
     <>
       <CraftList
@@ -223,15 +247,7 @@ const DropDown = ({ options, disabled, order }) => {
                           : state.micro1.type}
                       </span>{" "}
                       <span>
-                        {state.micro1.id
-                          ? index1 &&
-                            index1[0] &&
-                            state.micro1.attributes.cost[
-                              index1[0]
-                            ].size.includes("20")
-                            ? "20oz"
-                            : "Pichet"
-                          : state.micro1.format}{" "}
+                        {state.micro1.id ? format1() : state.micro1.format}{" "}
                       </span>{" "}
                       <span>
                         {state.micro1.id
@@ -258,15 +274,7 @@ const DropDown = ({ options, disabled, order }) => {
                           : state.micro2.type}
                       </span>{" "}
                       <span>
-                        {state.micro2.id
-                          ? index2 &&
-                            index2[0] &&
-                            state.micro2.attributes.cost[
-                              index2[0]
-                            ].size.includes("20")
-                            ? "20oz"
-                            : "Pichet"
-                          : state.micro2.format}{" "}
+                        {state.micro2.id ? format2() : state.micro2.format}{" "}
                       </span>{" "}
                       <span>
                         {state.micro2.id
