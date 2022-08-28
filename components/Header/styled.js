@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
 export const Container1 = styled.div`
   margin-right: auto;
   margin-left: auto;
-  width: 1480px;
+  max-width: 1480px;
 `;
 
 export const Container = styled.div`
@@ -18,7 +18,6 @@ export const Container = styled.div`
   border-bottom: 1px solid rgba(147, 149, 152, 0.75);
   display: flex;
   align-items: center;
-  max-width: 1480px;
   background-color: ${colors.black};
   margin-right: 60px;
   margin-left: 60px;

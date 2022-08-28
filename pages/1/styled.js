@@ -6,25 +6,27 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
 `;
+export const Container1 = styled.div`
+  max-width: 1450px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+`;
 
 export const ImageContainer = styled.div`
   position: absolute;
-  top: 300px;
-  left: 23%;
+  top: 0px;
+  left: -400px;
   width: 380px;
   height: 402px;
   margin-top: 30px;
   margin-right: auto;
 
-  @media (max-width: 1900px) {
-    left: 6%;
-  }
-  @media (max-width: 1500px) {
-    left: -30px;
-  }
-
   @media (max-width: 1200px) {
-    left: 30px;
+    left: -350px;
+  }
+  @media (max-width: 1000px) {
+    left: -300px;
   }
 `;
 
