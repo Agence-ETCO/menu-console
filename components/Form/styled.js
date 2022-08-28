@@ -14,8 +14,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   border: none;
   border-radius: 8px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 100px;
 `;
 export const CloseButton = styled.button`
   z-index: 200;
