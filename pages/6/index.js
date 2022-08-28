@@ -6,6 +6,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import BeerCard from "../../components/BeerCard";
 import BeerCard2 from "../../components/BeerCard2";
+import BeerCard3 from "../../components/BeerCard3";
 import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
@@ -56,7 +57,12 @@ const Page6 = () => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [
+    state.micro1.id,
+    state.micro1.title,
+    state.micro2.id,
+    state.micro2.title,
+  ]);
 
   useEffect(() => {
     if (state.previousStep < 4) {
@@ -190,11 +196,22 @@ const Page6 = () => {
         <Subcontainer>
           {craftBeer &&
             craftBeer.map((option, i) => (
-              <BeerCard2
+              <BeerCard3
                 key={i}
                 checked
                 handleCheckboxChange={() => {}}
                 value={option}
+                title={
+                  (option.attributes && option.attributes.title) || option.title
+                }
+                description={
+                  (option.attributes && option.attributes.descriptionFr) ||
+                  option.description
+                }
+                prices={
+                  (option.attributes && option.attributes.cost) || option.size
+                }
+                index={option.attributes && option.craftOptions.price}
               />
             ))}
         </Subcontainer>

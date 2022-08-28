@@ -115,10 +115,7 @@ const Page4 = () => {
         <Subcontainer>
           <div>
             <Title1>Bières en fût </Title1>
-            <SubTitle>
-              Encourageons le commerce local ! Sélectionnez 2 bières Labatt pour
-              inscrire 2 bières de microbrasserie de votre choix
-            </SubTitle>
+            <SubTitle></SubTitle>
           </div>
           <MinMax stage={4} number={selectedPack <= 8 ? 1 : 2} />
         </Subcontainer>
@@ -134,7 +131,7 @@ const Page4 = () => {
                 <div>Produits Labatt</div>
                 <ButtonContainer1>
                   {buttons1.map((item, i) => (
-                    <button key={i} onClick={() => setSelectedPack(item)}>
+                    <button key={i} onClick={() => {}}>
                       {item}
                     </button>
                   ))}
