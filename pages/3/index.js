@@ -68,7 +68,7 @@ const Page3 = () => {
         console.log(err);
       });
   };
-  console.log(state.selections);
+
   useEffect(() => {
     const userId = 4;
     if (state.selections.length === 0) {

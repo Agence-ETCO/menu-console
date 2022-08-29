@@ -11,7 +11,7 @@ import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
-import { postAPI } from "../../lib/api";
+import { postAPI, fetchAPI } from "../../lib/api";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
   Container,
@@ -27,7 +27,13 @@ import {
 const Page6 = () => {
   const {
     state,
-    actions: { addPreviousStep },
+    actions: {
+      addPreviousStep,
+      receiveSelections,
+      receiveCraftOptions,
+      addMicro01,
+      addMicro02,
+    },
   } = useContext(AppContext);
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
@@ -63,10 +69,66 @@ const Page6 = () => {
     state.micro2.id,
     state.micro2.title,
   ]);
+  const token =
+    state.userData.jwt ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxNzkwODQ5LCJleHAiOjE2NjE4NzcyNDl9.D84sBq57zoGjMw2b7qhhJvxApz2GIUSbJjTCQEpjlpA";
+  console.log(state.micro1, state.micro2);
+  useEffect(() => {
+    const userId = 4;
+    if (state.selections.length === 0) {
+      fetchAPI("/api/users/4?populate=deep", token)
+        .then((res) => {
+          if (res.franchisee_s_menu.menu_items.length > 0) {
+            receiveSelections(res.franchisee_s_menu.menu_items);
+
+            receiveCraftOptions(res.franchisee_s_menu.craftOptions.options);
+
+            const selections = res.franchisee_s_menu.menu_items.filter(
+              (option) => option.category === "Craft Beer"
+            );
+
+            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+
+            const selection = selections.find(
+              (selection) => selection.id === craftOption.id
+            );
+
+            const craftObj = {
+              id: selection.id,
+              attributes: selection,
+              craftOptions: craftOption,
+            };
+
+            addMicro01(craftObj);
+            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
+            const selection2 = selections.find(
+              (selection) => selection.id === craftOption2.id
+            );
+            
+            const craftObj2 = {
+              id: selection2.id,
+              attributes: selection2,
+              craftOptions: craftOption2,
+            };
+            addMicro02(craftObj2);
+          }
+          /*  if (state.craftOptions.craft1) {
+          addMicro01(state.craftOptions.craft1);
+        }
+        if (state.craftOptions.craft2) {
+          addMicro02(state.craftOptions.craft2);
+        } */
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    if (state.previousStep < 4) {
-      addPreviousStep(4);
+    if (state.previousStep < 5) {
+      addPreviousStep(5);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

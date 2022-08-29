@@ -7,6 +7,7 @@ const initialState = {
   selections: [],
   micro1: {},
   micro2: {},
+  craftOptions: [],
   selectedPack: [],
   nonAlcohol: 0,
 };
@@ -95,6 +96,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         previousStep: action.value,
+      };
+
+    case "receive-craftOptions":
+      return {
+        ...state,
+        craftOptions: action.value,
+      };
+
+    case "receive-pack":
+      return {
+        ...state,
+        selectedPack: action.value,
       };
 
     default:
@@ -193,6 +206,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const receiveCraftOptions = (value) => {
+    dispatch({
+      type: "receive-craftOptions",
+      value: value,
+    });
+  };
+
+  const receivePack = (value) => {
+    dispatch({
+      type: "receive-pack",
+      value: value,
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -211,6 +238,8 @@ export const AppProvider = ({ children }) => {
           addUser,
           addPack,
           removePack,
+          receivePack,
+          receiveCraftOptions,
         },
       }}
     >
