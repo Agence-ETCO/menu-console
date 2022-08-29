@@ -17,7 +17,9 @@ const Footer = (props) => {
       <Container>
         {props.returnButtonText && (
           <Link href={props.returnHref}>
-            <Button>{props.returnButtonText}</Button>
+            <Button viewButtonText={props.viewButtonText}>
+              {props.returnButtonText}
+            </Button>
           </Link>
         )}
         {props.startText && (
@@ -48,7 +50,9 @@ const Footer = (props) => {
           </Stage>
         )}
         {props.viewButtonText && (
-          <StyledButton>{props.viewButtonText}</StyledButton>
+          <Link href={"/8"}>
+            <StyledButton>{props.viewButtonText}</StyledButton>
+          </Link>
         )}
         {props.submitButtonText && (
           <StyledButton onClick={props.handleSubmit}>
