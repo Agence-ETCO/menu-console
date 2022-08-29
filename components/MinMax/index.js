@@ -7,10 +7,7 @@ const MinMax = (props) => {
       <Select stage={props.stage}>
         <Hint />
         {props.stage === 4 ? (
-          <>
-            {props.number === 1 && "Max 1 bière en fût de microbrasserie"}
-            {props.number === 2 && "Maximum 2 bières de microbrasserie"}
-          </>
+          <>Maximum 2 bières de microbrasserie</>
         ) : props.stage === 5 ? (
           <>Jusquà 2 bières sans alcool</>
         ) : (

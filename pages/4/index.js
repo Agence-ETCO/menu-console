@@ -113,7 +113,7 @@ const Page4 = () => {
             <Title1>Bières en fût </Title1>
             <SubTitle></SubTitle>
           </div>
-          <MinMax stage={4} number={selectedPack <= 8 ? 1 : 2} />
+          <MinMax stage={4} />
         </Subcontainer>
         <Container>
           <SubTitle1>
