@@ -179,7 +179,10 @@ const CraftBeerCard = (props) => {
         </CheckboxContainer>
         <SubContainer>
           <TextContainer checked={isChecked(props.option)}>
-            <Title>{"Nom de la bière (5%)"}</Title>
+            <Title>
+              {props.option.attributes.title} ({props.option.attributes.alcohol}
+              )
+            </Title>
             <div>
               {" "}
               {props.option.attributes.title ||

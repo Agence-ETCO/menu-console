@@ -163,12 +163,14 @@ export const SubContainer1 = styled.div`
 export const Container2 = styled.div`
   background-color: white;
   position: absolute;
-  top: 70px;
-  bottom: -24px;
-  left: -60px;
-  right: 0;
-  width: 411px;
-  border-bottom: 1px solid rgba(147, 149, 152, 0.1);
+  top: 76px;
+  bottom: -25px;
+  left: -61px;
+  right: -1px;
+  width: 413px;
+  border-bottom: 1px solid rgba(147, 149, 152, 0.5);
+  border-left: 1px solid rgba(147, 149, 152, 0.5);
+  border-right: 1px solid rgba(147, 149, 152, 0.5);
   border-bottom-left-radius: 9px;
   border-bottom-right-radius: 9px;
   padding-top: 10px;

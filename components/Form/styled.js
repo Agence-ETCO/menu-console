@@ -8,13 +8,14 @@ export const Button = styled.button`
   height: 68px;
   font-family: "GTWalsheimBold";
   font-weight: 700;
-  font-size: 19px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
+  font-size: 27px;
+  line-height: 32px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border: none;
   border-radius: 8px;
   margin-left: 100px;
+  margin-top: 30px;
 `;
 export const CloseButton = styled.button`
   z-index: 200;
@@ -41,7 +42,7 @@ export const BoxContainer = styled.div`
   align-items: left;
   padding-left: 95px;
   width: 639px;
-  height: 819px;
+  height: 899px;
   background-color: #ffffff;
   box-shadow: 0px 4px 91px #000000;
   border-radius: 9px;
