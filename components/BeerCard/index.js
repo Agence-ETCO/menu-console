@@ -62,13 +62,17 @@ const BeerCard = (props) => {
         </CheckboxContainer>
         <SubContainer>
           <ImageContainer>
-            <Image
-              src={props.imageUrl || image}
-              width={185}
-              height={235}
-              alt=""
-              layout="intrinsic"
-            />
+            {props.imageUrl ? (
+              <Image
+                src={props.imageUrl}
+                width={185}
+                height={235}
+                alt=""
+                layout="intrinsic"
+              />
+            ) : (
+              <Image src={image} width={104} height={210} alt="" />
+            )}
           </ImageContainer>
           <TextContainer checked={isChecked(props.option)}>
             <div>{props.title || "Budweiser (5%)"}</div>
@@ -77,13 +81,9 @@ const BeerCard = (props) => {
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">{props.prices[0].size}</th>
-                    <th scope="col">
-                      {props.prices[1] && props.prices[1].size}
-                    </th>
-                    <th scope="col">
-                      {props.prices[2] && props.prices[2].size}
-                    </th>
+                    <th scope="col">Bouteille / Cannette</th>
+                    <th scope="col">{props.prices[1] && "Presion 20oz"}</th>
+                    <th scope="col">{props.prices[2] && "Pichet 60oz"}</th>
                   </tr>
                   <tr>
                     <td>{props.prices[0].Price}</td>

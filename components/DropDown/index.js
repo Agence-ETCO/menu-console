@@ -270,7 +270,7 @@ const DropDown = ({ options, disabled, order }) => {
                       <span>
                         {" "}
                         {state.micro2.id
-                          ? state.micro2.attributes.descriptionFr || "Blonde"
+                          ? state.micro2.attributes.descriptionFr 
                           : state.micro2.type}
                       </span>{" "}
                       <span>

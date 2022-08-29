@@ -37,16 +37,21 @@ const BeerCard3 = (props) => {
                 <tbody>
                   <tr>
                     <th scope="col">
-                      {(props.prices &&
-                        props.index &&
-                        props.prices[props.index[0]].size) ||
-                        (!props.index && props.prices)}
+                      {props.index
+                        ? props.prices &&
+                          props.prices[props.index[0]].size.includes("20")
+                          ? "Presion 20oz"
+                          : "Pichet 60oz"
+                        : `${props.prices} ml`}
                     </th>
                     <th scope="col">
-                      {props.prices &&
-                        props.index &&
-                        props.index[1] &&
-                        props.prices[props.index[1]].size}
+                      {props.index
+                        ? props.prices &&
+                          props.index[1] &&
+                          props.prices[props.index[1]].size.includes("20")
+                          ? "Presion 20oz"
+                          : "Pichet 60oz"
+                        : ""}
                     </th>
                   </tr>
                   <tr>
