@@ -19,7 +19,7 @@ import {
 } from "./styled";
 
 const WelcomePage = () => {
-  const date = "14 septembre 2022";
+  const date = "16 septembre 2022";
   const {
     state,
     actions: { addUser },

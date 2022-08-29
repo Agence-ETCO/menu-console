@@ -7,6 +7,7 @@ const initialState = {
   selections: [],
   micro1: {},
   micro2: {},
+  selectedPack: [],
   nonAlcohol: 0,
 };
 
@@ -38,11 +39,25 @@ const reducer = (state, action) => {
         selections: [...state.selections, action.value],
       };
 
+    case "add-pack":
+      return {
+        ...state,
+        selectedPack: [...state.selectedPack, action.value],
+      };
+
     case "remove-selection":
       return {
         ...state,
         selections: state.selections.filter(
           (selection) => selection.id !== action.value
+        ),
+      };
+
+    case "remove-pack":
+      return {
+        ...state,
+        selectedPack: state.selectedPack.filter(
+          (pack) => pack !== action.value
         ),
       };
 
@@ -125,6 +140,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const addPack = (value) => {
+    dispatch({
+      type: "add-pack",
+      value: value,
+    });
+  };
+
+  const removePack = (value) => {
+    dispatch({
+      type: "remove-pack",
+      value: value,
+    });
+  };
+
   const addMicro01 = (value) => {
     dispatch({
       type: "add-micro1",
@@ -180,6 +209,8 @@ export const AppProvider = ({ children }) => {
           addNonAlcohol,
           addPreviousStep,
           addUser,
+          addPack,
+          removePack,
         },
       }}
     >

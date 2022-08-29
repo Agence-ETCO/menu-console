@@ -32,7 +32,7 @@ import {
 const Page4 = () => {
   const {
     state,
-    actions: { receiveData, addPreviousStep },
+    actions: { receiveData, addPreviousStep, addPack, removePack },
   } = useContext(AppContext);
   const buttons1 = [2, 4];
   const buttons2 = [6, 8, 10, 12];
@@ -46,44 +46,40 @@ const Page4 = () => {
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"
   );
-  const min =
-    selectedPack === 8
-      ? 1
-      : selectedPack === 10
-      ? 2
-      : selectedPack === 12
-      ? 4
-      : 0;
-  const max =
-    selectedPack === 8
-      ? 1
-      : selectedPack === 10
-      ? 2
-      : selectedPack === 12
-      ? 4
-      : 1;
+  const min = selectedPack === 8 ? 2 : 0;
+  const max = 13;
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
 
-  const disabled =
-    selectedPack === 0 ||
-    (selectedPack > 6 && selections.length > 0 && counter !== min);
+  const disabled = state.selectedPack.length === 0;
 
   const selected =
-    selectedPack === 8 || selectedPack === 10
+    !state.selectedPack.includes(10) && !state.selectedPack.includes(12)
       ? selections.length - 1 >= 0
-      : selectedPack === 12 && selections.length - 2 >= 0;
+      : selections.length >= 0;
   const selected2 =
-    selectedPack === 12
-      ? selections.length - 4 >= 0
-      : selections.length - 2 >= 0;
+    !state.selectedPack.includes(10) && !state.selectedPack.includes(12)
+      ? selections.length - 2 >= 0
+      : selections.length >= 0;
   const limit = max - selections.length - 1 >= 0;
 
+  const handleClick = (item) => {
+    if (state.selectedPack.includes(item)) {
+      removePack(item);
+    } else {
+    }
+    if (state.selectedPack.length < 2) {
+      addPack(item);
+    } else {
+      removePack(item);
+    }
+  };
+
   useEffect(() => {
-    const updatedCounter = selections.length <= min ? selections.length : min;
+    const updatedCounter = selections.length;
     setCounter(updatedCounter);
   }, [selections, min]);
 
@@ -143,8 +139,8 @@ const Page4 = () => {
                   {buttons2.map((item, i) => (
                     <StyledButton
                       key={i}
-                      active={selectedPack === item}
-                      onClick={() => setSelectedPack(item)}
+                      active={state.selectedPack.includes(item)}
+                      onClick={() => handleClick(item)}
                     >
                       {item}
                     </StyledButton>
@@ -152,19 +148,24 @@ const Page4 = () => {
                 </ButtonContainer2>
               </Container3>
             </Container4>
-            {selectedPack > 6 && (
+            {(state.selectedPack.includes(8) ||
+              state.selectedPack.includes(10) ||
+              state.selectedPack.includes(12)) && (
               <Square>
-                {selectedPack === 8 &&
-                  "Tout d'abord, vous devez sélectionner 1 produit en fût de Labatt pour vous permettre d'ajouter 1 bière en fût de microbrasserie."}
-                {selectedPack === 10 &&
-                  "Tout d’abord, vous devez sélectionner 2 produits en fût de Labatt pour vous permettre d’ajouter 2 bières en fût de microbrasserie."}
-                {selectedPack === 12 &&
-                  "Tout d'abord, vous devez sélectionner 4 produits en fût de Labatt pour vous permettre d'ajouter 2 bières en fût de microbrasserie."}
+                {state.selectedPack.includes(8) &&
+                  !state.selectedPack.includes(10) &&
+                  !state.selectedPack.includes(12) &&
+                  "Tout d'abord, vous devez sélectionner 2 produits en fût de Labatt pour vous permettre d'ajouter 2 bières en fût de microbrasserie."}
+                {(state.selectedPack.includes(10) ||
+                  state.selectedPack.includes(12)) &&
+                  "Tout d’abord, vous devez sélectionner 0 produits en fût de Labatt pour vous permettre d’ajouter 2 bières en fût de microbrasserie."}
               </Square>
             )}
           </Buttons>
 
-          {selectedPack > 6 && (
+          {(state.selectedPack.includes(8) ||
+            state.selectedPack.includes(10) ||
+            state.selectedPack.includes(12)) && (
             <>
               <Subcontainer1>
                 <div>
@@ -203,12 +204,20 @@ const Page4 = () => {
                 />
                 <Bubble
                   count={selections.length}
-                  show={selections.length === 1}
+                  show={
+                    !state.selectedPack.includes(10) &&
+                    !state.selectedPack.includes(12) &&
+                    selections.length === 1
+                  }
                   duration={"4s"}
                 />
                 <Bubble
                   count={selections.length}
-                  show={selections.length === 2}
+                  show={
+                    !state.selectedPack.includes(10) &&
+                    !state.selectedPack.includes(12) &&
+                    selections.length === 2
+                  }
                   duration={"4s"}
                 />
               </Subcontainer3>

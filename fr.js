@@ -46,7 +46,7 @@ export const page6 = {
   subtitle:
     "Votre sélection a bien été envoyée, nous allons donc procéder à l'impression de votre cartes des alcools personnalisées. ",
   body1:
-    " Entre-temps, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
+    " Entretemps, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
   body2:
     "S'il vous plaît, n'imprimez pas le résumé pour l'utiliser dans votre restaurant. Nous vous ferons parvenir votre nouveau menu au plus tôt.",
   download: "télécharger ",
