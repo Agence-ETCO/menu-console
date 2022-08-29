@@ -47,7 +47,7 @@ const Form = (props) => {
             <Title>{"Vous désirez ajouter un produit en particulier ?"}</Title>
             <Subtitle>
               {
-                "Vous désirez nous faire part d’une demande particulière ? C’est possible ! Pour cela, il vous suffit de renseigner quelques informations."
+                "Vous désirez nous faire part d’une demande particulière ? C’est possible ! Pour cela, il vous suffit de nous fournir quelques informations."
               }
             </Subtitle>
             <Label>
