@@ -23,6 +23,7 @@ import {
   Container1,
   Button,
 } from "./styled";
+import { optionGroupUnstyledClasses } from "@mui/base";
 
 const Page6 = () => {
   const {
@@ -104,7 +105,7 @@ const Page6 = () => {
             const selection2 = selections.find(
               (selection) => selection.id === craftOption2.id
             );
-            
+
             const craftObj2 = {
               id: selection2.id,
               attributes: selection2,
@@ -166,22 +167,46 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes &&
-                  option.attributes.category === "White Wine"
+                  (option.attributes &&
+                    option.attributes.category === "White Wine") ||
+                  option.category === "White Wine"
               )
               .map((option, i) => (
                 <WineCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  taste={option.attributes.taste}
-                  location={option.attributes.location}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  description={
+                    (option.attributes && option.attributes.descriptionFr) ||
+                    option.descriptionFr
+                  }
+                  taste={
+                    (option.attributes && option.attributes.tasteFr) ||
+                    option.taste
+                  }
+                  location={
+                    (option.attributes && option.attributes.location) ||
+                    option.location
+                  }
+                  sugar={
+                    (option.attributes && option.attributes.sugar) ||
+                    option.sugar
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))}
@@ -199,21 +224,46 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes && option.attributes.category === "Red Wine"
+                  (option.attributes &&
+                    option.attributes.category === "Red Wine") ||
+                  option.category === "Red Wine"
               )
               .map((option, i) => (
                 <WineCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  taste={option.attributes.taste}
-                  location={option.attributes.location}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  description={
+                    (option.attributes && option.attributes.descriptionFr) ||
+                    option.descriptionFr
+                  }
+                  taste={
+                    (option.attributes && option.attributes.tasteFr) ||
+                    option.tasteFr
+                  }
+                  location={
+                    (option.attributes && option.attributes.location) ||
+                    option.location
+                  }
+                  sugar={
+                    (option.attributes && option.attributes.sugar) ||
+                    option.sugar
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))}
@@ -231,18 +281,34 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes && option.attributes.category === "Beer"
+                  (option.attributes &&
+                    option.attributes.category === "Beer") ||
+                  option.category === "Beer"
               )
               .map((option, i) => (
                 <BeerCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  description={
+                    (option.attributes && option.attributes.descriptionFr) ||
+                    option.descriptionFr
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))}

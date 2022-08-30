@@ -38,9 +38,9 @@ const Page2 = () => {
 
   const token =
     state.userData.jwt ||
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMjgwOTkyLCJleHAiOjE2NjEzNjczOTJ9.uMJQoYU9_DhjJq8gggRfKIN4G1b9N4Y4yaksTCBOw_g";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxNzkwODQ5LCJleHAiOjE2NjE4NzcyNDl9.D84sBq57zoGjMw2b7qhhJvxApz2GIUSbJjTCQEpjlpA";
 
-  /*  const handleClick = async () => {
+  const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
@@ -54,9 +54,9 @@ const Page2 = () => {
       .catch((err) => {
         console.log(err);
       });
-  }; */
+  };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const userId = 4;
     if (state.selections.length === 0) {
       fetchAPI("/api/users/4?populate=deep", token)
@@ -70,7 +70,7 @@ const Page2 = () => {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
+  }, []);
 
   useEffect(() => {
     if (state.previousStep < 1) {
@@ -120,17 +120,19 @@ const Page2 = () => {
                 <WineCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.descriptionFr}
-                  taste={option.attributes.tasteFr}
-                  location={option.attributes.location}
-                  country={option.attributes.country}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={option.attributes.title || option.tile}
+                  description={
+                    option.attributes.descriptionFr || option.descriptionFr
+                  }
+                  taste={option.attributes.tasteFr || option.tasteFr}
+                  location={option.attributes.location || option.location}
+                  country={option.attributes.country || option.country}
+                  sugar={option.attributes.sugar || option.sugar}
+                  saqCode={option.attributes.saqCode || option.saqCode}
+                  prices={option.attributes.cost || option.cost}
                   limit={limit}
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={option.attributes.imageURL || option.imageURL}
                 />
               ))}
         </Subcontainer2>
@@ -140,7 +142,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
-        /*    handleClick={handleClick} */
+        handleClick={handleClick}
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}
