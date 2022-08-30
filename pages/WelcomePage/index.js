@@ -1,11 +1,7 @@
-import React, { useEffect, useContext } from "react";
-import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
-import { AppContext } from "../../context/AppContext";
 import { welcomePage } from "../../fr";
-import { useRouter } from "next/router";
-import { login } from "../../lib/api";
 import {
   Greeting,
   Title,
@@ -19,30 +15,16 @@ import {
 } from "./styled";
 
 const WelcomePage = () => {
+  const [userId, setUserId] = useState(null);
   const date = "16 septembre 2022";
-  const {
-    state,
-    actions: { addUser },
-  } = useContext(AppContext);
-  const router = useRouter();
-  const { loginToken } = router.query;
 
   /* useEffect(() => {
-    if (loginToken) {
-      login(loginToken)
-        .then(({ data }) => {
-          addUser(data);
-          const { jwt, user } = data;
-          localStorage.setItem("jwt", jwt);
-          localStorage.setItem("user", JSON.stringify(user));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserId(user.id);
     }
-  }, [router, loginToken]); */
+  }, []); */
 
-  /* console.log(state.userData.user && state.userData.user.username); */
   return (
     <>
       <Header step={-1} />

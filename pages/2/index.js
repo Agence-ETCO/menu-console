@@ -37,7 +37,6 @@ const Page2 = () => {
   const limit = max - selections.length - 1 >= 0;
 
   const token =
-    state.userData.jwt ||
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMjgwOTkyLCJleHAiOjE2NjEzNjczOTJ9.uMJQoYU9_DhjJq8gggRfKIN4G1b9N4Y4yaksTCBOw_g";
 
   /*  const handleClick = async () => {
@@ -86,7 +85,7 @@ const Page2 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = state.userData.jwt || "";
+      const token = "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);
