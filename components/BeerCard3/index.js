@@ -12,7 +12,6 @@ import {
 } from "./styled.js";
 
 const BeerCard3 = (props) => {
-  console.log(props.description, props.prices);
   return (
     <>
       <Label checked={props.checked}>

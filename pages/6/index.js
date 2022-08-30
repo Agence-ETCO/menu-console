@@ -73,7 +73,7 @@ const Page6 = () => {
   const token =
     state.userData.jwt ||
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxNzkwODQ5LCJleHAiOjE2NjE4NzcyNDl9.D84sBq57zoGjMw2b7qhhJvxApz2GIUSbJjTCQEpjlpA";
-  console.log(state.micro1, state.micro2);
+
   useEffect(() => {
     const userId = 4;
     if (state.selections.length === 0) {
@@ -83,6 +83,15 @@ const Page6 = () => {
             receiveSelections(res.franchisee_s_menu.menu_items);
 
             receiveCraftOptions(res.franchisee_s_menu.craftOptions.options);
+            console.log(res.franchisee_s_menu.craftOptions);
+
+            if (res.franchisee_s_menu.craftOptions.craft1.title) {
+              addMicro01(res.franchisee_s_menu.craftOptions.craft1);
+            }
+
+            if (res.franchisee_s_menu.craftOptions.craft2.title) {
+              addMicro02(res.franchisee_s_menu.craftOptions.craft2);
+            }
 
             const selections = res.franchisee_s_menu.menu_items.filter(
               (option) => option.category === "Craft Beer"
@@ -113,12 +122,6 @@ const Page6 = () => {
             };
             addMicro02(craftObj2);
           }
-          /*  if (state.craftOptions.craft1) {
-          addMicro01(state.craftOptions.craft1);
-        }
-        if (state.craftOptions.craft2) {
-          addMicro02(state.craftOptions.craft2);
-        } */
         })
         .catch((err) => {
           console.log(err);
