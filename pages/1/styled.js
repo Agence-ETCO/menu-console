@@ -5,6 +5,9 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
+  @media (max-width: 1000px) {
+    width: 1480px;
+  }
 `;
 export const Container1 = styled.div`
   max-width: 1450px;
