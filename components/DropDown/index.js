@@ -264,7 +264,7 @@ const DropDown = ({ options, disabled, order }) => {
                       <span>Nom de la bière</span>
                       {state.micro2.id
                         ? state.micro2.attributes.title
-                        : state.micro2.producer}
+                        : state.micro2.title}
                     </SubContainer1>
                     <SubContainer2>
                       <span>

@@ -97,13 +97,12 @@ const Page4 = () => {
       (state.micro2 && state.micro2.craftOptions)
         ? [state.micro1.craftOptions, state.micro2.craftOptions]
         : [];
-    setCraftSelections(craft);
+    setCraftSelections(craft.filter((n) => n !== null));
     const menuItems = state.selections.map((option) => option.id);
 
     const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
       (n) => n !== undefined
     );
-
     setTotal(totalItems);
   }, [
     state.selections,
@@ -149,7 +148,7 @@ const Page4 = () => {
       },
       franchisee: 4,
     };
-
+    console.log(menuData);
     postAPI("api/franchisees-menus?populate=deep", token, menuData)
       .then((response) => {
         console.log(response);
@@ -158,7 +157,7 @@ const Page4 = () => {
         console.log(err);
       });
   };
-
+  console.log(state.selections, state.micro1, state.micro2, state.craftOptions);
   useEffect(() => {
     const userId = 4;
     if (state.selections.length === 0) {
@@ -169,12 +168,12 @@ const Page4 = () => {
 
             receiveCraftOptions(res.franchisee_s_menu.craftOptions.options);
 
-            receivePack(res.franchisee_s_menu.craftOptions.pack);
+            receivePack(res.franchisee_s_menu.craftOptions.pack || []);
 
             const selections = res.franchisee_s_menu.menu_items.filter(
               (option) => option.category === "Craft Beer"
             );
-
+            console.log(res.franchisee_s_menu.craftOptions.options[1]);
             const craftOption = res.franchisee_s_menu.craftOptions.options[0];
 
             const selection = selections.find(
@@ -200,12 +199,12 @@ const Page4 = () => {
             };
             addMicro02(craftObj2);
           }
-          /*  if (state.craftOptions.craft1) {
-          addMicro01(state.craftOptions.craft1);
-        }
-        if (state.craftOptions.craft2) {
-          addMicro02(state.craftOptions.craft2);
-        } */
+          if (state.craftOptions.craft1) {
+            addMicro01(state.craftOptions.craft1);
+          }
+          if (state.craftOptions.craft2) {
+            addMicro02(state.craftOptions.craft2);
+          }
         })
         .catch((err) => {
           console.log(err);
