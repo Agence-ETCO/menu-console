@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
-import Footer from "../../components/Footer/index";
 import { page6 } from "../../fr";
 import {
   Container,
@@ -11,11 +11,17 @@ import {
   Button,
 } from "./styled";
 
-const Page6 = () => {
-  const date = "le 30 septembre 2022";
-  /* const user =
-    typeof window !== "undefined" &&
-    JSON.parse(localStorage.getItem("user") || "{}"); */
+const Page7 = () => {
+  /* const [userId, setUserId] = useState(1);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserId(user.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); */
+
   return (
     <>
       <Header />
@@ -35,4 +41,4 @@ const Page6 = () => {
   );
 };
 
-export default Page6;
+export default Page7;

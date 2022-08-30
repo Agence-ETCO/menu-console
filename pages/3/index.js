@@ -37,7 +37,7 @@ const Page3 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = state.userData.jwt || "";
+      const token = "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);

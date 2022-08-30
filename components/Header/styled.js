@@ -5,6 +5,9 @@ export const HeaderContainer = styled.div`
   width: 100%;
   height: 308px;
   background-color: ${colors.black};
+  @media (max-width: 1000px) {
+    min-width: 100vw;
+  }
 `;
 
 export const Container1 = styled.div`

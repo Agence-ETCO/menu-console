@@ -33,8 +33,8 @@ export const StyledLink = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-left: ${(props) => (props.first ? "auto" : "auto")};
-  margin-right: ${(props) => (props.first ? "auto" : "")};
+  margin-left: ${(props) => (props.first ? "auto" : "50px")};
+  margin-right: ${(props) => (props.first ? "auto" : "50px")};
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 20px;

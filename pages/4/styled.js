@@ -3,7 +3,7 @@ import { colors } from "../../constants";
 import { Select } from "../../components/Bubble/styled";
 
 export const Main = styled.div`
-  width: 1460px;
+  max-width: 1480px;
   margin-left: auto;
   margin-right: auto;
 `;

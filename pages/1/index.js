@@ -30,7 +30,6 @@ const Page1 = () => {
       </Container>
 
       <Footer
-        first
         returnButtonText={page2.return}
         returnHref={"/"}
         buttonText={page1.buttonText}
