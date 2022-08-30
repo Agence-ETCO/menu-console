@@ -82,8 +82,8 @@ const BeerCard = (props) => {
                 <tbody>
                   <tr>
                     <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">{props.prices[1] && "Presion 20oz"}</th>
-                    <th scope="col">{props.prices[2] && "Pichet 60oz"}</th>
+                    <th scope="col">Presion 20oz</th>
+                    <th scope="col">Pichet 60oz</th>
                   </tr>
                   <tr>
                     <td>{props.prices[0].Price}</td>
