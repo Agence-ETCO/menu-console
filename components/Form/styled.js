@@ -27,6 +27,8 @@ export const CloseButton = styled.button`
 `;
 
 export const Container = styled.div`
+  opacity: ${(props) => (props.showForm ? "1" : "0")};
+  pointer-events: ${(props) => (props.showForm ? "auto" : "none")};
   position: fixed;
   top: 0;
   left: 0;
@@ -34,6 +36,7 @@ export const Container = styled.div`
   height: 100%;
   background-color: rgba(35, 31, 32, 0.9);
   z-index: 100;
+  transition: opacity 0.5s;
 `;
 
 export const BoxContainer = styled.div`
