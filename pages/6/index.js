@@ -23,7 +23,6 @@ import {
   Container1,
   Button,
 } from "./styled";
-import { optionGroupUnstyledClasses } from "@mui/base";
 
 const Page6 = () => {
   const {
@@ -39,15 +38,58 @@ const Page6 = () => {
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
-
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
   const step = 6;
 
   const handleClick = () => {
     setShowAlert(true);
   };
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const craft1 = state.micro1.title ? state.micro1 : {};
+    const craft2 = state.micro2.title ? state.micro2 : {};
+    const menuItems = state.selections.map((option) => option.id);
+
+    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+      (n) => n !== undefined
+    );
+    const craft =
+      (state.micro1 && state.micro1.craftOptions) ||
+      (state.micro2 && state.micro2.craftOptions)
+        ? [state.micro1.craftOptions, state.micro2.craftOptions]
+        : [];
+    const craftSelections = craft.filter((n) => n !== null);
+    const menuData = {
+      menu_items: totalItems,
+      craftOptions: {
+        options: craftSelections,
+        craft1,
+        craft2,
+        pack: state.selectedPack,
+      },
+      franchisee: userId,
+    };
+
+    postAPI("api/franchisees-menus?populate=deep", token, menuData)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     router.push("/7");
   };
 
@@ -70,19 +112,19 @@ const Page6 = () => {
     state.micro2.id,
     state.micro2.title,
   ]);
-  const token =
-    state.userData.jwt ||
+  const token1 =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxNzkwODQ5LCJleHAiOjE2NjE4NzcyNDl9.D84sBq57zoGjMw2b7qhhJvxApz2GIUSbJjTCQEpjlpA";
 
   useEffect(() => {
-    const userId = 4;
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI("/api/users/4?populate=deep", token)
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
 
-            receiveCraftOptions(res.franchisee_s_menu.craftOptions.options);
+            receiveCraftOptions(res.franchisee_s_menu.craftOptions);
 
             if (res.franchisee_s_menu.craftOptions.craft1.title) {
               addMicro01(res.franchisee_s_menu.craftOptions.craft1);

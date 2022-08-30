@@ -21,6 +21,9 @@ const Page3 = () => {
   } = useContext(AppContext);
   const min = 3;
   const [counter, setCounter] = useState(0);
+  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(null);
+
   const max = 6;
   const quantity = 18;
   const selection = (
@@ -36,8 +39,19 @@ const Page3 = () => {
   const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     if (state.data.length === 0) {
-      const token = state.userData.jwt || "";
+      const token = localStorage.getItem("jwt") || "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);
@@ -49,15 +63,14 @@ const Page3 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const token =
-    state.userData.jwt ||
+  const token1 =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMjgwOTkyLCJleHAiOjE2NjEzNjczOTJ9.uMJQoYU9_DhjJq8gggRfKIN4G1b9N4Y4yaksTCBOw_g";
 
   const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
-      franchisee: 4,
+      franchisee: userId,
     };
 
     postAPI("api/franchisees-menus?populate=deep", token, menuData)
@@ -70,9 +83,10 @@ const Page3 = () => {
   };
 
   useEffect(() => {
-    const userId = 4;
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI("/api/users/4?populate=deep", token)
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);

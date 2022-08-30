@@ -50,7 +50,8 @@ const Page4 = () => {
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
   const [craftSelections, setCraftSelections] = useState([]);
-  const [total, setTotal] = useState([]);
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const selections = state.selections.filter(
     (option) =>
@@ -79,6 +80,17 @@ const Page4 = () => {
       ? selections.length - 2 >= 0
       : selections.length >= 0;
   const limit = max - selections.length - 1 >= 0;
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleClick = (item) => {
     if (state.selectedPack.includes(item)) {
@@ -112,7 +124,7 @@ const Page4 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = state.userData.jwt || "";
+      const token = localStorage.getItem("jwt") || "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);
@@ -123,8 +135,8 @@ const Page4 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const token =
-    state.userData.jwt ||
+  const token1 =
+   
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxNzkwODQ5LCJleHAiOjE2NjE4NzcyNDl9.D84sBq57zoGjMw2b7qhhJvxApz2GIUSbJjTCQEpjlpA";
 
   const handleClick1 = async () => {
@@ -144,9 +156,14 @@ const Page4 = () => {
         craft2,
         pack: state.selectedPack,
       },
-      franchisee: 4,
+      franchisee: userId,
     };
-    console.log(menuData);
+    receiveCraftOptions({
+      options: craftSelections,
+      craft1,
+      craft2,
+      pack: state.selectedPack,
+    });
     postAPI("api/franchisees-menus?populate=deep", token, menuData)
       .then((response) => {
         console.log(response);
@@ -157,14 +174,15 @@ const Page4 = () => {
   };
 
   useEffect(() => {
-    const userId = 4;
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI("/api/users/4?populate=deep", token)
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
 
-            receiveCraftOptions(res.franchisee_s_menu.craftOptions.options);
+            receiveCraftOptions(res.franchisee_s_menu.craftOptions);
 
             receivePack(res.franchisee_s_menu.craftOptions.pack || []);
 

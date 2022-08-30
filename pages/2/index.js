@@ -22,6 +22,9 @@ const Page2 = () => {
 
   const min = 1;
   const [counter, setCounter] = useState(0);
+  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(null);
+
   const max = 3;
   const quantity = 3;
   const selections = state.selections.filter(
@@ -36,15 +39,25 @@ const Page2 = () => {
   );
   const limit = max - selections.length - 1 >= 0;
 
-  const token =
-    state.userData.jwt ||
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const token1 =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxNzkwODQ5LCJleHAiOjE2NjE4NzcyNDl9.D84sBq57zoGjMw2b7qhhJvxApz2GIUSbJjTCQEpjlpA";
 
   const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
-      franchisee: 4,
+      franchisee: userId,
     };
 
     postAPI("api/franchisees-menus?populate=deep", token, menuData)
@@ -57,9 +70,11 @@ const Page2 = () => {
   };
 
   useEffect(() => {
-    const userId = 4;
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+
     if (state.selections.length === 0) {
-      fetchAPI("/api/users/4?populate=deep", token)
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -86,7 +101,7 @@ const Page2 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = state.userData.jwt || "";
+      const token = localStorage.getItem("jwt") || "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);

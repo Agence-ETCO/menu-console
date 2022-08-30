@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Header from "../../components/Header";
@@ -13,6 +14,15 @@ import {
 } from "./styled";
 
 const Page8 = () => {
+  const [userId, setUserId] = useState(null);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserId(user.id);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       <Header step={6} />
@@ -20,7 +30,7 @@ const Page8 = () => {
         <Container1>
           <Subcontainer>
             <iframe
-              src={`http://pdf.etco.tk/${1}`}
+              src={`http://pdf.etco.tk/${userId}`}
               width="1240"
               height="1300"
             ></iframe>

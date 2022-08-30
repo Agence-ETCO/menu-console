@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
@@ -20,29 +20,15 @@ import {
 
 const WelcomePage = () => {
   const date = "16 septembre 2022";
-  const {
-    state,
-    actions: { addUser },
-  } = useContext(AppContext);
-  const router = useRouter();
-  const { loginToken } = router.query;
+  const [userId, setUserId] = useState(null);
 
-  /* useEffect(() => {
-    if (loginToken) {
-      login(loginToken)
-        .then(({ data }) => {
-          addUser(data);
-          const { jwt, user } = data;
-          localStorage.setItem("jwt", jwt);
-          localStorage.setItem("user", JSON.stringify(user));
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+  /*  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setUserId(user.id);
     }
-  }, [router, loginToken]); */
+  }, []); */
 
-  /* console.log(state.userData.user && state.userData.user.username); */
   return (
     <>
       <Header step={-1} />
