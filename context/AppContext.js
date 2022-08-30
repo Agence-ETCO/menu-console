@@ -1,13 +1,13 @@
 import React, { createContext, useReducer } from "react";
 
 const initialState = {
-  userData: {},
   previousStep: 0,
   data: [],
   selections: [],
   micro1: {},
   micro2: {},
   selectedPack: [],
+  craftOptions: {},
   nonAlcohol: 0,
 };
 
@@ -15,12 +15,6 @@ export const AppContext = React.createContext(initialState);
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "add-user":
-      return {
-        ...state,
-        userData: action.value,
-      };
-
     case "receive-data":
       return {
         ...state,
@@ -96,6 +90,17 @@ const reducer = (state, action) => {
         ...state,
         previousStep: action.value,
       };
+    case "receive-craftOptions":
+      return {
+        ...state,
+        craftOptions: action.value,
+      };
+
+    case "receive-pack":
+      return {
+        ...state,
+        selectedPack: action.value,
+      };
 
     default:
       throw new Error(`Unrecognized action: ${action.type}`);
@@ -104,13 +109,6 @@ const reducer = (state, action) => {
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const addUser = (value) => {
-    dispatch({
-      type: "add-user",
-      value: value,
-    });
-  };
 
   const receiveData = (value) => {
     dispatch({
@@ -192,6 +190,19 @@ export const AppProvider = ({ children }) => {
       value: value,
     });
   };
+  const receiveCraftOptions = (value) => {
+    dispatch({
+      type: "receive-craftOptions",
+      value: value,
+    });
+  };
+
+  const receivePack = (value) => {
+    dispatch({
+      type: "receive-pack",
+      value: value,
+    });
+  };
 
   return (
     <AppContext.Provider
@@ -208,9 +219,10 @@ export const AppProvider = ({ children }) => {
           addMicro02,
           addNonAlcohol,
           addPreviousStep,
-          addUser,
           addPack,
           removePack,
+          receivePack,
+          receiveCraftOptions,
         },
       }}
     >
