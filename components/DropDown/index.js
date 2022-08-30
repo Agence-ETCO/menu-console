@@ -210,10 +210,14 @@ const DropDown = ({ options, disabled, order }) => {
                 (state.micro1.id || state.micro1.title) ? (
                   <div>
                     <SubContainer1>
-                      <span>Nom de la bière</span>
+                      <span>
+                        {state.micro1.id
+                          ? "Nom de la bière"
+                          : state.micro1.title}
+                      </span>
                       {state.micro1.id
                         ? state.micro1.attributes.title
-                        : state.micro1.title}
+                        : state.micro1.description}
                     </SubContainer1>
                     <SubContainer2>
                       <span>
@@ -223,12 +227,12 @@ const DropDown = ({ options, disabled, order }) => {
                           : state.micro1.type}
                       </span>{" "}
                       <span>
-                        {state.micro1.id ? format1() : state.micro1.format}{" "}
+                        {state.micro1.id ? format1() : `${state.micro1.size}ml`}{" "}
                       </span>{" "}
                       <span>
                         {state.micro1.id
                           ? state.micro1.attributes.alcohol
-                          : state.micro1.alcohol}
+                          : `${state.micro1.alcohol}%`}
                       </span>
                     </SubContainer2>
                   </div>
@@ -237,10 +241,15 @@ const DropDown = ({ options, disabled, order }) => {
                   (state.micro2.id || state.micro2.title) ? (
                   <div>
                     <SubContainer1>
-                      <span>Nom de la bière</span>
+                      <span>
+                        {" "}
+                        {state.micro2.id
+                          ? "Nom de la bière"
+                          : state.micro2.title}
+                      </span>
                       {state.micro2.id
                         ? state.micro2.attributes.title
-                        : state.micro2.title}
+                        : state.micro2.description}
                     </SubContainer1>
                     <SubContainer2>
                       <span>
@@ -250,12 +259,12 @@ const DropDown = ({ options, disabled, order }) => {
                           : state.micro2.type}
                       </span>{" "}
                       <span>
-                        {state.micro2.id ? format2() : state.micro2.format}{" "}
+                        {state.micro2.id ? format2() : `${state.micro2.size}ml`}{" "}
                       </span>{" "}
                       <span>
                         {state.micro2.id
                           ? state.micro2.attributes.alcohol
-                          : state.micro2.alcohol}
+                          : `${state.micro2.alcohol}%`}
                       </span>
                     </SubContainer2>
                   </div>

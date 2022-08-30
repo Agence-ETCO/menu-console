@@ -48,8 +48,8 @@ const CraftList = (props) => {
   };
   const onFormSubmit = () => {
     const data = {
-      description: beer,
-      title: producer,
+      description: producer,
+      title: beer,
       type,
       size: format,
       alcohol,
@@ -75,7 +75,6 @@ const CraftList = (props) => {
     setShowForm(!showForm);
   };
 
-  
   return (
     <>
       {props.showCraft ? (
