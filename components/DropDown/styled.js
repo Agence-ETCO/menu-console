@@ -181,7 +181,7 @@ export const Text = styled.div`
   font-size: 19px;
   line-height: 21px;
   color: ${(props) => (props.disabled ? "#E30826" : "#3c3c3c")};
-  width: 420px;
+  width: 450px;
   text-align: left;
   margin-bottom: 25px;
   svg {
