@@ -98,14 +98,7 @@ const Page4 = () => {
         ? [state.micro1.craftOptions, state.micro2.craftOptions]
         : [];
     setCraftSelections(craft.filter((n) => n !== null));
-    const menuItems = state.selections.map((option) => option.id);
-
-    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
-      (n) => n !== undefined
-    );
-    setTotal(totalItems);
   }, [
-    state.selections,
     state.micro1,
     state.micro2,
     state.micro1.craftOptions,
@@ -137,9 +130,14 @@ const Page4 = () => {
   const handleClick1 = async () => {
     const craft1 = state.micro1.title ? state.micro1 : {};
     const craft2 = state.micro2.title ? state.micro2 : {};
+    const menuItems = state.selections.map((option) => option.id);
+
+    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+      (n) => n !== undefined
+    );
 
     const menuData = {
-      menu_items: total,
+      menu_items: totalItems,
       craftOptions: {
         options: craftSelections,
         craft1,
@@ -148,7 +146,7 @@ const Page4 = () => {
       },
       franchisee: 4,
     };
-
+    console.log(menuData);
     postAPI("api/franchisees-menus?populate=deep", token, menuData)
       .then((response) => {
         console.log(response);
@@ -181,31 +179,35 @@ const Page4 = () => {
             const selections = res.franchisee_s_menu.menu_items.filter(
               (option) => option.category === "Craft Beer"
             );
+            if (res.franchisee_s_menu.craftOptions.options[0]) {
+              const craftOption = res.franchisee_s_menu.craftOptions.options[0];
 
-            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+              const selection = selections.find(
+                (selection) => selection.id === craftOption.id
+              );
 
-            const selection = selections.find(
-              (selection) => selection.id === craftOption.id
-            );
+              const craftObj = {
+                id: selection.id,
+                attributes: selection,
+                craftOptions: craftOption,
+              };
 
-            const craftObj = {
-              id: selection.id,
-              attributes: selection,
-              craftOptions: craftOption,
-            };
+              addMicro01(craftObj);
+            }
+            if (res.franchisee_s_menu.craftOptions.options[1]) {
+              const craftOption2 =
+                res.franchisee_s_menu.craftOptions.options[1];
+              const selection2 = selections.find(
+                (selection) => selection.id === craftOption2.id
+              );
 
-            addMicro01(craftObj);
-            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
-            const selection2 = selections.find(
-              (selection) => selection.id === craftOption2.id
-            );
-
-            const craftObj2 = {
-              id: selection2.id,
-              attributes: selection2,
-              craftOptions: craftOption2,
-            };
-            addMicro02(craftObj2);
+              const craftObj2 = {
+                id: selection2.id,
+                attributes: selection2,
+                craftOptions: craftOption2,
+              };
+              addMicro02(craftObj2);
+            }
           }
         })
         .catch((err) => {

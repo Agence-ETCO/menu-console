@@ -21,7 +21,7 @@ import {
 const CraftList = (props) => {
   const {
     state,
-    actions: { addMicro01, addMicro02 },
+    actions: { addMicro01, addMicro02, removeSelection },
   } = useContext(AppContext);
   const [showForm, setShowForm] = useState(false);
   const [beer, setBeer] = useState("");
@@ -55,9 +55,16 @@ const CraftList = (props) => {
       alcohol,
     };
     if (props.order === "01") {
+      if (state.micro1 && state.micro1.id) {
+        removeSelection(state.micro1.id);
+        console.log("trr");
+      }
       addMicro01(data);
       onChange(true);
     } else {
+      if (state.micro2 && state.micro2.id) {
+        removeSelection(state.micro2.id);
+      }
       addMicro02(data);
       onChange(true);
     }
@@ -75,7 +82,6 @@ const CraftList = (props) => {
     setShowForm(!showForm);
   };
 
-  
   return (
     <>
       {props.showCraft ? (

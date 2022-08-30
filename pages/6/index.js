@@ -83,7 +83,6 @@ const Page6 = () => {
             receiveSelections(res.franchisee_s_menu.menu_items);
 
             receiveCraftOptions(res.franchisee_s_menu.craftOptions.options);
-            console.log(res.franchisee_s_menu.craftOptions);
 
             if (res.franchisee_s_menu.craftOptions.craft1.title) {
               addMicro01(res.franchisee_s_menu.craftOptions.craft1);
@@ -97,30 +96,35 @@ const Page6 = () => {
               (option) => option.category === "Craft Beer"
             );
 
-            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+            if (res.franchisee_s_menu.craftOptions.options[0]) {
+              const craftOption = res.franchisee_s_menu.craftOptions.options[0];
 
-            const selection = selections.find(
-              (selection) => selection.id === craftOption.id
-            );
+              const selection = selections.find(
+                (selection) => selection.id === craftOption.id
+              );
 
-            const craftObj = {
-              id: selection.id,
-              attributes: selection,
-              craftOptions: craftOption,
-            };
+              const craftObj = {
+                id: selection.id,
+                attributes: selection,
+                craftOptions: craftOption,
+              };
 
-            addMicro01(craftObj);
-            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
-            const selection2 = selections.find(
-              (selection) => selection.id === craftOption2.id
-            );
+              addMicro01(craftObj);
+            }
+            if (res.franchisee_s_menu.craftOptions.options[1]) {
+              const craftOption2 =
+                res.franchisee_s_menu.craftOptions.options[1];
+              const selection2 = selections.find(
+                (selection) => selection.id === craftOption2.id
+              );
 
-            const craftObj2 = {
-              id: selection2.id,
-              attributes: selection2,
-              craftOptions: craftOption2,
-            };
-            addMicro02(craftObj2);
+              const craftObj2 = {
+                id: selection2.id,
+                attributes: selection2,
+                craftOptions: craftOption2,
+              };
+              addMicro02(craftObj2);
+            }
           }
         })
         .catch((err) => {
