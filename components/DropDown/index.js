@@ -91,30 +91,6 @@ const DropDown = ({ options, disabled, order }) => {
     setShowCraft(!showCraft);
   };
 
-  const handleClick = () => {
-    setShowForm(!showForm);
-  };
-  const toggling = () => {
-    if (!disabled) {
-      setIsOpen(!isOpen);
-    }
-  };
-
-  const onOptionClick = (value) => {
-    if (isSelected(value)) {
-      return null;
-    }
-    setIsOpen(false);
-
-    setSelectedOption(value);
-
-    if (order === "01") {
-      addMicro01(value);
-    } else {
-      addMicro02(value);
-    }
-  };
-
   const index1 =
     state.micro1 &&
     state.micro1.craftOptions &&
@@ -264,13 +240,13 @@ const DropDown = ({ options, disabled, order }) => {
                       <span>Nom de la bière</span>
                       {state.micro2.id
                         ? state.micro2.attributes.title
-                        : state.micro2.producer}
+                        : state.micro2.title}
                     </SubContainer1>
                     <SubContainer2>
                       <span>
                         {" "}
                         {state.micro2.id
-                          ? state.micro2.attributes.descriptionFr 
+                          ? state.micro2.attributes.descriptionFr
                           : state.micro2.type}
                       </span>{" "}
                       <span>
