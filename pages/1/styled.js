@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
   @media (max-width: 1000px) {
