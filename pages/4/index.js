@@ -54,29 +54,17 @@ const Page4 = () => {
     </span>
   );
 
-  const disabled = state.selectedPack.length === 0;
+  const disabled = state.selectedPack === 0;
 
   const selected =
-    !state.selectedPack.includes(10) && !state.selectedPack.includes(12)
+    state.selectedPack === 8
       ? selections.length - 1 >= 0
       : selections.length >= 0;
   const selected2 =
-    !state.selectedPack.includes(10) && !state.selectedPack.includes(12)
+    state.selectedPack === 8
       ? selections.length - 2 >= 0
       : selections.length >= 0;
   const limit = max - selections.length - 1 >= 0;
-
-  const handleClick = (item) => {
-    if (state.selectedPack.includes(item)) {
-      removePack(item);
-    } else {
-    }
-    if (state.selectedPack.length < 2) {
-      addPack(item);
-    } else {
-      removePack(item);
-    }
-  };
 
   useEffect(() => {
     const updatedCounter = selections.length;
@@ -139,8 +127,8 @@ const Page4 = () => {
                   {buttons2.map((item, i) => (
                     <StyledButton
                       key={i}
-                      active={state.selectedPack.includes(item)}
-                      onClick={() => handleClick(item)}
+                      active={state.selectedPack === item}
+                      onClick={() => addPack(item)}
                     >
                       {item}
                     </StyledButton>
@@ -148,24 +136,17 @@ const Page4 = () => {
                 </ButtonContainer2>
               </Container3>
             </Container4>
-            {(state.selectedPack.includes(8) ||
-              state.selectedPack.includes(10) ||
-              state.selectedPack.includes(12)) && (
+            {state.selectedPack > 6 && (
               <Square>
-                {state.selectedPack.includes(8) &&
-                  !state.selectedPack.includes(10) &&
-                  !state.selectedPack.includes(12) &&
+                {state.selectedPack === 8 &&
                   "Tout d'abord, vous devez sélectionner 2 produits en fût de Labatt pour vous permettre d'ajouter 2 bières en fût de microbrasserie."}
-                {(state.selectedPack.includes(10) ||
-                  state.selectedPack.includes(12)) &&
+                {(state.selectedPack === 10 || state.selectedPack === 12) &&
                   "Tout d’abord, vous devez sélectionner 0 produits en fût de Labatt pour vous permettre d’ajouter 2 bières en fût de microbrasserie."}
               </Square>
             )}
           </Buttons>
 
-          {(state.selectedPack.includes(8) ||
-            state.selectedPack.includes(10) ||
-            state.selectedPack.includes(12)) && (
+          {state.selectedPack > 6 && (
             <>
               <Subcontainer1>
                 <div>
@@ -204,20 +185,12 @@ const Page4 = () => {
                 />
                 <Bubble
                   count={selections.length}
-                  show={
-                    !state.selectedPack.includes(10) &&
-                    !state.selectedPack.includes(12) &&
-                    selections.length === 1
-                  }
+                  show={state.selectedPack === 8 && selections.length === 1}
                   duration={"4s"}
                 />
                 <Bubble
                   count={selections.length}
-                  show={
-                    !state.selectedPack.includes(10) &&
-                    !state.selectedPack.includes(12) &&
-                    selections.length === 2
-                  }
+                  show={state.selectedPack === 8 && selections.length === 2}
                   duration={"4s"}
                 />
               </Subcontainer3>
