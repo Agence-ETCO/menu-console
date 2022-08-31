@@ -72,7 +72,14 @@ export const BoxContainer = styled.div`
     width: 423px;
   }
 `;
-
+export const CloseButton = styled.button`
+  z-index: 200;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+`;
 export const Title = styled.div`
   background-color: #e30826;
   width: 560px;
