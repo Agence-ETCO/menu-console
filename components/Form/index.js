@@ -68,7 +68,7 @@ const Form = (props) => {
             />
           </Label>
           <Label>
-            Type *
+            Type (Ex.: Lager, Pislner, Ale, blanche…)*
             <Input
               name="type"
               type="text"
