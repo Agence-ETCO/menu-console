@@ -113,6 +113,7 @@ export const SubContainer = styled.div`
   margin-top: 30px;
 `;
 export const ImageContainer = styled.div`
+  position: relative;
   height: 210px;
   width: 190px;
   margin-top: -5px;

@@ -65,10 +65,9 @@ const BeerCard = (props) => {
             {props.imageUrl ? (
               <Image
                 src={props.imageUrl}
-                width={185}
-                height={235}
+                layout="fill"
+                objectFit="contain"
                 alt=""
-                layout="intrinsic"
               />
             ) : (
               <Image src={image} width={104} height={210} alt="" />
