@@ -47,6 +47,14 @@ const reducer = (state, action) => {
         ),
       };
 
+    case "filter-selections":
+      return {
+        ...state,
+        selections: state.selections.filter(
+          (selection) => selection.attributes.category !== action.value
+        ),
+      };
+
     case "add-micro1":
       return {
         ...state,
@@ -130,6 +138,12 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const filterSelections = (value) => {
+    dispatch({
+      type: "filter-selections",
+      value: value,
+    });
+  };
   const addPack = (value) => {
     dispatch({
       type: "add-pack",
@@ -207,6 +221,7 @@ export const AppProvider = ({ children }) => {
           addPack,
           receivePack,
           receiveCraftOptions,
+          filterSelections,
         },
       }}
     >

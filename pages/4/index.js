@@ -32,7 +32,13 @@ import {
 const Page4 = () => {
   const {
     state,
-    actions: { receiveData, addPreviousStep, addPack, removePack },
+    actions: {
+      receiveData,
+      addPreviousStep,
+      addPack,
+      removePack,
+      filterSelections,
+    },
   } = useContext(AppContext);
   const buttons1 = [2, 4];
   const buttons2 = [6, 8, 10, 12];
@@ -66,6 +72,13 @@ const Page4 = () => {
       : selections.length >= 0;
   const limit = max - selections.length - 1 >= 0;
 
+  const handleClick = (item) => {
+    if (state.selectedPack > item) {
+      filterSelections("Beer");
+    }
+
+    addPack(item);
+  };
   useEffect(() => {
     const updatedCounter = selections.length;
     setCounter(updatedCounter);
@@ -128,7 +141,7 @@ const Page4 = () => {
                     <StyledButton
                       key={i}
                       active={state.selectedPack === item}
-                      onClick={() => addPack(item)}
+                      onClick={() => handleClick(item)}
                     >
                       {item}
                     </StyledButton>
