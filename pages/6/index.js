@@ -11,7 +11,7 @@ import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
-import { postAPI } from "../../lib/api";
+import { postAPI, fetchAPI } from "../../lib/api";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
   Container,
@@ -27,20 +27,41 @@ import {
 const Page6 = () => {
   const {
     state,
-    actions: { addPreviousStep },
+    actions: {
+      addPreviousStep,
+      receiveSelections,
+      receiveCraftOptions,
+      addMicro01,
+      addMicro02,
+      getMenuId,
+      receivePack,
+    },
   } = useContext(AppContext);
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const step = 6;
 
   const handleClick = () => {
     setShowAlert(true);
   };
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     router.push("/7");
   };
 
@@ -63,6 +84,67 @@ const Page6 = () => {
     state.micro2.id,
     state.micro2.title,
   ]);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (state.selections.length === 0) {
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+        .then((res) => {
+          if (res.franchisee_s_menu.menu_items.length > 0) {
+            receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+
+          getMenuId(res.franchisee_s_menu.id);
+
+          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+          receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+          if (res.franchisee_s_menu.craftOptions.craft1.title) {
+            addMicro01(res.franchisee_s_menu.craftOptions.craft1);
+          }
+
+          if (res.franchisee_s_menu.craftOptions.craft2.title) {
+            addMicro02(res.franchisee_s_menu.craftOptions.craft2);
+          }
+
+          const selections = res.franchisee_s_menu.menu_items.filter(
+            (option) => option.category === "Craft Beer"
+          );
+
+          if (res.franchisee_s_menu.craftOptions.options[0]) {
+            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+
+            const selection = selections.find(
+              (selection) => selection.id === craftOption.id
+            );
+
+            const craftObj = {
+              id: selection.id,
+              attributes: selection,
+              craftOptions: craftOption,
+            };
+
+            addMicro01(craftObj);
+          }
+          if (res.franchisee_s_menu.craftOptions.options[1]) {
+            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
+            const selection2 = selections.find(
+              (selection) => selection.id === craftOption2.id
+            );
+
+            const craftObj2 = {
+              id: selection2.id,
+              attributes: selection2,
+              craftOptions: craftOption2,
+            };
+            addMicro02(craftObj2);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (state.previousStep < 5) {
@@ -104,22 +186,46 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes &&
-                  option.attributes.category === "White Wine"
+                  (option.attributes &&
+                    option.attributes.category === "White Wine") ||
+                  option.category === "White Wine"
               )
               .map((option, i) => (
                 <WineCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  taste={option.attributes.taste}
-                  location={option.attributes.location}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  description={
+                    (option.attributes && option.attributes.descriptionFr) ||
+                    option.descriptionFr
+                  }
+                  taste={
+                    (option.attributes && option.attributes.tasteFr) ||
+                    option.taste
+                  }
+                  location={
+                    (option.attributes && option.attributes.location) ||
+                    option.location
+                  }
+                  sugar={
+                    (option.attributes && option.attributes.sugar) ||
+                    option.sugar
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))}
@@ -137,21 +243,46 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes && option.attributes.category === "Red Wine"
+                  (option.attributes &&
+                    option.attributes.category === "Red Wine") ||
+                  option.category === "Red Wine"
               )
               .map((option, i) => (
                 <WineCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  taste={option.attributes.taste}
-                  location={option.attributes.location}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  description={
+                    (option.attributes && option.attributes.descriptionFr) ||
+                    option.descriptionFr
+                  }
+                  taste={
+                    (option.attributes && option.attributes.tasteFr) ||
+                    option.tasteFr
+                  }
+                  location={
+                    (option.attributes && option.attributes.location) ||
+                    option.location
+                  }
+                  sugar={
+                    (option.attributes && option.attributes.sugar) ||
+                    option.sugar
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))}
@@ -169,18 +300,34 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes && option.attributes.category === "Beer"
+                  (option.attributes &&
+                    option.attributes.category === "Beer") ||
+                  option.category === "Beer"
               )
               .map((option, i) => (
                 <BeerCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.description}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  description={
+                    (option.attributes && option.attributes.descriptionFr) ||
+                    option.descriptionFr
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))}

@@ -2,10 +2,9 @@ import { useEffect, useState, useContext } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
-import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
-import Bubble from "../../components/Bubble";
 import { AppContext } from "../../context/AppContext";
+import { putAPI, fetchAPI } from "../../lib/api";
 import { beerList, page4, footer } from "../../fr";
 import {
   Title1,
@@ -21,7 +20,19 @@ import {
 const Page5 = () => {
   const {
     state,
-    actions: { addNonAlcohol, addPreviousStep },
+    actions: {
+      addNonAlcohol,
+      getMenuId,
+      receivePack,
+      receiveSelections,
+      receiveCraftOptions,
+      addMicro01,
+      addMicro02,
+      receiveData,
+      addPreviousStep,
+      addPack,
+      removePack,
+    },
   } = useContext(AppContext);
   const min = 0;
   const max = 2;
@@ -30,6 +41,8 @@ const Page5 = () => {
   const [selections, setSelections] = useState(intialState);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
@@ -55,6 +68,101 @@ const Page5 = () => {
     addNonAlcohol(updatedSelections);
     setUpdated(!updated);
   };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleClick = async () => {
+    const menuItems = state.selections.map((option) => option.id);
+    const menuData = {
+      menu_items: [...menuItems],
+      franchisee: userId,
+    };
+
+    putAPI(
+      `api/franchisees-menus/${state.menuId}?populate=deep`,
+      token,
+      menuData
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (state.selections.length === 0) {
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+        .then((res) => {
+          if (res.franchisee_s_menu.menu_items.length > 0) {
+            receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+          if (res.franchisee_s_menu.id) {
+            getMenuId(res.franchisee_s_menu.id);
+          }
+          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+
+          receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+
+          if (res.franchisee_s_menu.craftOptions.craft1.title) {
+            addMicro01(res.franchisee_s_menu.craftOptions.craft1);
+          }
+
+          if (res.franchisee_s_menu.craftOptions.craft2.title) {
+            addMicro02(res.franchisee_s_menu.craftOptions.craft2);
+          }
+
+          const selections = res.franchisee_s_menu.menu_items.filter(
+            (option) => option.category === "Craft Beer"
+          );
+          if (res.franchisee_s_menu.craftOptions.options[0]) {
+            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+
+            const selection = selections.find(
+              (selection) => selection.id === craftOption.id
+            );
+
+            const craftObj = {
+              id: selection.id,
+              attributes: selection,
+              craftOptions: craftOption,
+            };
+
+            addMicro01(craftObj);
+          }
+          if (res.franchisee_s_menu.craftOptions.options[1]) {
+            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
+            const selection2 = selections.find(
+              (selection) => selection.id === craftOption2.id
+            );
+
+            const craftObj2 = {
+              id: selection2.id,
+              attributes: selection2,
+              craftOptions: craftOption2,
+            };
+            addMicro02(craftObj2);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   useEffect(() => {
     if (state.previousStep < 4) {
       addPreviousStep(4);
@@ -101,7 +209,7 @@ const Page5 = () => {
         href={"/6"}
         stage={"RÉSUMÉ"}
         selection={selection}
-        disabled={counter < min}
+        handleClick={handleClick}
       />
     </>
   );

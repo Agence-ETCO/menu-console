@@ -5,7 +5,7 @@ import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
-import { postAPI, fetchAPI } from "../../lib/api";
+import { putAPI, postAPI, fetchAPI } from "../../lib/api";
 import {
   Container,
   Subcontainer1,
@@ -17,11 +17,23 @@ import {
 const Page2 = () => {
   const {
     state,
-    actions: { receiveData, receiveSelections, addPreviousStep, addSelection },
+    actions: {
+      receiveData,
+      receiveSelections,
+      addPreviousStep,
+      receivePack,
+      receiveCraftOptions,
+      addMicro01,
+      addMicro02,
+      getMenuId,
+    },
   } = useContext(AppContext);
 
   const min = 1;
   const [counter, setCounter] = useState(0);
+  const [userId, setUserId] = useState(null);
+  const [token, setToken] = useState(null);
+
   const max = 3;
   const quantity = 3;
   const selections = state.selections.filter(
@@ -36,32 +48,91 @@ const Page2 = () => {
   );
   const limit = max - selections.length - 1 >= 0;
 
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxMjgwOTkyLCJleHAiOjE2NjEzNjczOTJ9.uMJQoYU9_DhjJq8gggRfKIN4G1b9N4Y4yaksTCBOw_g";
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
 
-  /*  const handleClick = async () => {
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
-      franchisee: 4,
+      franchisee: userId,
     };
 
-    postAPI("api/franchisees-menus?populate=deep", token, menuData)
+    putAPI(
+      `api/franchisees-menus/${state.menuId}?populate=deep`,
+      token,
+      menuData
+    )
       .then((response) => {
         console.log(response);
       })
       .catch((err) => {
         console.log(err);
       });
-  }; */
+  };
 
-  /* useEffect(() => {
-    const userId = 4;
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI("/api/users/4?populate=deep", token)
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+          if (res.franchisee_s_menu.id) {
+            getMenuId(res.franchisee_s_menu.id);
+          }
+          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+
+          receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+
+          if (res.franchisee_s_menu.craftOptions.craft1.title) {
+            addMicro01(res.franchisee_s_menu.craftOptions.craft1);
+          }
+
+          if (res.franchisee_s_menu.craftOptions.craft2.title) {
+            addMicro02(res.franchisee_s_menu.craftOptions.craft2);
+          }
+
+          const selections = res.franchisee_s_menu.menu_items.filter(
+            (option) => option.category === "Craft Beer"
+          );
+          if (res.franchisee_s_menu.craftOptions.options[0]) {
+            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+
+            const selection = selections.find(
+              (selection) => selection.id === craftOption.id
+            );
+
+            const craftObj = {
+              id: selection.id,
+              attributes: selection,
+              craftOptions: craftOption,
+            };
+
+            addMicro01(craftObj);
+          }
+          if (res.franchisee_s_menu.craftOptions.options[1]) {
+            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
+            const selection2 = selections.find(
+              (selection) => selection.id === craftOption2.id
+            );
+
+            const craftObj2 = {
+              id: selection2.id,
+              attributes: selection2,
+              craftOptions: craftOption2,
+            };
+            addMicro02(craftObj2);
           }
         })
         .catch((err) => {
@@ -69,7 +140,7 @@ const Page2 = () => {
         });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
+  }, []);
 
   useEffect(() => {
     if (state.previousStep < 1) {
@@ -85,7 +156,7 @@ const Page2 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = "";
+      const token = localStorage.getItem("jwt") || "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);
@@ -119,17 +190,19 @@ const Page2 = () => {
                 <WineCard
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.descriptionFr}
-                  taste={option.attributes.tasteFr}
-                  location={option.attributes.location}
-                  country={option.attributes.country}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={option.attributes.title || option.tile}
+                  description={
+                    option.attributes.descriptionFr || option.descriptionFr
+                  }
+                  taste={option.attributes.tasteFr || option.tasteFr}
+                  location={option.attributes.location || option.location}
+                  country={option.attributes.country || option.country}
+                  sugar={option.attributes.sugar || option.sugar}
+                  saqCode={option.attributes.saqCode || option.saqCode}
+                  prices={option.attributes.cost || option.cost}
                   limit={limit}
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={option.attributes.imageURL || option.imageURL}
                 />
               ))}
         </Subcontainer2>
@@ -139,7 +212,7 @@ const Page2 = () => {
         returnButtonText={page2.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
-        /*    handleClick={handleClick} */
+        handleClick={handleClick}
         href={"/3"}
         selection={selection}
         stage={"VINS ROUGES"}

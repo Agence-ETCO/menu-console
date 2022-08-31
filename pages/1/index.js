@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
@@ -13,6 +14,16 @@ import {
 } from "./styled";
 
 const Page1 = () => {
+  useEffect(() => {
+    const jwt =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxODgxNTI0LCJleHAiOjE2NjE5Njc5MjR9.AqIFRJxaQTb_mZgFoBwvKyFjOhPKKZPrSDcYjy4P9ao";
+    const user = {
+      id: 4,
+    };
+    localStorage.setItem("jwt", jwt);
+    localStorage.setItem("user", JSON.stringify(user));
+  }, []);
+
   return (
     <>
       <Header step={1} />

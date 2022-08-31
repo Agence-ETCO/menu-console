@@ -5,7 +5,7 @@ import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import { fetchAPI } from "../../lib/api";
+import { putAPI, postAPI, fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { beerList, page4, footer } from "../../fr";
 import {
@@ -38,6 +38,12 @@ const Page4 = () => {
       addPack,
       removePack,
       filterSelections,
+      receivePack,
+      receiveSelections,
+      receiveCraftOptions,
+      addMicro01,
+      addMicro02,
+      getMenuId,
     },
   } = useContext(AppContext);
   const buttons1 = [2, 4];
@@ -45,9 +51,14 @@ const Page4 = () => {
 
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
+  const [craftSelections, setCraftSelections] = useState([]);
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   const selections = state.selections.filter(
-    (option) => option.attributes && option.attributes.category === "Beer"
+    (option) =>
+      (option.attributes && option.attributes.category === "Beer") ||
+      option.category === "Beer"
   );
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"
@@ -80,16 +91,141 @@ const Page4 = () => {
     addPack(item);
   };
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (user) {
+      setUserId(user.id);
+    }
+
+    setToken(token);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const craft =
+      (state.micro1 && state.micro1.craftOptions) ||
+      (state.micro2 && state.micro2.craftOptions)
+        ? [state.micro1.craftOptions, state.micro2.craftOptions]
+        : [];
+    setCraftSelections(craft.filter((n) => n !== null));
+  }, [
+    state.micro1,
+    state.micro2,
+    state.micro1.craftOptions,
+    state.micro2.craftOptions,
+  ]);
+
+  useEffect(() => {
     const updatedCounter = selections.length;
     setCounter(updatedCounter);
   }, [selections, min]);
 
   useEffect(() => {
+    const token = localStorage.getItem("jwt") || "";
     if (state.data.length === 0) {
-      const token = "";
       fetchAPI("/api/menu-items?populate=deep", token)
         .then((res) => {
           receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const handleClick1 = async () => {
+    const craft1 = state.micro1.title ? state.micro1 : {};
+    const craft2 = state.micro2.title ? state.micro2 : {};
+    const menuItems = state.selections.map((option) => option.id);
+
+    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+      (n) => n !== undefined
+    );
+
+    const menuData = {
+      menu_items: totalItems,
+      craftOptions: {
+        options: craftSelections,
+        craft1,
+        craft2,
+        pack: state.selectedPack,
+      },
+      franchisee: userId,
+    };
+    receiveCraftOptions({
+      options: craftSelections,
+      craft1,
+      craft2,
+      pack: state.selectedPack,
+    });
+    putAPI(
+      `api/franchisees-menus/${state.menuId}?populate=deep`,
+      token,
+      menuData
+    )
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("jwt") || "";
+    if (state.selections.length === 0) {
+      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+        .then((res) => {
+          if (res.franchisee_s_menu.menu_items.length > 0) {
+            receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+          if (res.franchisee_s_menu.id) {
+            getMenuId(res.franchisee_s_menu.id);
+          }
+          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+
+          receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+
+          if (res.franchisee_s_menu.craftOptions.craft1.title) {
+            addMicro01(res.franchisee_s_menu.craftOptions.craft1);
+          }
+
+          if (res.franchisee_s_menu.craftOptions.craft2.title) {
+            addMicro02(res.franchisee_s_menu.craftOptions.craft2);
+          }
+
+          const selections = res.franchisee_s_menu.menu_items.filter(
+            (option) => option.category === "Craft Beer"
+          );
+          if (res.franchisee_s_menu.craftOptions.options[0]) {
+            const craftOption = res.franchisee_s_menu.craftOptions.options[0];
+
+            const selection = selections.find(
+              (selection) => selection.id === craftOption.id
+            );
+
+            const craftObj = {
+              id: selection.id,
+              attributes: selection,
+              craftOptions: craftOption,
+            };
+
+            addMicro01(craftObj);
+          }
+          if (res.franchisee_s_menu.craftOptions.options[1]) {
+            const craftOption2 = res.franchisee_s_menu.craftOptions.options[1];
+            const selection2 = selections.find(
+              (selection) => selection.id === craftOption2.id
+            );
+
+            const craftObj2 = {
+              id: selection2.id,
+              attributes: selection2,
+              craftOptions: craftOption2,
+            };
+            addMicro02(craftObj2);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -220,6 +356,7 @@ const Page4 = () => {
         href={"/5"}
         stage={"BIÈRES NON-ALCOOLISÉS"}
         disabled={disabled}
+        handleClick={handleClick1}
       />
     </>
   );
