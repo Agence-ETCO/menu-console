@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../constants";
 import { Select } from "../../components/Bubble/styled";
+import { Select as Min } from "../../components/MinMax/styled";
 
 export const Subcontainer = styled.div`
   display: flex;
@@ -12,6 +13,9 @@ export const Subcontainer = styled.div`
   max-width: 1480px;
   margin-left: auto;
   margin-right: auto;
+  ${Min} {
+    min-width: 345px;
+  }
 `;
 
 export const Title1 = styled.div`

@@ -15,5 +15,6 @@ export const Select = styled.div`
   height: 67px;
   svg {
     margin-right: 18px;
+    margin-top: -12px;
   }
 `;

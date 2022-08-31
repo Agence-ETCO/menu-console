@@ -14,7 +14,6 @@ export const Subcontainer1 = styled.div`
   display: flex;
   flex-directon: row;
   margin-top: 60px;
-  margin-right: 20px;
 `;
 
 export const Subcontainer2 = styled.div`
