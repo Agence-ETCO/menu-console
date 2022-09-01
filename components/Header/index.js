@@ -19,11 +19,7 @@ const Header = ({ step }) => {
         <Container>
           <Logo />
 
-          <Help
-            showHelp={showHelp}
-            handleClick={handleClick}
-            /* handleSubmit={handleSubmit}  */
-          />
+          <Help showHelp={showHelp} handleClick={handleClick} />
           <Nav>
             <ul>
               <li onClick={() => handleClick()}>{nav.help}</li>

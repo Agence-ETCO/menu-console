@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
+import Help from "../../components/Help";
 import { welcomePage } from "../../fr";
 import {
   Greeting,
@@ -12,10 +13,17 @@ import {
   Ending,
   Container,
   Subcontainer,
+  Contact,
 } from "./styled";
 
 const WelcomePage = () => {
   const [userId, setUserId] = useState(null);
+  const [showHelp, setShowHelp] = useState(false);
+
+  const handleClick = () => {
+    setShowHelp(!showHelp);
+  };
+
   const date = "16 septembre 2022";
 
   /* useEffect(() => {
@@ -29,6 +37,7 @@ const WelcomePage = () => {
     <>
       <Header step={-1} />
       <Container>
+        <Help showHelp={showHelp} handleClick={handleClick} />
         <Greeting>{welcomePage.greeting}</Greeting>
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
@@ -42,9 +51,7 @@ const WelcomePage = () => {
         <Ending>
           {welcomePage.help}
           &nbsp;
-          <a href="mailto:info@st-hubert.com">
-            <span>{welcomePage.contact}</span>
-          </a>
+          <Contact onClick={() => handleClick()}>{welcomePage.contact}</Contact>
         </Ending>
       </Container>
       <Footer first startText={welcomePage.buttonText} href={"/1"} />
