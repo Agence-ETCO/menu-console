@@ -31,11 +31,11 @@ export const SubTitle = styled.div`
   color: ${colors.black};
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 19px;
-  line-height: 25px;
+  font-size: 17px;
+  line-height: 23px;
   margin-left: 30px;
   width: 630px;
-  margin-top: 40px;
+  margin-top: 30px;
   padding-bottom: 35px;
   border-bottom: 1px solid #939598;
 `;
@@ -132,7 +132,6 @@ export const ButtonContainer1 = styled.div`
 export const ButtonContainer2 = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 50px;
 `;
 
 export const StyledButton = styled.button`
@@ -199,7 +198,6 @@ export const Container3 = styled.div`
     font-size: 19px;
     line-height: 20px;
     color: #939598;
-    margin-left: 50px;
     margin-bottom: 20px;
   }
 `;

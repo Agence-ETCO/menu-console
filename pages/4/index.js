@@ -112,7 +112,10 @@ const Page4 = () => {
         <Subcontainer>
           <div>
             <Title1>Bières en fût </Title1>
-            <SubTitle></SubTitle>
+            <SubTitle>
+              Découvrez le nombre de bières que vous pourrez choisir selon votre
+              bar.
+            </SubTitle>
           </div>
           <MinMax stage={4} />
         </Subcontainer>
@@ -124,16 +127,6 @@ const Page4 = () => {
 
           <Buttons>
             <Container4>
-              <Container2>
-                <div>Produits Labatt</div>
-                <ButtonContainer1>
-                  {buttons1.map((item, i) => (
-                    <button key={i} onClick={() => {}}>
-                      {item}
-                    </button>
-                  ))}
-                </ButtonContainer1>
-              </Container2>
               <Container3>
                 <div>Jusqu’à 2 microbrasseries</div>
                 <ButtonContainer2>

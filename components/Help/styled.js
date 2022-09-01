@@ -57,21 +57,28 @@ export const Title = styled.div`
   font-size: 24px;
   line-height: 28px;
   color: #231f20;
-  margin-top: 55px;
-  margin-bottom: 35px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   text-transform: uppercase;
   width: 454px;
   letter-spacing: 0.05em;
 `;
 
 export const Subtitle = styled.div`
-  font-family: "GTWalsheimRegular";
-  font-style: normal;
-  font-weight: 400;
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
   font-size: 17px;
-  line-height: 24x;
-  color: #3c3c3c;
-  width: 454px;
+  line-height: 24px;
+  color: #262626;
+  div {
+    font-family: "GTWalsheimRegular";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 24x;
+    color: #3c3c3c;
+    width: 454px;
+  }
 `;
 export const Subtitle2 = styled.div`
   font-family: "GTWalsheimBold";
@@ -81,7 +88,7 @@ export const Subtitle2 = styled.div`
   line-height: 24px;
   color: #3c3c3c;
   width: 454px;
-  margin-top: 25px;
+  margin-top: 40px;
   margin-bottom: 55px;
   a {
     text-decoration: underline;
