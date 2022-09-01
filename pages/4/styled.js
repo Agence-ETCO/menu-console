@@ -54,8 +54,8 @@ export const SubTitle1 = styled.div`
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;
-  min-height: 200vh;
-  padding-bottom: 600px;
+  min-height: 100vh;
+  padding-bottom: 200px;
 `;
 
 export const Subcontainer1 = styled.div`
