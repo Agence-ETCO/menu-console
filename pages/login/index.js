@@ -31,7 +31,6 @@ const Page = () => {
               if (res.franchisee_s_menu) {
                 if (res.franchisee_s_menu.id) {
                   getMenuId(res.franchisee_s_menu.id);
-                  console.log(res.franchisee_s_menu.id);
                 }
               } else {
                 const data = {
@@ -40,7 +39,6 @@ const Page = () => {
                   franchisee: user.id,
                 };
 
-                console.log(data);
                 return postAPI("api/franchisees-menus", jwt, data)
                   .then((res) => {
                     getMenuId(res.data.id);
