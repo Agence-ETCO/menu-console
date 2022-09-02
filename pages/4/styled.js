@@ -131,6 +131,9 @@ export const ButtonContainer1 = styled.div`
 export const ButtonContainer2 = styled.div`
   display: flex;
   flex-direction: row;
+  width: 630px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #939598;
 `;
 
 export const StyledButton = styled.button`
@@ -236,9 +239,9 @@ export const Container4 = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 630px;
-  padding-bottom: 65px;
-  border-bottom: 1px solid #939598;
+  /* width: 630px;
+  padding-bottom: 45px;
+  border-bottom: 1px solid #939598; */
 `;
 
 const Empty = () => {};
