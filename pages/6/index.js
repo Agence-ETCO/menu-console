@@ -245,7 +245,7 @@ const Page6 = () => {
           </Button>
         </Link>
         <Subcontainer>
-          {state.nonAlcohol === 0 ? (
+          {state.nonAlcohol === 0 || state.nonAlcohol.length === 0 ? (
             <Text>Aucun produit sélectionné</Text>
           ) : (
             state.nonAlcohol.map((option, i) => (
