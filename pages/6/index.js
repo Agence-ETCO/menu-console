@@ -260,9 +260,10 @@ const Page6 = () => {
         </Subcontainer>
         <Container1>
           <Title2>
-            Prochaine étape : prévisualisez ou modifiez vos choix.{" "}
+            <span>Prochaine étape:</span> prévisualisez ou modifiez vos choix.{" "}
             <div>
-              Satisfait ? Soumettez votre carte des alcools pour impression.
+              <span>Satisfait?</span> Soumettez votre carte des alcools pour
+              impression.
             </div>
           </Title2>
         </Container1>
