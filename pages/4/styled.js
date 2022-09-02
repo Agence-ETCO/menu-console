@@ -160,8 +160,9 @@ export const Square = styled.div`
   padding-top: 25px;
   padding-left: 40px;
   padding-right: 40px;
+  padding-bottom: 25px;
   min-width: 506px;
-  height: 241px;
+  height: fit-content;
   font-family: "Inter";
   font-weight: 500;
   font-size: 17px;
@@ -198,19 +199,6 @@ export const Choice = styled.div`
   line-height: 27px;
   color: #231f20;
   margin-top: 10px;
-`;
-
-export const Separator = styled.div`
-  color: rgba(35, 31, 32, 0.5);
-  font-family: "InterLight";
-  font-weight: 300;
-  margin-top: -1px;
-  margin-bottom: -1px;
-  span {
-    margin-left: 10px;
-    margin-right: 10px;
-    color: #231f20;
-  }
 `;
 
 export const Container2 = styled.div`

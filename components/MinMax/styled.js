@@ -11,7 +11,8 @@ export const Select = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: ${(props) => (props.stage ? "412px" : "325px")};
+  min-width: ${(props) =>
+    !props.stage ? "325px" : props.number !== 6 ? "412px" : "325px"};
   height: 67px;
   svg {
     margin-right: 18px;

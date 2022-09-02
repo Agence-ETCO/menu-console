@@ -4,10 +4,14 @@ import { Select } from "./styled.js";
 const MinMax = (props) => {
   return (
     <>
-      <Select stage={props.stage}>
+      <Select stage={props.stage} number={props.number}>
         <Hint />
         {props.stage === 4 ? (
-          <>Maximum 2 bières de microbrasserie</>
+          <>
+            {props.number === 6 && "Maximum de 6 bières en fût"}
+            {props.number === 8 && " Minimum de 1 microbrasserie en fût"}
+            {props.number >= 10 && "Minimum de 2 microbrasseries en fût"}
+          </>
         ) : props.stage === 5 ? (
           <>Maximum 2 bières non-alcoolisées</>
         ) : (
