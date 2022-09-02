@@ -14,7 +14,7 @@ export const Subcontainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   ${Min} {
-    min-width: 345px;
+    min-width: 385px;
   }
 `;
 

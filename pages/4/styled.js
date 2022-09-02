@@ -62,8 +62,7 @@ export const Subcontainer1 = styled.div`
   display: flex;
   flex-directon: row;
   align-items: center;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 100px;
   margin-right: 40px;
   padding-right: 10px;
 `;
@@ -142,13 +141,10 @@ export const StyledButton = styled.button`
   font-style: normal;
   font-weight: 700;
   font-size: 32.1905px;
-  line-height: 38px;
+  line-height: 78px;
   text-align: center;
   text-transform: uppercase;
   color: #231f20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 50%;
   background-color: ${(props) => (props.active ? "#ffe110" : "white")};
   margin-right: 15px;
@@ -158,25 +154,60 @@ export const StyledButton = styled.button`
 `;
 
 export const Square = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 45px;
-  width: 506px;
-  height: 173px;
-  font-family: "InterBold";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 25px;
+  padding-top: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
+  min-width: 506px;
+  height: 241px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 23px;
+  text-align: center;
   color: #231f20;
   background-color: #f5ba18;
   border: 9px solid #f5ba18;
   border-radius: 9px;
   margin-left: auto;
   margin-right: 30px;
-  margin-top: -20px;
+  margin-top: -70px;
   text-align: center;
+`;
+
+export const Text1 = styled.div`
+  margin-bottom: 5px;
+`;
+
+export const Title2 = styled.div`
+  font-family: "InterBold";
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #231f20;
+  margin-bottom: 10px;
+`;
+
+export const Choice = styled.div`
+  font-family: "InterBold";
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 27px;
+  color: #231f20;
+  margin-top: 10px;
+`;
+
+export const Separator = styled.div`
+  color: rgba(35, 31, 32, 0.5);
+  font-family: "InterLight";
+  font-weight: 300;
+  margin-top: -1px;
+  margin-bottom: -1px;
+  span {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #231f20;
+  }
 `;
 
 export const Container2 = styled.div`

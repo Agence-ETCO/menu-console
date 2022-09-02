@@ -68,6 +68,16 @@ export const Container1 = styled.div`
   justify-content: center;
 `;
 
+export const Text = styled.div`
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: #231f20;
+  margin-left: 30px;
+  margin-top: -10px;
+`;
+
 export const Button = styled.button`
   display: inline-block;
   width: 134px;

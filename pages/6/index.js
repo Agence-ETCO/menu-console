@@ -22,6 +22,7 @@ import {
   Title1,
   Container1,
   Button,
+  Text,
 } from "./styled";
 
 const Page6 = () => {
@@ -34,6 +35,12 @@ const Page6 = () => {
   const [craftBeer, setCraftBeer] = useState([]);
 
   const step = 6;
+
+  const beer =
+    state.selections &&
+    state.selections.filter(
+      (option) => option.attributes && option.attributes.category === "Beer"
+    );
 
   const handleClick = () => {
     setShowAlert(true);
@@ -165,7 +172,10 @@ const Page6 = () => {
           </Button>
         </Link>
         <Subcontainer>
-          {state.selections &&
+          {beer.length === 0 ? (
+            <Text>Aucun produit sélectionné</Text>
+          ) : (
+            state.selections &&
             state.selections
               .filter(
                 (option) =>
@@ -176,6 +186,7 @@ const Page6 = () => {
                   key={option.id}
                   value={option.id}
                   title={option.attributes.title}
+                  alcohol={option.attributes.alcohol}
                   description={option.attributes.description}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}
@@ -183,7 +194,8 @@ const Page6 = () => {
                   imageUrl={option.attributes.imageURL}
                   step={step}
                 />
-              ))}
+              ))
+          )}
         </Subcontainer>
         <Title>{option2.title}</Title>{" "}
         <Link href={"/4"}>
@@ -194,7 +206,10 @@ const Page6 = () => {
           </Button>
         </Link>
         <Subcontainer>
-          {craftBeer &&
+          {craftBeer.length === 0 ? (
+            <Text>Aucun produit sélectionné</Text>
+          ) : (
+            craftBeer &&
             craftBeer.map((option, i) => (
               <BeerCard3
                 key={i}
@@ -203,6 +218,10 @@ const Page6 = () => {
                 value={option}
                 title={
                   (option.attributes && option.attributes.title) || option.title
+                }
+                alcohol={
+                  (option.attributes && option.attributes.alcohol) ||
+                  option.alcohol
                 }
                 description={
                   (option.attributes && option.attributes.descriptionFr) ||
@@ -213,7 +232,8 @@ const Page6 = () => {
                 }
                 index={option.attributes && option.craftOptions.price}
               />
-            ))}
+            ))
+          )}
         </Subcontainer>
         <Title>{"Bières non-alcoolisés"}</Title>{" "}
         <Link href={"/5"}>
@@ -224,7 +244,9 @@ const Page6 = () => {
           </Button>
         </Link>
         <Subcontainer>
-          {state.nonAlcohol > 0 &&
+          {state.nonAlcohol === 0 ? (
+            <Text>Aucun produit sélectionné</Text>
+          ) : (
             state.nonAlcohol.map((option, i) => (
               <BeerCard2
                 key={i}
@@ -232,10 +254,14 @@ const Page6 = () => {
                 handleCheckboxChange={() => {}}
                 value={option}
               />
-            ))}
+            ))
+          )}
         </Subcontainer>
         <Container1>
-          <Title1>Êtes-vous prêt à valider votre sélection?</Title1>
+          <Title1>
+            Prochaine étape : prévisualisez ou modifiez vos choix. Satisfait ?
+            Soumettez votre carte des alcools pour impression.
+          </Title1>
         </Container1>
       </Container>
 

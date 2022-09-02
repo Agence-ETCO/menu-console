@@ -23,7 +23,7 @@ const AlertBox = (props) => {
               </CloseButton>
             </Title>
             <div style={{ width: "423px", marginTop: "30px" }}>
-              Une fois soumise,{" "}
+              Une fois votre carte des alcools soumise,{" "}
               <span style={{ fontFamily: "GTWalsheimBold" }}>
                 vous ne pourrez plus
               </span>{" "}

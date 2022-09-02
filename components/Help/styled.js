@@ -58,7 +58,7 @@ export const Title = styled.div`
   line-height: 28px;
   color: #231f20;
   margin-top: 50px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   width: 454px;
   letter-spacing: 0.05em;
@@ -88,8 +88,8 @@ export const Subtitle2 = styled.div`
   line-height: 24px;
   color: #3c3c3c;
   width: 454px;
-  margin-top: 40px;
-  margin-bottom: 55px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   a {
     text-decoration: underline;
   }

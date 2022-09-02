@@ -22,6 +22,17 @@
   font-family: 'InterBold';
   src: url('/fonts/InterBold.otf'); 
  }
+
+ @font-face {
+  font-family: 'Inter';
+  src: url('/fonts/InterRegular.otf'); 
+ }
+
+ @font-face {
+  font-family: 'InterLight';
+  src: url('/fonts/InterLight.otf'); 
+ }
+
 html,
 body {
   padding: 0;

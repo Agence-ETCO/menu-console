@@ -27,6 +27,11 @@ import {
   Container3,
   Container4,
   Main,
+  Text,
+  Text1,
+  Title2,
+  Choice,
+  Separator,
 } from "./styled";
 
 const Page4 = () => {
@@ -128,7 +133,6 @@ const Page4 = () => {
           <Buttons>
             <Container4>
               <Container3>
-                <div>Jusqu’à 2 microbrasseries</div>
                 <ButtonContainer2>
                   {buttons2.map((item, i) => (
                     <StyledButton
@@ -144,10 +148,27 @@ const Page4 = () => {
             </Container4>
             {state.selectedPack > 6 && (
               <Square>
-                {state.selectedPack === 8 &&
-                  "Tout d'abord, vous devez sélectionner 2 produits en fût de Labatt pour vous permettre d'ajouter 2 bières en fût de microbrasserie."}
-                {(state.selectedPack === 10 || state.selectedPack === 12) &&
-                  "Tout d’abord, vous devez sélectionner 0 produits en fût de Labatt pour vous permettre d’ajouter 2 bières en fût de microbrasserie."}
+                {(state.selectedPack === 8 ||
+                  state.selectedPack === 10 ||
+                  state.selectedPack === 12) && (
+                  <>
+                    <Title2>IMPORTANT !</Title2>{" "}
+                    <div>
+                      {" "}
+                      Voici vos 6 bières présélectionnées.{" "}
+                      <Text1>Complétez en ajoutant 2 produits :</Text1>
+                    </div>
+                    <Choice>2 bières Labatt </Choice>
+                    <Separator>
+                      {" "}
+                      ___________ <span>ou</span>___________
+                    </Separator>
+                    <Choice>
+                      {" "}
+                      1 bière Labatt + 1 bière de microbrasserie{" "}
+                    </Choice>
+                  </>
+                )}
               </Square>
             )}
           </Buttons>
@@ -168,6 +189,7 @@ const Page4 = () => {
                         key={option.id}
                         value={option.id}
                         title={option.attributes.title}
+                        alcohol={option.attributes.alcohol}
                         description={option.attributes.description}
                         saqCode={option.attributes.saqCode}
                         prices={option.attributes.cost}
@@ -191,12 +213,12 @@ const Page4 = () => {
                 />
                 <Bubble
                   count={selections.length}
-                  show={state.selectedPack === 8 && selections.length === 1}
+                  show={selections.length === 1}
                   duration={"4s"}
                 />
                 <Bubble
                   count={selections.length}
-                  show={state.selectedPack === 8 && selections.length === 2}
+                  show={selections.length === 2}
                   duration={"4s"}
                 />
               </Subcontainer3>
