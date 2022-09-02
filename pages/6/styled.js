@@ -44,6 +44,17 @@ export const Title1 = styled.div`
   margin-left: 30px;
   margin-bottom: 30px;
 `;
+export const Title2 = styled.div`
+  font-family: "GTWalsheimBold";
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 40px;
+  color: #f5ba18;
+  text-align: left;
+  margin-left: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+`;
 export const Subtitle1 = styled.div`
   font-family: "GTWalsheimRegular";
   font-weight: 600;

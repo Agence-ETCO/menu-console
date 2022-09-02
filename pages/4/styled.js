@@ -96,7 +96,7 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 27px;
   line-height: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   margin-left: 30px;
 `;
 export const Buttons = styled.div`

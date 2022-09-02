@@ -20,6 +20,7 @@ import {
   Subcontainer1,
   Subtitle1,
   Title1,
+  Title2,
   Container1,
   Button,
   Text,
@@ -258,10 +259,12 @@ const Page6 = () => {
           )}
         </Subcontainer>
         <Container1>
-          <Title1>
-            Prochaine étape : prévisualisez ou modifiez vos choix. Satisfait ?
-            Soumettez votre carte des alcools pour impression.
-          </Title1>
+          <Title2>
+            Prochaine étape : prévisualisez ou modifiez vos choix.{" "}
+            <div>
+              Satisfait ? Soumettez votre carte des alcools pour impression.
+            </div>
+          </Title2>
         </Container1>
       </Container>
 
