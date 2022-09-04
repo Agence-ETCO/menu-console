@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import image from "../../public/close.svg";
 import CraftBeerCard from "../../components/CraftBeerCard";
@@ -122,7 +122,7 @@ const CraftList = (props) => {
             <Container2>
               {craftBeerOptions.slice(1).map((option, i) => (
                 <CraftBeerCard
-                  key={i}
+                  key={`craftlist_${i}`}
                   value={option}
                   option={option}
                   order={props.order}

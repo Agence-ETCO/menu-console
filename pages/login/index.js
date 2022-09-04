@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { login, fetchAPI, postAPI } from "../../lib/api";
+import { login, fetchAPI, postAPI, fetchCurrentUser } from "../../lib/api";
 import { AppContext } from "../../context/AppContext";
+import { setToken, setUser } from "../../lib/store";
 
 const Page = () => {
   const {
@@ -21,10 +22,10 @@ const Page = () => {
     const user = {
       id: 2,
     }; */
-    localStorage.setItem('jwt', jwt);
-    localStorage.setItem('user', JSON.stringify(user));
+    setToken(jwt);
+    setUser(user);
 
-    const res = await fetchAPI(`/api/users/${user.id}?populate=deep`, jwt);
+    const res = await fetchCurrentUser();
     if (res.franchisee_s_menu) {
       if (res.franchisee_s_menu.id) {
         getMenuId(res.franchisee_s_menu.id);
@@ -36,7 +37,7 @@ const Page = () => {
         franchisee: user.id,
       };
 
-      const resMenu = await postAPI('api/franchisees-menus', jwt, data)
+      const resMenu = await postAPI('api/franchisees-menus', data)
       getMenuId(resMenu.data.id);
       console.log(resMenu.data.id);
     }

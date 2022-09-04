@@ -11,7 +11,7 @@ import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
-import { postAPI, fetchAPI } from "../../lib/api";
+import { fetchCurrentUser } from "../../lib/api";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
   Container,
@@ -42,8 +42,6 @@ const Page6 = () => {
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState(null);
 
   const step = 6;
 
@@ -56,16 +54,6 @@ const Page6 = () => {
   const handleClick = () => {
     setShowAlert(true);
   };
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
-    if (user) {
-      setUserId(user.id);
-    }
-
-    setToken(token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -93,10 +81,8 @@ const Page6 = () => {
     state.micro2.title,
   ]);
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+      fetchCurrentUser()
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -198,9 +184,9 @@ const Page6 = () => {
                     option.attributes.category === "White Wine") ||
                   option.category === "White Wine"
               )
-              .map((option, i) => (
+              .map((option, key) => (
                 <WineCard
-                  key={option.id}
+                  key={`page6_option_a_${key}`}
                   value={option.id}
                   title={
                     (option.attributes && option.attributes.title) ||
@@ -255,9 +241,9 @@ const Page6 = () => {
                     option.attributes.category === "Red Wine") ||
                   option.category === "Red Wine"
               )
-              .map((option, i) => (
+              .map((option, key) => (
                 <WineCard
-                  key={option.id}
+                  key={`page6_option_b_${key}`}
                   value={option.id}
                   title={
                     (option.attributes && option.attributes.title) ||
@@ -315,9 +301,9 @@ const Page6 = () => {
                     option.attributes.category === "Beer") ||
                   option.category === "Beer"
               )
-              .map((option, i) => (
+              .map((option, key) => (
                 <BeerCard
-                  key={option.id}
+                  key={`page6_option_c_${key}`}
                   value={option.id}
                   title={
                     (option.attributes && option.attributes.title) ||
@@ -358,11 +344,11 @@ const Page6 = () => {
             <Text>Aucun produit sélectionné</Text>
           ) : (
             craftBeer &&
-            craftBeer.map((option, i) => (
+            craftBeer.map((option, key) => (
               <BeerCard3
-                key={i}
+                key={`page6_option_d_${key}`}
                 checked
-                handleCheckboxChange={() => {}}
+                handleCheckboxChange={() => { }}
                 value={option}
                 title={
                   (option.attributes && option.attributes.title) || option.title
@@ -395,11 +381,11 @@ const Page6 = () => {
           {state.nonAlcohol === 0 || state.nonAlcohol.length === 0 ? (
             <Text>Aucun produit sélectionné</Text>
           ) : (
-            state.nonAlcohol.map((option, i) => (
+            state.nonAlcohol.map((option, key) => (
               <BeerCard2
-                key={i}
+                key={`page6_option_e_${key}`}
                 checked
-                handleCheckboxChange={() => {}}
+                handleCheckboxChange={() => { }}
                 value={option}
               />
             ))

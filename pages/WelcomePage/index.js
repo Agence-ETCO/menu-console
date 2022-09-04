@@ -17,7 +17,6 @@ import {
 } from "./styled";
 
 const WelcomePage = () => {
-  const [userId, setUserId] = useState(null);
   const [showHelp, setShowHelp] = useState(false);
 
   const handleClick = () => {
@@ -25,13 +24,6 @@ const WelcomePage = () => {
   };
 
   const date = "16 septembre 2022";
-
-  /* useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setUserId(user.id);
-    }
-  }, []); */
 
   return (
     <>

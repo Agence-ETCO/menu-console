@@ -5,7 +5,11 @@ import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
-import { putAPI, postAPI, fetchAPI } from "../../lib/api";
+import {
+  putAPI,
+  fetchAPI,
+  fetchCurrentUser,
+} from "../../lib/api";
 import {
   Container,
   Subcontainer1,
@@ -13,6 +17,7 @@ import {
   Title,
   SubTitle,
 } from "./styled";
+import { getUser } from '../../lib/store';
 
 const Page2 = () => {
   const {
@@ -32,7 +37,6 @@ const Page2 = () => {
   const min = 1;
   const [counter, setCounter] = useState(0);
   const [userId, setUserId] = useState(null);
-  const [token, setToken] = useState(null);
 
   const max = 3;
   const quantity = 3;
@@ -49,14 +53,10 @@ const Page2 = () => {
   const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
+    const user = getUser();
     if (user) {
       setUserId(user.id);
     }
-
-    setToken(token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = async () => {
@@ -68,7 +68,6 @@ const Page2 = () => {
 
     putAPI(
       `api/franchisees-menus/${state.menuId}?populate=deep`,
-      token,
       menuData
     )
       .then((response) => {
@@ -80,10 +79,8 @@ const Page2 = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+      fetchCurrentUser()
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -156,8 +153,7 @@ const Page2 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = localStorage.getItem("jwt") || "";
-      fetchAPI("/api/menu-items?populate=deep", token)
+      fetchAPI('/api/menu-items?populate=deep')
         .then((res) => {
           receiveData(res.data);
         })
@@ -186,9 +182,9 @@ const Page2 = () => {
           {state.data &&
             state.data
               .filter((option) => option.attributes.category === "White Wine")
-              .map((option) => (
+              .map((option, key) => (
                 <WineCard
-                  key={option.id}
+                  key={`page2_option_${key}`}
                   value={option.id}
                   title={option.attributes.title || option.tile}
                   description={

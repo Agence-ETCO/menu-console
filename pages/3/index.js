@@ -3,7 +3,11 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import { putAPI, postAPI, fetchAPI } from "../../lib/api";
+import {
+  putAPI, 
+  fetchAPI,
+  fetchCurrentUser
+} from "../../lib/api";
 import WineCard from "../../components/WineCard";
 import { page3 } from "../../fr";
 import {
@@ -13,6 +17,7 @@ import {
   Title,
   SubTitle,
 } from "./styled";
+import useUserID from "../../lib/useUserID";
 
 const Page3 = () => {
   const {
@@ -33,8 +38,7 @@ const Page3 = () => {
 
   const min = 3;
   const [counter, setCounter] = useState(0);
-  const [userId, setUserId] = useState(null);
-  const [token, setToken] = useState(null);
+  const userID = useUserID();
 
   const max = 6;
   const quantity = 18;
@@ -51,20 +55,8 @@ const Page3 = () => {
   const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
-    if (user) {
-      setUserId(user.id);
-    }
-
-    setToken(token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
     if (state.data.length === 0) {
-      const token = localStorage.getItem("jwt") || "";
-      fetchAPI("/api/menu-items?populate=deep", token)
+      fetchAPI('/api/menu-items?populate=deep')
         .then((res) => {
           receiveData(res.data);
         })
@@ -79,12 +71,11 @@ const Page3 = () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
-      franchisee: userId,
+      franchisee: userID,
     };
 
     putAPI(
       `api/franchisees-menus/${state.menuId}?populate=deep`,
-      token,
       menuData
     )
       .then((response) => {
@@ -96,10 +87,8 @@ const Page3 = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+      fetchCurrentUser()
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -188,9 +177,9 @@ const Page3 = () => {
           {state.data &&
             state.data
               .filter((option) => option.attributes.category === "Red Wine")
-              .map((option) => (
+              .map((option, key) => (
                 <WineCard
-                  key={option.id}
+                  key={`page3_option_${key}`}
                   value={option.id}
                   title={option.attributes.title}
                   description={option.attributes.description}

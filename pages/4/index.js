@@ -5,7 +5,11 @@ import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import { putAPI, postAPI, fetchAPI } from "../../lib/api";
+import {
+  putAPI,
+  // postAPI,
+  fetchAPI
+} from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { beerList, page4, footer } from "../../fr";
 import {
@@ -33,6 +37,7 @@ import {
   Choice,
   Separator,
 } from "./styled";
+import useUserID from '../../lib/useUserID';
 
 const Page4 = () => {
   const {
@@ -57,8 +62,7 @@ const Page4 = () => {
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
   const [craftSelections, setCraftSelections] = useState([]);
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const userID = useUserID();
   const [isCorona, setIsCorona] = useState(false);
   const selections = state.selections.filter(
     (option) =>
@@ -95,21 +99,11 @@ const Page4 = () => {
 
     addPack(item);
   };
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
-    if (user) {
-      setUserId(user.id);
-    }
-
-    setToken(token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const craft =
       (state.micro1 && state.micro1.craftOptions) ||
-      (state.micro2 && state.micro2.craftOptions)
+        (state.micro2 && state.micro2.craftOptions)
         ? [state.micro1.craftOptions, state.micro2.craftOptions]
         : [];
     setCraftSelections(craft.filter((n) => n !== null));
@@ -126,9 +120,8 @@ const Page4 = () => {
   }, [selections, min]);
 
   useEffect(() => {
-    const token = localStorage.getItem("jwt") || "";
     if (state.data.length === 0) {
-      fetchAPI("/api/menu-items?populate=deep", token)
+      fetchAPI("/api/menu-items?populate=deep")
         .then((res) => {
           receiveData(res.data);
         })
@@ -155,7 +148,7 @@ const Page4 = () => {
         craft2,
         pack: state.selectedPack,
       },
-      franchisee: userId,
+      franchisee: userID,
     };
     receiveCraftOptions({
       options: craftSelections,
@@ -165,7 +158,6 @@ const Page4 = () => {
     });
     putAPI(
       `api/franchisees-menus/${state.menuId}?populate=deep`,
-      token,
       menuData
     )
       .then((response) => {
@@ -177,10 +169,8 @@ const Page4 = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+      fetchAPI(`/api/users/${userID}?populate=deep`)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -270,9 +260,9 @@ const Page4 = () => {
             <Container4>
               <Container3>
                 <ButtonContainer2>
-                  {buttons2.map((item, i) => (
+                  {buttons2.map((item, key) => (
                     <StyledButton
-                      key={i}
+                      key={`page4_button_${key}`}
                       active={state.selectedPack === item}
                       onClick={() => handleClick(item)}
                     >
@@ -357,9 +347,9 @@ const Page4 = () => {
                 {state.data &&
                   state.data
                     .filter((option) => option.attributes.category === "Beer")
-                    .map((option) => (
+                    .map((option, key) => (
                       <BeerCard
-                        key={option.id}
+                        key={`page4_option_${key}`}
                         value={option.id}
                         title={option.attributes.title}
                         alcohol={option.attributes.alcohol}

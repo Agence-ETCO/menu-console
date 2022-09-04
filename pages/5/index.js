@@ -16,6 +16,7 @@ import {
   Container1,
   Title,
 } from "./styled";
+import useUserID from '../../lib/useUserID';
 
 const Page5 = () => {
   const {
@@ -41,8 +42,8 @@ const Page5 = () => {
   const [selections, setSelections] = useState(intialState);
   const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const userID = useUserID();
+
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
@@ -69,17 +70,6 @@ const Page5 = () => {
     setUpdated(!updated);
   };
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
-    if (user) {
-      setUserId(user.id);
-    }
-
-    setToken(token);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
@@ -89,7 +79,6 @@ const Page5 = () => {
 
     putAPI(
       `api/franchisees-menus/${state.menuId}?populate=deep`,
-      token,
       menuData
     )
       .then((response) => {
@@ -101,10 +90,8 @@ const Page5 = () => {
   };
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("jwt") || "";
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${user.id}?populate=deep`, token)
+      fetchAPI(`/api/users/${userID}?populate=deep`)
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -191,9 +178,9 @@ const Page5 = () => {
           <div></div>
         </Subcontainer1>
         <Subcontainer2>
-          {options.map((option, i) => (
+          {options.map((option, key) => (
             <BeerCard2
-              key={i}
+              key={`page5_option_${key}`}
               checked={!!selections.includes(option)}
               handleCheckboxChange={() => handleCheckboxChange(option)}
               value={option}
