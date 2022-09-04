@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS || "G-48FR4MMGTL");
+    ReactGA.initialize(process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS || "G-48FR4MMGTL");
     ReactGA.pageview('/');
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, [])
