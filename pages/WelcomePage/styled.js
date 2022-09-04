@@ -52,6 +52,16 @@ export const Date = styled.span`
   line-height: 25px;
   color: #e30826;
 `;
+export const Contact = styled.span`
+  ont-family: "GTWalsheimRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 25px;
+  color: #231f20;
+  text-decoration: underline;
+  cursor: pointer;
+`;
 export const DateLimit = styled.span`
   font-family: "GTWalsheimMedium";
   font-weight: 600;

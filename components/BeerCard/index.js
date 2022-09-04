@@ -74,7 +74,9 @@ const BeerCard = (props) => {
             )}
           </ImageContainer>
           <TextContainer checked={isChecked(props.option)}>
-            <div>{props.title || "Budweiser (5%)"}</div>
+            <div>
+              {props.title} ({props.alcohol})
+            </div>
             <div> {props.description || "Lager américaine"} </div>
             {props.prices ? (
               <table>

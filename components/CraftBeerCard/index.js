@@ -52,6 +52,10 @@ const CraftBeerCard = (props) => {
     if (isSelected(value)) {
       const updatedOptions = priceOptions.filter((option) => option !== value);
       setPriceOptions(updatedOptions);
+
+      if (updatedOptions.length === 0) {
+        props.onChange(false);
+      }
       if (props.order === "01") {
         addMicro01({
           ...props.option,

@@ -31,11 +31,11 @@ export const SubTitle = styled.div`
   color: ${colors.black};
   font-family: "GTWalsheimRegular";
   font-weight: 400;
-  font-size: 19px;
-  line-height: 25px;
+  font-size: 17px;
+  line-height: 23px;
   margin-left: 30px;
   width: 630px;
-  margin-top: 40px;
+  margin-top: 30px;
   padding-bottom: 35px;
   border-bottom: 1px solid #939598;
 `;
@@ -54,16 +54,15 @@ export const SubTitle1 = styled.div`
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;
-  min-height: 200vh;
-  padding-bottom: 600px;
+  min-height: 100vh;
+  padding-bottom: 200px;
 `;
 
 export const Subcontainer1 = styled.div`
   display: flex;
   flex-directon: row;
   align-items: center;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 100px;
   margin-right: 40px;
   padding-right: 10px;
 `;
@@ -97,7 +96,7 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 27px;
   line-height: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   margin-left: 30px;
 `;
 export const Buttons = styled.div`
@@ -132,7 +131,9 @@ export const ButtonContainer1 = styled.div`
 export const ButtonContainer2 = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 50px;
+  width: 630px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid #939598;
 `;
 
 export const StyledButton = styled.button`
@@ -143,13 +144,10 @@ export const StyledButton = styled.button`
   font-style: normal;
   font-weight: 700;
   font-size: 32.1905px;
-  line-height: 38px;
+  line-height: 78px;
   text-align: center;
   text-transform: uppercase;
   color: #231f20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border-radius: 50%;
   background-color: ${(props) => (props.active ? "#ffe110" : "white")};
   margin-right: 15px;
@@ -159,25 +157,48 @@ export const StyledButton = styled.button`
 `;
 
 export const Square = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 45px;
-  width: 506px;
-  height: 173px;
-  font-family: "InterBold";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 25px;
+  padding-top: 25px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 25px;
+  min-width: 506px;
+  height: fit-content;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 23px;
+  text-align: center;
   color: #231f20;
   background-color: #f5ba18;
   border: 9px solid #f5ba18;
   border-radius: 9px;
   margin-left: auto;
   margin-right: 30px;
-  margin-top: -20px;
+  margin-top: -70px;
   text-align: center;
+`;
+
+export const Text1 = styled.div`
+  margin-bottom: 5px;
+`;
+
+export const Title2 = styled.div`
+  font-family: "InterBold";
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #231f20;
+  margin-bottom: 10px;
+`;
+
+export const Choice = styled.div`
+  font-family: "InterBold";
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 27px;
+  color: #231f20;
+  margin-top: 10px;
 `;
 
 export const Container2 = styled.div`
@@ -199,7 +220,6 @@ export const Container3 = styled.div`
     font-size: 19px;
     line-height: 20px;
     color: #939598;
-    margin-left: 50px;
     margin-bottom: 20px;
   }
 `;
@@ -207,9 +227,9 @@ export const Container4 = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 630px;
-  padding-bottom: 65px;
-  border-bottom: 1px solid #939598;
+  /* width: 630px;
+  padding-bottom: 45px;
+  border-bottom: 1px solid #939598; */
 `;
 
 const Empty = () => {};

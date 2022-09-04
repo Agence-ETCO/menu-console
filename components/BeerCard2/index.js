@@ -28,7 +28,7 @@ const BeerCard2 = (props) => {
             <Image src={image} width={104} height={210} alt="" />
           </ImageContainer>
           <TextContainer checked={props.checked}>
-            <div>{props.title || "Budweiser (5%)"}</div>
+            <div>{props.title || "Budweiser"}</div>
             <div> {props.description || "Lager américaine"} </div>
             {props.prices ? (
               <table>

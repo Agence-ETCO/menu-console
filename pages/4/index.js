@@ -27,6 +27,11 @@ import {
   Container3,
   Container4,
   Main,
+  Text,
+  Text1,
+  Title2,
+  Choice,
+  Separator,
 } from "./styled";
 
 const Page4 = () => {
@@ -54,7 +59,7 @@ const Page4 = () => {
   const [craftSelections, setCraftSelections] = useState([]);
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
-
+  const [isCorona, setIsCorona] = useState(false);
   const selections = state.selections.filter(
     (option) =>
       (option.attributes && option.attributes.category === "Beer") ||
@@ -248,9 +253,12 @@ const Page4 = () => {
         <Subcontainer>
           <div>
             <Title1>Bières en fût </Title1>
-            <SubTitle></SubTitle>
+            <SubTitle>
+              Découvrez le nombre de bières que vous pourrez choisir selon votre
+              bar.
+            </SubTitle>
           </div>
-          <MinMax stage={4} />
+          <MinMax stage={4} number={state.selectedPack} />
         </Subcontainer>
         <Container>
           <SubTitle1>
@@ -260,18 +268,7 @@ const Page4 = () => {
 
           <Buttons>
             <Container4>
-              <Container2>
-                <div>Produits Labatt</div>
-                <ButtonContainer1>
-                  {buttons1.map((item, i) => (
-                    <button key={i} onClick={() => {}}>
-                      {item}
-                    </button>
-                  ))}
-                </ButtonContainer1>
-              </Container2>
               <Container3>
-                <div>Jusqu’à 2 microbrasseries</div>
                 <ButtonContainer2>
                   {buttons2.map((item, i) => (
                     <StyledButton
@@ -285,12 +282,66 @@ const Page4 = () => {
                 </ButtonContainer2>
               </Container3>
             </Container4>
-            {state.selectedPack > 6 && (
+            {state.selectedPack !== 0 && (
               <Square>
-                {state.selectedPack === 8 &&
-                  "Tout d'abord, vous devez sélectionner 2 produits en fût de Labatt pour vous permettre d'ajouter 2 bières en fût de microbrasserie."}
-                {(state.selectedPack === 10 || state.selectedPack === 12) &&
-                  "Tout d’abord, vous devez sélectionner 0 produits en fût de Labatt pour vous permettre d’ajouter 2 bières en fût de microbrasserie."}
+                {state.selectedPack === 6 && (
+                  <>
+                    <Title2>IMPORTANT !</Title2>{" "}
+                    <div> Voici vos 6 bières présélectionnées. </div>
+                  </>
+                )}
+
+                {state.selectedPack === 8 && (
+                  <>
+                    <Title2>IMPORTANT !</Title2>{" "}
+                    <div>
+                      {" "}
+                      Voici vos 6 bières présélectionnées.{" "}
+                      <Text1>Complétez en ajoutant 2 produits :</Text1>
+                    </div>
+                    <Choice>
+                      {" "}
+                      1 bière Labatt + 1 bière de microbrasserie{" "}
+                    </Choice>
+                  </>
+                )}
+                {state.selectedPack === 10 && !isCorona && (
+                  <>
+                    <Title2>IMPORTANT !</Title2>{" "}
+                    <div>
+                      {" "}
+                      Voici vos 6 bières présélectionnées.{" "}
+                      <Text1>Complétez en ajoutant 4 produits :</Text1>
+                    </div>
+                    <Choice>
+                      2 bières Labatt + 2 bières de microbrasserie
+                    </Choice>
+                  </>
+                )}
+                {state.selectedPack === 10 && isCorona && (
+                  <>
+                    <Title2>IMPORTANT !</Title2>{" "}
+                    <div>
+                      {" "}
+                      Voici vos 6 bières présélectionnées.{" "}
+                      <Text1>Complétez en ajoutant 3 produits :</Text1>
+                    </div>
+                    <Choice>1 bière Labatt + 2 bières de microbrasserie</Choice>
+                  </>
+                )}
+                {state.selectedPack === 12 && (
+                  <>
+                    <Title2>IMPORTANT !</Title2>{" "}
+                    <div>
+                      {" "}
+                      Voici vos 6 bières présélectionnées.{" "}
+                      <Text1>Complétez en ajoutant 6 produits :</Text1>
+                    </div>
+                    <Choice>
+                      4 bières Labatt + 2 bières de microbrasserie{" "}
+                    </Choice>
+                  </>
+                )}
               </Square>
             )}
           </Buttons>
@@ -311,6 +362,7 @@ const Page4 = () => {
                         key={option.id}
                         value={option.id}
                         title={option.attributes.title}
+                        alcohol={option.attributes.alcohol}
                         description={option.attributes.description}
                         saqCode={option.attributes.saqCode}
                         prices={option.attributes.cost}
@@ -334,12 +386,12 @@ const Page4 = () => {
                 />
                 <Bubble
                   count={selections.length}
-                  show={state.selectedPack === 8 && selections.length === 1}
+                  show={selections.length === 1}
                   duration={"4s"}
                 />
                 <Bubble
                   count={selections.length}
-                  show={state.selectedPack === 8 && selections.length === 2}
+                  show={selections.length === 2}
                   duration={"4s"}
                 />
               </Subcontainer3>

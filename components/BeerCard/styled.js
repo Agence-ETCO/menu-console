@@ -45,7 +45,6 @@ export const StyledCheckbox = styled.div`
   height: 32px;
   background-color: ${(props) =>
     props.checked ? "rgba(217, 217, 217, 0.25)" : "rgba(217, 217, 217, 0.5)"};
-  opacity: 0.2;
   border-radius: 50%;
   transition: all 150ms;
   position: relative;

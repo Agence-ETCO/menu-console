@@ -107,10 +107,10 @@ const CraftList = (props) => {
             </CloseButton>
             <Container1>
               <div>
-                <Title>{"Titre"}</Title>
+                <Title>{" Ajoutez une bière de microbrasserie"}</Title>
                 <Subtitle>
                   {
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                    "Sélectionnez les bières de microbrasseries que vous souhaitez avoir au menu ainsi que la quantité"
                   }
                 </Subtitle>
               </div>

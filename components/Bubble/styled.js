@@ -23,6 +23,7 @@ export const Select = styled.div`
   height: 110px;
   color: white;
   text-transform: uppercase;
+  pointer-events: none;
   svg {
     margin-right: 18px;
     width: 32px;

@@ -181,7 +181,7 @@ const Page5 = () => {
         <Container1>
           <Title>Bières non-alcoolisés </Title>
           <SubTitle>
-            Lorem ipsum doloris exuvaduis iradum quavodis zarominis
+            Choisissez jusqu’à 2 bières non-alcoolisées (optionnel).
           </SubTitle>
         </Container1>
         <MinMax stage={5} />

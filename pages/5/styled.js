@@ -14,7 +14,7 @@ export const Subcontainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   ${Min} {
-    min-width: 345px;
+    min-width: 385px;
   }
 `;
 
@@ -46,8 +46,7 @@ export const SubTitle = styled.div`
 export const Container = styled.div`
   margin-left: 60px;
   margin-right: 60px;
-  min-height: 200vh;
-  padding-bottom: 600px;
+  padding-bottom: 274px;
   max-width: 1480px;
   margin-left: auto;
   margin-right: auto;
@@ -64,7 +63,7 @@ export const Subcontainer1 = styled.div`
   flex-directon: row;
   align-items: center;
   margin-top: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   margin-right: 40px;
   padding-right: 10px;
 `;
