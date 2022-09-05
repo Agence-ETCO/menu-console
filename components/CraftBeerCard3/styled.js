@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { colors } from "../../constants";
 
 export const Label = styled.label`
+order:2;
   background-color: ${(props) => (props.checked ? "#231F20" : "white")};
   border: 1px solid rgba(147, 149, 152, 0.75);
   border-radius: 9px;

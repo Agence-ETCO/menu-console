@@ -100,7 +100,7 @@ const CraftBeerCard3 = (props) => {
 
     props.handleClick();
   };
-  console.log(state.micro1);
+
   useEffect(() => {
     if (
       props.order === "01" &&
@@ -109,7 +109,6 @@ const CraftBeerCard3 = (props) => {
       state.micro1.craftOptions.price.length > 0 &&
       props.option.id === state.micro1.id
     ) {
-      console.log("ttt");
       setPriceOptions(state.micro1.craftOptions.price);
     }
     if (
@@ -206,15 +205,17 @@ const CraftBeerCard3 = (props) => {
             <Container1>
               {}
               <SubContainer1>
-                <CheckboxContainer1
-                  checked={
-                    (isSelected(1) && isChecked(props.option)) ||
-                    props.option.size
-                  }
-                  onClick={() => handlePriceChange(1)}
-                >
-                  <Circle /> <StyledCheckbox></StyledCheckbox>
-                </CheckboxContainer1>
+                {!props.option.size && (
+                  <CheckboxContainer1
+                    checked={
+                      (isSelected(1) && isChecked(props.option)) ||
+                      props.option.size
+                    }
+                    onClick={() => handlePriceChange(1)}
+                  >
+                    <Circle /> <StyledCheckbox></StyledCheckbox>
+                  </CheckboxContainer1>
+                )}
                 <Cell>
                   <Size
                     checked={
@@ -225,26 +226,30 @@ const CraftBeerCard3 = (props) => {
                     {props.option.size || "Presion 20oz"}{" "}
                     {props.option.size && "ml"}
                   </Size>
-                  <Price
-                    checked={
-                      isChecked(props.option) &&
-                      (isSelected(1) || isSelected(2))
-                    }
-                  >
-                    {props.option.attributes &&
-                      props.option.attributes.cost[1].Price}{" "}
-                    $
-                  </Price>
+                  {!props.option.size && (
+                    <Price
+                      checked={
+                        isChecked(props.option) &&
+                        (isSelected(1) || isSelected(2))
+                      }
+                    >
+                      {props.option.attributes &&
+                        props.option.attributes.cost[1].Price}{" "}
+                      $
+                    </Price>
+                  )}
                 </Cell>
               </SubContainer1>
               <SubContainer1>
-                <CheckboxContainer1
-                  checked={isSelected(2) && isChecked(props.option)}
-                  onClick={() => handlePriceChange(2)}
-                >
-                  <Circle />
-                  <StyledCheckbox></StyledCheckbox>
-                </CheckboxContainer1>
+                {!props.option.size && (
+                  <CheckboxContainer1
+                    checked={isSelected(2) && isChecked(props.option)}
+                    onClick={() => handlePriceChange(2)}
+                  >
+                    <Circle />
+                    <StyledCheckbox></StyledCheckbox>
+                  </CheckboxContainer1>
+                )}
                 <Cell>
                   <Size
                     checked={
