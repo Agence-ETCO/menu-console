@@ -50,7 +50,7 @@ const Page4 = () => {
 
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
-  const [isCorona, setIsCorona] = useState(false);
+  const [isCorona, setIsCorona] = useState(true);
   const selections = state.selections.filter(
     (option) => option.attributes && option.attributes.category === "Beer"
   );
@@ -58,24 +58,74 @@ const Page4 = () => {
     (option) => option.attributes.category === "Craft Beer"
   );
   const min = selectedPack === 8 ? 2 : 0;
-  const max = 13;
+  const max =
+    state.selectedPack === 6
+      ? 6
+      : state.selectedPack === 8
+      ? 2
+      : state.selectedPack === 10 && !isCorona
+      ? 4
+      : state.selectedPack === 10 && isCorona
+      ? 3
+      : state.selectedPack === 12
+      ? 6
+      : 2;
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
 
-  const disabled = state.selectedPack === 0;
+  const num = [
+    state.micro1 && (state.micro1.id || state.micro1.title),
+    state.micro2 && (state.micro2.id || state.micro2.title),
+  ].filter((n) => n !== undefined).length;
+
+  const disabled = () => {
+    if (state.selectedPack === 0) {
+      return true;
+    } else if (state.selectedPack === 6) {
+      return false;
+    } else if (state.selectedPack === 8 && selections.length + num === 2) {
+      return false;
+    } else if (
+      state.selectedPack === 10 &&
+      !isCorona &&
+      selections.length + num === 4
+    ) {
+      return false;
+    } else if (
+      state.selectedPack === 10 &&
+      isCorona &&
+      selections.length + num === 3
+    ) {
+      return false;
+    } else if (state.selectedPack === 12 && selections.length + num === 6) {
+      return false;
+    }
+    return true;
+  };
 
   const selected =
     state.selectedPack === 8
       ? selections.length - 1 >= 0
       : selections.length >= 0;
+
   const selected2 =
-    state.selectedPack === 8
+    (state.selectedPack === 10 && !isCorona) || state.selectedPack === 12
       ? selections.length - 2 >= 0
-      : selections.length >= 0;
-  const limit = max - selections.length - 1 >= 0;
+      : num>=1;
+
+  const limit =
+    state.selectedPack === 8
+      ? max - selections.length - 2 >= 0
+      : state.selectedPack === 10 && !isCorona
+      ? max - selections.length - 3 >= 0
+      : state.selectedPack === 10 && isCorona
+      ? max - selections.length - 3 >= 0
+      : state.selectedPack === 12
+      ? max - selections.length - 3 >= 0
+      : 2;
 
   const handleClick = (item) => {
     if (state.selectedPack > item) {
@@ -85,7 +135,8 @@ const Page4 = () => {
     addPack(item);
   };
   useEffect(() => {
-    const updatedCounter = selections.length;
+    const updatedCounter =
+      state.selectedPack === 6 ? 6 : selections.length + num;
     setCounter(updatedCounter);
   }, [selections, min]);
 
@@ -243,11 +294,13 @@ const Page4 = () => {
                   options={craftOptions}
                   order="01"
                 />
-                <DropDown
-                  options={craftOptions}
-                  disabled={!selected2}
-                  order="02"
-                />
+                {(state.selectedPack === 10 || state.selectedPack === 12) && (
+                  <DropDown
+                    options={craftOptions}
+                    disabled={!selected2}
+                    order="02"
+                  />
+                )}
                 <Bubble
                   count={selections.length}
                   show={selections.length === 1}
@@ -258,6 +311,13 @@ const Page4 = () => {
                   show={selections.length === 2}
                   duration={"4s"}
                 />
+                {/*  {state.setSelectedPack === 10 && isCorona && (
+                  <Bubble
+                    count={selections.length + 1}
+                    show={selected2}
+                    duration={"4s"}
+                  />
+                )} */}
               </Subcontainer3>
             </>
           )}
@@ -271,7 +331,7 @@ const Page4 = () => {
         buttonText={footer.buttonText}
         href={"/5"}
         stage={"BIÈRES NON-ALCOOLISÉS"}
-        disabled={disabled}
+        disabled={disabled()}
       />
     </>
   );
