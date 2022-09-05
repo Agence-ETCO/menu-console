@@ -1,5 +1,7 @@
+import React, { useEffect, useContext } from "react";
 import Image from "next/image";
 import CheckMark from "../CheckMark.js";
+import { AppContext } from "../../context/AppContext";
 import image from "../../public/Rectangle.png";
 import {
   CheckboxContainer,
@@ -12,36 +14,79 @@ import {
 } from "./styled.js";
 
 const BeerCard2 = (props) => {
+  const {
+    state,
+    actions: { addSelection, removeSelection },
+  } = useContext(AppContext);
+
+  const isChecked = (option) => {
+    if (props.step === 6) {
+      return true;
+    }
+    if (
+      option &&
+      state.selections.find((selection) => selection.id === option.id)
+    ) {
+      return true;
+    }
+    return false;
+  };
+  const handleCheckboxChange = (option) => {
+    if (props.step === 6) {
+      return null;
+    }
+
+    let checked = state.selections.find(
+      (selection) => selection.id === option.id
+    );
+
+    if (checked) {
+      removeSelection(option.id);
+    } else {
+      addSelection(option);
+    }
+  };
   return (
     <>
-      <Label checked={props.checked}>
-        <CheckboxContainer checked={props.checked}>
+      <Label checked={isChecked(props.option)}>
+        <CheckboxContainer checked={isChecked(props.option)}>
           <HiddenCheckbox
-            checked={props.checked}
-            onChange={props.handleCheckboxChange}
+            checked={isChecked(props.option)}
+            onChange={() => handleCheckboxChange(props.option)}
           />
           <CheckMark />
-          <StyledCheckbox></StyledCheckbox>
+          <StyledCheckbox checked={isChecked(props.option)}></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
           <ImageContainer>
-            <Image src={image} width={104} height={210} alt="" />
+            {props.imageUrl ? (
+              <Image
+                src={props.imageUrl}
+                layout="fill"
+                objectFit="contain"
+                alt=""
+              />
+            ) : (
+              <Image src={image} width={104} height={210} alt="" />
+            )}
           </ImageContainer>
-          <TextContainer checked={props.checked}>
-            <div>{props.title || "Budweiser"}</div>
-            <div> {props.description || "Lager américaine"} </div>
+          <TextContainer checked={isChecked(props.option)}>
+            <div>
+              {props.title} ({props.alcohol}%)
+            </div>
+            <div> {props.description || ""} </div>
             {props.prices ? (
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">{props.prices[0].size}</th>
-                    <th scope="col">{props.prices[1].size}</th>
-                    <th scope="col">{props.prices[2].size}</th>
+                    <th scope="col">Bouteille / Cannette</th>
+                    <th scope="col">Presion 20oz</th>
+                    <th scope="col">Pichet 60oz</th>
                   </tr>
                   <tr>
                     <td>{props.prices[0].Price}</td>
-                    <td>{props.prices[1].Price}</td>
-                    <td>{props.prices[2].Price}</td>
+                    <td>{props.prices[1] && props.prices[1].Price}</td>
+                    <td>{props.prices[2] && props.prices[2].Price}</td>
                   </tr>
                 </tbody>
               </table>
