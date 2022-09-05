@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Image from "next/image";
 import { AppContext } from "../../context/AppContext";
+import { getColor } from "../../lib/helpers";
 import CheckMark from "../CheckMark.js";
 import Icon1 from "../Icon1";
 import Icon2 from "../Icon2";
@@ -59,6 +60,8 @@ const WineCard = (props) => {
     }
   };
 
+  const color = getColor(props.taste);
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -97,7 +100,7 @@ const WineCard = (props) => {
             </div>
             <CircleContainer checked={isChecked(props.option)}>
               {" "}
-              {props.taste || "AROMATIQUE ET CHARNU"} <Circle />{" "}
+              {props.taste || "-"} <Circle color={color} />{" "}
               <Sugar checked={isChecked(props.option)}>{`Sucre : ${
                 props.sugar || 12.5
               }`}</Sugar>
