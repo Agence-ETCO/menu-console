@@ -4,13 +4,8 @@ import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-<<<<<<< HEAD
-import { putAPI, fetchAPI } from "../../lib/api";
-import { beerList, page4, footer } from "../../fr";
-=======
-import { fetchAPI } from "../../lib/api";
+import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import { footer } from "../../fr";
->>>>>>> main
 import {
   SubTitle,
   Subcontainer,
@@ -25,9 +20,7 @@ import useUserID from "../../lib/useUserID";
 const Page5 = () => {
   const {
     state,
-<<<<<<< HEAD
     actions: {
-      addNonAlcohol,
       getMenuId,
       receivePack,
       receiveSelections,
@@ -39,9 +32,6 @@ const Page5 = () => {
       addPack,
       removePack,
     },
-=======
-    actions: { receiveData, receiveSelections, addNonAlcohol, addPreviousStep },
->>>>>>> main
   } = useContext(AppContext);
   const min = 0;
   const max = 2;
@@ -92,7 +82,7 @@ const Page5 = () => {
 
   useEffect(() => {
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${userID}?populate=deep`)
+      fetchCurrentUser()
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
