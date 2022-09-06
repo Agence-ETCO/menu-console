@@ -62,7 +62,7 @@ const Page4 = () => {
 
   const [craftSelections, setCraftSelections] = useState([]);
   const userID = useUserID();
-  const [isCorona, setIsCorona] = useState(true);
+  const [isCorona, setIsCorona] = useState(false);
 
   const selections = state.selections.filter(
     (option) =>
