@@ -11,7 +11,7 @@ import WineCard from "../../components/WineCard";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
-import { fetchCurrentUser } from "../../lib/api";
+import { fetchCurrentUser, fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
@@ -58,8 +58,16 @@ const Page6 = () => {
     setShowAlert(true);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    /*   fetchAPI("/api/users-permissions/sendmemail")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
 
     router.push("/7");
   };
