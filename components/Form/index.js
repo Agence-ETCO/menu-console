@@ -27,21 +27,12 @@ const Form = ({
   onTypeChange,
   onFormatChange,
   onAlcoholChange,
+  onFormSubmit,
 }) => {
   const disabled = !beer && !producer && !type && !format && !alcohol;
 
   const handleSubmit = () => {
     handleClick();
-
-    const data = JSON.stringify({
-      beer: beer,
-      producer: producer,
-      type: type,
-      format: format,
-      alcohol: alcohol,
-    });
-    setMicroBrasserie(order, data);
-
     onFormSubmit();
   };
 
