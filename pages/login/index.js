@@ -34,7 +34,6 @@ const Page = () => {
 
       const resMenu = await postAPI("api/franchisees-menus", data);
       getMenuId(resMenu.data.id);
-      console.log(resMenu.data.id);
     }
     router.push("/");
   };

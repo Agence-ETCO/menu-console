@@ -52,7 +52,10 @@ const reducer = (state, action) => {
       return {
         ...state,
         selections: state.selections.filter(
-          (selection) => selection.attributes.category !== action.value
+          (selection) =>
+            (selection.attributes &&
+              selection.attributes.category !== action.value) ||
+            selection.category !== action.value
         ),
       };
 
