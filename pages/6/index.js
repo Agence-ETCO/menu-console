@@ -57,8 +57,10 @@ const Page6 = () => {
     state.selections &&
     state.selections.filter(
       (option) =>
-        option.attributes && option.attributes.category === "Non-Alcoholic"
+        (option.attributes && option.attributes.category === "Non-Alcoholic") ||
+        option.category === "Non-Alcoholic"
     );
+
   const handleClick = () => {
     setShowAlert(true);
   };
@@ -404,20 +406,38 @@ const Page6 = () => {
             state.selections
               .filter(
                 (option) =>
-                  option.attributes &&
-                  option.attributes.category === "Non-Alcoholic"
+                  (option.attributes &&
+                    option.attributes.category === "Non-Alcoholic") ||
+                  option.category === "Non-Alcoholic"
               )
-              .map((option, i) => (
+              .map((option, key) => (
                 <BeerCard2
                   key={`page6_option_e_${key}`}
                   value={option.id}
-                  title={option.attributes.title}
-                  alcohol={option.attributes.alcohol}
-                  description={option.attributes.description}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={
+                    (option.attributes && option.attributes.title) ||
+                    option.title
+                  }
+                  alcohol={
+                    (option.attributes && option.attributes.alcohol) ||
+                    option.alcohol
+                  }
+                  description={
+                    (option.attributes && option.attributes.description) ||
+                    option.description
+                  }
+                  saqCode={
+                    (option.attributes && option.attributes.saqCode) ||
+                    option.saqCode
+                  }
+                  prices={
+                    (option.attributes && option.attributes.cost) || option.cost
+                  }
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={
+                    (option.attributes && option.attributes.imageURL) ||
+                    option.imageURL
+                  }
                   step={step}
                 />
               ))

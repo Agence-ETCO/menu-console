@@ -59,13 +59,10 @@ const Page4 = () => {
 
   const [counter, setCounter] = useState(0);
   const [selectedPack, setSelectedPack] = useState(0);
-<<<<<<< HEAD
   const [craftSelections, setCraftSelections] = useState([]);
   const userID = useUserID();
   const [isCorona, setIsCorona] = useState(false);
-=======
-  const [isCorona, setIsCorona] = useState(true);
->>>>>>> main
+
   const selections = state.selections.filter(
     (option) =>
       (option.attributes && option.attributes.category === "Beer") ||
@@ -92,7 +89,7 @@ const Page4 = () => {
       {counter}/{max}
     </span>
   );
- 
+
   const num = [
     state.micro1 && (state.micro1.id || state.micro1.title),
     state.micro2 && (state.micro2.id || state.micro2.title),
