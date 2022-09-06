@@ -18,7 +18,8 @@ export const Container3 = styled.div`
 `;
 export const DropDownContainer = styled.div`
   width: 528px;
-  height: 286px;
+  height: ${(props) => (props.selected ? "356px" : "286px")};
+
   margin-top: 24px;
   display: flex;
   justify-content: center;
