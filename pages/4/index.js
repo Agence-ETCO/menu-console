@@ -138,7 +138,7 @@ const Page4 = () => {
       : state.selectedPack === 10 && !isCorona
       ? max - selections.length - 3 >= 0
       : state.selectedPack === 10 && isCorona
-      ? max - selections.length - 2 >= 0
+      ? max - selections.length - 3 >= 0
       : state.selectedPack === 12
       ? max - selections.length - 3 >= 0
       : 2;
@@ -193,7 +193,7 @@ const Page4 = () => {
         : state.selectedPack === 10 && isCorona
         ? selections.length - 1 + num
         : selections.length + num;
-    setCounter(updatedCounter);
+    setCounter(updatedCounter > 0 ? updatedCounter : 0);
   }, [selections, state.selectedPack, num]);
 
   useEffect(() => {
