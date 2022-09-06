@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
+import BeerCard4 from "../../components/BeerCard4";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
@@ -41,7 +42,8 @@ const Page4 = () => {
       receiveData,
       addPreviousStep,
       addPack,
-      removePack,
+      removeMicro01,
+      removeMicro02,
       filterSelections,
     },
   } = useContext(AppContext);
@@ -130,6 +132,8 @@ const Page4 = () => {
   const handleClick = (item) => {
     if (state.selectedPack > item) {
       filterSelections("Beer");
+      removeMicro01();
+      removeMicro02();
     }
 
     addPack(item);
@@ -262,7 +266,20 @@ const Page4 = () => {
               </Square>
             )}
           </Buttons>
-
+          {state.selectedPack === 6 && (
+            <Subcontainer2>
+              {[
+                "Budweiser",
+                "Bud Light",
+                "Stella Artois ",
+                "Hoegaarden",
+                "Goose Island IPA",
+                "Archibald Chipie",
+              ].map((option, i) => (
+                <BeerCard4 key={i} title={option} alcohol={5} />
+              ))}
+            </Subcontainer2>
+          )}
           {state.selectedPack > 6 && (
             <>
               <Subcontainer1>
@@ -271,6 +288,9 @@ const Page4 = () => {
                 </div>
               </Subcontainer1>
               <Subcontainer2>
+                {state.selectedPack === 10 && isCorona && (
+                  <BeerCard4 key={1} title={"Corona"} alcohol={5} />
+                )}
                 {state.data &&
                   state.data
                     .filter((option) => option.attributes.category === "Beer")
@@ -313,13 +333,9 @@ const Page4 = () => {
                   show={selections.length === 2}
                   duration={"4s"}
                 />
-                {/*  {state.setSelectedPack === 10 && isCorona && (
-                  <Bubble
-                    count={selections.length + 1}
-                    show={selected2}
-                    duration={"4s"}
-                  />
-                )} */}
+                {isCorona && (
+                  <Bubble count={2} show={num === 1} duration={"4s"} />
+                )}
               </Subcontainer3>
             </>
           )}
