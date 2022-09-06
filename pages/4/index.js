@@ -173,7 +173,9 @@ const Page4 = () => {
               bar.
             </SubTitle>
           </div>
-          <MinMax stage={4} number={state.selectedPack} />
+          {state.selectedPack > 0 && (
+            <MinMax stage={4} number={state.selectedPack} />
+          )}
         </Subcontainer>
         <Container>
           <SubTitle1>
