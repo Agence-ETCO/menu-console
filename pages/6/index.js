@@ -42,7 +42,12 @@ const Page6 = () => {
     state.selections.filter(
       (option) => option.attributes && option.attributes.category === "Beer"
     );
-
+  const nonAlcohol =
+    state.selections &&
+    state.selections.filter(
+      (option) =>
+        option.attributes && option.attributes.category === "Non-Alcoholic"
+    );
   const handleClick = () => {
     setShowAlert(true);
   };
@@ -245,17 +250,30 @@ const Page6 = () => {
           </Button>
         </Link>
         <Subcontainer>
-          {state.nonAlcohol === 0 || state.nonAlcohol.length === 0 ? (
+          {nonAlcohol.length === 0 ? (
             <Text>Aucun produit sélectionné</Text>
           ) : (
-            state.nonAlcohol.map((option, i) => (
-              <BeerCard2
-                key={i}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-              />
-            ))
+            state.selections &&
+            state.selections
+              .filter(
+                (option) =>
+                  option.attributes &&
+                  option.attributes.category === "Non-Alcoholic"
+              )
+              .map((option, i) => (
+                <BeerCard2
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  alcohol={option.attributes.alcohol}
+                  description={option.attributes.description}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                  step={step}
+                />
+              ))
           )}
         </Subcontainer>
         <Container1>

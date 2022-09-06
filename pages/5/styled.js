@@ -18,15 +18,6 @@ export const Subcontainer = styled.div`
   }
 `;
 
-export const Title1 = styled.div`
-  color: ${colors.black};
-  font-family: "GTWalsheimBold";
-  font-weight: 700;
-  font-size: 19px;
-  line-height: 25px;
-  margin-left: 30px;
-`;
-
 export const SubTitle = styled.div`
   color: ${colors.black};
   font-family: "GTWalsheimRegular";
