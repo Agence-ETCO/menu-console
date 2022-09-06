@@ -4,10 +4,14 @@ import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
+<<<<<<< HEAD
 import { putAPI, fetchAPI } from "../../lib/api";
 import { beerList, page4, footer } from "../../fr";
+=======
+import { fetchAPI } from "../../lib/api";
+import { footer } from "../../fr";
+>>>>>>> main
 import {
-  Title1,
   SubTitle,
   Subcontainer,
   Container,
@@ -21,6 +25,7 @@ import useUserID from "../../lib/useUserID";
 const Page5 = () => {
   const {
     state,
+<<<<<<< HEAD
     actions: {
       addNonAlcohol,
       getMenuId,
@@ -34,13 +39,12 @@ const Page5 = () => {
       addPack,
       removePack,
     },
+=======
+    actions: { receiveData, receiveSelections, addNonAlcohol, addPreviousStep },
+>>>>>>> main
   } = useContext(AppContext);
   const min = 0;
   const max = 2;
-  const options = [1, 2];
-  const intialState = state.nonAlcohol.length > 0 ? state.nonAlcohol : [];
-  const [selections, setSelections] = useState(intialState);
-  const [updated, setUpdated] = useState(false);
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
 
@@ -50,25 +54,25 @@ const Page5 = () => {
     </span>
   );
 
-  const handleCheckboxChange = (option) => {
-    let updatedSelections = [];
-    let checked = selections.find((selection) => selection === option);
-    let limit = max - selections.length - 1 >= 0;
+  const selections = state.selections.filter(
+    (option) =>
+      (option.attributes && option.attributes.category === "Non-Alcoholic") ||
+      option.category === "Non-Alcoholic"
+  );
 
-    if (checked) {
-      updatedSelections = selections.filter(
-        (selection) => selection !== option
-      );
-    } else if (!checked && limit) {
-      updatedSelections = [...selections, option];
-    } else if (!checked && !limit) {
-      updatedSelections = [...selections];
+  useEffect(() => {
+    if (state.data.length === 0) {
+      const token = "";
+      fetchAPI("/api/menu-items?populate=deep", token)
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
-
-    setSelections(updatedSelections);
-    addNonAlcohol(updatedSelections);
-    setUpdated(!updated);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
@@ -175,14 +179,24 @@ const Page5 = () => {
           <div></div>
         </Subcontainer1>
         <Subcontainer2>
-          {options.map((option, key) => (
-            <BeerCard2
-              key={`page5_option_${key}`}
-              checked={!!selections.includes(option)}
-              handleCheckboxChange={() => handleCheckboxChange(option)}
-              value={option}
-            />
-          ))}
+          {state.data &&
+            state.data
+              .filter(
+                (option) => option.attributes.category === "Non-Alcoholic"
+              )
+              .map((option) => (
+                <BeerCard2
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  alcohol={option.attributes.alcohol}
+                  description={option.attributes.description}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                />
+              ))}
         </Subcontainer2>
       </Container>
 

@@ -80,7 +80,9 @@ const CraftList = (props) => {
   const handleClick = () => {
     setShowForm(!showForm);
   };
-
+  const handleClick2 = (oprion) => {
+    removeMicro01();
+  };
   return (
     <>
       {props.showCraft ? (
@@ -127,6 +129,7 @@ const CraftList = (props) => {
                   option={option}
                   order={props.order}
                   onChange={onChange}
+                  handleClick2={handleClick2}
                 />
               ))}
             </Container2>

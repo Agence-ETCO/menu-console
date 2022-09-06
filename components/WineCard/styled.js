@@ -141,7 +141,7 @@ export const Circle = styled.div`
   display: inline-block;
   width: 18px;
   height: 18px;
-  background-color: #f1bdd8;
+  background-color: ${(props) => props.color};
   border-radius: 50%;
   position: absolute;
   top: 10%;

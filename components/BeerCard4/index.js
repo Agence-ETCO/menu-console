@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Image from "next/image";
-import CheckMark from "../CheckMark.js";
 import { AppContext } from "../../context/AppContext";
+import Lock3 from "../Lock3";
 import image from "../../public/Rectangle.png";
 import {
   CheckboxContainer,
@@ -13,50 +13,16 @@ import {
   ImageContainer,
 } from "./styled.js";
 
-const BeerCard2 = (props) => {
+const BeerCard = (props) => {
   const {
     state,
-    actions: { addSelection, removeSelection },
+    actions: {},
   } = useContext(AppContext);
 
-  const isChecked = (option) => {
-    if (props.step === 6) {
-      return true;
-    }
-    if (
-      option &&
-      state.selections.find((selection) => selection.id === option.id)
-    ) {
-      return true;
-    }
-    return false;
-  };
-  const handleCheckboxChange = (option) => {
-    if (props.step === 6) {
-      return null;
-    }
-
-    let checked = state.selections.find(
-      (selection) => selection.id === option.id
-    );
-
-    if (checked) {
-      removeSelection(option.id);
-    } else {
-      addSelection(option);
-    }
-  };
   return (
     <>
-      <Label checked={isChecked(props.option)}>
-        <CheckboxContainer checked={isChecked(props.option)}>
-          <HiddenCheckbox
-            checked={isChecked(props.option)}
-            onChange={() => handleCheckboxChange(props.option)}
-          />
-          <CheckMark />
-          <StyledCheckbox checked={isChecked(props.option)}></StyledCheckbox>
-        </CheckboxContainer>
+      <Label checked>
+        <Lock3 />
         <SubContainer>
           <ImageContainer>
             {props.imageUrl ? (
@@ -70,11 +36,11 @@ const BeerCard2 = (props) => {
               <Image src={image} width={104} height={210} alt="" />
             )}
           </ImageContainer>
-          <TextContainer checked={isChecked(props.option)}>
+          <TextContainer checked>
             <div>
-              {props.title} ({props.alcohol}%)
+              {props.title} ({props.alcohol})
             </div>
-            <div> {props.description || ""} </div>
+            <div> {props.description || "Lager américaine"} </div>
             {props.prices ? (
               <table>
                 <tbody>
@@ -114,4 +80,4 @@ const BeerCard2 = (props) => {
   );
 };
 
-export default BeerCard2;
+export default BeerCard;
