@@ -52,8 +52,7 @@ const Page5 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      const token = "";
-      fetchAPI("/api/menu-items?populate=deep", token)
+      fetchAPI("/api/menu-items?populate=deep")
         .then((res) => {
           receiveData(res.data);
         })
