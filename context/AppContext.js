@@ -9,6 +9,7 @@ const initialState = {
   selectedPack: 0,
   craftOptions: {},
   nonAlcohol: 0,
+  menuId: 0,
 };
 
 export const AppContext = React.createContext(initialState);
@@ -100,6 +101,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         selectedPack: action.value,
+      };
+
+    case "get-menuId":
+      return {
+        ...state,
+        menuId: action.value,
       };
 
     default:
@@ -203,6 +210,13 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const getMenuId = (value) => {
+    dispatch({
+      type: "get-menuId",
+      value: value,
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -222,6 +236,7 @@ export const AppProvider = ({ children }) => {
           receivePack,
           receiveCraftOptions,
           filterSelections,
+          getMenuId,
         },
       }}
     >

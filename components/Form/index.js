@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import image from "../../public/close.svg";
 import {
@@ -12,35 +12,44 @@ import {
   InputSmall,
   Label,
 } from "./styled.js";
+import { setMicroBrasserie } from "../../lib/store";
 
-const Form = (props) => {
-  const disabled =
-    !props.beer &&
-    !props.producer &&
-    !props.type &&
-    !props.format &&
-    !props.alcohol;
+const Form = ({
+  beer,
+  producer,
+  type,
+  format,
+  alcohol,
+  showForm,
+  handleClick,
+  onBeerChange,
+  onProducerChange,
+  onTypeChange,
+  onFormatChange,
+  onAlcoholChange,
+}) => {
+  const disabled = !beer && !producer && !type && !format && !alcohol;
 
   const handleSubmit = () => {
-    props.handleClick();
+    handleClick();
 
     const data = JSON.stringify({
-      beer: props.beer,
-      producer: props.producer,
-      type: props.type,
-      format: props.format,
-      alcohol: props.alcohol,
+      beer: beer,
+      producer: producer,
+      type: type,
+      format: format,
+      alcohol: alcohol,
     });
-    localStorage.setItem(`microbrasserie${props.order}`, data);
+    setMicroBrasserie(order, data);
 
-    props.onFormSubmit();
+    onFormSubmit();
   };
 
   return (
     <>
-      <Container showForm={props.showForm}>
+      <Container showForm={showForm}>
         <BoxContainer>
-          <CloseButton onClick={props.handleClick}>
+          <CloseButton onClick={handleClick}>
             <Image src={image} width={25} height={25} alt="" />
           </CloseButton>
           <Title>{"Vous désirez ajouter un produit en particulier ?"}</Title>
@@ -54,8 +63,8 @@ const Form = (props) => {
             <Input
               name="beer"
               type="text"
-              value={props.beer}
-              onChange={props.onBeerChange}
+              value={beer}
+              onChange={onBeerChange}
             />
           </Label>
           <Label>
@@ -63,8 +72,8 @@ const Form = (props) => {
             <Input
               name="producer"
               type="text"
-              value={props.producer}
-              onChange={props.onProducerChange}
+              value={producer}
+              onChange={onProducerChange}
             />
           </Label>
           <Label>
@@ -72,8 +81,8 @@ const Form = (props) => {
             <Input
               name="type"
               type="text"
-              value={props.type}
-              onChange={props.onTypeChange}
+              value={type}
+              onChange={onTypeChange}
             />
           </Label>
           <Label>
@@ -82,8 +91,8 @@ const Form = (props) => {
               <InputSmall
                 name="format"
                 type="text"
-                value={props.format}
-                onChange={props.onFormatChange}
+                value={format}
+                onChange={onFormatChange}
                 placeholder="241"
               />
               <span>ml</span>
@@ -95,8 +104,8 @@ const Form = (props) => {
               <InputSmall
                 name="alcohol"
                 type="text"
-                value={props.alcohol}
-                onChange={props.onAlcoholChange}
+                value={alcohol}
+                onChange={onAlcoholChange}
                 placeholder="5,6"
               />
               <span>%</span>

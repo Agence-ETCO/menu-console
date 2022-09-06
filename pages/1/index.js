@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
@@ -13,6 +14,7 @@ import {
 } from "./styled";
 
 const Page1 = () => {
+
   return (
     <>
       <Header step={1} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "../../components/Header";
 import { page6 } from "../../fr";
 import {
@@ -12,15 +12,6 @@ import {
 } from "./styled";
 
 const Page7 = () => {
-  /* const [userId, setUserId] = useState(1);
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setUserId(user.id);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); */
 
   return (
     <>
