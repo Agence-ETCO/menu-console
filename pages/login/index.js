@@ -17,11 +17,6 @@ const Page = () => {
   const doLogin = async () => {
     const { data } = await login(loginToken);
     const { jwt, user } = data;
-    /*    const jwt =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjYxODgxNTI0LCJleHAiOjE2NjE5Njc5MjR9.AqIFRJxaQTb_mZgFoBwvKyFjOhPKKZPrSDcYjy4P9ao";
-    const user = {
-      id: 2,
-    }; */
     setToken(jwt);
     setUser(user);
 
@@ -37,18 +32,18 @@ const Page = () => {
         franchisee: user.id,
       };
 
-      const resMenu = await postAPI('api/franchisees-menus', data)
+      const resMenu = await postAPI("api/franchisees-menus", data);
       getMenuId(resMenu.data.id);
       console.log(resMenu.data.id);
     }
     router.push("/");
-  }
+  };
 
   useEffect(() => {
     if (!(router.isReady && loginToken && getMenuId)) return;
-    doLogin().catch(err => {
+    doLogin().catch((err) => {
       console.error(err);
-      setDisplay('Error with token');
+      setDisplay("Error with token");
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, loginToken]);
