@@ -60,7 +60,7 @@ const WineCard = (props) => {
     }
   };
 
-  const color = getColor(props.taste);
+  const color = props.taste ? getColor(props.taste) : "#f1bdd8";
 
   return (
     <>
