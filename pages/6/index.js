@@ -12,6 +12,7 @@ import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
 import { fetchCurrentUser } from "../../lib/api";
+import useUserID from "../../lib/useUserID";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
   Container,
@@ -48,7 +49,9 @@ const Page6 = () => {
   const beer =
     state.selections &&
     state.selections.filter(
-      (option) => option.attributes && option.attributes.category === "Beer"
+      (option) =>
+        (option.attributes && option.attributes.category === "Beer") ||
+        option.category === "Beer"
     );
 
   const handleClick = () => {
@@ -309,7 +312,10 @@ const Page6 = () => {
                     (option.attributes && option.attributes.title) ||
                     option.title
                   }
-                  alcohol={option.attributes.alcohol}
+                  alcohol={
+                    (option.attributes && option.attributes.alcohol) ||
+                    option.alcohol
+                  }
                   description={
                     (option.attributes && option.attributes.descriptionFr) ||
                     option.descriptionFr
@@ -348,7 +354,7 @@ const Page6 = () => {
               <BeerCard3
                 key={`page6_option_d_${key}`}
                 checked
-                handleCheckboxChange={() => { }}
+                handleCheckboxChange={() => {}}
                 value={option}
                 title={
                   (option.attributes && option.attributes.title) || option.title
@@ -385,7 +391,7 @@ const Page6 = () => {
               <BeerCard2
                 key={`page6_option_e_${key}`}
                 checked
-                handleCheckboxChange={() => { }}
+                handleCheckboxChange={() => {}}
                 value={option}
               />
             ))

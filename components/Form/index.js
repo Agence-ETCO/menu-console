@@ -12,15 +12,23 @@ import {
   InputSmall,
   Label,
 } from "./styled.js";
-import { setMicroBrasserie } from '../../lib/store';
+import { setMicroBrasserie } from "../../lib/store";
 
-const Form = ({ beer, producer, type, format, alcohol }) => {
-  const disabled =
-    !beer &&
-    !producer &&
-    !type &&
-    !format &&
-    !alcohol;
+const Form = ({
+  beer,
+  producer,
+  type,
+  format,
+  alcohol,
+  showForm,
+  handleClick,
+  onBeerChange,
+  onProducerChange,
+  onTypeChange,
+  onFormatChange,
+  onAlcoholChange,
+}) => {
+  const disabled = !beer && !producer && !type && !format && !alcohol;
 
   const handleSubmit = () => {
     handleClick();

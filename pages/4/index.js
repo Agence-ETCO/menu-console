@@ -5,11 +5,7 @@ import BeerCard from "../../components/BeerCard";
 import DropDown from "../../components/DropDown";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import {
-  putAPI,
-  // postAPI,
-  fetchAPI
-} from "../../lib/api";
+import { putAPI, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { beerList, page4, footer } from "../../fr";
 import {
@@ -37,7 +33,7 @@ import {
   Choice,
   Separator,
 } from "./styled";
-import useUserID from '../../lib/useUserID';
+import useUserID from "../../lib/useUserID";
 
 const Page4 = () => {
   const {
@@ -79,7 +75,7 @@ const Page4 = () => {
       {counter}/{max}
     </span>
   );
-
+  console.log(userID);
   const disabled = state.selectedPack === 0;
 
   const selected =
@@ -103,7 +99,7 @@ const Page4 = () => {
   useEffect(() => {
     const craft =
       (state.micro1 && state.micro1.craftOptions) ||
-        (state.micro2 && state.micro2.craftOptions)
+      (state.micro2 && state.micro2.craftOptions)
         ? [state.micro1.craftOptions, state.micro2.craftOptions]
         : [];
     setCraftSelections(craft.filter((n) => n !== null));
@@ -156,10 +152,7 @@ const Page4 = () => {
       craft2,
       pack: state.selectedPack,
     });
-    putAPI(
-      `api/franchisees-menus/${state.menuId}?populate=deep`,
-      menuData
-    )
+    putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
       })
@@ -170,7 +163,7 @@ const Page4 = () => {
 
   useEffect(() => {
     if (state.selections.length === 0) {
-      fetchAPI(`/api/users/${userID}?populate=deep`)
+      fetchCurrentUser()
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);

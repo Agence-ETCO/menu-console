@@ -16,7 +16,7 @@ import {
   Container1,
   Title,
 } from "./styled";
-import useUserID from '../../lib/useUserID';
+import useUserID from "../../lib/useUserID";
 
 const Page5 = () => {
   const {
@@ -74,13 +74,10 @@ const Page5 = () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
-      franchisee: userId,
+      franchisee: userID,
     };
 
-    putAPI(
-      `api/franchisees-menus/${state.menuId}?populate=deep`,
-      menuData
-    )
+    putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
       })
