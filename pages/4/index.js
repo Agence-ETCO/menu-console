@@ -52,13 +52,14 @@ const Page4 = () => {
       addMicro01,
       addMicro02,
       getMenuId,
+      addSelection,
     },
   } = useContext(AppContext);
-  const buttons1 = [2, 4];
+
   const buttons2 = [6, 8, 10, 12];
 
   const [counter, setCounter] = useState(0);
-  const [selectedPack, setSelectedPack] = useState(0);
+
   const [craftSelections, setCraftSelections] = useState([]);
   const userID = useUserID();
   const [isCorona, setIsCorona] = useState(false);
@@ -68,10 +69,11 @@ const Page4 = () => {
       (option.attributes && option.attributes.category === "Beer") ||
       option.category === "Beer"
   );
+
   const craftOptions = state.data.filter(
     (option) => option.attributes.category === "Craft Beer"
   );
-  const min = selectedPack === 8 ? 2 : 0;
+
   const max =
     state.selectedPack === 6
       ? 6
@@ -142,12 +144,9 @@ const Page4 = () => {
       : 2;
 
   const handleClick = (item) => {
-    if (state.selectedPack > item) {
-      filterSelections("Beer");
-      removeMicro01();
-      removeMicro02();
-    }
-
+    filterSelections("Beer");
+    removeMicro01();
+    removeMicro02();
     addPack(item);
   };
 
@@ -165,9 +164,35 @@ const Page4 = () => {
     state.micro2.craftOptions,
   ]);
 
+  const preselect = [];
+  const options1 = state.data
+    .filter(
+      (option) => option.attributes && option.attributes.category === "Beer"
+    )
+    .forEach((option) => {
+      if (
+        option.attributes.title.includes("Budweiser") ||
+        option.attributes.title.includes("Archibald Chipie") ||
+        option.attributes.title.includes("Goose Island IPA") ||
+        option.attributes.title.includes("Hoegaarden") ||
+        option.attributes.title.includes("Bud Light") ||
+        option.attributes.title.includes("Stella Artois")
+      ) {
+        preselect.push(option);
+      }
+    });
+  const preselect1 = state.data
+    .filter(
+      (option) => option.attributes && option.attributes.category === "Beer"
+    )
+    .find((option) => option.attributes.title.includes("Corona"));
   useEffect(() => {
     const updatedCounter =
-      state.selectedPack === 6 ? 6 : selections.length + num;
+      state.selectedPack === 6
+        ? 6
+        : state.selectedPack === 10 && isCorona
+        ? selections.length + num
+        : selections.length + num;
     setCounter(updatedCounter);
   }, [selections, state.selectedPack, num]);
 
@@ -183,14 +208,25 @@ const Page4 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const handleClick1 = async () => {
     const craft1 = state.micro1.title ? state.micro1 : {};
     const craft2 = state.micro2.title ? state.micro2 : {};
+    const preselect =
+      state.selectedPack === 6
+        ? preselect.map((option) => option.id)
+        : isCorona
+        ? preselect1.id
+        : undefined;
+
     const menuItems = state.selections.map((option) => option.id);
 
-    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
-      (n) => n !== undefined
-    );
+    const totalItems = [
+      ...menuItems,
+      preselect,
+      state.micro1.id,
+      state.micro2.id,
+    ].filter((n) => n !== undefined);
 
     const menuData = {
       menu_items: totalItems,
@@ -202,6 +238,7 @@ const Page4 = () => {
       },
       franchisee: userID,
     };
+
     receiveCraftOptions({
       options: craftSelections,
       craft1,
@@ -216,6 +253,20 @@ const Page4 = () => {
         console.log(err);
       });
   };
+
+  const beerData = state.data
+    .filter(
+      (option) =>
+        (option.attributes && option.attributes.category === "Beer") ||
+        option.category === "Beer"
+    )
+    .filter((option) => !option.attributes.title.includes("Budweiser"))
+    .filter((option) => !option.attributes.title.includes("Archibald Chipie"))
+    .filter((option) => !option.attributes.title.includes("Goose Island IPA"))
+    .filter((option) => !option.attributes.title.includes("Hoegaarden"))
+    .filter((option) => !option.attributes.title.includes("Bud Light"))
+    .filter((option) => !option.attributes.title.includes("Corona"))
+    .filter((option) => !option.attributes.title.includes("Stella Artois"));
 
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -388,15 +439,19 @@ const Page4 = () => {
           </Buttons>
           {state.selectedPack === 6 && (
             <Subcontainer2>
-              {[
-                "Budweiser",
-                "Bud Light",
-                "Stella Artois ",
-                "Hoegaarden",
-                "Goose Island IPA",
-                "Archibald Chipie",
-              ].map((option, i) => (
-                <BeerCard4 key={i} title={option} alcohol={5} />
+              {preselect.map((option) => (
+                <BeerCard4
+                  key={option.id}
+                  value={option.id}
+                  title={option.attributes.title}
+                  alcohol={option.attributes.alcohol}
+                  description={option.attributes.descriptionFr}
+                  saqCode={option.attributes.saqCode}
+                  prices={option.attributes.cost}
+                  limit={limit}
+                  option={option}
+                  imageUrl={option.attributes.imageURL}
+                />
               ))}
             </Subcontainer2>
           )}
@@ -408,11 +463,25 @@ const Page4 = () => {
                 </div>
               </Subcontainer1>
               <Subcontainer2>
-                {state.selectedPack === 10 && isCorona && (
-                  <BeerCard4 key={1} title={"Corona"} alcohol={5} />
-                )}
+                {state.selectedPack === 10 &&
+                  isCorona &&
+                  [preselect1].map((option) => (
+                    <BeerCard4
+                      key={option.id}
+                      value={option.id}
+                      title={option.attributes.title}
+                      alcohol={option.attributes.alcohol}
+                      description={option.attributes.descriptionFr}
+                      saqCode={option.attributes.saqCode}
+                      prices={option.attributes.cost}
+                      limit={limit}
+                      option={option}
+                      imageUrl={option.attributes.imageURL}
+                    />
+                  ))}
+
                 {state.data &&
-                  state.data
+                  beerData
                     .filter((option) => option.attributes.category === "Beer")
                     .map((option, key) => (
                       <BeerCard
@@ -420,7 +489,7 @@ const Page4 = () => {
                         value={option.id}
                         title={option.attributes.title}
                         alcohol={option.attributes.alcohol}
-                        description={option.attributes.description}
+                        description={option.attributes.descriptionFr}
                         saqCode={option.attributes.saqCode}
                         prices={option.attributes.cost}
                         limit={limit}
@@ -462,7 +531,7 @@ const Page4 = () => {
         </Container>
       </Main>
       <Footer
-        first={selectedPack < 8}
+        first={state.selectedPack < 6}
         selection={selection}
         returnButtonText={footer.return}
         returnHref={"/3"}

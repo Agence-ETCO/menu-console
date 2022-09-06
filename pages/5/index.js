@@ -64,12 +64,19 @@ const Page5 = () => {
   }, []);
 
   const handleClick = async () => {
+    const craft1 = state.micro1.title ? state.micro1 : {};
+    const craft2 = state.micro2.title ? state.micro2 : {};
+
     const menuItems = state.selections.map((option) => option.id);
+
+    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+      (n) => n !== undefined
+    );
     const menuData = {
-      menu_items: [...menuItems],
+      menu_items: totalItems,
       franchisee: userID,
     };
-
+   
     putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
