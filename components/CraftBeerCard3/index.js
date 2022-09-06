@@ -101,6 +101,15 @@ const CraftBeerCard3 = (props) => {
     props.handleClick();
   };
 
+  const isPrice1 =
+    state.micro1 &&
+    state.micro1.craftOptions &&
+    state.micro1.craftOptions.price;
+  const isPrice2 =
+    state.micro2 &&
+    state.micro2.craftOptions &&
+    state.micro2.craftOptions.price;
+
   useEffect(() => {
     if (
       props.order === "01" &&
@@ -121,14 +130,7 @@ const CraftBeerCard3 = (props) => {
       setPriceOptions(state.micro2.craftOptions.price);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    state.micro1 &&
-      state.micro1.craftOptions &&
-      state.micro1.craftOptions.price,
-    state.micro2 &&
-      state.micro2.craftOptions &&
-      state.micro2.craftOptions.price,
-  ]);
+  }, [isPrice1, isPrice2]);
 
   useEffect(() => {
     if (
