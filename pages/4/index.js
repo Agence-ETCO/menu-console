@@ -376,7 +376,7 @@ const Page4 = () => {
                   <>
                     <Title2>IMPORTANT !</Title2>{" "}
                     <div> Voici vos 6 bières obligatoires. </div>
-                    <div> Vous n'avez aucun choix à faire.</div>
+                    <div> {"Vous n'avez aucun choix à faire."}</div>
                   </>
                 )}
 
