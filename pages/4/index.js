@@ -244,6 +244,14 @@ const Page4 = () => {
       .catch((err) => {
         console.log(err);
       });
+    const beerPack = { nbrOfKegs: state.selectedPack };
+    putAPI(`api/users-permissions/updateme`, beerPack)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const beerData = state.data
