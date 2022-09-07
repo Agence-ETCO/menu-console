@@ -76,7 +76,7 @@ const Page5 = () => {
       menu_items: totalItems,
       franchisee: userID,
     };
-   
+
     putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
@@ -163,7 +163,7 @@ const Page5 = () => {
       <Header step={5} />
       <Subcontainer>
         <Container1>
-          <Title>Bières non-alcoolisés </Title>
+          <Title>Bières non-alcoolisées </Title>
           <SubTitle>
             Choisissez jusqu’à 2 bières non-alcoolisées (optionnel).
           </SubTitle>
