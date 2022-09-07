@@ -122,7 +122,7 @@ const CraftList = (props) => {
               </StyledButton>
             </Container1>
             <Container2>
-              {craftBeerOptions.slice(1).map((option, i) => (
+              {craftBeerOptions.map((option, i) => (
                 <CraftBeerCard
                   key={`craftlist_${i}`}
                   value={option}

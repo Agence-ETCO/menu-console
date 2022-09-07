@@ -37,6 +37,7 @@ export const CheckboxContainer = styled.div`
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     position: absolute;
     left: 0;
+    z-index: 100;
   }
 `;
 export const CheckboxContainer1 = styled.button`
@@ -49,6 +50,7 @@ export const CheckboxContainer1 = styled.button`
     position: absolute;
     left: 7.5%;
     top: 25%;
+    z-index: 100;
   }
 `;
 
@@ -56,8 +58,7 @@ export const StyledCheckbox = styled.div`
   display: inline-block;
   width: 32px;
   height: 32px;
-  background-color: #d9d9d9;
-  opacity: 0.5;
+  background-color: rgba(217, 217, 217, 0.5);
   border-radius: 50%;
   transition: all 150ms;
   position: relative;

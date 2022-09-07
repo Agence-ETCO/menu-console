@@ -196,15 +196,15 @@ const CraftBeerCard = (props) => {
               {" "}
               {props.option.attributes.descriptionFr}{" "}
             </Type>
-            {isChecked(props.option) && !(isSelected(1) || isSelected(2)) && (
+            {isChecked(props.option) && !(isSelected(0) || isSelected(1)) && (
               <>
                 <Container2>
                   <span style={{ color: "#F5BA18" }}>CHOISIR VOTRE FORMAT</span>
                 </Container2>
               </>
             )}
-            <Format checked={isSelected(1) || isSelected(2)}>
-              {isChecked(props.option) && !(isSelected(1) || isSelected(2)) ? (
+            <Format checked={isSelected(0) || isSelected(1)}>
+              {isChecked(props.option) && !(isSelected(0) || isSelected(1)) ? (
                 <span>CHOISIR VOTRE FORMAT</span>
               ) : (
                 "FORMATS DISPONIBLES"
@@ -214,8 +214,8 @@ const CraftBeerCard = (props) => {
               {}
               <SubContainer1>
                 <CheckboxContainer1
-                  checked={isSelected(1) && isChecked(props.option)}
-                  onClick={() => handlePriceChange(1)}
+                  checked={isSelected(0) && isChecked(props.option)}
+                  onClick={() => handlePriceChange(0)}
                 >
                   <Circle /> <StyledCheckbox></StyledCheckbox>
                 </CheckboxContainer1>
@@ -223,7 +223,7 @@ const CraftBeerCard = (props) => {
                   <Size
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(2))
+                      (isSelected(0) || isSelected(1))
                     }
                   >
                     {"Presion 20oz"}
@@ -231,17 +231,17 @@ const CraftBeerCard = (props) => {
                   <Price
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(2))
+                      (isSelected(0) || isSelected(1))
                     }
                   >
-                    {props.option.attributes.cost[1].Price} $
+                    {props.option.attributes.cost[0].Price} $
                   </Price>
                 </Cell>
               </SubContainer1>
               <SubContainer1>
                 <CheckboxContainer1
-                  checked={isSelected(2) && isChecked(props.option)}
-                  onClick={() => handlePriceChange(2)}
+                  checked={isSelected(1) && isChecked(props.option)}
+                  onClick={() => handlePriceChange(1)}
                 >
                   <Circle />
                   <StyledCheckbox></StyledCheckbox>
@@ -250,7 +250,7 @@ const CraftBeerCard = (props) => {
                   <Size
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(2))
+                      (isSelected(0) || isSelected(1))
                     }
                   >
                     {"Pichet 60oz"}
@@ -258,10 +258,10 @@ const CraftBeerCard = (props) => {
                   <Price
                     checked={
                       isChecked(props.option) &&
-                      (isSelected(1) || isSelected(2))
+                      (isSelected(0) || isSelected(1))
                     }
                   >
-                    {props.option.attributes.cost[2].Price} $
+                    {props.option.attributes.cost[1].Price} $
                   </Price>
                 </Cell>
               </SubContainer1>
