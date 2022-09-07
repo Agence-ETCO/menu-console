@@ -9,7 +9,7 @@ const MinMax = (props) => {
         {props.stage === 4 ? (
           <>
             {props.number === 6 && "Maximum de 6 bières en fût"}
-            {props.number === 8 && " Minimum de 1 microbrasserie en fût"}
+            {props.number === 8 && "Choissisez  1 microbrasserie en fût"}
             {props.number >= 10 && "Minimum de 2 microbrasseries en fût"}
           </>
         ) : props.stage === 5 ? (

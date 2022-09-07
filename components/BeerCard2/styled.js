@@ -111,6 +111,6 @@ export const ImageContainer = styled.div`
   position: relative;
   height: 241px;
   width: 119px;
-  margin-top: 15px;
+  margin-top: -25px;
   margin-left: -20px;
 `;

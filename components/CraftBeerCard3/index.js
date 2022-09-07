@@ -201,7 +201,7 @@ const CraftBeerCard3 = (props) => {
               !(isSelected(1) || isSelected(2) || props.option.size) ? (
                 <span>CHOISIR VOTRE FORMAT</span>
               ) : (
-                "FORMATS DISPONIBLE"
+                "FORMATS DISPONIBLES"
               )}
             </Format>
             <Container1>

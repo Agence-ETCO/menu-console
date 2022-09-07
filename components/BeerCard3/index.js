@@ -39,7 +39,7 @@ const BeerCard3 = (props) => {
           </ImageContainer>
           <TextContainer checked={props.checked}>
             <div>
-              {props.title} ({props.alcohol}%)
+              {props.title} ({props.alcohol} {!props.index && "%"})
             </div>
             <div> {props.description} </div>
 
@@ -62,12 +62,21 @@ const BeerCard3 = (props) => {
                       {props.prices &&
                         props.index &&
                         props.prices[props.index[0]].Price}
+                      {props.prices &&
+                        props.index &&
+                        props.prices[props.index[0]] &&
+                        "$"}
                     </td>
                     <td>
                       {props.prices &&
                         props.index &&
                         props.index[1] &&
                         props.prices[props.index[1]].Price}
+                      {props.prices &&
+                        props.index &&
+                        props.index[1] &&
+                        props.prices[props.index[1]] &&
+                        "$"}
                     </td>
                   </tr>
                 </tbody>

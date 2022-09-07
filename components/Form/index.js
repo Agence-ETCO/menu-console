@@ -46,11 +46,11 @@ const Form = ({
           <Title>{"Vous désirez ajouter un produit en particulier ?"}</Title>
           <Subtitle>
             {
-              "Vous désirez nous faire part d’une demande particulière ? C’est possible ! Pour cela, il vous suffit de nous fournir quelques informations."
+              "Vous désirez nous faire part d’une demande particulière ? C’est possible ! Pour cela, il vous suffit de nous fournir les détails. La bière doit déjà être programmé dans vos caisses."
             }
           </Subtitle>
           <Label>
-            Bière *
+            Nom de la bière *
             <Input
               name="beer"
               type="text"
@@ -90,7 +90,7 @@ const Form = ({
             </div>
           </Label>
           <Label>
-            Alcool *
+            Taux d'alcool *
             <div>
               <InputSmall
                 name="alcohol"

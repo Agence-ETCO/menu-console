@@ -321,12 +321,12 @@ const Page4 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const user = getUser();
     if (user) {
-      setIsCorona(user.Corona);
+      setIsCorona(user.hasCorona);
     }
-  }, []); */
+  }, []);
 
   useEffect(() => {
     if (state.previousStep < 3) {
@@ -342,10 +342,7 @@ const Page4 = () => {
         <Subcontainer>
           <div>
             <Title1>Bières en fût </Title1>
-            <SubTitle>
-              Découvrez le nombre de bières que vous pourrez choisir selon votre
-              bar.
-            </SubTitle>
+            <SubTitle></SubTitle>
           </div>
           {state.selectedPack > 0 && (
             <MinMax stage={4} number={state.selectedPack} />
@@ -378,7 +375,8 @@ const Page4 = () => {
                 {state.selectedPack === 6 && (
                   <>
                     <Title2>IMPORTANT !</Title2>{" "}
-                    <div> Voici vos 6 bières présélectionnées. </div>
+                    <div> Voici vos 6 bières obligatoires. </div>
+                    <div> Vous n'avez aucun choix à faire.</div>
                   </>
                 )}
 
@@ -387,7 +385,6 @@ const Page4 = () => {
                     <Title2>IMPORTANT !</Title2>{" "}
                     <div>
                       {" "}
-                      Voici vos 6 bières présélectionnées.{" "}
                       <Text1>Complétez en ajoutant 2 produits :</Text1>
                     </div>
                     <Choice>
@@ -401,7 +398,6 @@ const Page4 = () => {
                     <Title2>IMPORTANT !</Title2>{" "}
                     <div>
                       {" "}
-                      Voici vos 6 bières présélectionnées.{" "}
                       <Text1>Complétez en ajoutant 4 produits :</Text1>
                     </div>
                     <Choice>
@@ -414,7 +410,6 @@ const Page4 = () => {
                     <Title2>IMPORTANT !</Title2>{" "}
                     <div>
                       {" "}
-                      Voici vos 6 bières présélectionnées.{" "}
                       <Text1>Complétez en ajoutant 3 produits :</Text1>
                     </div>
                     <Choice>1 bière Labatt + 2 bières de microbrasserie</Choice>
@@ -425,7 +420,6 @@ const Page4 = () => {
                     <Title2>IMPORTANT !</Title2>{" "}
                     <div>
                       {" "}
-                      Voici vos 6 bières présélectionnées.{" "}
                       <Text1>Complétez en ajoutant 6 produits :</Text1>
                     </div>
                     <Choice>
@@ -536,7 +530,7 @@ const Page4 = () => {
         returnHref={"/3"}
         buttonText={footer.buttonText}
         href={"/5"}
-        stage={"BIÈRES NON-ALCOOLISÉS"}
+        stage={"BIÈRES NON-ALCOOLISÉES"}
         handleClick={handleClick1}
         disabled={disabled()}
       />

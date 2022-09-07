@@ -17,7 +17,7 @@ export const page1 = {
   body1:
     "La carte des alcools devra être insérée dans votre cartable menu salle à manger et permettra à vos clients de sélectionner facilement leurs boissons. ",
   body2:
-    "Une fois votre sélection validée, nous concevrons votre carte des alcools personnalisées, la ferons imprimer, puis parvenir d'ici le 25 octobre.",
+    "Une fois votre sélection validée, nous concevrons votre carte des alcools personnalisées, la ferons imprimer, puis livrer.",
   buttonText: "CONTINUER",
 };
 
@@ -44,7 +44,7 @@ export const page4 = {
 export const page6 = {
   title: "Merci",
   subtitle:
-    "Votre sélection a bien été envoyée, nous allons donc procéder à l'impression de votre cartes des alcools personnalisées. ",
+    "Votre sélection a bien été envoyée, nous allons donc procéder à l'impression de votre carte des alcools personnalisée. ",
   body1:
     " Entretemps, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
   body2:

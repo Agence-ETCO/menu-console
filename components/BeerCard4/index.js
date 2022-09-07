@@ -50,9 +50,15 @@ const BeerCard = (props) => {
                     <th scope="col">Pichet 60oz</th>
                   </tr>
                   <tr>
-                    <td>{props.prices[0].Price}</td>
-                    <td>{props.prices[1] && props.prices[1].Price}</td>
-                    <td>{props.prices[2] && props.prices[2].Price}</td>
+                    <td>{props.prices[0].Price}$</td>
+                    <td>
+                      {props.prices[1] && props.prices[1].Price}
+                      {props.prices[1] && "$"}
+                    </td>
+                    <td>
+                      {props.prices[2] && props.prices[2].Price}
+                      {props.prices[2] && "$"}
+                    </td>
                   </tr>
                 </tbody>
               </table>

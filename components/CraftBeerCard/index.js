@@ -207,7 +207,7 @@ const CraftBeerCard = (props) => {
               {isChecked(props.option) && !(isSelected(1) || isSelected(2)) ? (
                 <span>CHOISIR VOTRE FORMAT</span>
               ) : (
-                "FORMATS DISPONIBLE"
+                "FORMATS DISPONIBLES"
               )}
             </Format>
             <Container1>

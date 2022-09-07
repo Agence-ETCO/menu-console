@@ -75,37 +75,26 @@ const BeerCard2 = (props) => {
               {props.title} ({props.alcohol}%)
             </div>
             <div> {props.description || ""} </div>
-            {props.prices ? (
-              <table>
-                <tbody>
-                  <tr>
-                    <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">Presion 20oz</th>
-                    <th scope="col">Pichet 60oz</th>
-                  </tr>
-                  <tr>
-                    <td>{props.prices[0].Price}</td>
-                    <td>{props.prices[1] && props.prices[1].Price}</td>
-                    <td>{props.prices[2] && props.prices[2].Price}</td>
-                  </tr>
-                </tbody>
-              </table>
-            ) : (
-              <table>
-                <tbody>
-                  <tr>
-                    <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">Presion 20oz</th>
-                    <th scope="col">Pichet 60oz</th>
-                  </tr>
-                  <tr>
-                    <td>9,99 $</td>
-                    <td>19,99 $</td>
-                    <td>29,99 $</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
+            <table>
+              <tbody>
+                <tr>
+                  <th scope="col">Bouteille / Cannette</th>
+                  <th scope="col">Presion 20oz</th>
+                  <th scope="col">Pichet 60oz</th>
+                </tr>
+                <tr>
+                  <td>{props.prices[0].Price}$</td>
+                  <td>
+                    {props.prices[1] && props.prices[1].Price}
+                    {props.prices[1] && "$"}
+                  </td>
+                  <td>
+                    {props.prices[2] && props.prices[2].Price}
+                    {props.prices[2] && "$"}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             <div>Saq code {props.saqCode || 12824197}</div>
           </TextContainer>
         </SubContainer>

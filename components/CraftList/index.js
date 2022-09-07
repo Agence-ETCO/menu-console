@@ -109,16 +109,16 @@ const CraftList = (props) => {
             </CloseButton>
             <Container1>
               <div>
-                <Title>{" Ajoutez une bière de microbrasserie"}</Title>
+                <Title>{"Microbrasseries"}</Title>
                 <Subtitle>
                   {
-                    "Sélectionnez les bières de microbrasseries que vous souhaitez avoir au menu ainsi que la quantité"
+                    "Sélectionnez les bières de microbrasseries que vous souhaitez avoir au menu ainsi que le format."
                   }
                 </Subtitle>
               </div>
               <StyledButton onClick={handleClick}>
                 <Arrow />
-                <span>{"Ajouter votre microbrasserie"}</span>
+                <span>{"Ajoutez votre microbrasserie"}</span>
               </StyledButton>
             </Container1>
             <Container2>

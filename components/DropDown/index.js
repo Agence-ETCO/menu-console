@@ -118,7 +118,7 @@ const DropDown = ({ options, disabled, order }) => {
                   <Lock1 />
                   {order === "01" ? (
                     <span>
-                      Vous pouvez maintenent selectionner une microbrasserie de
+                      Vous pouvez maintenant sélectionner une microbrasserie de
                       votre choix
                     </span>
                   ) : (

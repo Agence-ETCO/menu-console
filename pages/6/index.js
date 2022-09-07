@@ -390,7 +390,7 @@ const Page6 = () => {
             ))
           )}
         </Subcontainer>
-        <Title>{"Bières non-alcoolisés"}</Title>{" "}
+        <Title>{"Bières non-alcoolisées"}</Title>{" "}
         <Link href={"/5"}>
           <Button>
             {" "}

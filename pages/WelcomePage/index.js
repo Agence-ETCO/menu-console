@@ -25,7 +25,7 @@ const WelcomePage = () => {
     setShowHelp(!showHelp);
   };
 
-  const date = "16 septembre 2022";
+  const date = "20 septembre 2022";
 
   return (
     <>

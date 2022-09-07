@@ -24,11 +24,11 @@ const Header = ({ step }) => {
             <ul>
               <li onClick={() => handleClick()}>{nav.help}</li>
             </ul>
-            <ul>
+            {/* <ul>
               <Link href={"/"}>
                 <li>{nav.language}</li>
               </Link>
-            </ul>
+            </ul> */}
           </Nav>
         </Container>
       </Container1>

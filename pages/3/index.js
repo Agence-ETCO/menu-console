@@ -3,11 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import {
-  putAPI, 
-  fetchAPI,
-  fetchCurrentUser
-} from "../../lib/api";
+import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import WineCard from "../../components/WineCard";
 import { page3 } from "../../fr";
 import {
@@ -56,7 +52,7 @@ const Page3 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      fetchAPI('/api/menu-items?populate=deep')
+      fetchAPI("/api/menu-items?populate=deep")
         .then((res) => {
           receiveData(res.data);
         })
@@ -74,10 +70,7 @@ const Page3 = () => {
       franchisee: userID,
     };
 
-    putAPI(
-      `api/franchisees-menus/${state.menuId}?populate=deep`,
-      menuData
-    )
+    putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
       })
@@ -182,7 +175,7 @@ const Page3 = () => {
                   key={`page3_option_${key}`}
                   value={option.id}
                   title={option.attributes.title}
-                  description={option.attributes.description}
+                  description={option.attributes.descriptionFr}
                   taste={option.attributes.tasteFr}
                   location={option.attributes.location}
                   country={option.attributes.country}
