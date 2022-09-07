@@ -194,7 +194,7 @@ const Page4 = () => {
         ? selections.length + num
         : selections.length + num;
     setCounter(updatedCounter);
-  }, [selections, state.selectedPack, num]);
+  }, [selections, state.selectedPack, isCorona, num]);
 
   useEffect(() => {
     if (state.data.length === 0) {
@@ -212,18 +212,16 @@ const Page4 = () => {
   const handleClick1 = async () => {
     const craft1 = state.micro1.title ? state.micro1 : {};
     const craft2 = state.micro2.title ? state.micro2 : {};
-    const preselect =
-      state.selectedPack === 6
-        ? preselect.map((option) => option.id)
-        : isCorona
-        ? preselect1.id
-        : undefined;
+    const preselect2 =
+      isCorona && state.selectedPack === 10
+        ? [...preselect, preselect1].map((option) => option.id)
+        : preselect.map((option) => option.id);
 
     const menuItems = state.selections.map((option) => option.id);
 
     const totalItems = [
       ...menuItems,
-      preselect,
+      ...preselect2,
       state.micro1.id,
       state.micro2.id,
     ].filter((n) => n !== undefined);
