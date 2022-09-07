@@ -68,13 +68,13 @@ const Page6 = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    /*   fetchAPI("/api/users-permissions/sendmemail")
+    fetchAPI("/api/users-permissions/sendmemail")
       .then((response) => {
         console.log(response);
       })
       .catch((err) => {
         console.log(err);
-      }); */
+      });
 
     router.push("/7");
   };

@@ -213,19 +213,12 @@ const Page4 = () => {
   const handleClick1 = async () => {
     const craft1 = state.micro1.title ? state.micro1 : {};
     const craft2 = state.micro2.title ? state.micro2 : {};
-    const preselect2 =
-      isCorona && state.selectedPack === 10
-        ? [...preselect, preselect1].map((option) => option.id)
-        : preselect.map((option) => option.id);
 
     const menuItems = state.selections.map((option) => option.id);
 
-    const totalItems = [
-      ...menuItems,
-      ...preselect2,
-      state.micro1.id,
-      state.micro2.id,
-    ].filter((n) => n !== undefined);
+    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+      (n) => n !== undefined
+    );
 
     const menuData = {
       menu_items: totalItems,
@@ -328,12 +321,12 @@ const Page4 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const user = getUser();
     if (user) {
       setIsCorona(user.Corona);
     }
-  }, []); */
+  }, []);
 
   useEffect(() => {
     if (state.previousStep < 3) {

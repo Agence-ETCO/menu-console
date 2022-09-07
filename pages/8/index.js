@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { AppContext } from "../../context/AppContext";
 import Header from "../../components/Header";
 import image from "../../public/close.svg";
@@ -13,7 +14,7 @@ import {
   StyledLink,
   CloseButton,
 } from "./styled";
-import { fetchCurrentUser } from "../../lib/api";
+import { fetchCurrentUser, fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 
 const Page8 = () => {
@@ -22,6 +23,18 @@ const Page8 = () => {
     actions: { getMenuId },
   } = useContext(AppContext);
   const userID = useUserID();
+  const router = useRouter();
+
+  const handleClick = async () => {
+    fetchAPI("/api/users-permissions/sendmemail")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    router.push("/7");
+  };
 
   useEffect(() => {
     if (state.menuId === 0) {
@@ -56,9 +69,10 @@ const Page8 = () => {
       </Container>
       <Container2>
         <Container3>
-          <Link href={"/7"}>
-            <StyledLink first>SOUMETTRE</StyledLink>
-          </Link>
+          <StyledLink onClick={() => handleClick()} first>
+            SOUMETTRE
+          </StyledLink>
+
           <Link href={"/6"}>
             <CloseButton onClick={() => {}}>
               <Image src={image} width={25} height={25} alt="" />
