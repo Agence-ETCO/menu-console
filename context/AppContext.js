@@ -51,16 +51,11 @@ const reducer = (state, action) => {
     case "filter-selections":
       return {
         ...state,
-        selections: state.selections
-          .filter(
-            (selection) =>
-              selection.attributes &&
-              selection.attributes.category !== action.value
-          )
-          .filter(
-            (selection) =>
-              selection.category && selection.category !== action.value
-          ),
+        selections: state.selections.filter(
+          (selection) =>
+            selection.attributes &&
+            selection.attributes.category !== action.value
+        ),
       };
 
     case "add-micro1":

@@ -321,12 +321,12 @@ const Page4 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const user = getUser();
     if (user) {
       setIsCorona(user.Corona);
     }
-  }, []);
+  }, []); */
 
   useEffect(() => {
     if (state.previousStep < 3) {
