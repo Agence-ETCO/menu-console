@@ -1,5 +1,5 @@
 export const welcomePage = {
-  greeting: "Bonjour, Rôtisserie 456,",
+  greeting: "Bonjour, Rôtisserie 456",
   title: "Créons ensemble votre nouvelle carte des alcools",
   body: "Afin de rehausser votre offre et d'offrir une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les produits pour personnaliser votre carte des alcools.",
   dateLimite: "IMPORTANT :",

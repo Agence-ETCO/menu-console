@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import Help from "../../components/Help";
 import { welcomePage } from "../../fr";
+import useUserID from "../../lib/useUserID";
 import {
   Greeting,
   Title,
@@ -18,6 +19,7 @@ import {
 
 const WelcomePage = () => {
   const [showHelp, setShowHelp] = useState(false);
+  const userID = useUserID();
 
   const handleClick = () => {
     setShowHelp(!showHelp);
@@ -30,7 +32,9 @@ const WelcomePage = () => {
       <Header step={-1} />
       <Container>
         <Help showHelp={showHelp} handleClick={handleClick} />
-        <Greeting>{welcomePage.greeting}</Greeting>
+        <Greeting>
+          {welcomePage.greeting} {userID},
+        </Greeting>
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
         <Subcontainer>

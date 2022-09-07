@@ -8,6 +8,7 @@ import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { putAPI, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
+import { getUser } from "../../lib/store";
 import { beerList, page4, footer } from "../../fr";
 import {
   Title1,
@@ -326,6 +327,13 @@ const Page4 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  /* useEffect(() => {
+    const user = getUser();
+    if (user) {
+      setIsCorona(user.Corona);
+    }
+  }, []); */
 
   useEffect(() => {
     if (state.previousStep < 3) {
