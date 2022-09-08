@@ -4,7 +4,6 @@ import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
 import BeerCard4 from "../../components/BeerCard4";
 import DropDown from "../../components/DropDown";
-import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { putAPI, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
@@ -19,13 +18,11 @@ import {
   Subcontainer2,
   Subcontainer3,
   Title,
-  ButtonContainer1,
   ButtonContainer2,
   StyledButton,
   Buttons,
   Square,
   SubTitle1,
-  Container2,
   Container3,
   Container4,
   Main,
@@ -352,9 +349,9 @@ const Page4 = () => {
             <Title1>Bières en fût </Title1>
             <SubTitle></SubTitle>
           </div>
-          {state.selectedPack > 0 && (
+          {/* {state.selectedPack > 0 && (
             <MinMax stage={4} number={state.selectedPack} />
-          )}
+          )} */}
         </Subcontainer>
         <Container>
           <SubTitle1>
