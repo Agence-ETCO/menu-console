@@ -222,6 +222,10 @@ const Page6 = () => {
                     (option.attributes && option.attributes.location) ||
                     option.location
                   }
+                  country={
+                    (option.attributes && option.attributes.country) ||
+                    option.country
+                  }
                   sugar={
                     (option.attributes && option.attributes.sugar) ||
                     option.sugar
@@ -298,6 +302,10 @@ const Page6 = () => {
                   location={
                     (option.attributes && option.attributes.location) ||
                     option.location
+                  }
+                  country={
+                    (option.attributes && option.attributes.country) ||
+                    option.country
                   }
                   sugar={
                     (option.attributes && option.attributes.sugar) ||
