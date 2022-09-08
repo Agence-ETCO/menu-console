@@ -97,7 +97,7 @@ const BeerCard2 = (props) => {
                 </tr>
               </tbody>
             </table>
-            <div>Saq code {props.saqCode || 12824197}</div>
+            <div>Saq code {props.saqCode || ""}</div>
           </TextContainer>
         </SubContainer>
       </Label>

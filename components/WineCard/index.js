@@ -143,7 +143,7 @@ const WineCard = (props) => {
               </table>
             )}
             <IconContainer>
-              <span> Saq code {props.saqCode || 12824197}</span>
+              <span> Saq code {props.saqCode || ""}</span>
               <Icons>
                 {props.isFromQuebec &&
                   (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
