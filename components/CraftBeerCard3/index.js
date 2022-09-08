@@ -232,7 +232,7 @@ const CraftBeerCard3 = (props) => {
                     <Price
                       checked={
                         isChecked(props.option) &&
-                        (isSelected(1) || isSelected(2))
+                        (isSelected(1) || isSelected(0))
                       }
                     >
                       {props.option.attributes &&
