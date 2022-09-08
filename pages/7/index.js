@@ -34,7 +34,9 @@ const Page7 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-const link = state.menuId ? `http://pdf.etco.tk/${state.menuId}`:`http://pdf.etco.tk/${1}`
+  const link = state.menuId
+    ? `https://pdf.etco.tk/${state.menuId}`
+    : `https://pdf.etco.tk/${1}`;
   return (
     <>
       <Header />
@@ -45,11 +47,7 @@ const link = state.menuId ? `http://pdf.etco.tk/${state.menuId}`:`http://pdf.etc
           <Body>{page6.body1}</Body>
         </Subcontainer>
         <Subcontainer1>
-          <Button
-            onClick={() => window.open(link)}
-          >
-            {page6.download}
-          </Button>
+          <Button onClick={() => window.open(link)}>{page6.download}</Button>
         </Subcontainer1>
       </Container>
     </>

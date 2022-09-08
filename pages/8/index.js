@@ -53,8 +53,8 @@ const Page8 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const link = state.menuId
-    ? `http://pdf.etco.tk/${state.menuId}`
-    : `http://pdf.etco.tk/${1}`;
+    ? `https://pdf.etco.tk/${state.menuId}`
+    : `https://pdf.etco.tk/${1}`;
   return (
     <>
       <Header step={6} />
