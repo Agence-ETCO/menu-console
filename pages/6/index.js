@@ -238,6 +238,13 @@ const Page6 = () => {
                     (option.attributes && option.attributes.imageURL) ||
                     option.imageURL
                   }
+                  isOrganic={option.attributes.isOrganic || option.isOrganic}
+                  isFromQuebec={
+                    option.attributes.isFromQuebec || option.isFromQuebec
+                  }
+                  isNature={option.attributes.isNature || option.isNature}
+                  isOrange={option.attributes.isOrange || option.isOrange}
+                  isCellier={option.attributes.isCellier || option.isCellier}
                   step={step}
                 />
               ))}
@@ -295,6 +302,13 @@ const Page6 = () => {
                     (option.attributes && option.attributes.imageURL) ||
                     option.imageURL
                   }
+                  isOrganic={option.attributes.isOrganic || option.isOrganic}
+                  isFromQuebec={
+                    option.attributes.isFromQuebec || option.isFromQuebec
+                  }
+                  isNature={option.attributes.isNature || option.isNature}
+                  isOrange={option.attributes.isOrange || option.isOrange}
+                  isCellier={option.attributes.isCellier || option.isCellier}
                   step={step}
                 />
               ))}
