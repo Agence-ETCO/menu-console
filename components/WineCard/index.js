@@ -120,9 +120,9 @@ const WineCard = (props) => {
                     <th scope="col">Bouteille</th>
                   </tr>
                   <tr>
-                    <td>{props.prices[0].Price}$</td>
-                    <td>{props.prices[1].Price}$</td>
-                    <td>{props.prices[2].Price}$</td>
+                    <td>{props.prices[0].Price} $</td>
+                    <td>{props.prices[1].Price} $</td>
+                    <td>{props.prices[2].Price} $</td>
                   </tr>
                 </tbody>
               </table>
@@ -143,7 +143,7 @@ const WineCard = (props) => {
               </table>
             )}
             <IconContainer>
-              <span> Saq code {props.saqCode || ""}</span>
+              <span> Code saq {props.saqCode || ""}</span>
               <Icons>
                 {props.isFromQuebec &&
                   (isChecked(props.option) ? <IconQDark /> : <IconQ />)}

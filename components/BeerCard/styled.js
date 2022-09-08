@@ -54,13 +54,14 @@ export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
   margin-left: 20px;
-  width: 250px;
+  width: 270px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-family: "GTWalsheimBold";
     font-weight: 700;
     font-size: 19px;
     line-height: 25px;
+    min-height: 50px;
   }
   div:nth-child(2) {
     color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
@@ -94,7 +95,7 @@ export const TextContainer = styled.div`
       font-weight: 400;
       font-size: 14px;
       line-height: 15px;
-      width: 90px;
+      width: 120px;
     }
     tr {
       font-family: "GTWalsheimBold";

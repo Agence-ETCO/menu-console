@@ -92,11 +92,11 @@ const BeerCard = (props) => {
                       {props.prices[0] && "$"}
                     </td>
                     <td>
-                      {props.prices[1] && props.prices[1].Price}
+                      {props.prices[1] && props.prices[1].Price}{" "}
                       {props.prices[1] && "$"}
                     </td>
                     <td>
-                      {props.prices[2] && props.prices[2].Price}
+                      {props.prices[2] && props.prices[2].Price}{" "}
                       {props.prices[2] && "$"}
                     </td>
                   </tr>
@@ -118,7 +118,7 @@ const BeerCard = (props) => {
                 </tbody>
               </table>
             )}
-            <div>Saq code {props.saqCode || ""}</div>
+            {/*  <div>Saq code {props.saqCode || ""}</div> */}
           </TextContainer>
         </SubContainer>
       </Label>

@@ -65,7 +65,7 @@ const BeerCard3 = (props) => {
                       {props.prices &&
                         props.index &&
                         props.prices[props.index[0]] &&
-                        "$"}
+                        " $"}
                     </td>
                     <td>
                       {props.prices &&
@@ -76,7 +76,7 @@ const BeerCard3 = (props) => {
                         props.index &&
                         props.index[1] &&
                         props.prices[props.index[1]] &&
-                        "$"}
+                        " $"}
                     </td>
                   </tr>
                 </tbody>
