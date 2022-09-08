@@ -123,7 +123,7 @@ const DropDown = ({ options, disabled, order }) => {
                     </span>
                   ) : (
                     <span>
-                      Vous pouvez maintanent sélectionner une seconde
+                      Vous pouvez maintenant sélectionner une seconde
                       microbrasserie de votre choix
                     </span>
                   )}

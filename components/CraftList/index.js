@@ -112,7 +112,7 @@ const CraftList = (props) => {
                 <Title>{"Microbrasseries"}</Title>
                 <Subtitle>
                   {
-                    "Sélectionnez les bières de microbrasseries que vous souhaitez avoir au menu ainsi que le format."
+                    "Sélectionnez les bières de microbrasseries que vous souhaitez avoir au menu ainsi que les formats."
                   }
                 </Subtitle>
               </div>
