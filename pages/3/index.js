@@ -185,7 +185,13 @@ const Page3 = () => {
                   limit={limit}
                   option={option}
                   imageUrl={option.attributes.imageURL}
-                  red
+                  isOrganic={option.attributes.isOrganic || option.isOrganic}
+                  isFromQuebec={
+                    option.attributes.isFromQuebec || option.isFromQuebec
+                  }
+                  isNature={option.attributes.isNature || option.isNature}
+                  isOrange={option.attributes.isOrange || option.isOrange}
+                  isCellier={option.attributes.isCellier || option.isCellier}
                 />
               ))}
         </Subcontainer2>

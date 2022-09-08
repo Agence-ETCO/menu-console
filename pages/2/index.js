@@ -5,11 +5,7 @@ import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
-import {
-  putAPI,
-  fetchAPI,
-  fetchCurrentUser,
-} from "../../lib/api";
+import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import {
   Container,
   Subcontainer1,
@@ -17,7 +13,7 @@ import {
   Title,
   SubTitle,
 } from "./styled";
-import { getUser } from '../../lib/store';
+import { getUser } from "../../lib/store";
 
 const Page2 = () => {
   const {
@@ -66,10 +62,7 @@ const Page2 = () => {
       franchisee: userId,
     };
 
-    putAPI(
-      `api/franchisees-menus/${state.menuId}?populate=deep`,
-      menuData
-    )
+    putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
       })
@@ -153,7 +146,7 @@ const Page2 = () => {
 
   useEffect(() => {
     if (state.data.length === 0) {
-      fetchAPI('/api/menu-items?populate=deep')
+      fetchAPI("/api/menu-items?populate=deep")
         .then((res) => {
           receiveData(res.data);
         })
@@ -199,6 +192,13 @@ const Page2 = () => {
                   limit={limit}
                   option={option}
                   imageUrl={option.attributes.imageURL || option.imageURL}
+                  isOrganic={option.attributes.isOrganic || option.isOrganic}
+                  isFromQuebec={
+                    option.attributes.isFromQuebec || option.isFromQuebec
+                  }
+                  isNature={option.attributes.isNature || option.isNature}
+                  isOrange={option.attributes.isOrange || option.isOrange}
+                  isCellier={option.attributes.isCellier || option.isCellier}
                 />
               ))}
         </Subcontainer2>

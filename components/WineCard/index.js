@@ -3,12 +3,17 @@ import Image from "next/image";
 import { AppContext } from "../../context/AppContext";
 import { getColor } from "../../lib/helpers";
 import CheckMark from "../CheckMark.js";
-import Icon1 from "../Icon1";
-import Icon2 from "../Icon2";
+import imageC from "../../public/C-icon.svg";
+import imageO from "../../public/O-icon.svg";
+import imageN from "../../public/N-icon.svg";
+import IconBio from "../IconBio";
+import IconQ from "../IconQ";
+import IconQDark from "../IconQDark";
+import IconO from "../IconO";
+import IconC from "../IconC";
+import IconN from "../IconN";
 import Icon1Dark from "../Icon1Dark";
-import Icon2Dark from "../Icon2Dark";
-import image from "../../public/Wine.png";
-import red from "../../public/red.png";
+import IconBioDark from "../IconBioDark";
 import {
   CheckboxContainer,
   HiddenCheckbox,
@@ -24,6 +29,7 @@ import {
   Sugar,
   Desc,
   Title,
+  Container2,
 } from "./styled.js";
 
 const WineCard = (props) => {
@@ -61,7 +67,7 @@ const WineCard = (props) => {
   };
 
   const color = props.taste && getColor(props.taste);
-  console.log(color);
+  console.log(props.option);
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -139,8 +145,34 @@ const WineCard = (props) => {
             <IconContainer>
               <span> Saq code {props.saqCode || 12824197}</span>
               <Icons>
-                {isChecked(props.option) ? <Icon1Dark /> : <Icon1 />}
-                {isChecked(props.option) ? <Icon2Dark /> : <Icon2 />}
+                {props.isFromQuebec &&
+                  (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
+                {props.isOrange &&
+                  (isChecked(props.option) ? (
+                    <Container2>
+                      <Image src={imageO} width={20} height={23} alt="" />
+                    </Container2>
+                  ) : (
+                    <IconO />
+                  ))}
+                {props.isOrganic &&
+                  (isChecked(props.option) ? <IconBioDark /> : <IconBio />)}
+                {props.isCellier &&
+                  (isChecked(props.option) ? (
+                    <Container2>
+                      <Image src={imageC} width={20} height={23} alt="" />
+                    </Container2>
+                  ) : (
+                    <IconC />
+                  ))}
+                {props.isNature &&
+                  (isChecked(props.option) ? (
+                    <Container2>
+                      <Image src={imageN} width={20} height={23} alt="" />
+                    </Container2>
+                  ) : (
+                    <IconN />
+                  ))}
               </Icons>
             </IconContainer>
           </TextContainer>

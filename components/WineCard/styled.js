@@ -158,9 +158,21 @@ export const IconContainer = styled.div`
     margin-left: -20px;
   }
 `;
+export const Container2 = styled.div``;
 export const Icons = styled.div`
+  display: flex;
+  flex-direcyion: row;
+  div {
+    margin-right: 15px;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+  }
+
   svg:first-child {
-    margin-right: 25px;
+    margin-leftt: 25px;
   }
 `;
 
