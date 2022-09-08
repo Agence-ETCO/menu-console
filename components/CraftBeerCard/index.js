@@ -226,7 +226,7 @@ const CraftBeerCard = (props) => {
                       (isSelected(0) || isSelected(1))
                     }
                   >
-                    {"Presion 20oz"}
+                    {"Presion 20 oz"}
                   </Size>
                   <Price
                     checked={
@@ -253,7 +253,7 @@ const CraftBeerCard = (props) => {
                       (isSelected(0) || isSelected(1))
                     }
                   >
-                    {"Pichet 60oz"}
+                    {"Pichet 60 oz"}
                   </Size>
                   <Price
                     checked={

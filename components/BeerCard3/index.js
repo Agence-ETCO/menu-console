@@ -17,7 +17,7 @@ const BeerCard3 = (props) => {
       if (props.prices[props.index[1]].size.includes("20")) {
         return "Presion 20oz";
       } else {
-        return "Pichet 60oz";
+        return "Pichet 60 oz";
       }
     }
   };
@@ -51,8 +51,8 @@ const BeerCard3 = (props) => {
                       {props.index
                         ? props.prices &&
                           props.prices[props.index[0]].size.includes("20")
-                          ? "Presion 20oz"
-                          : "Pichet 60oz"
+                          ? "Presion 20 oz"
+                          : "Pichet 60 oz"
                         : `${props.prices} ml`}
                     </th>
                     <th scope="col">{props.index ? format() : ""}</th>

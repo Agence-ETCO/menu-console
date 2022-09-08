@@ -60,8 +60,8 @@ const WineCard = (props) => {
     }
   };
 
-  const color = props.taste ? getColor(props.taste) : "#f1bdd8";
-
+  const color = props.taste && getColor(props.taste);
+  console.log(color);
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -100,7 +100,7 @@ const WineCard = (props) => {
             </div>
             <CircleContainer checked={isChecked(props.option)}>
               {" "}
-              {props.taste || "-"} <Circle color={color} />{" "}
+              {props.taste} {color && <Circle color={color} />}{" "}
               <Sugar checked={isChecked(props.option)}>{`Sucre : ${
                 props.sugar || 12.5
               }`}</Sugar>
@@ -109,8 +109,8 @@ const WineCard = (props) => {
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">6oz</th>
-                    <th scope="col">9oz</th>
+                    <th scope="col">6 oz</th>
+                    <th scope="col">9 oz</th>
                     <th scope="col">Bouteille</th>
                   </tr>
                   <tr>

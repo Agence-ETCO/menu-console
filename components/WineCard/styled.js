@@ -188,4 +188,5 @@ export const Title = styled.div`
   font-style: normal;
   font-weight: 700;
   max-height: 65px;
+  min-height: 50px;
 `;

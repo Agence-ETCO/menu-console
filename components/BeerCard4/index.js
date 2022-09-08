@@ -46,8 +46,8 @@ const BeerCard = (props) => {
                 <tbody>
                   <tr>
                     <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">Presion 20oz</th>
-                    <th scope="col">Pichet 60oz</th>
+                    <th scope="col">Presion 20 oz</th>
+                    <th scope="col">Pichet 60 oz</th>
                   </tr>
                   <tr>
                     <td>{props.prices[0].Price}$</td>
@@ -67,8 +67,8 @@ const BeerCard = (props) => {
                 <tbody>
                   <tr>
                     <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">Presion 20oz</th>
-                    <th scope="col">Pichet 60oz</th>
+                    <th scope="col">Presion 20 oz</th>
+                    <th scope="col">Pichet 60 oz</th>
                   </tr>
                   <tr>
                     <td>9,99 $</td>
