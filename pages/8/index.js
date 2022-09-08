@@ -52,18 +52,16 @@ const Page8 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const link = state.menuId
+    ? `http://pdf.etco.tk/${state.menuId}`
+    : `http://pdf.etco.tk/${1}`;
   return (
     <>
       <Header step={6} />
       <Container>
         <Container1>
           <Subcontainer>
-            <iframe
-              src={`https://pdf.etco.tk/${state.menuId}`}
-              width="1240"
-              height="1300"
-            ></iframe>
+            <iframe src={link} width="1240" height="1300"></iframe>
           </Subcontainer>
         </Container1>
       </Container>

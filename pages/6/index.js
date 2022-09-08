@@ -238,13 +238,26 @@ const Page6 = () => {
                     (option.attributes && option.attributes.imageURL) ||
                     option.imageURL
                   }
-                  isOrganic={option.attributes.isOrganic || option.isOrganic}
-                  isFromQuebec={
-                    option.attributes.isFromQuebec || option.isFromQuebec
+                  isOrganic={
+                    (option.attributes && option.attributes.isOrganic) ||
+                    option.isOrganic
                   }
-                  isNature={option.attributes.isNature || option.isNature}
-                  isOrange={option.attributes.isOrange || option.isOrange}
-                  isCellier={option.attributes.isCellier || option.isCellier}
+                  isFromQuebec={
+                    (option.attributes && option.attributes.isFromQuebec) ||
+                    option.isFromQuebec
+                  }
+                  isNature={
+                    (option.attributes && option.attributes.isNature) ||
+                    option.isNature
+                  }
+                  isOrange={
+                    (option.attributes && option.attributes.isOrange) ||
+                    option.isOrange
+                  }
+                  isCellier={
+                    (option.attributes && option.attributes.isCellier) ||
+                    option.isCellier
+                  }
                   step={step}
                 />
               ))}
@@ -302,13 +315,26 @@ const Page6 = () => {
                     (option.attributes && option.attributes.imageURL) ||
                     option.imageURL
                   }
-                  isOrganic={option.attributes.isOrganic || option.isOrganic}
-                  isFromQuebec={
-                    option.attributes.isFromQuebec || option.isFromQuebec
+                  isOrganic={
+                    (option.attributes && option.attributes.isOrganic) ||
+                    option.isOrganic
                   }
-                  isNature={option.attributes.isNature || option.isNature}
-                  isOrange={option.attributes.isOrange || option.isOrange}
-                  isCellier={option.attributes.isCellier || option.isCellier}
+                  isFromQuebec={
+                    (option.attributes && option.attributes.isFromQuebec) ||
+                    option.isFromQuebec
+                  }
+                  isNature={
+                    (option.attributes && option.attributes.isNature) ||
+                    option.isNature
+                  }
+                  isOrange={
+                    (option.attributes && option.attributes.isOrange) ||
+                    option.isOrange
+                  }
+                  isCellier={
+                    (option.attributes && option.attributes.isCellier) ||
+                    option.isCellier
+                  }
                   step={step}
                 />
               ))}

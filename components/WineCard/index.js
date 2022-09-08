@@ -67,7 +67,7 @@ const WineCard = (props) => {
   };
 
   const color = props.taste && getColor(props.taste);
-  console.log(props.option);
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
