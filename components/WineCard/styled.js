@@ -151,11 +151,10 @@ export const Circle = styled.div`
 
 export const IconContainer = styled.div`
   display: flex;
-  justify-content: space-around;
-
+  justify-content: space-between;
+  margin-left: 0;
   span {
     margin-top: 10px;
-    margin-left: -20px;
   }
 `;
 export const Container2 = styled.div``;
