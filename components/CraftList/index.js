@@ -14,6 +14,7 @@ import {
   Subtitle,
   Container1,
   Container2,
+  Container3,
   Button,
   ButtonContainer,
 } from "./styled.js";
@@ -116,10 +117,16 @@ const CraftList = (props) => {
                   }
                 </Subtitle>
               </div>
-              <StyledButton onClick={handleClick}>
-                <Arrow />
-                <span>{"Ajoutez votre microbrasserie"}</span>
-              </StyledButton>
+              <Container3>
+                <span>
+                  {
+                    " Vous ne trouvez pas votre microbrasserie parmi les choix ci-dessous?"
+                  }
+                </span>
+                <StyledButton onClick={handleClick}>
+                  <span>{"Ajoutez là ici"}</span>
+                </StyledButton>
+              </Container3>
             </Container1>
             <Container2>
               {craftBeerOptions.map((option, i) => (

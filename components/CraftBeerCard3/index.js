@@ -175,7 +175,7 @@ const CraftBeerCard3 = (props) => {
             </Title>
             <div>
               {" "}
-              {(props.option.attributes && props.option.attributes.title) ||
+              {(props.option.attributes && props.option.attributes.beerMaker) ||
                 props.option.title}{" "}
             </div>
             <Type checked={isChecked(props.option)}>

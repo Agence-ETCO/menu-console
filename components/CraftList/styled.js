@@ -117,19 +117,19 @@ export const StyledButton = styled.button`
   color: #000000;
   background: none;
   border: none;
-  width: 233px;
-  height: 67px;
+  width: 210px;
+  height: 55px;
   background-color: #f5ba18;
   border-radius: 82px;
-  margin-top: 75px;
-  margin-left: 150px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   svg {
     margin-right: 10px;
     width: 40px;
@@ -138,6 +138,19 @@ export const StyledButton = styled.button`
     text-align: left;
   }
 `;
+
+export const Container3 = styled.div`
+  margin-top: 50px;
+  font-family: "GTWalsheimRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3c3c3c;
+  width: 300px;
+  margin-left: 150px;
+`;
+
 export const Container1 = styled.div`
   display: flex;
   flex-direction: row;

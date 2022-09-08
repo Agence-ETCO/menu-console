@@ -189,7 +189,7 @@ const CraftBeerCard = (props) => {
             </Title>
             <div>
               {" "}
-              {props.option.attributes.title ||
+              {props.option.attributes.beerMaker ||
                 "La Microbrasserie, Montréal, QC"}{" "}
             </div>
             <Type checked={isChecked(props.option)}>
