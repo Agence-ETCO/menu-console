@@ -10,6 +10,13 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  trailingSlash: true,
+  exportPathMap: async function () {
+    const paths = {
+      '/': { page: '/' }
+    };
+    return paths;
+  },
 }
 
 module.exports = nextConfig
