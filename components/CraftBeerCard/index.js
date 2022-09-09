@@ -3,7 +3,7 @@ import Image from "next/image";
 import { AppContext } from "../../context/AppContext";
 import CheckMark from "../CheckMark.js";
 import Circle from "../Circle.js";
-import image from "../../public/Rectangle.png";
+import useUserRegion from "../../lib/useUserRegion";
 import {
   CheckboxContainer,
   HiddenCheckbox,
@@ -28,6 +28,8 @@ const CraftBeerCard = (props) => {
     state,
     actions: { addMicro01, addMicro02, removeMicro01, removeMicro02 },
   } = useContext(AppContext);
+
+  const region = useUserRegion();
 
   const [priceOptions, setPriceOptions] = useState([]);
   const isChecked = (option) => {
@@ -170,6 +172,10 @@ const CraftBeerCard = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const prices = region
+    ? props.option.attributes.cost.filter((option) => option.region === region)
+    : props.option.attributes.cost;
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -234,7 +240,7 @@ const CraftBeerCard = (props) => {
                       (isSelected(0) || isSelected(1))
                     }
                   >
-                    {props.option.attributes.cost[0].Price} $
+                    {prices[0].Price} $
                   </Price>
                 </Cell>
               </SubContainer1>
@@ -261,7 +267,7 @@ const CraftBeerCard = (props) => {
                       (isSelected(0) || isSelected(1))
                     }
                   >
-                    {props.option.attributes.cost[1].Price} $
+                    {prices[1].Price} $
                   </Price>
                 </Cell>
               </SubContainer1>

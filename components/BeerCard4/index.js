@@ -2,22 +2,26 @@ import React, { useEffect, useContext } from "react";
 import Image from "next/image";
 import { AppContext } from "../../context/AppContext";
 import Lock3 from "../Lock3";
+import useUserRegion from "../../lib/useUserRegion";
 import image from "../../public/Rectangle.png";
 import {
-  CheckboxContainer,
-  HiddenCheckbox,
-  StyledCheckbox,
   Label,
   TextContainer,
   SubContainer,
   ImageContainer,
 } from "./styled.js";
 
-const BeerCard = (props) => {
+const BeerCard4 = (props) => {
   const {
     state,
     actions: {},
   } = useContext(AppContext);
+
+  const region = useUserRegion();
+
+  const pricesForRegion = region
+    ? props.prices.filter((option) => option.region === region)
+    : props.prices;
 
   return (
     <>
@@ -41,46 +45,33 @@ const BeerCard = (props) => {
               {props.title} ({props.alcohol})
             </div>
             <div> {props.description || "Lager américaine"} </div>
-            {props.prices ? (
-              <table>
-                <tbody>
-                  <tr>
-                    <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">Presion 20 oz</th>
-                    <th scope="col">Pichet 60 oz</th>
-                  </tr>
+
+            <table>
+              <tbody>
+                <tr>
+                  <th scope="col">Bouteille / Cannette</th>
+                  <th scope="col">Presion 20 oz</th>
+                  <th scope="col">Pichet 60 oz</th>
+                </tr>
+                {pricesForRegion.length > 0 && (
                   <tr>
                     <td>
-                      {props.prices[0].Price}{" "}
-                      {props.prices[0] && props.prices[0].Price && " $"}
+                      {pricesForRegion[0].Price}{" "}
+                      {pricesForRegion[0] && pricesForRegion[0].Price && " $"}
                     </td>
                     <td>
-                      {props.prices[1] && props.prices[1].Price}
-                      {props.prices[1] && " $"}
+                      {pricesForRegion[1] && pricesForRegion[1].Price}
+                      {pricesForRegion[1] && " $"}
                     </td>
                     <td>
-                      {props.prices[2] && props.prices[2].Price}
-                      {props.prices[2] && " $"}
+                      {pricesForRegion[2] && pricesForRegion[2].Price}
+                      {pricesForRegion[2] && " $"}
                     </td>
                   </tr>
-                </tbody>
-              </table>
-            ) : (
-              <table>
-                <tbody>
-                  <tr>
-                    <th scope="col">Bouteille / Cannette</th>
-                    <th scope="col">Presion 20 oz</th>
-                    <th scope="col">Pichet 60 oz</th>
-                  </tr>
-                  <tr>
-                    <td>9,99 $</td>
-                    <td>19,99 $</td>
-                    <td>29,99 $</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
+                )}
+              </tbody>
+            </table>
+
             {/*  <div>Saq code {props.saqCode || ""}</div> */}
           </TextContainer>
         </SubContainer>
@@ -89,4 +80,4 @@ const BeerCard = (props) => {
   );
 };
 
-export default BeerCard;
+export default BeerCard4;
