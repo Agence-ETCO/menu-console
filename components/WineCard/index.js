@@ -12,7 +12,7 @@ import IconQDark from "../IconQDark";
 import IconO from "../IconO";
 import IconC from "../IconC";
 import IconN from "../IconN";
-import Icon1Dark from "../Icon1Dark";
+import useUserRegion from "../../lib/useUserRegion";
 import IconBioDark from "../IconBioDark";
 import {
   CheckboxContainer,
@@ -37,6 +37,8 @@ const WineCard = (props) => {
     state,
     actions: { addSelection, removeSelection },
   } = useContext(AppContext);
+
+  const region = useUserRegion();
 
   const isChecked = (option) => {
     if (
@@ -67,7 +69,9 @@ const WineCard = (props) => {
   };
 
   const color = props.taste && getColor(props.taste);
-
+  const pricesForRegion = region
+    ? props.prices.filter((option) => option.region === region)
+    : props.prices;
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -111,37 +115,24 @@ const WineCard = (props) => {
                 props.sugar || 12.5
               }`}</Sugar>
             </CircleContainer>
-            {props.prices ? (
-              <table>
-                <tbody>
+
+            <table>
+              <tbody>
+                <tr>
+                  <th scope="col">6 oz</th>
+                  <th scope="col">9 oz</th>
+                  <th scope="col">Bouteille</th>
+                </tr>
+                {pricesForRegion.length > 0 && (
                   <tr>
-                    <th scope="col">6 oz</th>
-                    <th scope="col">9 oz</th>
-                    <th scope="col">Bouteille</th>
+                    <td> {pricesForRegion[0].Price} $</td>
+                    <td>{pricesForRegion[1].Price} $</td>
+                    <td>{pricesForRegion[2].Price} $</td>
                   </tr>
-                  <tr>
-                    <td>{props.prices[0].Price} $</td>
-                    <td>{props.prices[1].Price} $</td>
-                    <td>{props.prices[2].Price} $</td>
-                  </tr>
-                </tbody>
-              </table>
-            ) : (
-              <table>
-                <tbody>
-                  <tr>
-                    <th scope="col"></th>
-                    <th scope="col">9oz</th>
-                    <th scope="col">Bouteille</th>
-                  </tr>
-                  <tr>
-                    <td>9,99 $</td>
-                    <td>19,99 $</td>
-                    <td>29,99 $</td>
-                  </tr>
-                </tbody>
-              </table>
-            )}
+                )}
+              </tbody>
+            </table>
+
             <IconContainer>
               <span> Code saq {props.saqCode || ""}</span>
               <Icons>

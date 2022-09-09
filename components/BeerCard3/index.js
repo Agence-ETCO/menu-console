@@ -1,6 +1,7 @@
 import Image from "next/image";
 import CheckMark from "../CheckMark.js";
 import image from "../../public/Rectangle.png";
+import useUserRegion from "../../lib/useUserRegion";
 import {
   CheckboxContainer,
   HiddenCheckbox,
@@ -12,6 +13,13 @@ import {
 } from "./styled.js";
 
 const BeerCard3 = (props) => {
+  const region = useUserRegion();
+
+  const pricesForRegion =
+    region && props.index && props.index.length > 0
+      ? props.prices.filter((option) => option.region === region)
+      : props.prices;
+
   const format = () => {
     if (props.prices && props.index && props.index[1]) {
       if (props.prices[props.index[1]].size.includes("20")) {
@@ -50,7 +58,7 @@ const BeerCard3 = (props) => {
                     <th scope="col">
                       {props.index
                         ? props.prices &&
-                          props.prices[props.index[0]].size.includes("20")
+                          pricesForRegion[props.index[0]].size.includes("20")
                           ? "Presion 20 oz"
                           : "Pichet 60 oz"
                         : `${props.prices} ml`}
@@ -61,21 +69,21 @@ const BeerCard3 = (props) => {
                     <td>
                       {props.prices &&
                         props.index &&
-                        props.prices[props.index[0]].Price}
+                        pricesForRegion[props.index[0]].Price}
                       {props.prices &&
                         props.index &&
-                        props.prices[props.index[0]] &&
+                        pricesForRegion[props.index[0]] &&
                         " $"}
                     </td>
                     <td>
                       {props.prices &&
                         props.index &&
                         props.index[1] &&
-                        props.prices[props.index[1]].Price}
+                        pricesForRegion[props.index[1]].Price}
                       {props.prices &&
                         props.index &&
                         props.index[1] &&
-                        props.prices[props.index[1]] &&
+                        pricesForRegion[props.index[1]] &&
                         " $"}
                     </td>
                   </tr>
