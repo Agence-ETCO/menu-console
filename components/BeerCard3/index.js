@@ -29,7 +29,7 @@ const BeerCard3 = (props) => {
       }
     }
   };
-  console.log(pricesForRegion);
+
   return (
     <>
       <Label checked={props.checked}>
