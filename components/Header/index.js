@@ -1,5 +1,6 @@
 import { useState } from "react";
-import Link from "next/link";
+import setLanguage from "next-translate/setLanguage";
+import { useRouter } from "next/router";
 import Logo from "../Logo";
 import Stepper from "../Stepper";
 import Help from "../Help";
@@ -8,9 +9,18 @@ import { nav } from "../../fr";
 
 const Header = ({ step }) => {
   const [showHelp, setShowHelp] = useState(false);
-
+  const router = useRouter();
+  const currentLang = router.locale;
   const handleClick = () => {
     setShowHelp(!showHelp);
+  };
+
+  const changeLang = async () => {
+    if (currentLang === "en") {
+      await setLanguage("fr");
+    } else {
+      await setLanguage("en");
+    }
   };
 
   return (
@@ -24,11 +34,11 @@ const Header = ({ step }) => {
             <ul>
               <li onClick={() => handleClick()}>{nav.help}</li>
             </ul>
-            {/* <ul>
-              <Link href={"/"}>
+            <ul>
+              <button onClick={async () => changeLang()}>
                 <li>{nav.language}</li>
-              </Link>
-            </ul> */}
+              </button>
+            </ul>
           </Nav>
         </Container>
       </Container1>

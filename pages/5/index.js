@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import useTranslation from "next-translate/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
@@ -37,7 +38,7 @@ const Page5 = () => {
   const max = 2;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
-
+  const { t, lang } = useTranslation("common");
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}

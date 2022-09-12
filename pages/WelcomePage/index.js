@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import Help from "../../components/Help";
@@ -20,7 +21,7 @@ import {
 const WelcomePage = () => {
   const [showHelp, setShowHelp] = useState(false);
   const userID = useUserID();
-
+  const { t, lang } = useTranslation("common");
   const handleClick = () => {
     setShowHelp(!showHelp);
   };
@@ -33,24 +34,26 @@ const WelcomePage = () => {
       <Container>
         <Help showHelp={showHelp} handleClick={handleClick} />
         <Greeting>
-          {welcomePage.greeting} {userID},
+          {t("welcomePage.greeting")} {userID},
         </Greeting>
-        <Title>{welcomePage.title}</Title>
-        <Body>{welcomePage.body}</Body>
+        <Title>{t("welcomePage.title")}</Title>
+        <Body>{t("welcomePage.body")}</Body>
         <Subcontainer>
-          <DateLimit>{welcomePage.dateLimite}</DateLimit>
-          <Body1>{welcomePage.body1}</Body1>
+          <DateLimit>{t("welcomePage.dateLimite")}</DateLimit>
+          <Body1>{t("welcomePage.body1")}</Body1>
           <Date>{date}</Date>
-          <Body1>{welcomePage.body2}</Body1>
+          <Body1>{t("welcomePage.body2")}</Body1>
           <Body>Merci de votre collaboration, </Body>
         </Subcontainer>
         <Ending>
           {welcomePage.help}
           &nbsp;
-          <Contact onClick={() => handleClick()}>{welcomePage.contact}</Contact>
+          <Contact onClick={() => handleClick()}>
+            {t("welcomePage.contact")}
+          </Contact>
         </Ending>
       </Container>
-      <Footer first startText={welcomePage.buttonText} href={"/1"} />
+      <Footer first startText={t("welcomePage.buttonText")} href={"/1"} />
     </>
   );
 };

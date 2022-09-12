@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
@@ -55,7 +56,7 @@ const Page4 = () => {
   } = useContext(AppContext);
 
   const buttons2 = [6, 8, 10, 12];
-
+  const { t, lang } = useTranslation("common");
   const [counter, setCounter] = useState(0);
 
   const [craftSelections, setCraftSelections] = useState([]);

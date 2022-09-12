@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import MinMax from "../../components/MinMax";
@@ -35,7 +36,7 @@ const Page3 = () => {
   const min = 3;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
-
+  const { t, lang } = useTranslation("common");
   const max = 6;
   const quantity = 18;
   const selection = (

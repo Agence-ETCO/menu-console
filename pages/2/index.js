@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import useTranslation from "next-translate/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
@@ -33,7 +34,7 @@ const Page2 = () => {
   const min = 1;
   const [counter, setCounter] = useState(0);
   const [userId, setUserId] = useState(null);
-
+  const { t, lang } = useTranslation("common");
   const max = 3;
   const quantity = 3;
   const selections = state.selections.filter(

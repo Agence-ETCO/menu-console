@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import BeerCard from "../../components/BeerCard";
@@ -43,7 +44,7 @@ const Page6 = () => {
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
-
+  const { t, lang } = useTranslation("common");
   const step = 6;
 
   const beer =
