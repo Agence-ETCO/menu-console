@@ -355,7 +355,7 @@ const Page4 = () => {
         </Subcontainer>
         <Container>
           <SubTitle1>
-            Combien de lignes de fût de bières avez vous ? Ne pas compter les
+            Combien de lignes de fût de bières avez-vous? Ne pas compter les
             lignes de vins
           </SubTitle1>
 
@@ -535,7 +535,7 @@ const Page4 = () => {
         returnHref={"/3"}
         buttonText={footer.buttonText}
         href={"/5"}
-        stage={"BIÈRES NON-ALCOOLISÉES"}
+        stage={"BIÈRES NON ALCOOLISÉES"}
         handleClick={handleClick1}
         disabled={disabled()}
       />

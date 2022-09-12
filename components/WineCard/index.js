@@ -111,9 +111,10 @@ const WineCard = (props) => {
             <CircleContainer checked={isChecked(props.option)}>
               {" "}
               {props.taste} {color && <Circle color={color} />}{" "}
-              <Sugar checked={isChecked(props.option)}>{`Sucre : ${
-                props.sugar || 12.5
-              }`}</Sugar>
+              <Sugar checked={isChecked(props.option)}>
+                {`Sucre :`}
+                <span> {props.sugar}</span>
+              </Sugar>
             </CircleContainer>
 
             <table>

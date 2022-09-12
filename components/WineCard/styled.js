@@ -61,6 +61,7 @@ export const Desc = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  margin-top: 8px;
 `;
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
@@ -189,7 +190,9 @@ export const Sugar = styled.div`
   font-size: 13px;
   line-height: 20px;
   letter-spacing: 0.15em;
-  text-transform: uppercase;
+  span {
+    text-transform: none !important;
+  }
 `;
 
 export const Title = styled.div`

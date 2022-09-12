@@ -166,7 +166,7 @@ const Page2 = () => {
             <Title>{page2.title} </Title>
             <SubTitle>
               Choisissez parmi les <span>{quantity} vins blancs Cellier</span>
-              disponibles
+              offerts
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />

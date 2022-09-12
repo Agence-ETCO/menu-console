@@ -445,7 +445,7 @@ const Page6 = () => {
             ))
           )}
         </Subcontainer>
-        <Title>{"Bières non-alcoolisées"}</Title>{" "}
+        <Title>{"Bières non alcoolisées"}</Title>{" "}
         <Link href={"/5"}>
           <Button>
             {" "}
@@ -500,7 +500,7 @@ const Page6 = () => {
         </Subcontainer>
         <Container1>
           <Title2>
-            <span>Prochaine étape:</span> prévisualisez ou modifiez vos choix.{" "}
+            <span>Prochaine étape :</span> prévisualisez ou modifiez vos choix.{" "}
             <div>
               <span>Satisfait?</span> Soumettez votre carte des alcools pour
               impression.

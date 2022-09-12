@@ -1,9 +1,9 @@
 export const welcomePage = {
-  greeting: "Bonjour, Rôtisserie 456",
+  greeting: "Bonjour Rôtisserie 456",
   title: "Créons ensemble votre nouvelle carte des alcools",
   body: "Afin de rehausser votre offre et d'offrir une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les produits pour personnaliser votre carte des alcools.",
   dateLimite: "IMPORTANT :",
-  body1: "veuillez compléter votre sélection au plus tard le ",
+  body1: "veuillez compléter votre sélection au plus tard le",
   body2:
     "afin de vous assurer d'obtenir votre carte des alcools dans les délais prévus.",
   help: "Besoin d'aide?",
@@ -13,11 +13,11 @@ export const welcomePage = {
 
 export const page1 = {
   title: "Voici à quoi ressemblera votre nouvelle carte des alcools",
-  body: "Au format 8.5 x 11.5, il permettra à vos clients de choisir facilement leurs boissons.em ipsum dolor sit amet, consectetur adipiscing elit. Eget fermentum libero faucibus sit in nam. Mauris vitae consectetur quisque sapien. Placerat nisi, eu integer eleifend proin a. Eget turpis commodo nunc varius sed massa arcu arcu ligula.",
+  body: "",
   body1:
     "La carte des alcools devra être insérée dans votre cartable menu salle à manger et permettra à vos clients de sélectionner facilement leurs boissons. ",
   body2:
-    "Une fois votre sélection validée, nous concevrons votre carte des alcools personnalisées, la ferons imprimer, puis livrer.",
+    "Une fois votre sélection validée, nous conserverons votre carte des alcools personnalisée, la ferons imprimer, puis livrer.",
   buttonText: "CONTINUER",
 };
 

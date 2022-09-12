@@ -124,7 +124,7 @@ const CraftList = (props) => {
                   }
                 </span>
                 <StyledButton onClick={handleClick}>
-                  <span>{"Ajoutez là ici"}</span>
+                  <span>{"Ajoutez-là ici"}</span>
                 </StyledButton>
               </Container3>
             </Container1>

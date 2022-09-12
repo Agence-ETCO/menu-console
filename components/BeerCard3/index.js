@@ -23,7 +23,7 @@ const BeerCard3 = (props) => {
   const format = () => {
     if (props.prices && props.index && props.index[1]) {
       if (props.prices[props.index[1]].size.includes("20")) {
-        return "Presion 20 oz";
+        return "Pression  20 oz";
       } else {
         return "Pichet 60 oz";
       }
@@ -47,7 +47,7 @@ const BeerCard3 = (props) => {
           </ImageContainer>
           <TextContainer checked={props.checked}>
             <div>
-              {props.title} ({props.alcohol} {!props.index && "%"})
+              {props.title} ({props.alcohol} {!props.index && " %"})
             </div>
             <div> {props.description} </div>
 
@@ -59,7 +59,7 @@ const BeerCard3 = (props) => {
                       {props.index
                         ? props.prices &&
                           pricesForRegion[props.index[0]].size.includes("20")
-                          ? "Presion 20 oz"
+                          ? "Pression  20 oz"
                           : "Pichet 60 oz"
                         : `${props.prices} ml`}
                     </th>

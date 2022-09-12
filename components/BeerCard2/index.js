@@ -88,7 +88,7 @@ const BeerCard2 = (props) => {
                 <tr>
                   <th scope="col">Bouteille / Cannette</th>
                   <th scope="col">
-                    Presion <br></br> 20 oz
+                    Pression <br></br> 20 oz
                   </th>
                   <th scope="col">
                     Pichet <br></br>60 oz

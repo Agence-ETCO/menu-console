@@ -209,7 +209,7 @@ const CraftBeerCard3 = (props) => {
               !(isSelected(1) || isSelected(0) || props.option.size) ? (
                 <span>CHOISIR VOTRE FORMAT</span>
               ) : (
-                "FORMATS DISPONIBLES"
+                "FORMATS OFFERTS"
               )}
             </Format>
             <Container1>
@@ -233,7 +233,7 @@ const CraftBeerCard3 = (props) => {
                       (isSelected(1) || isSelected(0) || props.option.size)
                     }
                   >
-                    {props.option.size || "Presion 20 oz"}{" "}
+                    {props.option.size || "Pression 20 oz"}{" "}
                     {props.option.size && "ml"}
                   </Size>
                   {!props.option.size && (

@@ -59,7 +59,7 @@ export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
   margin-left: 20px;
-  width: 270px;
+  width: 280px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-family: "GTWalsheimBold";

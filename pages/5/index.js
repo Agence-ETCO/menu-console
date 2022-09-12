@@ -163,9 +163,9 @@ const Page5 = () => {
       <Header step={5} />
       <Subcontainer>
         <Container1>
-          <Title>Bières non-alcoolisées </Title>
+          <Title>Bières non alcoolisées </Title>
           <SubTitle>
-            Choisissez jusqu’à 2 bières non-alcoolisées (optionnel).
+            Choisissez jusqu’à 2 bières non alcoolisées (optionnel).
           </SubTitle>
         </Container1>
         <MinMax stage={5} />
