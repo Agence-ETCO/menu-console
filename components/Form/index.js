@@ -50,7 +50,7 @@ const Form = ({
             }
           </Subtitle>
           <Label>
-            Nom de la bière *
+            Nom de la bière*
             <Input
               name="beer"
               type="text"
@@ -59,7 +59,7 @@ const Form = ({
             />
           </Label>
           <Label>
-            Microbrasserie *
+            Microbrasserie*
             <Input
               name="producer"
               type="text"
@@ -77,7 +77,7 @@ const Form = ({
             />
           </Label>
           <Label>
-            Format *
+            Format*
             <div>
               <InputSmall
                 name="format"
@@ -90,7 +90,7 @@ const Form = ({
             </div>
           </Label>
           <Label>
-            {" Taux d'alcool *"}
+            {" Taux d'alcool*"}
             <div>
               <InputSmall
                 name="alcohol"
