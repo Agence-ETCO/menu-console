@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { AppContext } from "../../context/AppContext";
 import Header from "../../components/Header";
 import image from "../../public/close.svg";
 import {
@@ -14,18 +13,22 @@ import {
   StyledLink,
   CloseButton,
 } from "./styled";
-import { fetchCurrentUser, fetchAPI } from "../../lib/api";
+import { fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 
 const Page8 = () => {
-  const {
-    state,
-    actions: { getMenuId },
-  } = useContext(AppContext);
   const userID = useUserID();
   const router = useRouter();
 
   const handleClick = async () => {
+    fetchAPI(` https://pdf.selections-sthubert.ca/save/${userID}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     fetchAPI("/api/users-permissions/sendmemail")
       .then((response) => {
         console.log(response);
@@ -36,25 +39,10 @@ const Page8 = () => {
     router.push("/7");
   };
 
-  useEffect(() => {
-    if (state.menuId === 0) {
-      fetchCurrentUser()
-        .then((res) => {
-          if (res.franchisee_s_menu) {
-            if (res.franchisee_s_menu.id) {
-              getMenuId(res.franchisee_s_menu.id);
-            }
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const link = state.menuId
-    ? `https://pdf.etco.tk/${state.menuId}`
-    : `https://pdf.etco.tk/${1}`;
+  const link = userID
+    ? ` https://pdf.selections-sthubert.ca/preview/${userID}`
+    : ` https://pdf.selections-sthubert.ca/preview/1`;
+
   return (
     <>
       <Header step={6} />

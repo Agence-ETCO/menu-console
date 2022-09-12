@@ -1,8 +1,7 @@
 import React, { useEffect, useContext } from "react";
 import Header from "../../components/Header";
 import { page6 } from "../../fr";
-import { fetchCurrentUser } from "../../lib/api";
-import { AppContext } from "../../context/AppContext";
+import useUserID from "../../lib/useUserID";
 import {
   Container,
   Subcontainer,
@@ -14,29 +13,11 @@ import {
 } from "./styled";
 
 const Page7 = () => {
-  const {
-    state,
-    actions: { getMenuId },
-  } = useContext(AppContext);
-  useEffect(() => {
-    if (state.menuId === 0) {
-      fetchCurrentUser()
-        .then((res) => {
-          if (res.franchisee_s_menu) {
-            if (res.franchisee_s_menu.id) {
-              getMenuId(res.franchisee_s_menu.id);
-            }
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  const link = state.menuId
-    ? `https://pdf.etco.tk/${state.menuId}`
-    : `https://pdf.etco.tk/${1}`;
+  const userID = useUserID();
+
+  const link = userID
+    ? ` https://pdf.selections-sthubert.ca/preview/${userID}`
+    : ` https://pdf.selections-sthubert.ca/preview/1`;
   return (
     <>
       <Header />

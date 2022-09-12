@@ -43,7 +43,7 @@ const Page6 = () => {
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
-
+  const userID = useUserID();
   const step = 6;
 
   const beer =
@@ -67,6 +67,13 @@ const Page6 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    fetchAPI(` https://pdf.selections-sthubert.ca/save/${userID}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     fetchAPI("/api/users-permissions/sendmemail")
       .then((response) => {
