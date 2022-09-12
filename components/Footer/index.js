@@ -17,7 +17,7 @@ const Footer = (props) => {
       <Container>
         {props.returnButtonText && (
           <Link href={props.returnHref}>
-            <Button viewButtonText={props.viewButtonText}>
+            <Button viewButtonText={props.viewButtonText} align={props.align}>
               {props.returnButtonText}
             </Button>
           </Link>

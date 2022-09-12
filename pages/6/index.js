@@ -506,6 +506,7 @@ const Page6 = () => {
         first
         returnButtonText={footer.change}
         returnHref={"/5"}
+        align
         /*  viewButtonText={footer.view} */
         submitButtonText={footer.submit}
         handleSubmit={handleClick}

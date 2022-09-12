@@ -13,7 +13,7 @@ export const Button = styled.button`
   letter-spacing: 0.1em;
   border: none;
   background-color: ${colors.yellow};
-  margin-left: ${(props) => (props.viewButtonText ? "5%" : "25%")};
+  margin-left: ${(props) => (props.align ? "" : "25%")};
 `;
 
 export const StyledLink = styled.button`
