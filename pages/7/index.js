@@ -46,9 +46,9 @@ const Page7 = () => {
           <Subtitle>{page6.subtitle}</Subtitle>
           <Body>{page6.body1}</Body>
         </Subcontainer>
-        <Subcontainer1>
+        {/* <Subcontainer1>
           <Button onClick={() => window.open(link)}>{page6.download}</Button>
-        </Subcontainer1>
+        </Subcontainer1> */}
       </Container>
     </>
   );

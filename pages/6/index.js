@@ -503,9 +503,10 @@ const Page6 = () => {
       </Container>
 
       <Footer
+        first
         returnButtonText={footer.change}
         returnHref={"/5"}
-        viewButtonText={footer.view}
+        /*  viewButtonText={footer.view} */
         submitButtonText={footer.submit}
         handleSubmit={handleClick}
       />
