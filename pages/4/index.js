@@ -379,7 +379,7 @@ const Page4 = () => {
               <Square>
                 {state.selectedPack === 6 && (
                   <>
-                    <Title2>IMPORTANT !</Title2>{" "}
+                    <Title2>IMPORTANT!</Title2>{" "}
                     <div> Voici vos 6 bières obligatoires. </div>
                     <div> {"Vous n'avez aucun choix à faire."}</div>
                   </>
@@ -387,7 +387,7 @@ const Page4 = () => {
 
                 {state.selectedPack === 8 && (
                   <>
-                    <Title2>IMPORTANT !</Title2>{" "}
+                    <Title2>IMPORTANT!</Title2>{" "}
                     <div>
                       {" "}
                       <Text1>Complétez en ajoutant 2 produits :</Text1>
@@ -400,7 +400,7 @@ const Page4 = () => {
                 )}
                 {state.selectedPack === 10 && !isCorona && (
                   <>
-                    <Title2>IMPORTANT !</Title2>{" "}
+                    <Title2>IMPORTANT!</Title2>{" "}
                     <div>
                       {" "}
                       <Text1>Complétez en ajoutant 4 produits :</Text1>
@@ -412,7 +412,7 @@ const Page4 = () => {
                 )}
                 {state.selectedPack === 10 && isCorona && (
                   <>
-                    <Title2>IMPORTANT !</Title2>{" "}
+                    <Title2>IMPORTANT!</Title2>{" "}
                     <div>
                       {" "}
                       <Text1>Complétez en ajoutant 3 produits :</Text1>
@@ -422,7 +422,7 @@ const Page4 = () => {
                 )}
                 {state.selectedPack === 12 && (
                   <>
-                    <Title2>IMPORTANT !</Title2>{" "}
+                    <Title2>IMPORTANT!</Title2>{" "}
                     <div>
                       {" "}
                       <Text1>Complétez en ajoutant 6 produits :</Text1>

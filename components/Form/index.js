@@ -68,7 +68,7 @@ const Form = ({
             />
           </Label>
           <Label>
-            Type (Ex.: Lager, Pislner, Ale, blanche…)*
+            Type (Ex. : Lager, Pislner, Ale, blanche…)*
             <Input
               name="type"
               type="text"
