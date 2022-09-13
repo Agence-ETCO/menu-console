@@ -4,6 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import Lock3 from "../Lock3";
 import useUserRegion from "../../lib/useUserRegion";
 import image from "../../public/Rectangle.png";
+import { getFormat } from "../../lib/helpers";
 import {
   Label,
   TextContainer,
@@ -21,7 +22,7 @@ const BeerCard4 = (props) => {
 
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
-    : props.prices;
+    : props.prices.filter((option) => option.region === "QC1");
 
   return (
     <>
@@ -48,11 +49,17 @@ const BeerCard4 = (props) => {
 
             <table>
               <tbody>
-                <tr>
-                  <th scope="col">Bouteille / Cannette</th>
-                  <th scope="col">Pression 20 oz</th>
-                  <th scope="col">Pichet 60 oz</th>
-                </tr>
+                {pricesForRegion.length > 0 && (
+                  <tr>
+                    <th scope="col">{getFormat(pricesForRegion[0].size)}</th>
+                    <th scope="col">
+                      {pricesForRegion[1] && getFormat(pricesForRegion[1].size)}
+                    </th>
+                    <th scope="col">
+                      {pricesForRegion[2] && getFormat(pricesForRegion[2].size)}
+                    </th>
+                  </tr>
+                )}
                 {pricesForRegion.length > 0 && (
                   <tr>
                     <td>

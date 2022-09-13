@@ -87,12 +87,16 @@ const BeerCard2 = (props) => {
               <tbody>
                 <tr>
                   <th scope="col">Bouteille / Cannette</th>
-                  <th scope="col">
-                    Pression <br></br> 20 oz
-                  </th>
-                  <th scope="col">
-                    Pichet <br></br>60 oz
-                  </th>
+                  {pricesForRegion[1] && (
+                    <th scope="col">
+                      Pression <br></br> 20 oz
+                    </th>
+                  )}
+                  {pricesForRegion[2] && (
+                    <th scope="col">
+                      Pichet <br></br>60 oz
+                    </th>
+                  )}
                 </tr>
                 {pricesForRegion && (
                   <tr>

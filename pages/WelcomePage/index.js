@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import Help from "../../components/Help";
 import { welcomePage } from "../../fr";
-import useUserID from "../../lib/useUserID";
+import { getUser } from "../../lib/store";
 import {
   Greeting,
   Title,
@@ -19,7 +19,15 @@ import {
 
 const WelcomePage = () => {
   const [showHelp, setShowHelp] = useState(false);
-  const userID = useUserID();
+  const [userUid, setUserUid] = useState(null);
+
+  useEffect(() => {
+    const user = getUser();
+
+    if (user) {
+      setUserUid(user.uid);
+    }
+  }, []);
 
   const handleClick = () => {
     setShowHelp(!showHelp);
@@ -33,7 +41,7 @@ const WelcomePage = () => {
       <Container>
         <Help showHelp={showHelp} handleClick={handleClick} />
         <Greeting>
-          {welcomePage.greeting} {userID},
+          {welcomePage.greeting} {userUid},
         </Greeting>
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
