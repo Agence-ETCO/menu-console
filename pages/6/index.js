@@ -67,7 +67,7 @@ const Page6 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    /* if (state.menuId === 0) {
+    if (state.menuId === 0) {
       fetchCurrentUser()
         .then((res) => {
           if (res.franchisee_s_menu) {
@@ -85,7 +85,15 @@ const Page6 = () => {
         .catch((err) => {
           console.log(err);
         });
-    } */
+    } else {
+      fetchAPI(` https://pdf.selections-sthubert.ca/save/${state.menuId}`)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
 
     fetchAPI("/api/users-permissions/sendmemail")
