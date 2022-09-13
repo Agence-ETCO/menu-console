@@ -25,7 +25,7 @@ const Page7 = () => {
         <Subcontainer>
           <Title>{page6.title}</Title>
           <Subtitle>{page6.subtitle}</Subtitle>
-          <Body>{page6.body1}</Body>
+          {/*   <Body>{page6.body1}</Body> */}
         </Subcontainer>
         {/* <Subcontainer1>
           <Button onClick={() => window.open(link)}>{page6.download}</Button>

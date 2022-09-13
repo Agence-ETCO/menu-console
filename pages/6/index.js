@@ -67,13 +67,26 @@ const Page6 = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    fetchAPI(` https://pdf.selections-sthubert.ca/save/${userID}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    /* if (state.menuId === 0) {
+      fetchCurrentUser()
+        .then((res) => {
+          if (res.franchisee_s_menu) {
+            if (res.franchisee_s_menu.id) {
+              getMenuId(res.franchisee_s_menu.id);
+            }
+          }
+          return fetchAPI(
+            ` https://pdf.selections-sthubert.ca/save/${state.menuId}`
+          );
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
 
     fetchAPI("/api/users-permissions/sendmemail")
       .then((response) => {
@@ -500,7 +513,7 @@ const Page6 = () => {
         </Subcontainer>
         <Container1>
           <Title2>
-            <span>Prochaine étape :</span> prévisualisez ou modifiez vos choix.{" "}
+            {/*  <span>Prochaine étape :</span> prévisualisez ou modifiez vos choix.{" "} */}
             <div>
               <span>Satisfait?</span> Soumettez votre carte des alcools pour
               impression.
