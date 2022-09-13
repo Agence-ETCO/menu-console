@@ -8,6 +8,7 @@ import BeerCard from "../../components/BeerCard";
 import BeerCard2 from "../../components/BeerCard2";
 import BeerCard3 from "../../components/BeerCard3";
 import WineCard from "../../components/WineCard";
+import BeerList from "../../components/BeerList";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
@@ -383,6 +384,11 @@ const Page6 = () => {
             <span>ÉDITER</span>
           </Button>
         </Link>
+        {state.selectedPack === 6 && (
+          <Subcontainer>
+            <BeerList />
+          </Subcontainer>
+        )}
         <Subcontainer>
           {beer.length === 0 ? (
             <Text>Aucun produit sélectionné</Text>
@@ -428,44 +434,50 @@ const Page6 = () => {
               ))
           )}
         </Subcontainer>
-        <Title>{option2.title}</Title>{" "}
-        <Link href={"/4"}>
-          <Button>
-            {" "}
-            <Image src={image} width={19} height={19} alt="" />
-            <span>ÉDITER</span>
-          </Button>
-        </Link>
-        <Subcontainer>
-          {craftBeer.length === 0 ? (
-            <Text>Aucun produit sélectionné</Text>
-          ) : (
-            craftBeer &&
-            craftBeer.map((option, key) => (
-              <BeerCard3
-                key={`page6_option_d_${key}`}
-                checked
-                handleCheckboxChange={() => {}}
-                value={option}
-                title={
-                  (option.attributes && option.attributes.title) || option.title
-                }
-                alcohol={
-                  (option.attributes && option.attributes.alcohol) ||
-                  option.alcohol
-                }
-                description={
-                  (option.attributes && option.attributes.descriptionFr) ||
-                  option.description
-                }
-                prices={
-                  (option.attributes && option.attributes.cost) || option.size
-                }
-                index={option.attributes && option.craftOptions.price}
-              />
-            ))
-          )}
-        </Subcontainer>
+        {state.selectedPack && state.selectedPack === 6 ? null : (
+          <>
+            <Title>{option2.title}</Title>{" "}
+            <Link href={"/4"}>
+              <Button>
+                {" "}
+                <Image src={image} width={19} height={19} alt="" />
+                <span>ÉDITER</span>
+              </Button>
+            </Link>
+            <Subcontainer>
+              {craftBeer.length === 0 ? (
+                <Text>Aucun produit sélectionné</Text>
+              ) : (
+                craftBeer &&
+                craftBeer.map((option, key) => (
+                  <BeerCard3
+                    key={`page6_option_d_${key}`}
+                    checked
+                    handleCheckboxChange={() => {}}
+                    value={option}
+                    title={
+                      (option.attributes && option.attributes.title) ||
+                      option.title
+                    }
+                    alcohol={
+                      (option.attributes && option.attributes.alcohol) ||
+                      option.alcohol
+                    }
+                    description={
+                      (option.attributes && option.attributes.descriptionFr) ||
+                      option.description
+                    }
+                    prices={
+                      (option.attributes && option.attributes.cost) ||
+                      option.size
+                    }
+                    index={option.attributes && option.craftOptions.price}
+                  />
+                ))
+              )}
+            </Subcontainer>
+          </>
+        )}
         <Title>{"Bières non alcoolisées"}</Title>{" "}
         <Link href={"/5"}>
           <Button>
