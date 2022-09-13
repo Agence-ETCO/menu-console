@@ -50,7 +50,7 @@ const WelcomePage = () => {
           <Body1>{welcomePage.body1}</Body1>
           <Date>{date}</Date>
           <Body1>{welcomePage.body2}</Body1>
-          <Body>Merci de votre collaboration, </Body>
+          <Body>Merci de votre collaboration. </Body>
         </Subcontainer>
         <Ending>
           {welcomePage.help}
