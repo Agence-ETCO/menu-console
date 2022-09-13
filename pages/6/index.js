@@ -390,7 +390,7 @@ const Page6 = () => {
           </Subcontainer>
         )}
         <Subcontainer>
-          {beer.length === 0 ? (
+          {beer.length === 0 && state.selectedPack !== 6 ? (
             <Text>Aucun produit sélectionné</Text>
           ) : (
             state.selections &&
