@@ -90,7 +90,7 @@ export const TextContainer = styled.div`
       font-weight: 400;
       font-size: 14px;
       line-height: 15px;
-      width: 90px;
+      width: 95px;
     }
     tr {
       font-family: "GTWalsheimBold";
