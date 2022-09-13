@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
-import image from "../../public/Menu.png";
+import image from "../../public/couverture.png";
 import { page1, page2 } from "../../fr";
 import {
   Container,
@@ -14,7 +14,6 @@ import {
 } from "./styled";
 
 const Page1 = () => {
-
   return (
     <>
       <Header step={1} />
