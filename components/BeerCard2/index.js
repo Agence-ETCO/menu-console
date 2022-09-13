@@ -52,7 +52,7 @@ const BeerCard2 = (props) => {
 
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
-    : props.prices;
+    : props.prices.filter((option) => option.region === "QC1");
 
   return (
     <>
