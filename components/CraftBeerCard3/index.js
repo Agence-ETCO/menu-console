@@ -215,66 +215,82 @@ const CraftBeerCard3 = (props) => {
             <Container1>
               {}
               <SubContainer1>
-                {!props.option.size && (
-                  <CheckboxContainer1
-                    checked={
-                      (isSelected(0) && isChecked(props.option)) ||
-                      props.option.size
-                    }
-                    onClick={() => handlePriceChange(0)}
-                  >
-                    <Circle /> <StyledCheckbox></StyledCheckbox>
-                  </CheckboxContainer1>
-                )}
+                {/*   {!props.option.size && ( */}
+                <CheckboxContainer1
+                  checked={
+                    (isSelected(0) && isChecked(props.option)) ||
+                    props.option.size
+                  }
+                  onClick={() => handlePriceChange(0)}
+                >
+                  <Circle /> <StyledCheckbox></StyledCheckbox>
+                </CheckboxContainer1>
+                {/*  )} */}
                 <Cell>
                   <Size
                     checked={
-                      isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0) || props.option.size)
+                      (isChecked(props.option) &&
+                        (isSelected(1) || isSelected(0))) ||
+                      props.option.size
                     }
                   >
-                    {props.option.size || "Pression 20 oz"}{" "}
-                    {props.option.size && "ml"}
+                    {/* props.option.size ||  */ "Pression 20 oz"}{" "}
+                    {/* {props.option.size && "ml"} */}
                   </Size>
-                  {!props.option.size && (
-                    <Price
-                      checked={
-                        isChecked(props.option) &&
-                        (isSelected(1) || isSelected(0))
-                      }
-                    >
-                      {props.option.attributes && prices[0] && prices[0].Price}{" "}
-                      $
-                    </Price>
-                  )}
+                  {/*   {!props.option.size && ( */}
+                  <Price
+                    checked={
+                      (isChecked(props.option) &&
+                        (isSelected(1) || isSelected(0))) ||
+                      props.option.size
+                    }
+                  >
+                    {props.option.size
+                      ? "11,75"
+                      : props.option.attributes &&
+                        prices[0] &&
+                        prices[0].Price}{" "}
+                    $
+                  </Price>
+                  {/*   )} */}
                 </Cell>
               </SubContainer1>
               <SubContainer1>
-                {!props.option.size && (
-                  <CheckboxContainer1
-                    checked={isSelected(1) && isChecked(props.option)}
-                    onClick={() => handlePriceChange(1)}
-                  >
-                    <Circle />
-                    <StyledCheckbox></StyledCheckbox>
-                  </CheckboxContainer1>
-                )}
+                {/* {!props.option.size && ( */}
+                <CheckboxContainer1
+                  checked={
+                    (isSelected(1) && isChecked(props.option)) ||
+                    props.option.size
+                  }
+                  onClick={() => handlePriceChange(1)}
+                >
+                  <Circle />
+                  <StyledCheckbox></StyledCheckbox>
+                </CheckboxContainer1>
+                {/*    )} */}
                 <Cell>
                   <Size
                     checked={
-                      isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0))
+                      (isChecked(props.option) &&
+                        (isSelected(1) || isSelected(0))) ||
+                      props.option.size
                     }
                   >
                     {"Pichet 60 oz"}
                   </Size>
                   <Price
                     checked={
-                      isChecked(props.option) &&
-                      (isSelected(1) || isSelected(0))
+                      (isChecked(props.option) &&
+                        (isSelected(1) || isSelected(0))) ||
+                      props.option.size
                     }
                   >
-                    {props.option.attributes && prices[1] && prices[1].Price} $
+                    {props.option.size
+                      ? "29,00"
+                      : props.option.attributes &&
+                        prices[1] &&
+                        prices[1].Price}{" "}
+                    $
                   </Price>
                 </Cell>
               </SubContainer1>
