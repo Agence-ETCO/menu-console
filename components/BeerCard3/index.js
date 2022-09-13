@@ -23,7 +23,7 @@ const BeerCard3 = (props) => {
   const format = () => {
     if (props.prices && props.index && props.index[1]) {
       if (props.prices[props.index[1]].size.includes("20")) {
-        return "Pression  20 oz";
+        return "Pression 20 oz";
       } else {
         return "Pichet 60 oz";
       }
