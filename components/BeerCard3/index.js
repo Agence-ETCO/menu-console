@@ -61,15 +61,18 @@ const BeerCard3 = (props) => {
                           pricesForRegion[props.index[0]].size.includes("20")
                           ? "Pression  20 oz"
                           : "Pichet 60 oz"
-                        : `${props.prices} ml`}
+                        : "Pression  20 oz"}
                     </th>
-                    <th scope="col">{props.index ? format() : ""}</th>
+                    <th scope="col">
+                      {props.index ? format() : "Pichet 60 oz"}
+                    </th>
                   </tr>
                   <tr>
                     <td>
                       {props.prices &&
                         props.index &&
                         pricesForRegion[props.index[0]].Price}
+                      {!props.index && "11,75 $"}
                       {props.prices &&
                         props.index &&
                         pricesForRegion[props.index[0]] &&
@@ -80,6 +83,7 @@ const BeerCard3 = (props) => {
                         props.index &&
                         props.index[1] &&
                         pricesForRegion[props.index[1]].Price}
+                      {!props.index && "29,00 $"}
                       {props.prices &&
                         props.index &&
                         props.index[1] &&

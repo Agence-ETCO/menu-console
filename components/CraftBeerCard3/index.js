@@ -178,8 +178,8 @@ const CraftBeerCard3 = (props) => {
                 props.option.description}{" "}
               (
               {(props.option.attributes && props.option.attributes.alcohol) ||
-                props.option.alcohol}
-              )
+                props.option.alcohol}{" "}
+              {props.option.alcohol && " %"})
             </Title>
             <div>
               {" "}

@@ -55,6 +55,16 @@ const DropDown = ({ options, disabled, order }) => {
       type,
       size: format,
       alcohol,
+      cost: [
+        {
+          Price: "11,75",
+          size: "Glass 20 oz",
+        },
+        {
+          Price: "29,00",
+          size: "Pitcher",
+        },
+      ],
     };
     if (order === "01") {
       addMicro01(data);
