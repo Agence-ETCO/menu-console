@@ -126,8 +126,10 @@ const WineCard = (props) => {
                 </tr>
                 {pricesForRegion.length > 0 && (
                   <tr>
-                    <td> {pricesForRegion[0].Price} $</td>
-                    <td>{pricesForRegion[1].Price} $</td>
+                    <td></td>
+                    <td></td>
+                    {/* <td> {pricesForRegion[0].Price} $</td>
+                    <td>{pricesForRegion[1].Price} $</td> */}
                     <td>{pricesForRegion[2].Price} $</td>
                   </tr>
                 )}
