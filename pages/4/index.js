@@ -5,7 +5,7 @@ import BeerCard from "../../components/BeerCard";
 import BeerCard4 from "../../components/BeerCard4";
 import DropDown from "../../components/DropDown";
 import { AppContext } from "../../context/AppContext";
-import { putAPI, fetchCurrentUser, fetchAPI } from "../../lib/api";
+import { putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { getUser } from "../../lib/store";
 import { beerList, page4, footer } from "../../fr";
@@ -242,7 +242,7 @@ const Page4 = () => {
         console.log(err);
       });
     const beerPack = { nbrOfKegs: state.selectedPack };
-    putAPI(`api/users-permissions/updateme`, beerPack)
+    putAPI1(`api/users-permissions/updateme`, beerPack)
       .then((response) => {
         console.log(response);
       })
