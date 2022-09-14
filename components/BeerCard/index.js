@@ -101,12 +101,12 @@ const BeerCard = (props) => {
                       {pricesForRegion[0] && "$"} */}
                     </td>
                     <td>
-                      {pricesForRegion[1] && pricesForRegion[1].Price}{" "}
-                      {pricesForRegion[1] && "$"}
-                    </td>
-                    <td>
                       {pricesForRegion[2] && pricesForRegion[2].Price}{" "}
                       {pricesForRegion[2] && "$"}
+                    </td>
+                    <td>
+                      {pricesForRegion[1] && pricesForRegion[1].Price}{" "}
+                      {pricesForRegion[1] && "$"}
                     </td>
                   </tr>
                 )}
