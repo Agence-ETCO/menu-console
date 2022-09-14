@@ -54,7 +54,19 @@ const CraftList = (props) => {
       type,
       size: format,
       alcohol,
+      cost: [
+        {
+          Price: "11,75",
+          size: "Glass 20 oz",
+        },
+        {
+          Price: "29,00",
+          size: "Pitcher",
+        },
+      ],
     };
+
+    console.log(data);
     if (props.order === "01") {
       if (state.micro1 && state.micro1.id) {
         removeSelection(state.micro1.id);
