@@ -156,7 +156,7 @@ const Page2 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  
   return (
     <>
       <Header step={2} />

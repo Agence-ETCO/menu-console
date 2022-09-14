@@ -97,16 +97,16 @@ const BeerCard = (props) => {
                 {pricesForRegion.length > 0 && (
                   <tr>
                     <td>
+                      {/* {pricesForRegion[0] && pricesForRegion[0].Price}{" "}
+                      {pricesForRegion[0] && "$"} */}
+                    </td>
+                    <td>
                       {pricesForRegion[0] && pricesForRegion[0].Price}{" "}
                       {pricesForRegion[0] && "$"}
                     </td>
                     <td>
                       {pricesForRegion[1] && pricesForRegion[1].Price}{" "}
                       {pricesForRegion[1] && "$"}
-                    </td>
-                    <td>
-                      {pricesForRegion[2] && pricesForRegion[2].Price}{" "}
-                      {pricesForRegion[2] && "$"}
                     </td>
                   </tr>
                 )}

@@ -3,7 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    unoptimized: true
+    unoptimized: true,
+    domains: ['www.saq.com']
   },
   compiler: {
     styledComponents: true,

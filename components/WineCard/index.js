@@ -72,6 +72,7 @@ const WineCard = (props) => {
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
     : props.prices;
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -126,9 +127,11 @@ const WineCard = (props) => {
                 </tr>
                 {pricesForRegion.length > 0 && (
                   <tr>
-                    <td> {pricesForRegion[0].Price} $</td>
-                    <td>{pricesForRegion[1].Price} $</td>
-                    <td>{pricesForRegion[2].Price} $</td>
+                    <td></td>
+                    <td></td>
+                    {/* <td> {pricesForRegion[0].Price} $</td>
+                    <td>{pricesForRegion[1].Price} $</td> */}
+                    <td>{pricesForRegion[0].Price} $</td>
                   </tr>
                 )}
               </tbody>

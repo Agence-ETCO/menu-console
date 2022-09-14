@@ -12,7 +12,7 @@ import BeerList from "../../components/BeerList";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
-import { fetchCurrentUser, fetchAPI } from "../../lib/api";
+import { putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 import { page2, page3, beerList, option2, footer } from "../../fr";
 import {
@@ -95,7 +95,16 @@ const Page6 = () => {
           console.log(err);
         });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    const status = { isSubmitted: true };
+
+    putAPI1(`api/users-permissions/updateme`, status)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     fetchAPI("/api/users-permissions/sendmemail")
       .then((response) => {
