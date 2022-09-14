@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import Help from "../../components/Help";
@@ -20,6 +21,13 @@ import {
 const WelcomePage = () => {
   const [showHelp, setShowHelp] = useState(false);
   const [userUid, setUserUid] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
 
   useEffect(() => {
     const user = getUser();

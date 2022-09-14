@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import image from "../../public/couverture.png";
@@ -14,6 +15,14 @@ import {
 } from "./styled";
 
 const Page1 = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
+
   return (
     <>
       <Header step={1} />

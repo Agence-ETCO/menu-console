@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
@@ -49,6 +50,14 @@ const Page5 = () => {
       (option.attributes && option.attributes.category === "Non-Alcoholic") ||
       option.category === "Non-Alcoholic"
   );
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
 
   useEffect(() => {
     if (state.data.length === 0) {

@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import { page6 } from "../../fr";
 import useUserID from "../../lib/useUserID";
@@ -13,6 +14,12 @@ import {
 } from "./styled";
 
 const Page7 = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
+
   const userID = useUserID();
 
   const link = userID

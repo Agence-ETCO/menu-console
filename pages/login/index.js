@@ -39,6 +39,7 @@ const Page = () => {
     }
     if (res.isSubmitted === true) {
       router.push("/9");
+      localStorage.setItem("isSubmitted", true);
     } else {
       router.push("/");
     }
