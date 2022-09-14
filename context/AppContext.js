@@ -54,6 +54,7 @@ const reducer = (state, action) => {
         selections: state.selections.filter(
           (selection) =>
             selection.attributes &&
+            selection.attributes.category &&
             selection.attributes.category !== action.value
         ),
       };
