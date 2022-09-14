@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import Help from "../../components/Help";
+import { useRouter } from "next/router";
 import { welcomePage } from "../../fr";
 import { getUser } from "../../lib/store";
 import {
@@ -20,6 +21,19 @@ import {
 const WelcomePage = () => {
   const [showHelp, setShowHelp] = useState(false);
   const [userUid, setUserUid] = useState(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   useEffect(() => {
     const user = getUser();
