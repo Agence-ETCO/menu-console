@@ -21,8 +21,9 @@ const Page = () => {
     setUser(user);
 
     const res = await fetchCurrentUser();
+
     if (res.franchisee_s_menu) {
-      if (res.franchisee_s_menu.id) {
+      if (res.franchisee_s_menu.data.id) {
         getMenuId(res.franchisee_s_menu.id);
       }
     } else {
@@ -33,6 +34,7 @@ const Page = () => {
       };
 
       const resMenu = await postAPI("api/franchisees-menus", data);
+
       getMenuId(resMenu.data.id);
     }
     if (res.isSubmitted === true) {

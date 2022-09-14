@@ -5,7 +5,7 @@ import BeerCard from "../../components/BeerCard";
 import BeerCard4 from "../../components/BeerCard4";
 import DropDown from "../../components/DropDown";
 import { AppContext } from "../../context/AppContext";
-import { putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
+import { putAPI, putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import Bubble from "../../components/Bubble";
 import { getUser } from "../../lib/store";
 import { beerList, page4, footer } from "../../fr";
@@ -81,7 +81,9 @@ const Page4 = () => {
       ? 4
       : state.selectedPack === 10 && isCorona
       ? 3
-      : state.selectedPack === 12
+      : state.selectedPack === 12 && isCorona
+      ? 5
+      : state.selectedPack === 12 && !isCorona
       ? 6
       : 2;
   const selection = (
@@ -114,7 +116,17 @@ const Page4 = () => {
       selections.length + num === 3
     ) {
       return false;
-    } else if (state.selectedPack === 12 && selections.length + num === 6) {
+    } else if (
+      state.selectedPack === 12 &&
+      !isCorona &&
+      selections.length + num === 6
+    ) {
+      return false;
+    } else if (
+      state.selectedPack === 12 &&
+      isCorona &&
+      selections.length + num === 5
+    ) {
       return false;
     }
     return true;
@@ -137,7 +149,9 @@ const Page4 = () => {
       ? max - selections.length - 3 >= 0
       : state.selectedPack === 10 && isCorona
       ? max - selections.length - 3 >= 0
-      : state.selectedPack === 12
+      : state.selectedPack === 12 && !isCorona
+      ? max - selections.length - 3 >= 0
+      : state.selectedPack === 12 && isCorona
       ? max - selections.length - 3 >= 0
       : 2;
 
@@ -241,6 +255,7 @@ const Page4 = () => {
       .catch((err) => {
         console.log(err);
       });
+
     const beerPack = { nbrOfKegs: state.selectedPack };
     putAPI1(`api/users-permissions/updateme`, beerPack)
       .then((response) => {
@@ -420,7 +435,8 @@ const Page4 = () => {
                     <Choice>1 bière Labatt + 2 bières de microbrasserie</Choice>
                   </>
                 )}
-                {state.selectedPack === 12 && (
+
+                {state.selectedPack === 12 && !isCorona && (
                   <>
                     <Title2>IMPORTANT!</Title2>{" "}
                     <div>
@@ -429,6 +445,18 @@ const Page4 = () => {
                     </div>
                     <Choice>
                       4 bières Labatt + 2 bières de microbrasserie{" "}
+                    </Choice>
+                  </>
+                )}
+                {state.selectedPack === 12 && isCorona && (
+                  <>
+                    <Title2>IMPORTANT!</Title2>{" "}
+                    <div>
+                      {" "}
+                      <Text1>Complétez en ajoutant 5 produits :</Text1>
+                    </div>
+                    <Choice>
+                      3 bières Labatt + 2 bières de microbrasserie
                     </Choice>
                   </>
                 )}
@@ -461,7 +489,7 @@ const Page4 = () => {
                 </div>
               </Subcontainer1>
               <Subcontainer2>
-                {state.selectedPack === 10 &&
+                {(state.selectedPack === 10 || state.selectedPack === 12) &&
                   isCorona &&
                   [preselect1].map((option) => (
                     <BeerCard4

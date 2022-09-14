@@ -72,8 +72,7 @@ const WineCard = (props) => {
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
     : props.prices;
-    console.log('pricesForRegion', pricesForRegion);
-    console.log('region', region);
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
