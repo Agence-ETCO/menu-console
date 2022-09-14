@@ -54,6 +54,20 @@ const Page4 = () => {
     },
   } = useContext(AppContext);
 
+  const router = useRouter();
+
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const buttons2 = [6, 8, 10, 12];
 
   const [counter, setCounter] = useState(0);

@@ -50,6 +50,20 @@ const Page3 = () => {
   );
   const limit = max - selections.length - 1 >= 0;
 
+  const router = useRouter();
+
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   useEffect(() => {
     if (state.data.length === 0) {
       fetchAPI("/api/menu-items?populate=deep")

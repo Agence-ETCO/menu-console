@@ -33,6 +33,19 @@ const Page5 = () => {
       removePack,
     },
   } = useContext(AppContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const min = 0;
   const max = 2;
   const [counter, setCounter] = useState(0);

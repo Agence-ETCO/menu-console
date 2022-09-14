@@ -53,7 +53,7 @@ export const Date = styled.span`
   color: #e30826;
 `;
 export const Contact = styled.span`
-  ont-family: "GTWalsheimRegular";
+  font-family: "GTWalsheimRegular";
   font-style: normal;
   font-weight: 400;
   font-size: 19px;
@@ -62,6 +62,7 @@ export const Contact = styled.span`
   text-decoration: underline;
   cursor: pointer;
 `;
+
 export const DateLimit = styled.span`
   font-family: "GTWalsheimMedium";
   font-weight: 600;
@@ -70,6 +71,7 @@ export const DateLimit = styled.span`
   margin-top: 30px;
   display: inline-block;
 `;
+
 export const Ending = styled.div`
   font-family: "GTWalsheimRegular";
   font-style: normal;

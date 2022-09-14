@@ -47,6 +47,17 @@ const Page6 = () => {
   const userID = useUserID();
   const step = 6;
 
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const beer =
     state.selections &&
     state.selections.filter(

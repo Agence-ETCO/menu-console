@@ -20,6 +20,18 @@ const Page8 = () => {
   const userID = useUserID();
   const router = useRouter();
 
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const handleClick = async () => {
     fetchAPI(` https://pdf.selections-sthubert.ca/save/${userID}`)
       .then((response) => {

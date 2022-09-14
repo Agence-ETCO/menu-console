@@ -14,7 +14,19 @@ import {
 
 const Page7 = () => {
   const userID = useUserID();
+  const router = useRouter();
 
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const link = userID
     ? ` https://pdf.selections-sthubert.ca/preview/${userID}`
     : ` https://pdf.selections-sthubert.ca/preview/1`;

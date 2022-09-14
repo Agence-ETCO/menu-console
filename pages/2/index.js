@@ -48,6 +48,20 @@ const Page2 = () => {
   );
   const limit = max - selections.length - 1 >= 0;
 
+  const router = useRouter();
+
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((response) => {
+        if (response.isSubmitted === true) {
+          router.push("/9");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   useEffect(() => {
     const user = getUser();
     if (user) {
@@ -156,7 +170,7 @@ const Page2 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <>
       <Header step={2} />

@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     unoptimized: true,
-    domains: ['www.saq.com']
+    domains: ["www.saq.com"],
   },
   compiler: {
     styledComponents: true,
@@ -12,21 +12,22 @@ const nextConfig = {
   trailingSlash: true,
   exportPathMap: async function () {
     const paths = {
-      '/': { page: '/' },
-      '/1': { page: '/1' },
-      '/2': { page: '/2' },
-      '/3': { page: '/3' },
-      '/4': { page: '/4' },
-      '/5': { page: '/5' },
-      '/6': { page: '/6' },
-      '/7': { page: '/7' },
-      '/8': { page: '/8' },
-      '/login': { page: '/login' },
-      '/WelcomePage': { page: '/WelcomePage' },
-      '/login-test': { page: '/login-test' },
+      "/": { page: "/" },
+      "/1": { page: "/1" },
+      "/2": { page: "/2" },
+      "/3": { page: "/3" },
+      "/4": { page: "/4" },
+      "/5": { page: "/5" },
+      "/6": { page: "/6" },
+      "/7": { page: "/7" },
+      "/8": { page: "/8" },
+      "/9": { page: "/9" },
+      "/login": { page: "/login" },
+      "/WelcomePage": { page: "/WelcomePage" },
+      "/login-test": { page: "/login-test" },
     };
     return paths;
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
