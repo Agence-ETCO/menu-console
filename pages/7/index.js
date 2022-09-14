@@ -14,6 +14,7 @@ import {
 } from "./styled";
 
 const Page7 = () => {
+  const router = useRouter();
   useEffect(() => {
     if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
       router.push("/9");
