@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard2 from "../../components/BeerCard2";
@@ -46,6 +47,7 @@ const Page5 = () => {
         console.log(err);
       });
   }, []);
+
   const min = 0;
   const max = 2;
   const [counter, setCounter] = useState(0);

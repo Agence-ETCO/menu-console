@@ -1,6 +1,8 @@
 import React, { useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import { page6 } from "../../fr";
+import { fetchCurrentUser } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 import {
   Container,
@@ -27,6 +29,7 @@ const Page7 = () => {
         console.log(err);
       });
   }, []);
+
   const link = userID
     ? ` https://pdf.selections-sthubert.ca/preview/${userID}`
     : ` https://pdf.selections-sthubert.ca/preview/1`;

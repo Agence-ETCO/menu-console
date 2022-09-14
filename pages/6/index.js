@@ -58,6 +58,7 @@ const Page6 = () => {
         console.log(err);
       });
   }, []);
+
   const beer =
     state.selections &&
     state.selections.filter(

@@ -13,7 +13,7 @@ import {
   StyledLink,
   CloseButton,
 } from "./styled";
-import { fetchAPI } from "../../lib/api";
+import { fetchAPI, fetchCurrentUser } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 
 const Page8 = () => {
