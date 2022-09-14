@@ -23,7 +23,7 @@ const Page = () => {
     const res = await fetchCurrentUser();
 
     if (res.franchisee_s_menu) {
-      if (res.franchisee_s_menu.data.id) {
+      if (res.franchisee_s_menu.id) {
         getMenuId(res.franchisee_s_menu.id);
       }
     } else {
