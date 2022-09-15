@@ -193,7 +193,7 @@ const CraftBeerCard3 = (props) => {
                 props.option.type}{" "}
             </Type>
             {isChecked(props.option) &&
-              !(isSelected(1) || isSelected(0) || props.option.size) && (
+              !(isSelected(1) || isSelected(0) || props.option.type) && (
                 <>
                   <Container2>
                     <span style={{ color: "#F5BA18" }}>
@@ -203,10 +203,10 @@ const CraftBeerCard3 = (props) => {
                 </>
               )}
             <Format
-              checked={isSelected(1) || isSelected(0) || props.option.size}
+              checked={isSelected(1) || isSelected(0) || props.option.type}
             >
               {isChecked(props.option) &&
-              !(isSelected(1) || isSelected(0) || props.option.size) ? (
+              !(isSelected(1) || isSelected(0) || props.option.type) ? (
                 <span>CHOISIR VOTRE FORMAT</span>
               ) : (
                 "FORMATS OFFERTS"
@@ -219,7 +219,7 @@ const CraftBeerCard3 = (props) => {
                 <CheckboxContainer1
                   checked={
                     (isSelected(0) && isChecked(props.option)) ||
-                    props.option.size
+                    props.option.type
                   }
                   onClick={() => handlePriceChange(0)}
                 >
@@ -231,7 +231,7 @@ const CraftBeerCard3 = (props) => {
                     checked={
                       (isChecked(props.option) &&
                         (isSelected(1) || isSelected(0))) ||
-                      props.option.size
+                      props.option.type
                     }
                   >
                     {/* props.option.size ||  */ "Pression 20 oz"}{" "}
@@ -242,10 +242,10 @@ const CraftBeerCard3 = (props) => {
                     checked={
                       (isChecked(props.option) &&
                         (isSelected(1) || isSelected(0))) ||
-                      props.option.size
+                      props.option.type
                     }
                   >
-                    {props.option.size
+                    {props.option.type
                       ? "11,75"
                       : props.option.attributes &&
                         prices[0] &&
@@ -260,7 +260,7 @@ const CraftBeerCard3 = (props) => {
                 <CheckboxContainer1
                   checked={
                     (isSelected(1) && isChecked(props.option)) ||
-                    props.option.size
+                    props.option.type
                   }
                   onClick={() => handlePriceChange(1)}
                 >
@@ -273,7 +273,7 @@ const CraftBeerCard3 = (props) => {
                     checked={
                       (isChecked(props.option) &&
                         (isSelected(1) || isSelected(0))) ||
-                      props.option.size
+                      props.option.type
                     }
                   >
                     {"Pichet 60 oz"}
@@ -282,10 +282,10 @@ const CraftBeerCard3 = (props) => {
                     checked={
                       (isChecked(props.option) &&
                         (isSelected(1) || isSelected(0))) ||
-                      props.option.size
+                      props.option.type
                     }
                   >
-                    {props.option.size
+                    {props.option.type
                       ? "29,00"
                       : props.option.attributes &&
                         prices[1] &&
