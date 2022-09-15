@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Container = styled.div`
-  padding-left: 30px;
+  padding-left: 25px;
   padding-right: 60px;
   padding-bottom: 274px;
   max-width: 1450px;
