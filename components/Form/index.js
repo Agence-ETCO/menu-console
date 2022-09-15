@@ -90,7 +90,7 @@ const Form = ({
             </div>
           </Label> */}
           <Label>
-            {" Taux d'alcool*"}
+            {" Taux d'alcool"}
             <div>
               <InputSmall
                 name="alcohol"
