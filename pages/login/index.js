@@ -41,6 +41,9 @@ const Page = () => {
       router.push("/9");
       localStorage.setItem("isSubmitted", true);
     } else {
+      if (localStorage.getItem("isSubmitted")) {
+        localStorage.removeItem("isSubmitted");
+      }
       router.push("/");
     }
   };
