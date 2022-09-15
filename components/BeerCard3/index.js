@@ -42,9 +42,9 @@ const BeerCard3 = (props) => {
           <StyledCheckbox></StyledCheckbox>
         </CheckboxContainer>
         <SubContainer>
-          <ImageContainer>
+          {/* <ImageContainer>
             <Image src={image} width={104} height={210} alt="" />
-          </ImageContainer>
+          </ImageContainer> */}
           <TextContainer checked={props.checked}>
             <div>
               {props.title} ({props.alcohol} {!props.index && " %"})

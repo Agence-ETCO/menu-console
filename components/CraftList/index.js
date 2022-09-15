@@ -66,7 +66,7 @@ const CraftList = (props) => {
       ],
     };
 
-    console.log(data);
+  ;
     if (props.order === "01") {
       if (state.micro1 && state.micro1.id) {
         removeSelection(state.micro1.id);

@@ -51,31 +51,44 @@ const BeerCard4 = (props) => {
               <tbody>
                 {pricesForRegion.length > 0 && (
                   <tr>
-                    <th scope="col">{getFormat(pricesForRegion[0].size)}</th>
-                    <th scope="col">
-                      {pricesForRegion[1] && getFormat(pricesForRegion[1].size)}
-                    </th>
-                    <th scope="col">
-                      {pricesForRegion[2] && getFormat(pricesForRegion[2].size)}
-                    </th>
+                    <th scope="col">Bouteille / Cannette</th>
+                    <th scope="col">Pression 20 oz</th>
+                    <th scope="col">Pichet 60 oz</th>
                   </tr>
                 )}
-                {pricesForRegion.length > 0 && (
-                  <tr>
-                    <td>
-                      {pricesForRegion[0].Price}{" "}
-                      {pricesForRegion[0] && pricesForRegion[0].Price && " $"}
-                    </td>
-                    <td>
-                      {pricesForRegion[1] && pricesForRegion[1].Price}
-                      {pricesForRegion[1] && " $"}
-                    </td>
-                    <td>
-                      {pricesForRegion[2] && pricesForRegion[2].Price}
-                      {pricesForRegion[2] && " $"}
-                    </td>
-                  </tr>
-                )}
+                {pricesForRegion.length > 0 &&
+                  (pricesForRegion.length === 3 ? (
+                    <tr>
+                      <td>
+                        {pricesForRegion[0].Price}{" "}
+                        {pricesForRegion[0] && pricesForRegion[0].Price && " $"}
+                      </td>
+                      <td>
+                        {pricesForRegion[1].Price}{" "}
+                        {pricesForRegion[1] && pricesForRegion[1].Price && " $"}
+                      </td>
+                      <td>
+                        {pricesForRegion[2].Price}{" "}
+                        {pricesForRegion[2] && pricesForRegion[2].Price && " $"}
+                      </td>
+                    </tr>
+                  ) : (
+                    <tr>
+                      <td>
+                        {/*  {pricesForRegion[0].Price}{" "}
+                      {pricesForRegion[0] && pricesForRegion[0].Price && " $"} */}
+                      </td>
+
+                      <td>
+                        {pricesForRegion[0] && pricesForRegion[0].Price}
+                        {pricesForRegion[0] && " $"}
+                      </td>
+                      <td>
+                        {pricesForRegion[1] && pricesForRegion[1].Price}
+                        {pricesForRegion[1] && " $"}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
 
