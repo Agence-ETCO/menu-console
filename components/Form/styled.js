@@ -33,7 +33,8 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  bottom: 0;
+  overflow-y: scroll;
   background-color: rgba(35, 31, 32, 0.9);
   z-index: 100;
   transition: opacity 0.5s;
