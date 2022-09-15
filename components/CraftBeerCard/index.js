@@ -49,44 +49,64 @@ const CraftBeerCard = (props) => {
     return false;
   };
 
-  const handlePriceChange = (value) => {
-    props.onChange(true);
-    if (isSelected(value)) {
-      const updatedOptions = priceOptions.filter((option) => option !== value);
-      setPriceOptions(updatedOptions);
-
-      if (updatedOptions.length === 0) {
-        props.onChange(false);
-      }
-      if (props.order === "01") {
-        addMicro01({
-          ...props.option,
-          craftOptions: { id: props.option.id, price: updatedOptions },
-        });
-      } else {
-        addMicro02({
-          ...props.option,
-          craftOptions: { id: props.option.id, price: updatedOptions },
-        });
+  const checkDuplicate = (option) => {
+    if (props.order === "01") {
+      if (state.micro2 && state.micro2.id === option.id) {
+        return true;
       }
     } else {
-      setPriceOptions([...priceOptions, value]);
-      if (props.order === "01") {
-        addMicro01({
-          ...props.option,
-          craftOptions: {
-            id: props.option.id,
-            price: [...priceOptions, value],
-          },
-        });
+      if (state.micro1 && state.micro1.id === option.id) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const handlePriceChange = (value) => {
+    if (checkDuplicate(props.option)) {
+      props.onChange(false);
+      return;
+    } else {
+      props.onChange(true);
+      if (isSelected(value)) {
+        const updatedOptions = priceOptions.filter(
+          (option) => option !== value
+        );
+        setPriceOptions(updatedOptions);
+
+        if (updatedOptions.length === 0) {
+          props.onChange(false);
+        }
+        if (props.order === "01") {
+          addMicro01({
+            ...props.option,
+            craftOptions: { id: props.option.id, price: updatedOptions },
+          });
+        } else {
+          addMicro02({
+            ...props.option,
+            craftOptions: { id: props.option.id, price: updatedOptions },
+          });
+        }
       } else {
-        addMicro02({
-          ...props.option,
-          craftOptions: {
-            id: props.option.id,
-            price: [...priceOptions, value],
-          },
-        });
+        setPriceOptions([...priceOptions, value]);
+        if (props.order === "01") {
+          addMicro01({
+            ...props.option,
+            craftOptions: {
+              id: props.option.id,
+              price: [...priceOptions, value],
+            },
+          });
+        } else {
+          addMicro02({
+            ...props.option,
+            craftOptions: {
+              id: props.option.id,
+              price: [...priceOptions, value],
+            },
+          });
+        }
       }
     }
   };
@@ -95,23 +115,28 @@ const CraftBeerCard = (props) => {
     let checked =
       (props.order === "01" && state.micro1 && state.micro1.id === option.id) ||
       (props.order === "02" && state.micro2 && state.micro2.id === option.id);
-
-    if (checked) {
-      if (props.order === "01") {
-        removeMicro01(option);
-      } else {
-        removeMicro02(option);
-      }
+    if (checkDuplicate(props.option)) {
       props.onChange(false);
-      setPriceOptions([]);
+      return;
     } else {
-      props.onChange(false);
-      if (props.order === "01") {
-        addMicro01(option);
+      if (checked) {
+        if (props.order === "01") {
+          removeMicro01(option);
+        } else {
+          removeMicro02(option);
+        }
+        props.onChange(false);
         setPriceOptions([]);
       } else {
-        addMicro02(option);
-        setPriceOptions([]);
+        props.onChange(false);
+        checkDuplicate(option);
+        if (props.order === "01") {
+          addMicro01(option);
+          setPriceOptions([]);
+        } else {
+          addMicro02(option);
+          setPriceOptions([]);
+        }
       }
     }
   };

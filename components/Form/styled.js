@@ -45,7 +45,7 @@ export const BoxContainer = styled.div`
   align-items: left;
   padding-left: 95px;
   width: 639px;
-  height: 899px;
+  height: 799px;
   background-color: #ffffff;
   box-shadow: 0px 4px 91px #000000;
   border-radius: 9px;
