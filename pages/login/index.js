@@ -38,8 +38,12 @@ const Page = () => {
       getMenuId(resMenu.data.id);
     }
     if (res.isSubmitted === true) {
-      router.push("/7");
+      router.push("/9");
+      localStorage.setItem("isSubmitted", true);
     } else {
+      if (localStorage.getItem("isSubmitted")) {
+        localStorage.removeItem("isSubmitted");
+      }
       router.push("/");
     }
   };

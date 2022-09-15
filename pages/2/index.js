@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
@@ -29,6 +30,14 @@ const Page2 = () => {
       getMenuId,
     },
   } = useContext(AppContext);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
 
   const min = 1;
   const [counter, setCounter] = useState(0);
@@ -156,7 +165,7 @@ const Page2 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   return (
     <>
       <Header step={2} />

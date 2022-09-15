@@ -62,6 +62,12 @@ const Page6 = () => {
         option.category === "Non-Alcoholic"
     );
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
+
   const handleClick = () => {
     setShowAlert(true);
   };

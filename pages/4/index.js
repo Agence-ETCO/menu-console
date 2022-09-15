@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
@@ -55,7 +56,7 @@ const Page4 = () => {
   } = useContext(AppContext);
 
   const buttons2 = [6, 8, 10, 12];
-
+  const router = useRouter();
   const [counter, setCounter] = useState(0);
 
   const [craftSelections, setCraftSelections] = useState([]);
@@ -161,6 +162,12 @@ const Page4 = () => {
     removeMicro02();
     addPack(item);
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && localStorage.getItem("isSubmitted")) {
+      router.push("/9");
+    }
+  }, []);
 
   useEffect(() => {
     const craft =
