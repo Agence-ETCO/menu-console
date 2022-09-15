@@ -7,7 +7,7 @@ export const Subcontainer = styled.div`
   display: flex;
   flex-directon: row;
   margin-top: 60px;
-  padding-left: 60px;
+  padding-left: 30px;
   padding-right: 80px;
   margin-right: 10px;
   max-width: 1480px;
@@ -47,6 +47,7 @@ export const Container1 = styled.div`
   width: 700px;
   padding-bottom: 35px;
   border-bottom: 1px solid #939598;
+  margin-left: 30px;
 `;
 
 export const Subcontainer1 = styled.div`

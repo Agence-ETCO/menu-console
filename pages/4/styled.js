@@ -24,7 +24,7 @@ export const Title1 = styled.div`
   font-weight: 700;
   font-size: 27px;
   line-height: 25px;
-  margin-left: 30px;
+ /*  margin-left: 30px; */
 `;
 
 export const SubTitle = styled.div`
@@ -33,7 +33,7 @@ export const SubTitle = styled.div`
   font-weight: 400;
   font-size: 17px;
   line-height: 23px;
-  margin-left: 30px;
+  /* margin-left: 30px; */
   width: 630px;
   margin-top: 30px;
   padding-bottom: 35px;
@@ -52,7 +52,7 @@ export const SubTitle1 = styled.div`
 `;
 
 export const Container = styled.div`
-  margin-left: 60px;
+  margin-left: 30px;
   margin-right: 60px;
   min-height: 100vh;
   padding-bottom: 200px;

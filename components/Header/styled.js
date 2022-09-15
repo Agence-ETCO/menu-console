@@ -22,7 +22,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: ${colors.black};
-  margin-right: 60px;
+  margin-right: 75px;
   margin-left: 60px;
 `;
 
