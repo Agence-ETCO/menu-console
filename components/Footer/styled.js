@@ -24,7 +24,7 @@ export const StyledLink = styled.button`
   padding-left: 10px;
   padding-right: 10px;
   height: 69px;
-  border: 0;
+  border: 3px solid ${colors.black};
   border-radius: 9px;
   font-family: "GTWalsheimBold";
   font-style: normal;
@@ -44,6 +44,10 @@ export const StyledLink = styled.button`
   }
   :disabled {
     opacity: 0.3;
+  }
+  :hover:enabled  {
+    color: ${colors.black};
+    background-color: ${colors.yellow};
   }
 `;
 

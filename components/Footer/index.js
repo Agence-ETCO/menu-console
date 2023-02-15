@@ -42,7 +42,7 @@ const Footer = (props) => {
 
         {props.stage && (
           <Stage>
-            <div>PROCHAINE ÉTAPE</div>
+            <div>PROCHAINE ÉTAPE:</div>
             <Select1>
               <Vector />
               <span>{props.stage}</span>
