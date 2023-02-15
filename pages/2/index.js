@@ -14,6 +14,7 @@ import {
   SubTitle,
 } from "./styled";
 import { getUser } from "../../lib/store";
+import Legend from "../../components/Legend";
 
 const Page2 = () => {
   const {
@@ -165,8 +166,7 @@ const Page2 = () => {
           <div>
             <Title>{page2.title} </Title>
             <SubTitle>
-              Choisissez parmi les <span>{quantity} vins blancs Cellier</span>
-              offerts
+              Choisissez parmi les vins blancs Cellier disponibles.
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />
@@ -202,6 +202,7 @@ const Page2 = () => {
                 />
               ))}
         </Subcontainer2>
+        <Legend/>
       </Container>
 
       <Footer

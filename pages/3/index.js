@@ -160,8 +160,7 @@ const Page3 = () => {
           <div>
             <Title>{page3.title}</Title>
             <SubTitle>
-              Choisissez parmi les <span>{quantity} vins rouges Cellier</span>
-              offerts
+              Choisissez parmi les vins rouges Cellier disponibles.
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />

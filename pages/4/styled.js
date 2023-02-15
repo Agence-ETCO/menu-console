@@ -41,8 +41,8 @@ export const SubTitle = styled.div`
 `;
 export const SubTitle1 = styled.div`
   color: ${colors.black};
-  font-family: "InterBold";
-  font-weight: 700;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
   font-size: 21px;
   line-height: 27px;
   width: 500px;
