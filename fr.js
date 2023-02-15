@@ -1,5 +1,5 @@
 export const welcomePage = {
-  greeting: "Bonjour Rôtisserie",
+  greeting: "Bonjour!",
   title: "Créons ensemble votre nouvelle carte des alcools",
   body: "Afin de rehausser votre offre et d'offrir une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les produits pour personnaliser votre carte des alcools.",
   dateLimite: "IMPORTANT :",
@@ -8,7 +8,7 @@ export const welcomePage = {
     "afin de vous assurer d'obtenir votre carte des alcools dans les délais prévus.",
   help: "Besoin d'aide?",
   contact: "Contactez-nous",
-  buttonText: "débuter",
+  buttonText: "commencer",
 };
 
 export const page1 = {
@@ -63,6 +63,14 @@ export const alertBox = {
 export const nav = {
   help: "besoin d'aide?",
   language: "english",
+};
+
+export const header = {
+  user: "Rôtisserie 456"
+};
+
+export const legend = {
+  title: "légende"
 };
 
 export const footer = {
