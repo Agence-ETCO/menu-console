@@ -49,3 +49,20 @@ export const Nav = styled.nav`
     }
   }
 `;
+
+export const User = styled.div`
+  font-family: 'GTWalsheimRegular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  /* Gris */
+
+  color: #939598;
+  margin-left: 50px;
+  margin-right: 50px;
+`;

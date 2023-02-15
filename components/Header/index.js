@@ -3,10 +3,10 @@ import Link from "next/link";
 import Logo from "../Logo";
 import Stepper from "../Stepper";
 import Help from "../Help";
-import { Container, HeaderContainer, Nav, Container1 } from "./styled";
-import { nav } from "../../fr";
+import { Container, HeaderContainer, Nav, Container1, User } from "./styled";
+import { nav, header } from "../../fr";
 
-const Header = ({ step }) => {
+const Header = ({ step, userUid }) => {
   const [showHelp, setShowHelp] = useState(false);
 
   const handleClick = () => {
@@ -18,7 +18,6 @@ const Header = ({ step }) => {
       <Container1>
         <Container>
           <Logo />
-
           <Help showHelp={showHelp} handleClick={handleClick} />
           <Nav>
             <ul>
@@ -30,6 +29,7 @@ const Header = ({ step }) => {
               </Link>
             </ul> */}
           </Nav>
+          <User>{header.user} {userUid}</User>
         </Container>
       </Container1>
       {step && <Stepper step={step} />}
