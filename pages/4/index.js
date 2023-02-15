@@ -558,7 +558,6 @@ const Page4 = () => {
       </Main>
       <Footer
         first={state.selectedPack < 6}
-        selection={selection}
         returnButtonText={footer.return}
         returnHref={"/3"}
         buttonText={footer.buttonText}

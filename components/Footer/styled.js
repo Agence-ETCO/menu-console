@@ -17,8 +17,8 @@ export const Button = styled.button`
 `;
 
 export const StyledLink = styled.button`
-  color: ${colors.yellow};
-  background-color: ${colors.black};
+  color: ${colors.black};
+  background-color: ${colors.yellow};
   min-width: 260px;
   width: auto;
   padding-left: 10px;
@@ -46,8 +46,8 @@ export const StyledLink = styled.button`
     opacity: 0.3;
   }
   :hover:enabled  {
-    color: ${colors.black};
-    background-color: ${colors.yellow};
+    color: ${colors.yellow};
+    background-color: ${colors.black};
   }
 `;
 

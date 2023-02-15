@@ -202,7 +202,6 @@ const Page5 = () => {
         buttonText={footer.buttonText}
         href={"/6"}
         stage={"RÉSUMÉ"}
-        selection={selection}
         handleClick={handleClick}
       />
     </>

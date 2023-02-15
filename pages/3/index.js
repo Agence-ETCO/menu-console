@@ -201,7 +201,6 @@ const Page3 = () => {
         returnHref={"/2"}
         buttonText={page3.buttonText}
         href={"/4"}
-        selection={selection}
         stage={"BIÈRES EN FÛT"}
         handleClick={handleClick}
         disabled={counter < min}

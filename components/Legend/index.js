@@ -11,7 +11,7 @@ const Legend = (props) => {
   return (
     <>
     <div>
-      <h1>Hello word
+      <h1>
       </h1>
       <Container>
       <SubContainer>

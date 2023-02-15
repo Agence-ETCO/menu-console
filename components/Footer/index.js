@@ -38,7 +38,6 @@ const Footer = (props) => {
             </StyledLink>
           </Link>
         )}
-        {props.selection && <Select>{props.selection}</Select>}
 
         {props.stage && (
           <Stage>
