@@ -33,15 +33,15 @@ const WelcomePage = () => {
     setShowHelp(!showHelp);
   };
 
-  const date = "20 septembre 2022";
+  const date = "15 mars 2023";
 
   return (
     <>
-      <Header step={-1} />
+      <Header step={-1} user={userUid} />
       <Container>
         <Help showHelp={showHelp} handleClick={handleClick} />
         <Greeting>
-          {welcomePage.greeting} {userUid},
+          {welcomePage.greeting}
         </Greeting>
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
@@ -64,3 +64,4 @@ const WelcomePage = () => {
 };
 
 export default WelcomePage;
+ 
