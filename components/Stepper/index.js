@@ -34,7 +34,27 @@ const Stepper = (props) => {
           href={state.previousStep >= element ? `/${element}` : ""}
           key={`link_${key}`}
         >
-          <Tooltip title={tooltips[key + 1]}>
+          <Tooltip title={tooltips[key + 1]} arrow placement="top" PopperProps={{
+            sx: {
+              "& .MuiTooltip-tooltip": {
+                // color: "deepskyblue",
+                fontFamily: 'GTWalsheimBold',
+                fontFtyle: 'normal',
+                fontWeight: '700',
+                fontSize: '19px',
+                lineHeight: '23px',
+                textAlign: 'center',
+                color: '#231F20;',
+                bgcolor: '#939598',
+                p: '10px'
+              },
+              "& .MuiTooltip-arrow": {
+                "&::before": {
+                  backgroundColor: "#939598",
+                }
+              }
+            }
+          }}>
             <NumberButton
               color={
                 props.step === element
