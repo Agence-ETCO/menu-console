@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     unoptimized: true,
-    domains: ['www.saq.com']
+    domains: ['www.saq.com', 'rsh.nyc3.digitaloceanspaces.com']
   },
   compiler: {
     styledComponents: true,
