@@ -202,9 +202,10 @@ const Page2 = () => {
                 />
               ))}
         </Subcontainer2>
-        <Legend/>
       </Container>
 
+      <Legend/>
+      
       <Footer
         returnButtonText={page2.return}
         returnHref={"/1"}
