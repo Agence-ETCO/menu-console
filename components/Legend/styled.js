@@ -46,3 +46,7 @@ export const Row = styled.div`
 export const Icon = styled.div`
   margin-right: 15px;
 `;
+
+export const Img = styled.img`
+  width: 30px
+`;
