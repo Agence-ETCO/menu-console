@@ -4,7 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     unoptimized: true,
-    domains: ['www.saq.com', 'rsh.nyc3.digitaloceanspaces.com']
+    domains: ['www.saq.com', 'rsh.nyc3.digitaloceanspaces.com', 'www.labatt.com', 'd2x42bnn0tswa4.cloudfront.net', 'www.gooseisland.com', 'aem.lcbo.com', 'becks.de']
   },
   compiler: {
     styledComponents: true,
@@ -20,7 +20,8 @@ const nextConfig = {
       '/5': { page: '/5' },
       '/6': { page: '/6' },
       '/7': { page: '/7' },
-      '/8': { page: '/8' },
+      // '/8': { page: '/8' },
+      // '/9': { page: '/9' },
       '/login': { page: '/login' },
       '/WelcomePage': { page: '/WelcomePage' },
       '/login-test': { page: '/login-test' },
