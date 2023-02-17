@@ -22,20 +22,28 @@ export const page1 = {
 };
 
 export const page2 = {
+  title: "Mousseux et orange",
+  select: "disponibles",
+  return: "retour",
+  buttonText: "VALIDER",
+  hintbox: "Votre choix s’ajoute à la présélection de produits que nous avons faite pour vous."
+};
+
+export const page3 = {
   title: "Vins blancs",
   select: "disponibles",
   return: "retour",
   buttonText: "VALIDER",
 };
 
-export const page3 = {
+export const page4 = {
   title: "Vins rouges",
   select: "vins rouges disponibles",
   return: "retour",
   buttonText: "CONTINUER",
 };
 
-export const page4 = {
+export const page5 = {
   title: "Bières",
   subtitle: "Veuillez sélectionner",
   body: "Sélectionnez 1 des 2 options  plus haut afin de continuer.",
