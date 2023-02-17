@@ -4,7 +4,7 @@ import { colors } from "../../constants";
 export const Container = styled.div`
   background-color: rgba(147, 149, 152,0.12);
   width: 100%;
-  padding: 65px 400px;
+  padding: 65px;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const SubContainer = styled.div`
   margin: auto;
   margin-bottom: 129px;
-  width: 80%;
+  //width: auto;
 `;
 
 export const Title = styled.div`
@@ -42,6 +42,9 @@ export const Row = styled.div`
   flex-direction: row;
   align-items: center;
   margin-bottom: 15px;
+  span {
+    white-space: nowrap;
+  }
 `;
 export const Icon = styled.div`
   margin-right: 15px;
