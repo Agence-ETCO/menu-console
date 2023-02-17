@@ -78,10 +78,10 @@ export const CloseButton = styled.button`
   background-color: transparent;
   position: absolute;
   right: 15px;
-  top: 15px;
+  //top: 15px;
 `;
 export const Title = styled.div`
-  background-color: #e30826;
+  background-color: #F5BA18;
   width: 560px;
   height: 77px;
   position: absolute;
@@ -95,7 +95,8 @@ export const Title = styled.div`
   font-weight: 700;
   font-size: 31px!important;
   line-height: 37px !important;
-  color: #ffffff !important;
+  color: #000000 !important;
   padding-top: 24px;
-  margin-bottom: 33px:
+  margin-bottom: 33px;
+  border-radius: 9px 9px 0 0;
 `;

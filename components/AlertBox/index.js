@@ -24,10 +24,7 @@ const AlertBox = (props) => {
             </Title>
             <div style={{ width: "423px", marginTop: "30px" }}>
               Une fois votre carte des alcools soumise, <br></br>
-              <span style={{ fontFamily: "GTWalsheimBold" }}>
-                vous ne pourrez plus
-              </span>{" "}
-              faire de modifications.
+              vous ne pourrez plusfaire de modifications.
             </div>
             <div>{alertBox.question}</div>
             <Button onClick={props.handleSubmit}>{alertBox.buttonText1}</Button>
