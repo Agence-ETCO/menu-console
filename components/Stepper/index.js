@@ -7,15 +7,16 @@ import Tooltip from '@mui/material/Tooltip';
 
 const tooltips = {
   1: 'Votre menu',
-  2: 'Vins blancs',
-  3: 'Vins rouges',
-  4: 'Bières',
-  5: 'Bières non alcoolisées',
-  6: 'Résumé',
+  2: 'Mousseux et orange',
+  3: 'Vins blancs',
+  4: 'Vins rouges',
+  5: 'Bières',
+  6: 'Bières non alcoolisées',
+  7: 'Résumé',
 };
 
 const Stepper = (props) => {
-  const buttonOptions = [1, 2, 3, 4, 5];
+  const buttonOptions = [1, 2, 3, 4, 5, 6];
   const { state } = useContext(AppContext);
 
   return (
@@ -69,9 +70,9 @@ const Stepper = (props) => {
           </Tooltip>
         </Link>
       ))}
-      <Link href={state.previousStep >= 5 ? "/6" : ""}>
+      <Link href={state.previousStep >= 6 ? "/7" : ""}>
         <TextButton
-          color={props.step === 6 ? `${colors.orange}` : `${colors.black}`}
+          color={props.step === 7 ? `${colors.orange}` : `${colors.black}`}
         >
           {"Résumé"}
         </TextButton>

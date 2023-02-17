@@ -1,11 +1,11 @@
 import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
+import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
-import WineCard from "../../components/WineCard";
 import { page3 } from "../../fr";
+import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import {
   Container,
   Subcontainer1,
@@ -13,7 +13,8 @@ import {
   Title,
   SubTitle,
 } from "./styled";
-import useUserID from "../../lib/useUserID";
+import { getUser } from "../../lib/store";
+import Legend from "../../components/Legend";
 
 const Page3 = () => {
   const {
@@ -22,52 +23,44 @@ const Page3 = () => {
       receiveData,
       receiveSelections,
       addPreviousStep,
-      getMenuId,
-      addPack,
-      removePack,
       receivePack,
       receiveCraftOptions,
       addMicro01,
       addMicro02,
+      getMenuId,
     },
   } = useContext(AppContext);
 
-  const min = 3;
+  const min = 1;
   const [counter, setCounter] = useState(0);
-  const userID = useUserID();
+  const [userId, setUserId] = useState(null);
 
-  const max = 6;
-  const quantity = 18;
+  const max = 3;
+  const quantity = 3;
+  const selections = state.selections.filter(
+    (option) =>
+      (option.attributes && option.attributes.category === "White Wine") ||
+      option.category === "White Wine"
+  );
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
-  const selections = state.selections.filter(
-    (option) =>
-      (option.attributes && option.attributes.category === "Red Wine") ||
-      option.category === "Red Wine"
-  );
   const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
-    if (state.data.length === 0) {
-      fetchAPI("/api/menu-items?populate=deep")
-        .then((res) => {
-          receiveData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const user = getUser();
+    if (user) {
+      setUserId(user.id);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
-      franchisee: userID,
+      franchisee: userId,
     };
 
     putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
@@ -141,8 +134,8 @@ const Page3 = () => {
   }, []);
 
   useEffect(() => {
-    if (state.previousStep < 2) {
-      addPreviousStep(2);
+    if (state.previousStep < 1) {
+      addPreviousStep(1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -152,15 +145,28 @@ const Page3 = () => {
     setCounter(updatedCounter);
   }, [selections]);
 
+  useEffect(() => {
+    if (state.data.length === 0) {
+      fetchAPI("/api/menu-items?populate=deep")
+        .then((res) => {
+          receiveData(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
     <>
       <Header step={3} />
       <Container>
         <Subcontainer1>
           <div>
-            <Title>{page3.title}</Title>
+            <Title>{page3.title} </Title>
             <SubTitle>
-              Choisissez parmi les vins rouges Cellier disponibles.
+              Choisissez parmi les vins blancs Cellier disponibles.
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />
@@ -168,22 +174,24 @@ const Page3 = () => {
         <Subcontainer2>
           {state.data &&
             state.data
-              .filter((option) => option.attributes.category === "Red Wine")
+              .filter((option) => option.attributes.category === "White Wine")
               .map((option, key) => (
                 <WineCard
                   key={`page3_option_${key}`}
                   value={option.id}
-                  title={option.attributes.title}
-                  description={option.attributes.descriptionFr}
-                  taste={option.attributes.tasteFr}
-                  location={option.attributes.location}
-                  country={option.attributes.country}
-                  sugar={option.attributes.sugar}
-                  saqCode={option.attributes.saqCode}
-                  prices={option.attributes.cost}
+                  title={option.attributes.title || option.tile}
+                  description={
+                    option.attributes.descriptionFr || option.descriptionFr
+                  }
+                  taste={option.attributes.tasteFr || option.tasteFr}
+                  location={option.attributes.location || option.location}
+                  country={option.attributes.country || option.country}
+                  sugar={option.attributes.sugar || option.sugar}
+                  saqCode={option.attributes.saqCode || option.saqCode}
+                  prices={option.attributes.cost || option.cost}
                   limit={limit}
                   option={option}
-                  imageUrl={option.attributes.imageURL}
+                  imageUrl={option.attributes.imageURL || option.imageURL}
                   isOrganic={option.attributes.isOrganic || option.isOrganic}
                   isFromQuebec={
                     option.attributes.isFromQuebec || option.isFromQuebec
@@ -196,13 +204,15 @@ const Page3 = () => {
         </Subcontainer2>
       </Container>
 
+      <Legend/>
+
       <Footer
         returnButtonText={page3.return}
         returnHref={"/2"}
         buttonText={page3.buttonText}
-        href={"/4"}
-        stage={"BIÈRES EN FÛT"}
         handleClick={handleClick}
+        href={"/4"}
+        stage={"VINS ROUGES"}
         disabled={counter < min}
       />
     </>

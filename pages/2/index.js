@@ -2,7 +2,6 @@ import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
-import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { page2 } from "../../fr";
 import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
@@ -15,6 +14,7 @@ import {
 } from "./styled";
 import { getUser } from "../../lib/store";
 import Legend from "../../components/Legend";
+import HintBox from "../../components/HintBox";
 
 const Page2 = () => {
   const {
@@ -31,12 +31,12 @@ const Page2 = () => {
     },
   } = useContext(AppContext);
 
-  const min = 1;
+  const min = 0;
   const [counter, setCounter] = useState(0);
   const [userId, setUserId] = useState(null);
 
-  const max = 3;
-  const quantity = 3;
+  const max = 2;
+  const quantity = 2;
   const selections = state.selections.filter(
     (option) =>
       (option.attributes && option.attributes.category === "White Wine") ||
@@ -166,15 +166,15 @@ const Page2 = () => {
           <div>
             <Title>{page2.title} </Title>
             <SubTitle>
-              Choisissez parmi les vins blancs Cellier disponibles.
+              Vous souhaitez ajouter un mousseux ou un orange à votre carte? (optionnel)
             </SubTitle>
           </div>
-          <MinMax min={min} max={max} />
+          <HintBox text={page2.hintbox} />
         </Subcontainer1>
         <Subcontainer2>
           {state.data &&
             state.data
-              .filter((option) => option.attributes.category === "White Wine")
+              .filter((option) => option.attributes.category === "Orange")
               .map((option, key) => (
                 <WineCard
                   key={`page2_option_${key}`}
@@ -212,7 +212,7 @@ const Page2 = () => {
         buttonText={page2.buttonText}
         handleClick={handleClick}
         href={"/3"}
-        stage={"VINS ROUGES"}
+        stage={"VINS BLANCS"}
         disabled={counter < min}
       />
     </>

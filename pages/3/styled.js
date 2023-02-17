@@ -4,7 +4,7 @@ import { colors } from "../../constants";
 export const Container = styled.div`
   padding-left: 60px;
   padding-right: 60px;
-  padding-bottom: 274px;
+  padding-bottom: 90px;
   max-width: 1450px;
   margin-left: auto;
   margin-right: auto;
@@ -20,7 +20,6 @@ export const Subcontainer2 = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
   justify-content: left;
 
   label {
@@ -43,7 +42,6 @@ export const SubTitle = styled.div`
   font-size: 19px;
   line-height: 25px;
   margin-bottom: 45px;
-  width: 620px;
   margin-left: 30px;
 
   span {

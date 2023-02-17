@@ -1,212 +1,55 @@
 import { useEffect, useContext, useState } from "react";
 import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import BeerCard from "../../components/BeerCard";
-import BeerCard4 from "../../components/BeerCard4";
-import DropDown from "../../components/DropDown";
+import Footer from "../../components/Footer/index";
+import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import { putAPI, putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
-import Bubble from "../../components/Bubble";
-import { getUser } from "../../lib/store";
-import { beerList, page4, footer } from "../../fr";
+import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
+import WineCard from "../../components/WineCard";
+import { page4 } from "../../fr";
 import {
-  Title1,
-  SubTitle,
-  Subcontainer,
   Container,
   Subcontainer1,
   Subcontainer2,
-  Subcontainer3,
   Title,
-  ButtonContainer2,
-  StyledButton,
-  Buttons,
-  Square,
-  SubTitle1,
-  Container3,
-  Container4,
-  Main,
-  Text,
-  Text1,
-  Title2,
-  Choice,
-  Separator,
+  SubTitle,
 } from "./styled";
 import useUserID from "../../lib/useUserID";
+import Legend from "../../components/Legend";
 
 const Page4 = () => {
   const {
     state,
     actions: {
       receiveData,
-      addPreviousStep,
-      addPack,
-      removeMicro01,
-      removeMicro02,
-      filterSelections,
-      receivePack,
       receiveSelections,
+      addPreviousStep,
+      getMenuId,
+      addPack,
+      removePack,
+      receivePack,
       receiveCraftOptions,
       addMicro01,
       addMicro02,
-      getMenuId,
-      addSelection,
     },
   } = useContext(AppContext);
 
-  const buttons2 = [6, 8, 10, 12];
-
+  const min = 3;
   const [counter, setCounter] = useState(0);
-
-  const [craftSelections, setCraftSelections] = useState([]);
   const userID = useUserID();
-  const [isCorona, setIsCorona] = useState(false);
 
-  const selections = state.selections.filter(
-    (option) =>
-      (option.attributes && option.attributes.category === "Beer") ||
-      option.category === "Beer"
-  );
-
-  const craftOptions = state.data.filter(
-    (option) => option.attributes.category === "Craft Beer"
-  );
-
-  const max =
-    state.selectedPack === 6
-      ? 6
-      : state.selectedPack === 8
-      ? 2
-      : state.selectedPack === 10 && !isCorona
-      ? 4
-      : state.selectedPack === 10 && isCorona
-      ? 3
-      : state.selectedPack === 12 && isCorona
-      ? 5
-      : state.selectedPack === 12 && !isCorona
-      ? 6
-      : 2;
+  const max = 6;
+  const quantity = 18;
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
     </span>
   );
-
-  const num = [
-    state.micro1 && (state.micro1.id || state.micro1.title),
-    state.micro2 && (state.micro2.id || state.micro2.title),
-  ].filter((n) => n !== undefined).length;
-
-  const disabled = () => {
-    if (state.selectedPack === 0) {
-      return true;
-    } else if (state.selectedPack === 6) {
-      return false;
-    } else if (state.selectedPack === 8 && selections.length + num === 2) {
-      return false;
-    } else if (
-      state.selectedPack === 10 &&
-      !isCorona &&
-      selections.length + num === 4
-    ) {
-      return false;
-    } else if (
-      state.selectedPack === 10 &&
-      isCorona &&
-      selections.length + num === 3
-    ) {
-      return false;
-    } else if (
-      state.selectedPack === 12 &&
-      !isCorona &&
-      selections.length + num === 6
-    ) {
-      return false;
-    } else if (
-      state.selectedPack === 12 &&
-      isCorona &&
-      selections.length + num === 5
-    ) {
-      return false;
-    }
-    return true;
-  };
-
-  const selected =
-    state.selectedPack === 8
-      ? selections.length - 1 >= 0
-      : selections.length >= 0;
-
-  const selected2 =
-    (state.selectedPack === 10 && !isCorona) || state.selectedPack === 12
-      ? selections.length - 2 >= 0
-      : num >= 1;
-
-  const limit =
-    state.selectedPack === 8
-      ? max - selections.length - 2 >= 0
-      : state.selectedPack === 10 && !isCorona
-      ? max - selections.length - 3 >= 0
-      : state.selectedPack === 10 && isCorona
-      ? max - selections.length - 3 >= 0
-      : state.selectedPack === 12 && !isCorona
-      ? max - selections.length - 3 >= 0
-      : state.selectedPack === 12 && isCorona
-      ? max - selections.length - 3 >= 0
-      : 2;
-
-  const handleClick = (item) => {
-    filterSelections("Beer");
-    removeMicro01();
-    removeMicro02();
-    addPack(item);
-  };
-
-  useEffect(() => {
-    const craft =
-      (state.micro1 && state.micro1.craftOptions) ||
-      (state.micro2 && state.micro2.craftOptions)
-        ? [state.micro1.craftOptions, state.micro2.craftOptions]
-        : [];
-    setCraftSelections(craft.filter((n) => n !== null));
-  }, [
-    state.micro1,
-    state.micro2,
-    state.micro1.craftOptions,
-    state.micro2.craftOptions,
-  ]);
-
-  const preselect = [];
-  const options1 = state.data
-    .filter(
-      (option) => option.attributes && option.attributes.category === "Beer"
-    )
-    .forEach((option) => {
-      if (
-        option.attributes.title.includes("Budweiser") ||
-        option.attributes.title.includes("Archibald Chipie") ||
-        option.attributes.title.includes("Goose Island IPA") ||
-        option.attributes.title.includes("Hoegaarden") ||
-        option.attributes.title.includes("Bud Light") ||
-        option.attributes.title.includes("Stella Artois")
-      ) {
-        preselect.push(option);
-      }
-    });
-  const preselect1 = state.data
-    .filter(
-      (option) => option.attributes && option.attributes.category === "Beer"
-    )
-    .find((option) => option.attributes.title.includes("Corona"));
-  useEffect(() => {
-    const updatedCounter =
-      state.selectedPack === 6
-        ? 6
-        : state.selectedPack === 10 && isCorona
-        ? selections.length + num
-        : selections.length + num;
-    setCounter(updatedCounter);
-  }, [selections, state.selectedPack, isCorona, num]);
+  const selections = state.selections.filter(
+    (option) =>
+      (option.attributes && option.attributes.category === "Red Wine") ||
+      option.category === "Red Wine"
+  );
+  const limit = max - selections.length - 1 >= 0;
 
   useEffect(() => {
     if (state.data.length === 0) {
@@ -221,33 +64,13 @@ const Page4 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClick1 = async () => {
-    const craft1 = state.micro1.title ? state.micro1 : {};
-    const craft2 = state.micro2.title ? state.micro2 : {};
-
+  const handleClick = async () => {
     const menuItems = state.selections.map((option) => option.id);
-
-    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
-      (n) => n !== undefined
-    );
-
     const menuData = {
-      menu_items: totalItems,
-      craftOptions: {
-        options: craftSelections,
-        craft1,
-        craft2,
-        pack: state.selectedPack,
-      },
+      menu_items: [...menuItems],
       franchisee: userID,
     };
 
-    receiveCraftOptions({
-      options: craftSelections,
-      craft1,
-      craft2,
-      pack: state.selectedPack,
-    });
     putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
         console.log(response);
@@ -255,30 +78,7 @@ const Page4 = () => {
       .catch((err) => {
         console.log(err);
       });
-
-    const beerPack = { nbrOfKegs: state.selectedPack };
-    putAPI1(`api/users-permissions/updateme`, beerPack)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
-
-  const beerData = state.data
-    .filter(
-      (option) =>
-        (option.attributes && option.attributes.category === "Beer") ||
-        option.category === "Beer"
-    )
-    .filter((option) => !option.attributes.title.includes("Budweiser"))
-    .filter((option) => !option.attributes.title.includes("Archibald Chipie"))
-    .filter((option) => !option.attributes.title.includes("Goose Island IPA"))
-    .filter((option) => !option.attributes.title.includes("Hoegaarden"))
-    .filter((option) => !option.attributes.title.includes("Bud Light"))
-    .filter((option) => !option.attributes.title.includes("Corona"))
-    .filter((option) => !option.attributes.title.includes("Stella Artois"));
 
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -342,229 +142,71 @@ const Page4 = () => {
   }, []);
 
   useEffect(() => {
-    const user = getUser();
-    if (user) {
-      setIsCorona(user.hasCorona);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (state.previousStep < 3) {
-      addPreviousStep(3);
+    if (state.previousStep < 2) {
+      addPreviousStep(2);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const updatedCounter = selections.length;
+    setCounter(updatedCounter);
+  }, [selections]);
+
   return (
     <>
       <Header step={4} />
-      <Main>
-        <Subcontainer>
+      <Container>
+        <Subcontainer1>
           <div>
-            <Title1>Bières en fût </Title1>
-            <SubTitle></SubTitle>
+            <Title>{page4.title}</Title>
+            <SubTitle>
+              Choisissez parmi les vins rouges Cellier disponibles.
+            </SubTitle>
           </div>
-          {/* {state.selectedPack > 0 && (
-            <MinMax stage={4} number={state.selectedPack} />
-          )} */}
-        </Subcontainer>
-        <Container>
-          <SubTitle1>
-            Combien de lignes de fût de bières avez-vous? Ne pas compter les
-            lignes de vins
-          </SubTitle1>
-
-          <Buttons>
-            <Container4>
-              <Container3>
-                <ButtonContainer2>
-                  {buttons2.map((item, key) => (
-                    <StyledButton
-                      key={`page4_button_${key}`}
-                      active={state.selectedPack === item}
-                      onClick={() => handleClick(item)}
-                    >
-                      {item}
-                    </StyledButton>
-                  ))}
-                </ButtonContainer2>
-              </Container3>
-            </Container4>
-            {state.selectedPack !== 0 && (
-              <Square>
-                {state.selectedPack === 6 && (
-                  <>
-                    <Title2>IMPORTANT!</Title2>{" "}
-                    <div> Voici vos 6 bières obligatoires. </div>
-                    <div> {"Vous n'avez aucun choix à faire."}</div>
-                  </>
-                )}
-
-                {state.selectedPack === 8 && (
-                  <>
-                    <Title2>IMPORTANT!</Title2>{" "}
-                    <div>
-                      {" "}
-                      <Text1>Complétez en ajoutant 2 produits :</Text1>
-                    </div>
-                    <Choice>
-                      {" "}
-                      1 bière Labatt + 1 bière de microbrasserie{" "}
-                    </Choice>
-                  </>
-                )}
-                {state.selectedPack === 10 && !isCorona && (
-                  <>
-                    <Title2>IMPORTANT!</Title2>{" "}
-                    <div>
-                      {" "}
-                      <Text1>Complétez en ajoutant 4 produits :</Text1>
-                    </div>
-                    <Choice>
-                      2 bières Labatt + 2 bières de microbrasserie
-                    </Choice>
-                  </>
-                )}
-                {state.selectedPack === 10 && isCorona && (
-                  <>
-                    <Title2>IMPORTANT!</Title2>{" "}
-                    <div>
-                      {" "}
-                      <Text1>Complétez en ajoutant 3 produits :</Text1>
-                    </div>
-                    <Choice>1 bière Labatt + 2 bières de microbrasserie</Choice>
-                  </>
-                )}
-
-                {state.selectedPack === 12 && !isCorona && (
-                  <>
-                    <Title2>IMPORTANT!</Title2>{" "}
-                    <div>
-                      {" "}
-                      <Text1>Complétez en ajoutant 6 produits :</Text1>
-                    </div>
-                    <Choice>
-                      4 bières Labatt + 2 bières de microbrasserie{" "}
-                    </Choice>
-                  </>
-                )}
-                {state.selectedPack === 12 && isCorona && (
-                  <>
-                    <Title2>IMPORTANT!</Title2>{" "}
-                    <div>
-                      {" "}
-                      <Text1>Complétez en ajoutant 5 produits :</Text1>
-                    </div>
-                    <Choice>
-                      3 bières Labatt + 2 bières de microbrasserie
-                    </Choice>
-                  </>
-                )}
-              </Square>
-            )}
-          </Buttons>
-          {state.selectedPack === 6 && (
-            <Subcontainer2>
-              {preselect.map((option) => (
-                <BeerCard4
-                  key={option.id}
+          <MinMax min={min} max={max} />
+        </Subcontainer1>
+        <Subcontainer2>
+          {state.data &&
+            state.data
+              .filter((option) => option.attributes.category === "Red Wine")
+              .map((option, key) => (
+                <WineCard
+                  key={`page4_option_${key}`}
                   value={option.id}
                   title={option.attributes.title}
-                  alcohol={option.attributes.alcohol}
                   description={option.attributes.descriptionFr}
+                  taste={option.attributes.tasteFr}
+                  location={option.attributes.location}
+                  country={option.attributes.country}
+                  sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}
                   limit={limit}
                   option={option}
                   imageUrl={option.attributes.imageURL}
+                  isOrganic={option.attributes.isOrganic || option.isOrganic}
+                  isFromQuebec={
+                    option.attributes.isFromQuebec || option.isFromQuebec
+                  }
+                  isNature={option.attributes.isNature || option.isNature}
+                  isOrange={option.attributes.isOrange || option.isOrange}
+                  isCellier={option.attributes.isCellier || option.isCellier}
                 />
               ))}
-            </Subcontainer2>
-          )}
-          {state.selectedPack > 6 && (
-            <>
-              <Subcontainer1>
-                <div>
-                  <Title>{beerList.title}</Title>
-                </div>
-              </Subcontainer1>
-              <Subcontainer2>
-                {(state.selectedPack === 10 || state.selectedPack === 12) &&
-                  isCorona &&
-                  [preselect1].map((option) => (
-                    <BeerCard4
-                      key={option.id}
-                      value={option.id}
-                      title={option.attributes.title}
-                      alcohol={option.attributes.alcohol}
-                      description={option.attributes.descriptionFr}
-                      saqCode={option.attributes.saqCode}
-                      prices={option.attributes.cost}
-                      limit={limit}
-                      option={option}
-                      imageUrl={option.attributes.imageURL}
-                    />
-                  ))}
+        </Subcontainer2>
+      </Container>
 
-                {state.data &&
-                  beerData
-                    .filter((option) => option.attributes.category === "Beer")
-                    .map((option, key) => (
-                      <BeerCard
-                        key={`page4_option_${key}`}
-                        value={option.id}
-                        title={option.attributes.title}
-                        alcohol={option.attributes.alcohol}
-                        description={option.attributes.descriptionFr}
-                        saqCode={option.attributes.saqCode}
-                        prices={option.attributes.cost}
-                        limit={limit}
-                        option={option}
-                        imageUrl={option.attributes.imageURL}
-                      />
-                    ))}
-              </Subcontainer2>
-              <Title>{beerList.title2}</Title>
-              <Subcontainer3>
-                <DropDown
-                  disabled={!selected}
-                  options={craftOptions}
-                  order="01"
-                />
-                {(state.selectedPack === 10 || state.selectedPack === 12) && (
-                  <DropDown
-                    options={craftOptions}
-                    disabled={!selected2}
-                    order="02"
-                  />
-                )}
-                <Bubble
-                  count={selections.length}
-                  show={selections.length === 1}
-                  duration={"4s"}
-                />
-                <Bubble
-                  count={selections.length}
-                  show={selections.length === 2}
-                  duration={"4s"}
-                />
-                {isCorona && (
-                  <Bubble count={2} show={num === 1} duration={"4s"} />
-                )}
-              </Subcontainer3>
-            </>
-          )}
-        </Container>
-      </Main>
+      <Legend/>
+
       <Footer
-        first={state.selectedPack < 6}
-        returnButtonText={footer.return}
+        returnButtonText={page4.return}
         returnHref={"/3"}
-        buttonText={footer.buttonText}
+        buttonText={page4.buttonText}
         href={"/5"}
-        stage={"BIÈRES NON ALCOOLISÉES"}
-        handleClick={handleClick1}
-        disabled={disabled()}
+        stage={"BIÈRES EN FÛT"}
+        handleClick={handleClick}
+        disabled={counter < min}
       />
     </>
   );

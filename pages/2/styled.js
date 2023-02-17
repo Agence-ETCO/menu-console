@@ -4,7 +4,7 @@ import { colors } from "../../constants";
 export const Container = styled.div`
   padding-left: 60px;
   padding-right: 60px;
-  padding-bottom: 274px;
+  padding-bottom: 90px;
   max-width: 1450px;
   margin-left: auto;
   margin-right: auto;
