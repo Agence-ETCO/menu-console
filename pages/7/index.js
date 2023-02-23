@@ -516,7 +516,7 @@ const Page7 = () => {
               )
               .map((option, key) => (
 
-                <Subcontainer1>
+                <Subcontainer1 key={`page7_option_c_${key}`} >
                   <KegTitleContainer>
                     <KegTitle>Ligne {key + 6}:</KegTitle>
                     <Link href={"/5?keg=" + (key + 6)}>
@@ -529,7 +529,6 @@ const Page7 = () => {
 
                   </KegTitleContainer>
                   <BeerCard
-                    key={`page7_option_c_${key}`}
                     value={option.id}
                     title={
                       (option.attributes && option.attributes.title) ||
@@ -571,7 +570,7 @@ const Page7 = () => {
               )
               .map((option, key) => (
 
-                <Subcontainer1>
+                <Subcontainer1 key={`page7_option_c_${key}`}>
                   <KegTitleContainer>
                     <KegTitle>Ligne {key + 6}:</KegTitle>
                     <Link href={"/5?keg=" + (key + 6 + state.selections
@@ -590,7 +589,6 @@ const Page7 = () => {
 
                   </KegTitleContainer>
                   <MiniBeerCard
-                    key={`page7_option_c_${key}`}
                     value={option.id}
                     title={
                       (option.attributes && option.attributes.title) ||
