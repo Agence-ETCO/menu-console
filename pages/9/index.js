@@ -70,4 +70,4 @@ const Page9 = () => {
   );
 };
 
-export default Page8;
+export default Page9;
