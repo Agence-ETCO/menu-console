@@ -2,7 +2,7 @@ name: Deploy main branch
 on:
   push:
     branches:
-      - "dev-update23a"
+      - "main"
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
