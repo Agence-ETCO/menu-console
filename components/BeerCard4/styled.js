@@ -10,7 +10,7 @@ export const Label = styled.label`
   width: 413px;
   height: 305px;
   position: relative;
-  padding-top: 15px;
+  margin-top: 75px;
   margin-bottom: 40px;
   svg {
     position: absolute;
@@ -19,24 +19,12 @@ export const Label = styled.label`
   }
 `;
 
-export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
-  border: 0;
-  clip: rect(0 0 0 0);
-  clippath: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-`;
-
 export const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
   position: absolute;
-  right: 10px;
+  right: 15px;
+  top: 15px;
   svg {
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     position: absolute;
@@ -113,8 +101,8 @@ export const SubContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-right: 40px;
-  margin-left: 40px;
-  margin-top: 30px;
+  margin-left: 25px;
+  margin-top: 60px;
 `;
 export const ImageContainer = styled.div`
   position: relative;
@@ -123,3 +111,26 @@ export const ImageContainer = styled.div`
   margin-top: -5px;
   margin-left: -20px;
 `;
+
+
+export const Title = styled.div`
+  font-family: 'GTWalsheimRegular';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 23px;
+  color: #231F20;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-bottom: 1px solid #939598;
+  width: 90%
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  opacity: 0.8;
+`;
+
+

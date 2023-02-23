@@ -33,7 +33,7 @@ const WelcomePage = () => {
     setShowHelp(!showHelp);
   };
 
-  const date = "15 mars 2023";
+  const date = "10 mars 2023";
 
   return (
     <>
@@ -58,7 +58,7 @@ const WelcomePage = () => {
           <Contact onClick={() => handleClick()}>{welcomePage.contact}</Contact>
         </Ending>
       </Container>
-      <Footer first startText={welcomePage.buttonText} href={"/1"} />
+      <Footer first startText={welcomePage.buttonText} href={"/1"}         redirection={ true } />
     </>
   );
 };

@@ -15,11 +15,10 @@ const BeerList = () => {
     .forEach((option) => {
       if (
         option.attributes.title.includes("Budweiser") ||
-        option.attributes.title.includes("Archibald Chipie") ||
-        option.attributes.title.includes("Goose Island IPA") ||
-        option.attributes.title.includes("Hoegaarden") ||
-        option.attributes.title.includes("Bud Light") ||
-        option.attributes.title.includes("Stella Artois")
+        option.attributes.title.includes("Michelob Ultra") ||
+        option.attributes.title.includes("Stella Artois") ||
+        option.attributes.title.includes("Corona") ||
+        option.attributes.title.includes("Archibald Chipie")
       ) {
         preselect.push(option);
       }
@@ -27,8 +26,9 @@ const BeerList = () => {
 
   return (
     <>
-      {preselect.map((option) => (
+      {preselect.map((option, key) => (
         <BeerCard4
+          index={key+1} 
           key={option.id}
           value={option.id}
           title={option.attributes.title}

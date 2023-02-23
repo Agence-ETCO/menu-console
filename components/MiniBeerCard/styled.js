@@ -6,12 +6,13 @@ export const Label = styled.label`
   border: 1px solid rgba(147, 149, 152, 0.75);
   border-radius: 9px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 413px;
-  height: 305px;
+  //height: 305px;
   position: relative;
-  padding-top: 15px;
+  padding-top: 25px;
   margin-bottom: 40px;
+  margin-left: 30px;
   position: relative;
   z-index: 9;
 `;
@@ -33,7 +34,7 @@ export const CheckboxContainer = styled.div`
   display: inline-block;
   vertical-align: middle;
   position: absolute;
-  right: 10px;
+  right: 25px;
   svg {
     visibility: ${(props) => (props.checked ? "visible" : "hidden")};
     position: absolute;
@@ -62,49 +63,26 @@ export const TextContainer = styled.div`
     font-family: "GTWalsheimBold";
     font-weight: 700;
     font-size: 19px;
-    line-height: 25px;
-    min-height: 50px;
+    line-height: 23px;
   }
   div:nth-child(2) {
-    color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
+    color: ${(props) => (props.checked ? "rgba(255,255,255, 0.75)" : "rgba(35, 31, 32, 0.75)")};
     margin-bottom: 5px;
     font-family: "GTWalsheimRegular";
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     padding-bottom: 15px;
-    border-bottom: 1px solid rgba(147, 149, 152, 0.5);
   }
 
-  div:nth-child(4) {
-    color: ${(props) =>
-      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+  div:nth-child(3) {
+    color: ${(props) => (props.checked ? "rgba(255,255,255, 0.75)" : "rgba(35, 31, 32, 0.75)")};
     font-family: "GTWalsheimRegular";
     font-weight: 400;
     font-size: 13px;
-    line-height: 15px;
+    line-height: 19px;
     text-transform: uppercase;
-  }
-
-  table {
-    margin-bottom: 45px;
-    margin-top: 25px;
-
-    th {
-      color: ${(props) =>
-        props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
-      font-family: "GTWalsheimRegular";
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 15px;
-      width: 120px;
-    }
-    tr {
-      font-family: "GTWalsheimBold";
-      font-weight: 700;
-      font-size: 15px;
-      line-height: 18px;
-    }
+    padding-bottom: 15px;
   }
 `;
 export const SubContainer = styled.div`
@@ -112,39 +90,6 @@ export const SubContainer = styled.div`
   flex-direction: row;
   margin-right: 40px;
   margin-left: 40px;
-  margin-top: 30px;
-`;
-export const ImageContainer = styled.div`
-  position: relative;
-  height: 210px;
-  width: 190px;
-  margin-top: -5px;
-  margin-left: -20px;
-`;
-
-export const RecommandedChip = styled.div`
-  position: relative;
-  left: 263px;
-  top: 15px;
-  width: 180px;
-  height: 50px;
-  z-index: 1;
-  background: #F5BA18;
-  border-radius: 9px;
-  p {
-    margin-left: 25px;
-    padding-top:10px;
-    font-family: 'GTWalsheimBold';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #000000;
-  }
 `;
 
 

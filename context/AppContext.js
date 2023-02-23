@@ -4,6 +4,7 @@ const initialState = {
   previousStep: 0,
   data: [],
   selections: [],
+  beerSelections: [],
   micro1: {},
   micro2: {},
   selectedPack: 0,
@@ -34,6 +35,12 @@ const reducer = (state, action) => {
         selections: [...state.selections, action.value],
       };
 
+      case "add-beer-selection":
+      return {
+        ...state,
+        beerSelections: [...state.beerSelections, action.value],
+      };
+
     case "add-pack":
       return {
         ...state,
@@ -47,6 +54,14 @@ const reducer = (state, action) => {
           (selection) => selection.id !== action.value
         ),
       };
+
+      case "remove-beer-selection":
+        return {
+          ...state,
+          beerSelections: state.beerSelections.filter(
+            (selection) => selection.id !== action.value
+          ),
+        };
 
     case "filter-selections":
       return {
@@ -148,6 +163,20 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const addBeerSelection = (value) => {
+    dispatch({
+      type: "add-beer-selection",
+      value: value,
+    });
+  };
+
+  const removeBeerSelection = (value) => {
+    dispatch({
+      type: "remove-beer-selection",
+      value: value,
+    });
+  };
+
   const filterSelections = (value) => {
     dispatch({
       type: "filter-selections",
@@ -229,6 +258,8 @@ export const AppProvider = ({ children }) => {
           receiveSelections,
           addSelection,
           removeSelection,
+          addBeerSelection,
+          removeBeerSelection,
           removeMicro01,
           removeMicro02,
           addMicro01,

@@ -12,22 +12,31 @@ import {
 } from "./styled.js";
 
 const Footer = (props) => {
+  //const {redirection = "true"} = props;
   return (
     <Container1>
       <Container>
         {props.returnButtonText && (
+          <>
+          {props.noReturn && (
+            <Button viewButtonText={props.viewButtonText} align={props.align} onClick={props.handleReturn}>
+              {props.returnButtonText}
+            </Button>
+          ) || (
           <Link href={props.returnHref}>
-            <Button viewButtonText={props.viewButtonText} align={props.align}>
+            <Button viewButtonText={props.viewButtonText} align={props.align} onClick={props.handleReturn}>
               {props.returnButtonText}
             </Button>
           </Link>
+          ) } 
+          </>
         )}
-        {props.startText && (
+        {props.startText  && (
           <Link href={props.href}>
             <StyledLink first={props.first}>{props.startText}</StyledLink>
           </Link>
         )}
-        {props.buttonText && (
+        {props.buttonText && props.redirection == true && (
           <Link href={props.href}>
             <StyledLink
               first={props.first}
@@ -37,6 +46,15 @@ const Footer = (props) => {
               {props.buttonText}
             </StyledLink>
           </Link>
+        )} 
+        {props.buttonText && props.redirection == false && (
+            <StyledLink
+              first={props.first}
+              disabled={props.disabled}
+              onClick={props.handleClick}
+            >
+              {props.buttonText}
+            </StyledLink>
         )}
 
         {props.stage && (

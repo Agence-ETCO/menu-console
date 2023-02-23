@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import Header from "../../components/Header";
-import { page6 } from "../../fr";
+import { page8 } from "../../fr";
 import useUserID from "../../lib/useUserID";
 import {
   Container,
@@ -23,9 +23,9 @@ const Page8 = () => {
       <Header />
       <Container>
         <Subcontainer>
-          <Title>{page6.title}</Title>
-          <Subtitle>{page6.subtitle}</Subtitle>
-          {/*   <Body>{page6.body1}</Body> */}
+          <Title>{page8.title}</Title>
+          <Subtitle>{page8.subtitle}</Subtitle>
+            <Body>{page8.body1}</Body>
         </Subcontainer>
         {/* <Subcontainer1>
           <Button onClick={() => window.open(link)}>{page6.download}</Button>

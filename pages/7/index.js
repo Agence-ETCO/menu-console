@@ -14,7 +14,7 @@ import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
 import { putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
-import { page2, page3, page4, beerList, option2, footer } from "../../fr";
+import { page2, page3, page4, page7, footer } from "../../fr";
 import {
   Container,
   Subcontainer,
@@ -26,8 +26,11 @@ import {
   Title2,
   Container1,
   Button,
-  Text
+  Text,
+  KegTitleContainer,
+  KegTitle
 } from "./styled";
+import MiniBeerCard from "../../components/MiniBeerCard";
 
 const Page7 = () => {
   const {
@@ -46,7 +49,7 @@ const Page7 = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
   const userID = useUserID();
-  const step = 6;
+  const step = 7;
 
   const beer =
     state.selections &&
@@ -63,7 +66,7 @@ const Page7 = () => {
         option.category === "Non-Alcoholic"
     );
 
-    const orange =
+  const orange =
     state.selections &&
     state.selections.filter(
       (option) =>
@@ -123,7 +126,7 @@ const Page7 = () => {
         console.log(err);
       });
 
-    router.push("/7");
+    router.push("/8");
   };
 
   const onCancel = () => {
@@ -222,11 +225,11 @@ const Page7 = () => {
       <Header step={7} />
       <Container>
         <Subcontainer1>
-          <Title1>Voici votre sélection. Révisez vos choix avec attention !</Title1>
+          <Title1>{page7.title}</Title1>
           <Subtitle1>
-            Une fois votre sélection soumise, il vous sera impossible de faire des modifications.
+            {page7.subtitle}
           </Subtitle1>
-          <Subtitle1>Merci de votre collaboration.</Subtitle1>
+          <Subtitle1>{page7.subtitle2}</Subtitle1>
         </Subcontainer1>
         {/* Mousseux et orange */}
         <TitleContainer>
@@ -238,13 +241,13 @@ const Page7 = () => {
               <span>MODIFIER</span>
             </Button>
           </Link>
-          
+
         </TitleContainer>
         <Subcontainer>
-        {orange.length === 0 ? (
-            <Text>Aucun produit sélectionné</Text>
+          {orange.length === 0 ? (
+            <Text>{page7.noProduct}</Text>
           ) : (
-          state.selections &&
+            state.selections &&
             state.selections
               .filter(
                 (option) =>
@@ -326,7 +329,7 @@ const Page7 = () => {
               <span>MODIFIER</span>
             </Button>
           </Link>
-          
+
         </TitleContainer>
         <Subcontainer>
           {state.selections &&
@@ -412,7 +415,7 @@ const Page7 = () => {
               <span>MODIFIER</span>
             </Button>
           </Link>
-          
+
         </TitleContainer>
         <Subcontainer>
           {state.selections &&
@@ -490,7 +493,7 @@ const Page7 = () => {
 
         {/* Bières */}
         <TitleContainer>
-          <Title>{beerList.title}</Title>
+          <Title>Bières en fût</Title>
           <Link href={"/5"}>
             <Button>
               {" "}
@@ -498,18 +501,12 @@ const Page7 = () => {
               <span>MODIFIER</span>
             </Button>
           </Link>
-          
+
         </TitleContainer>
-        {state.selectedPack === 6 && (
-          <Subcontainer>
-            <BeerList />
-          </Subcontainer>
-        )}
+
         <Subcontainer>
-          {beer.length === 0 && state.selectedPack !== 6 ? (
-            <Text>Aucun produit sélectionné</Text>
-          ) : (
-            state.selections &&
+          <BeerList />
+          {state.selections &&
             state.selections
               .filter(
                 (option) =>
@@ -518,61 +515,22 @@ const Page7 = () => {
                   option.category === "Beer"
               )
               .map((option, key) => (
-                <BeerCard
-                  key={`page6_option_c_${key}`}
-                  value={option.id}
-                  title={
-                    (option.attributes && option.attributes.title) ||
-                    option.title
-                  }
-                  alcohol={
-                    (option.attributes && option.attributes.alcohol) ||
-                    option.alcohol
-                  }
-                  description={
-                    (option.attributes && option.attributes.descriptionFr) ||
-                    option.descriptionFr
-                  }
-                  saqCode={
-                    (option.attributes && option.attributes.saqCode) ||
-                    option.saqCode
-                  }
-                  prices={
-                    (option.attributes && option.attributes.cost) || option.cost
-                  }
-                  option={option}
-                  imageUrl={
-                    (option.attributes && option.attributes.imageURL) ||
-                    option.imageURL
-                  }
-                  step={step}
-                />
-              ))
-          )}
-        </Subcontainer>
-        {state.selectedPack && state.selectedPack === 6 ? null : (
-          <>
-          <TitleContainer>
-            <Title>{option2.title}</Title>{" "}
-            <Link href={"/5"}>
-              <Button>
-                {" "}
-                <Image src={image} width={19} height={19} alt="" />
-                <span>MODIFIER</span>
-              </Button>
-            </Link>
-            </TitleContainer>
-            <Subcontainer>
-              {craftBeer.length === 0 ? (
-                <Text>Aucun produit sélectionné</Text>
-              ) : (
-                craftBeer &&
-                craftBeer.map((option, key) => (
-                  <BeerCard3
-                    key={`page6_option_d_${key}`}
-                    checked
-                    handleCheckboxChange={() => { }}
-                    value={option}
+
+                <Subcontainer1>
+                  <KegTitleContainer>
+                    <KegTitle>Ligne {key + 6}:</KegTitle>
+                    <Link href={"/5?keg=" + (key + 6)}>
+                      <Button>
+                        {" "}
+                        <Image src={image} width={19} height={19} alt="" />
+                        <span>MODIFIER</span>
+                      </Button>
+                    </Link>
+
+                  </KegTitleContainer>
+                  <BeerCard
+                    key={`page7_option_c_${key}`}
+                    value={option.id}
                     title={
                       (option.attributes && option.attributes.title) ||
                       option.title
@@ -583,20 +541,76 @@ const Page7 = () => {
                     }
                     description={
                       (option.attributes && option.attributes.descriptionFr) ||
-                      option.description
+                      option.descriptionFr
+                    }
+                    saqCode={
+                      (option.attributes && option.attributes.saqCode) ||
+                      option.saqCode
                     }
                     prices={
-                      (option.attributes && option.attributes.cost) ||
-                      option.size
+                      (option.attributes && option.attributes.cost) || option.cost
                     }
-                    index={option.attributes && option.craftOptions.price}
+                    option={option}
+                    imageUrl={
+                      (option.attributes && option.attributes.imageURL) ||
+                      option.imageURL
+                    }
+                    step={step}
                   />
-                ))
+                </Subcontainer1>
+              )
               )}
-            </Subcontainer>
-          </>
-        )}
 
+{state.selections &&
+            state.selections
+              .filter(
+                (option) =>
+                  (option.attributes &&
+                    option.attributes.category === "Craft Beer") ||
+                  option.category === "Craft Beer"
+              )
+              .map((option, key) => (
+
+                <Subcontainer1>
+                  <KegTitleContainer>
+                    <KegTitle>Ligne {key + 6}:</KegTitle>
+                    <Link href={"/5?keg=" + (key + 6 + state.selections
+              .filter(
+                (option) =>
+                  (option.attributes &&
+                    option.attributes.category === "Beer") ||
+                  option.category === "Beer"
+              ).length )}>
+                      <Button>
+                        {" "}
+                        <Image src={image} width={19} height={19} alt="" />
+                        <span>MODIFIER</span>
+                      </Button>
+                    </Link>
+
+                  </KegTitleContainer>
+                  <MiniBeerCard
+                    key={`page7_option_c_${key}`}
+                    value={option.id}
+                    title={
+                      (option.attributes && option.attributes.title) ||
+                      option.title
+                    }
+                    alcohol={
+                      (option.attributes && option.attributes.alcohol) ||
+                      option.alcohol
+                    }
+                    description={
+                      (option.attributes && option.attributes.descriptionFr) ||
+                      option.descriptionFr
+                    }
+                    option={option}
+                    step={step}
+                  />
+                </Subcontainer1>
+              )
+              )}
+        </Subcontainer>
         {/* Bières non alcoolisées */}
         <TitleContainer>
           <Title>{"Sans alcool"}</Title>{" "}
@@ -607,7 +621,7 @@ const Page7 = () => {
               <span>MODIFIER</span>
             </Button>
           </Link>
-          
+
         </TitleContainer>
         <Subcontainer>
           {nonAlcohol.length === 0 ? (
@@ -668,6 +682,7 @@ const Page7 = () => {
       <Footer
         first
         returnButtonText={footer.return}
+        redirection={true}
         returnHref={"/6"}
         align
         /*  viewButtonText={footer.view} */

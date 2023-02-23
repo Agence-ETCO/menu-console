@@ -5,6 +5,8 @@ import CraftBeerCard from "../../components/CraftBeerCard";
 import Arrow from "../../components/Arrow";
 import Form from "../../components/Form";
 import { AppContext } from "../../context/AppContext";
+import * as _ from "lodash";
+
 import {
   Container,
   BoxContainer,
@@ -15,9 +17,11 @@ import {
   Container1,
   Container2,
   Container3,
-  Button,
+  AddButton,
   ButtonContainer,
+
 } from "./styled.js";
+import MiniBeerCard from "../MiniBeerCard";
 
 const CraftList = (props) => {
   const {
@@ -47,9 +51,10 @@ const CraftList = (props) => {
       .replace(/(,.*?),(.*,)?/, "$1");
     setAlcohol(value);
   };
+  console.log(props.order);
   const onFormSubmit = () => {
     const data = {
-      description: producer,
+      beerMaker: producer,
       title: beer,
       type,
       size: format,
@@ -65,8 +70,6 @@ const CraftList = (props) => {
         },
       ],
     };
-
-  ;
     if (props.order === "01") {
       if (state.micro1 && state.micro1.id) {
         removeSelection(state.micro1.id);
@@ -96,70 +99,85 @@ const CraftList = (props) => {
   const handleClick2 = (oprion) => {
     removeMicro01();
   };
+
+  const microSelections = state.selections.filter(
+    (option) => option.attributes.category === "Craft Beer"
+  );
   return (
     <>
-      {props.showCraft ? (
-        <Container>
-          <Form
-            showForm={showForm}
-            handleClick={handleClick}
-            order={props.order}
-            beer={beer}
-            producer={producer}
-            type={type}
-            format={format}
-            alcohol={alcohol}
-            onBeerChange={onBeerChange}
-            onProducerChange={onProducerChange}
-            onTypeChange={onTypeChange}
-            onFormatChange={onFormatChange}
-            onAlcoholChange={onAlcoholChange}
-            onFormSubmit={onFormSubmit}
-          />
-          <BoxContainer>
-            <CloseButton onClick={props.handleClick}>
-              <Image src={image} width={25} height={25} alt="" />
-            </CloseButton>
-            <Container1>
-              <div>
-                <Title>{"Microbrasseries"}</Title>
-                <Subtitle>
-                  {
-                    "Sélectionnez les bières de microbrasseries que vous souhaitez avoir au menu ainsi que les formats."
-                  }
-                </Subtitle>
-              </div>
-              <Container3>
-                <span>
-                  {
-                    " Vous ne trouvez pas votre microbrasserie parmi les choix ci-dessous?"
-                  }
-                </span>
-                <StyledButton onClick={handleClick}>
-                  <span>{"Ajoutez-là ici"}</span>
-                </StyledButton>
-              </Container3>
-            </Container1>
-            <Container2>
-              {craftBeerOptions.map((option, i) => (
-                <CraftBeerCard
-                  key={`craftlist_${i}`}
-                  value={option}
-                  option={option}
-                  order={props.order}
-                  onChange={onChange}
-                  handleClick2={handleClick2}
-                />
-              ))}
-            </Container2>
-            <ButtonContainer>
-              <Button disabled={!selected} onClick={props.handleClick}>
-                {"ajouter"}
-              </Button>
-            </ButtonContainer>
-          </BoxContainer>
-        </Container>
-      ) : null}
+      <Form
+        showForm={showForm}
+        handleClick={handleClick}
+        order={props.order}
+        beer={beer}
+        producer={producer}
+        type={type}
+        format={format}
+        alcohol={alcohol}
+        onBeerChange={onBeerChange}
+        onProducerChange={onProducerChange}
+        onTypeChange={onTypeChange}
+        onFormatChange={onFormatChange}
+        onAlcoholChange={onAlcoholChange}
+        onFormSubmit={onFormSubmit}
+      />
+      <>
+        <Container2>
+          {craftBeerOptions.filter(
+      (option) => props.step ===12 ? microSelections[0].id !== option.id : true
+    ).map((option, i) => (
+            <MiniBeerCard
+              index={i + 1}
+              type={option.attributes.descriptionFr}
+              key={option.id}
+              value={option.id}
+              title={option.attributes.title}
+              alcohol={option.attributes.alcohol}
+              description={option.attributes.descriptionFr}
+              saqCode={option.attributes.saqCode}
+              prices={option.attributes.cost}
+              limit={props.limit}
+              beerMaker={option.attributes.beerMaker}
+              option={option}
+              order={props.order}
+            />
+
+            // <CraftBeerCard
+            //   key={`craftlist_${i}`}
+            //   value={option}
+            //   option={option}
+            //   order={props.order}
+            //   onChange={onChange}
+            //   handleClick2={handleClick2}
+            // />
+          ))}
+        </Container2>
+
+        <Subtitle>
+          Vous ne trouvez pas la bière de microbrasserie que vous souhaitez avoir à votre carte? Ajoutez-là ici.
+        </Subtitle>
+        {_.isEmpty(state.micro1) && (
+          <AddButton
+            onClick={() => handleClick()}>
+            Ajouter
+          </AddButton>
+        )}
+        <Container1>
+          {_.isEmpty(state.micro1) == false && (
+            <MiniBeerCard
+              index={1}
+              key={"01"}
+              value={"01"}
+              title={state.micro1.title}
+              alcohol={state.micro1.alcohol}
+              description={state.micro1.type}
+              beerMaker={state.micro1.beerMaker}
+              limit={props.limit}
+              option={state.micro1}
+            />
+          )}
+        </Container1>
+      </>
     </>
   );
 };

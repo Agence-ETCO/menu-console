@@ -6,11 +6,12 @@ const MinMax = (props) => {
     <>
       <Select stage={props.stage} number={props.number}>
         <Hint />
-        {props.stage === 4 ? (
+        {props.stage === 5 ? (
           <>
-            {props.number === 6 && "Maximum de 6 bières en fût"}
+         {"Un seul choix possible."}
+            {/* {props.number === 6 && "Maximum de 6 bières en fût"}
             {props.number === 8 && "Choissisez  1 microbrasserie en fût"}
-            {props.number >= 10 && "Minimum de 2 microbrasseries en fût"}
+            {props.number >= 10 && "Minimum de 2 microbrasseries en fût"} */}
           </>
         ) : props.stage === 5 ? (
           <>Maximum 2 bières non alcoolisées</>

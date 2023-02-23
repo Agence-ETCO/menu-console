@@ -5,7 +5,7 @@ import BeerCard2 from "../../components/BeerCard2";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
-import { footer } from "../../fr";
+import { footer, page6 } from "../../fr";
 import {
   SubTitle,
   Subcontainer,
@@ -33,7 +33,7 @@ const Page6 = () => {
       removePack,
     },
   } = useContext(AppContext);
-  const min = 0;
+  const min = 1;
   const max = 2;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
@@ -163,12 +163,12 @@ const Page6 = () => {
       <Header step={6} />
       <Subcontainer>
         <Container1>
-          <Title>Sans alcool </Title>
+          <Title>{page6.title} </Title>
           <SubTitle>
-            Choisissez jusqu’à 2 bières non alcoolisées (optionnel).
+            {page6.subtitle}
           </SubTitle>
         </Container1>
-        <MinMax stage={5} />
+        <MinMax min={min} max={max}  />
       </Subcontainer>
       <Container>
         <Subcontainer1>
@@ -198,10 +198,11 @@ const Page6 = () => {
 
       <Footer
         returnButtonText={footer.return}
-        returnHref={"/5"}
+        returnHref={"/5?keg="+state.selectedPack}
         buttonText={footer.buttonText}
+        redirection={ true }
         href={"/7"}
-        stage={"RÉSUMÉ"}
+        stage={page6.next}
         handleClick={handleClick}
       />
     </>

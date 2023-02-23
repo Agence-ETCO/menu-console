@@ -72,19 +72,15 @@ export const Title = styled.div`
 `;
 
 export const Subtitle = styled.div`
-  color: ${colors.black};
   font-family: "GTWalsheimRegular";
+  font-style: normal;
   font-weight: 400;
-  font-size: 27px;
-  line-height: 23px;
-  //width: 500px;
-  margin-top: 60px;
-  margin-bottom: 30px;
-  margin-left: 30px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #939598;
+  font-size: 16px;
+  line-height: 19px;
+  color: #3c3c3c;
+  width: 454px;
+  margin-bottom: 34px;
 `;
-
 export const Subtitle2 = styled.div`
   font-family: "GTWalsheimRegular";
   font-style: normal;
@@ -168,24 +164,5 @@ export const Container2 = styled.div`
   justify-content: left;
   overflow-y: scroll;
   padding-bottom: 100px;
-`;
-
-export const AddButton = styled.button`
-  background: #FFE110;
-  border-radius: 8px;
-  width: 248px;
-  height: 68px;
-  font-family: 'GTWalsheimBold';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 27px;
-  line-height: 32px;
-  align-items: center;
-  letter-spacing: 0.1em;
-  color: #231F20;
-  display: flex;
-  justify-content: center;
-  margin-left: 30px;
-  text-transform: uppercase;
-  border: none;
+  margin-left: 70px;
 `;

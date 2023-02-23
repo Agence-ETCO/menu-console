@@ -76,7 +76,7 @@ const Form = ({
               onChange={onTypeChange}
             />
           </Label>
-          {/* <Label>
+          <Label>
             Format*
             <div>
               <InputSmall
@@ -88,7 +88,7 @@ const Form = ({
               />
               <span>ml</span>
             </div>
-          </Label> */}
+          </Label>
           <Label>
             {" Taux d'alcool"}
             <div>

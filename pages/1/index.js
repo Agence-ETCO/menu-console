@@ -3,7 +3,7 @@ import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import image from "../../public/couverture.png";
-import { page1, page2 } from "../../fr";
+import { page1, footer } from "../../fr";
 import {
   Container,
   Container1,
@@ -31,9 +31,10 @@ const Page1 = () => {
       </Container>
 
       <Footer
-        returnButtonText={page2.return}
+        returnButtonText={footer.return}
         returnHref={"/"}
         buttonText={page1.buttonText}
+        redirection={ true }
         href={"/2"}
         stage={"MOUSSEUX ET ORANGE"}
       />

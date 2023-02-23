@@ -5,7 +5,7 @@ import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
 import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import WineCard from "../../components/WineCard";
-import { page4 } from "../../fr";
+import { page4, footer } from "../../fr";
 import {
   Container,
   Subcontainer1,
@@ -33,11 +33,11 @@ const Page4 = () => {
     },
   } = useContext(AppContext);
 
-  const min = 3;
+  const min = 2;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
 
-  const max = 6;
+  const max = 4;
   const quantity = 18;
   const selection = (
     <span style={{ fontSize: "21px" }}>
@@ -161,7 +161,7 @@ const Page4 = () => {
           <div>
             <Title>{page4.title}</Title>
             <SubTitle>
-              Choisissez parmi les vins rouges Cellier disponibles.
+            {page4.body}
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />
@@ -200,11 +200,12 @@ const Page4 = () => {
       <Legend/>
 
       <Footer
-        returnButtonText={page4.return}
+        returnButtonText={footer.return}
         returnHref={"/3"}
         buttonText={page4.buttonText}
+        redirection = {true}
         href={"/5"}
-        stage={"BIÈRES EN FÛT"}
+        stage={page4.next}
         handleClick={handleClick}
         disabled={counter < min}
       />

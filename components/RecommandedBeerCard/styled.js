@@ -12,8 +12,6 @@ export const Label = styled.label`
   position: relative;
   padding-top: 15px;
   margin-bottom: 40px;
-  position: relative;
-  z-index: 9;
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -121,31 +119,3 @@ export const ImageContainer = styled.div`
   margin-top: -5px;
   margin-left: -20px;
 `;
-
-export const RecommandedChip = styled.div`
-  position: relative;
-  left: 263px;
-  top: 15px;
-  width: 180px;
-  height: 50px;
-  z-index: 1;
-  background: #F5BA18;
-  border-radius: 9px;
-  p {
-    margin-left: 25px;
-    padding-top:10px;
-    font-family: 'GTWalsheimBold';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 17px;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.05em;
-    color: #000000;
-  }
-`;
-
-
-

@@ -1,62 +1,86 @@
 export const welcomePage = {
   greeting: "Bonjour!",
-  title: "Créons ensemble votre nouvelle carte des alcools",
-  body: "Afin de rehausser votre offre et d'offrir une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les produits pour personnaliser votre carte des alcools.",
+  title: "Personnalisez votre nouvelle carte des alcools",
+  body: "Afin de proposer une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les meilleurs produits pour votre marché.",
   dateLimite: "IMPORTANT :",
   body1: "veuillez compléter votre sélection au plus tard le",
   body2:
-    "afin de vous assurer d'obtenir votre carte des alcools dans les délais prévus.",
+    "afin de vous assurer d’obtenir votre carte des alcools dans les délais prévus.",
   help: "Besoin d'aide?",
   contact: "Contactez-nous",
   buttonText: "commencer",
 };
 
 export const page1 = {
-  title: "Voici à quoi ressemblera votre nouvelle carte des alcools",
+  title: "Le retour du petit cartable",
   body: "",
   body1:
-    "La carte des alcools devra être insérée dans votre cartable menu salle à manger et permettra à vos clients de sélectionner facilement leurs boissons. ",
+    "Votre carte des alcools sera dorénavant insérée dans le petit cartable et inclura une nouvelle section boissons, entrées et desserts.",
   body2:
-    "Une fois votre sélection validée, nous conserverons votre carte des alcools personnalisée, la ferons imprimer, puis livrer.",
+    "Commençons maintenant la sélection de vos choix. Une fois votre sélection complétée, nous procéderons au montage visuel de votre carte des alcools, nous la ferons imprimer, puis nous la livrerons directement à votre restaurant. ",
   buttonText: "CONTINUER",
 };
 
+// export const page1 = {
+//   title: "Voici à quoi ressemblera votre nouvelle carte des alcools",
+//   body: "",
+//   body1:
+//     "La carte des alcools devra être insérée dans votre cartable menu salle à manger et permettra à vos clients de sélectionner facilement leurs boissons. ",
+//   body2:
+//     "Une fois votre sélection validée, nous conserverons votre carte des alcools personnalisée, la ferons imprimer, puis livrer.",
+//   buttonText: "CONTINUER",
+// };
+
 export const page2 = {
-  title: "Mousseux et orange",
-  select: "disponibles",
-  return: "retour",
+  title: "Mousseux et vins orange",
+  body: "Souhaitez-vous ajouter un mousseux ou un vin orange à votre carte? (Optionnel)",
   buttonText: "VALIDER",
-  hintbox: "Votre choix s’ajoute à la présélection de produits que nous avons faite pour vous."
+  hintbox: "Votre choix s’ajoutera à la sélection des vins obligatoires.",
+  next: "VINS BLANCS"
 };
 
 export const page3 = {
   title: "Vins blancs",
-  select: "disponibles",
-  return: "retour",
+  body: "Choisissez parmi les vins blancs Cellier disponibles.",
   buttonText: "VALIDER",
+  next: "Vins rouges"
 };
 
 export const page4 = {
   title: "Vins rouges",
-  select: "vins rouges disponibles",
-  return: "retour",
-  buttonText: "CONTINUER",
+  body: "Choisissez parmi les vins rouges Cellier disponibles.",
+  buttonText: "Valider",
+  next: "BIÈRES EN FÛT"
 };
 
 export const page5 = {
-  title: "Bières",
-  subtitle: "Veuillez sélectionner",
-  body: "Sélectionnez 1 des 2 options  plus haut afin de continuer.",
+  title: "Bières en fût",
+  title2: "Microbrasserie",
+  subtitle: "Combien de lignes de fût de bières avez-vous? Sans compter les lignes de vins.",
 };
 
 export const page6 = {
+  title: "Sans alcool",
+  subtitle: "Choisissez jusqu’à 2 produits sans alcool ",
+  next: "Résumé de votre sélection "
+};
+
+export const page7 = {
+  title: "Voici votre sélection. Révisez attentivement vos choix!",
+  subtitle: "Une fois votre sélection soumise, il vous sera impossible de faire des modifications.",
+  subtitle2: "Merci de votre collaboration.",
+  noProduct: "Aucun produit sélectionné",
+  next: "Résumé de votre sélection "
+};
+
+export const page8 = {
   title: "Merci",
   subtitle:
-    "Votre sélection a bien été envoyée, nous allons donc procéder à l'impression de votre carte des alcools personnalisée. ",
+    "Votre sélection a été enregistrée avec succès. Nous procéderons à l’impression de votre carte des alcools personnalisée dans les meilleurs délais.  ",
   body1:
-    " Entretemps, vous pouvez prévisualiser votre sélection en téléchargeant le résumé.",
+    " Dans quelques instants, nous vous ferons parvenir un courriel de confirmation afin de vous fournir un récapitulatif de votre sélection. ",
   body2:
-    "S'il vous plaît, n'imprimez pas le résumé pour l'utiliser dans votre restaurant. Nous vous ferons parvenir votre nouveau menu au plus tôt.",
+    "Merci pour votre confiance.",
   download: "télécharger ",
 };
 export const alertBox = {
@@ -87,15 +111,4 @@ export const footer = {
   view: "Prévisualiser",
   submit: "SOUMETTRE",
   change: "modifier",
-};
-
-export const beerList = {
-  title: "Produits Labatt",
-  title2: "Microbrasserie",
-  select: "bières disponibles",
-};
-
-export const option2 = {
-  title: "Microbrasserie",
-  select: "bières disponibles",
 };

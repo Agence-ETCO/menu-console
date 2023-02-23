@@ -15,7 +15,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 8px;
   margin-left: 100px;
-  margin-top: 30px;
+  margin-top: 25px;
 `;
 export const CloseButton = styled.button`
   z-index: 200;
@@ -62,7 +62,7 @@ export const Title = styled.div`
   font-size: 24px;
   line-height: 28px;
   color: #231f20;
-  margin-top: 75px;
+  margin-top: 50px;
   margin-bottom: 15px;
   width: 400px;
 `;
@@ -75,7 +75,7 @@ export const Subtitle = styled.div`
   line-height: 19px;
   color: #3c3c3c;
   width: 454px;
-  margin-bottom: 34px;
+  margin-bottom: 24px;
 `;
 
 export const Label = styled.label`
@@ -112,8 +112,8 @@ export const InputSmall = styled.input`
   color: #231f20;
   border: 1px solid #939598;
   border-radius: 9px;
-  margin-top: 15px;
-  margin-bottom: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
   padding-left: 10px;
   :placeholder {
     font-family: "GTWalsheimRegular";

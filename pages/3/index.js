@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
 import MinMax from "../../components/MinMax";
 import { AppContext } from "../../context/AppContext";
-import { page3 } from "../../fr";
+import { page3, footer } from "../../fr";
 import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import {
   Container,
@@ -166,7 +166,7 @@ const Page3 = () => {
           <div>
             <Title>{page3.title} </Title>
             <SubTitle>
-              Choisissez parmi les vins blancs Cellier disponibles.
+              {page3.body}
             </SubTitle>
           </div>
           <MinMax min={min} max={max} />
@@ -207,12 +207,13 @@ const Page3 = () => {
       <Legend/>
 
       <Footer
-        returnButtonText={page3.return}
+        returnButtonText={footer.return}
         returnHref={"/2"}
         buttonText={page3.buttonText}
         handleClick={handleClick}
+        redirection={ true }
         href={"/4"}
-        stage={"VINS ROUGES"}
+        stage={page3.next}
         disabled={counter < min}
       />
     </>

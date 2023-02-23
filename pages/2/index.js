@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
 import WineCard from "../../components/WineCard";
 import { AppContext } from "../../context/AppContext";
-import { page2 } from "../../fr";
+import { page2, footer } from "../../fr";
 import { putAPI, fetchAPI, fetchCurrentUser } from "../../lib/api";
 import {
   Container,
@@ -166,7 +166,7 @@ const Page2 = () => {
           <div>
             <Title>{page2.title} </Title>
             <SubTitle>
-              Vous souhaitez ajouter un mousseux ou un orange à votre carte? (optionnel)
+              {page2.body}
             </SubTitle>
           </div>
           <HintBox text={page2.hintbox} />
@@ -207,12 +207,13 @@ const Page2 = () => {
       <Legend/>
       
       <Footer
-        returnButtonText={page2.return}
+        returnButtonText={footer.return}
         returnHref={"/1"}
         buttonText={page2.buttonText}
         handleClick={handleClick}
+        redirection={ true }
         href={"/3"}
-        stage={"VINS BLANCS"}
+        stage={page2.next}
         disabled={counter < min}
       />
     </>

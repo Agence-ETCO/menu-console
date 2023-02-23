@@ -27,11 +27,11 @@ export const Subcontainer = styled.div`
 export const Subcontainer1 = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  //margin-top: 50px;
   margin-bottom: 50px;
-  width: 650px;
-  margin-left: auto;
-  margin-right: auto;
+  //width: 650px;
+  // margin-left: auto;
+  // margin-right: auto;
 `;
 
 export const TitleContainer = styled.div`
@@ -124,6 +124,30 @@ export const Button = styled.button`
     margin-left: 15px;
   }
 `;
+
+
+export const KegTitleContainer = styled.div`
+  border-bottom: 1px solid #000000;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: baseline;
+  margin-left: 30px;
+  width: 413px;
+  margin-bottom: 75px;
+`;
+
+export const KegTitle = styled.div`
+font-family: 'GTWalsheimRegular';
+font-style: normal;
+font-weight: 400;
+font-size: 27px;
+line-height: 23px;
+color: #231F20;
+padding-bottom: 40px;
+margin-top: 40px;
+`;
+
 
 const Empty = () => {};
 export default Empty;

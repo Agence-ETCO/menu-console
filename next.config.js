@@ -4,7 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     unoptimized: true,
-    domains: ['www.saq.com', 'rsh.nyc3.digitaloceanspaces.com', 'www.labatt.com', 'd2x42bnn0tswa4.cloudfront.net', 'www.gooseisland.com', 'aem.lcbo.com', 'becks.de']
+    domains: ['www.saq.com', 'rsh.nyc3.digitaloceanspaces.com', 'www.labatt.com', 'd2x42bnn0tswa4.cloudfront.net', 
+    'www.gooseisland.com', 'aem.lcbo.com', 'becks.de', 'cdn.shopify.com']
   },
   compiler: {
     styledComponents: true,
