@@ -35,6 +35,12 @@ const MiniBeerCard = (props) => {
       return true;
     }
 
+    if (
+      (props.value === "02" && state.micro2 && state.micro2.id === option.id)
+    ) {
+      return true;
+    }
+
     return false;
   };
 
@@ -42,29 +48,29 @@ const MiniBeerCard = (props) => {
     if (props.step === 6) {
       return null;
     }
-
     let checked = state.selections.find(
       (selection) => selection.id === option.id
     );
 
+
     if (checked) {
       removeSelection(option.id);
+      if (option.id === 999999001) {
+        removeMicro01();
+        return false;
+      }
+
+      if (option.id === 999999002) {
+        removeMicro02();
+        return false;
+      }
+      // if(option.id === 999999001 ) {
+
+      // }
     } else if (!checked && props.limit) {
       addSelection(option);
     } else if (!checked && !props.limit) {
       return;
-    }
-
-    if(props.value === "01" && state.micro1 && state.micro1.id === option.id)
-    {
-      return false;
-      removeMicro01();
-    }
-
-    if(props.value === "02" && state.micro1 && state.micro1.id === option.id)
-    {
-      return false;
-      removeMicro02();
     }
 
 

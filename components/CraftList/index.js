@@ -26,7 +26,7 @@ import MiniBeerCard from "../MiniBeerCard";
 const CraftList = (props) => {
   const {
     state,
-    actions: { addMicro01, addMicro02, removeSelection },
+    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02  },
   } = useContext(AppContext);
   const [showForm, setShowForm] = useState(false);
   const [beer, setBeer] = useState("");
@@ -54,11 +54,13 @@ const CraftList = (props) => {
   console.log(props.order);
   const onFormSubmit = () => {
     const data = {
+      id: ( props.step === 9 || props.step === 11) ? 999999001 : 999999002,
       beerMaker: producer,
       title: beer,
       type,
       size: format,
       alcohol,
+      category: "Craft Beer",
       cost: [
         {
           Price: "11,75",
@@ -70,22 +72,25 @@ const CraftList = (props) => {
         },
       ],
     };
-    if (props.order === "01") {
+    if (props.step === 9 || props.step === 11) {
       if (state.micro1 && state.micro1.id) {
-        removeSelection(state.micro1.id);
+        //removeSelection(state.micro1.id);
       }
+      addSelection(data);
       addMicro01(data);
       onChange(true);
     } else {
       if (state.micro2 && state.micro2.id) {
-        removeSelection(state.micro2.id);
+        //removeSelection(state.micro2.id);
       }
+      addSelection(data);
       addMicro02(data);
       onChange(true);
     }
   };
 
   const onChange = (value) => {
+    console.log('adding custom', value);
     setSelected(value);
   };
 
@@ -101,8 +106,9 @@ const CraftList = (props) => {
   };
 
   const microSelections = state.selections.filter(
-    (option) => option.attributes.category === "Craft Beer"
+    (option) => option.attributes && option.attributes.category === "Craft Beer"
   );
+  console.log(state, props.step);
   return (
     <>
       <Form
@@ -124,8 +130,8 @@ const CraftList = (props) => {
       <>
         <Container2>
           {craftBeerOptions.filter(
-      (option) => props.step ===12 ? microSelections[0].id !== option.id : true
-    ).map((option, i) => (
+            (option) => props.step === 12 ? microSelections[0].id !== option.id : true
+          ).map((option, i) => (
             <MiniBeerCard
               index={i + 1}
               type={option.attributes.descriptionFr}
@@ -156,14 +162,14 @@ const CraftList = (props) => {
         <Subtitle>
           Vous ne trouvez pas la bière de microbrasserie que vous souhaitez avoir à votre carte? Ajoutez-là ici.
         </Subtitle>
-        {_.isEmpty(state.micro1) && (
+        {(_.isEmpty(state.micro1) && ( props.step === 9 || props.step === 11)) && (
           <AddButton
             onClick={() => handleClick()}>
             Ajouter
           </AddButton>
         )}
         <Container1>
-          {_.isEmpty(state.micro1) == false && (
+          {(_.isEmpty(state.micro1) == false && ( props.step === 9 || props.step === 11)) && (
             <MiniBeerCard
               index={1}
               key={"01"}
@@ -174,6 +180,28 @@ const CraftList = (props) => {
               beerMaker={state.micro1.beerMaker}
               limit={props.limit}
               option={state.micro1}
+            />
+          )}
+        </Container1>
+
+        {(_.isEmpty(state.micro2) && !( props.step === 9 || props.step === 11)) && (
+          <AddButton
+            onClick={() => handleClick()}>
+            Ajouter
+          </AddButton>
+        )}
+        <Container1>
+          {(_.isEmpty(state.micro2) == false && !( props.step === 9 || props.step === 11)) && (
+            <MiniBeerCard
+              index={2}
+              key={"02"}
+              value={"02"}
+              title={state.micro2.title}
+              alcohol={state.micro2.alcohol}
+              description={state.micro2.type}
+              beerMaker={state.micro2.beerMaker}
+              limit={props.limit}
+              option={state.micro2}
             />
           )}
         </Container1>

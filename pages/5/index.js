@@ -96,10 +96,18 @@ const Page5 = () => {
       setPack(state.selectedPack);
       setStep(keg ? parseInt(keg) : 5);
       setButtons(_.range(6, state.selectedPack + 1));
-      const temp = state.selections.filter((el) => el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
+      const temp = state.selections.filter((el) => el.category === "Craft Beer" || el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
       const length = temp.length;
 
-      temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { removeSelection(elem) });
+      temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { 
+        removeSelection(elem);
+        if (elem === 999999001) {
+          removeMicro01();
+        }
+  
+        if (elem === 999999002) {
+          removeMicro02();
+        } });
 
 
       // for (let i = 0 ; i < 3; i++) {
@@ -122,7 +130,7 @@ const Page5 = () => {
       option.category === "Beer"
   );
   const craftOptions = state.selections.filter(
-    (option) => option.attributes.category === "Craft Beer"
+    (option) => option.attributes && option.attributes.category === "Craft Beer"
   );
 
   const stage =
@@ -149,7 +157,7 @@ const Page5 = () => {
       return selectedPack === 0;
     }
     if (state.selectedPack !== 0 && step > 5) {
-      return selections.length + craftOptions.length === step - 5
+      return selections.filter(el => el.attributes.category === "Beer").length + craftOptions.length + !_.isEmpty(state.micro1) + !_.isEmpty(state.micro2) === step - 5
         ? false : true;
     }
 
@@ -295,8 +303,17 @@ const Page5 = () => {
       setPack(0);
     } else setStep(step - 1);
 
-    const temp = state.selections.filter((el) => el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
-    if (temp.pop()) removeSelection(temp.pop().id);
+    const temp = state.selections.filter((el) => el.category === "Craft Beer" || el.attributes.category === "Craft Beer" || el.attributes.category === "Beer").pop();
+    
+    if (temp) removeSelection(temp.id);
+
+    if (temp && temp.id === 999999001) {
+      removeMicro01();
+    }
+
+    if (temp && temp.id === 999999002) {
+      removeMicro02();
+    } 
   }
 
   console.log(state.selections);
@@ -317,10 +334,20 @@ const Page5 = () => {
 
   const goToStep = async (_step) => {
     if (_step < step) {setStep(_step)
-      const temp = state.selections.filter((el) => el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
+      const temp = state.selections.filter((el) => el.category === "Craft Beer" || el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
       const length = temp.length;
 
-      temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { removeSelection(elem) });
+      temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { 
+        removeSelection(elem)
+        if (elem === 999999001) {
+          removeMicro01();
+        }
+  
+        if (elem === 999999002) {
+          removeMicro02();
+        }
+      });
+
     };
   }
 

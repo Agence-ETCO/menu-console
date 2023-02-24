@@ -566,8 +566,7 @@ const Page7 = () => {
                 (option) =>
                   (option.attributes &&
                     option.attributes.category === "Craft Beer") ||
-                  option.category === "Craft Beer" ||
-                  option.category === "Custom"
+                  option.category === "Craft Beer"
               )
               .map((option, key) => (
 
