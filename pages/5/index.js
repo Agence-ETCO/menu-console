@@ -194,6 +194,7 @@ const Page5 = () => {
   ]);
 
   const preselect = [];
+  const nonPreselect = [];
 
   const beerList = state.data
     .filter(
@@ -210,6 +211,8 @@ const Page5 = () => {
     ) {
       //addSelection(option);
       preselect.push(option);
+    } else {
+      nonPreselect.push(option);
     }
   });
   const preselect1 = state.data
@@ -530,7 +533,7 @@ const Page5 = () => {
                 La recommandation de St-Hubert.
               </SubTitle>
               <Subcontainer2>
-                {beerList.filter((item) => (item.id == 1723 || item.id == 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id == 1723 || item.id == 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     recommanded={true}
                     index={key + 1}
@@ -553,7 +556,7 @@ const Page5 = () => {
                 Vous pouvez aussi choisir parmi les bières suivantes.
               </SubTitle>
               <Subcontainer2>
-                {beerList.filter((item) => (item.id !== 1723 && item.id !== 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id !== 1723 && item.id !== 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     index={key + 1}
                     type={option.attributes.descriptionFr}
@@ -588,7 +591,7 @@ const Page5 = () => {
                 La recommandation de St-Hubert.
               </SubTitle>
               <Subcontainer2>
-                {beerList.filter((item) => {
+                {nonPreselect.filter((item) => {
                   return step === 7 ? (item.id == 1765 || item.id == 1766) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                     : (item.id == 1724 || item.id == 1725) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                 }).map((option, key) => (
@@ -614,7 +617,7 @@ const Page5 = () => {
                 Vous pouvez aussi choisir parmi les bières suivantes.
               </SubTitle>
               <Subcontainer2>
-                {beerList.filter((item) => {
+                {nonPreselect.filter((item) => {
                   return step === 7 ? !([1765, 1766].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                     : !([1724, 1725].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                 }).map((option, key) => (
@@ -653,8 +656,7 @@ const Page5 = () => {
                   La recommandation de St-Hubert.
                 </SubTitle>
                 <Subcontainer2>
-                  {/* {beerList.filter((item) => (item.id == 1724 || item.id == 1725)).map((option, key) => ( */}
-                  {beerList.filter((item) => {
+                  {nonPreselect.filter((item) => {
                     return step === 7 ? (item.id == 1765 || item.id == 1766) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                       : (item.id == 1724 || item.id == 1725) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                   }).map((option, key) => (
@@ -680,7 +682,7 @@ const Page5 = () => {
                   Vous pouvez aussi choisir parmi les bières suivantes.
                 </SubTitle>
                 <Subcontainer2>
-                  {beerList.filter((item) => {
+                  {nonPreselect.filter((item) => {
                     return step === 7 ? !([1765, 1766].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                       : !([1724, 1725].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                   }).map((option, key) => (
