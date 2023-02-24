@@ -396,6 +396,7 @@ const Page5 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(step);
 
   return (
     <>
@@ -403,7 +404,12 @@ const Page5 = () => {
       <Main>
         <Subcontainer>
           <TitleContainer>
-            <Title1>Bières en fût </Title1>
+          {((state.selectedPack === 12 && step === 11) ||
+          (state.selectedPack === 12 && step === 12) ||
+          (state.selectedPack === 10 && step === 10) ||
+          (state.selectedPack === 10 && step === 9)||
+          (state.selectedPack === 8 && step === 8))  && (<Title1>Microbrasserie</Title1>)  ||
+            (<Title1>Bières en fût </Title1>)}
             {state.selectedPack !== 0 && (<Chip onClick={() => unselectKegN()} >{state.selectedPack}</Chip>)}
           </TitleContainer>
           {/* {state.selectedPack > 0 && (
@@ -423,10 +429,22 @@ const Page5 = () => {
             </SubTitle1>
           )}
 
+          
+
           {step > 5 && (
-            <SubTitle1>
-              Choisir une bière pour la ligne {step} .
-            </SubTitle1>
+            <>
+            {((state.selectedPack === 12 && step === 11) ||
+              (state.selectedPack === 12 && step === 12) ||
+              (state.selectedPack === 10 && step === 10) ||
+              (state.selectedPack === 10 && step === 9)||
+              (state.selectedPack === 8 && step === 8)) && (
+                <SubTitle1>
+                  Choisissez une bière de microbrasserie parmi celles-ci.
+                </SubTitle1>
+              ) || (<SubTitle1>
+                Choisir une bière pour la ligne {step} .
+              </SubTitle1>)}
+              </>
           )}
 
           <Buttons>
