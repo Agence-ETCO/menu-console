@@ -566,13 +566,14 @@ const Page7 = () => {
                 (option) =>
                   (option.attributes &&
                     option.attributes.category === "Craft Beer") ||
-                  option.category === "Craft Beer"
+                  option.category === "Craft Beer" ||
+                  option.category === "Custom"
               )
               .map((option, key) => (
 
                 <Subcontainer1 key={`page7_option_c_${key}`}>
                   <KegTitleContainer>
-                    <KegTitle>Ligne {key + 6}:</KegTitle>
+                    <KegTitle>Ligne {key + state.selectedPack -1}:</KegTitle>
                     <Link href={"/5?keg=" + (key + 6 + state.selections
               .filter(
                 (option) =>
@@ -609,6 +610,7 @@ const Page7 = () => {
               )
               )}
         </Subcontainer>
+        
         {/* Bières non alcoolisées */}
         <TitleContainer>
           <Title>{"Sans alcool"}</Title>{" "}
