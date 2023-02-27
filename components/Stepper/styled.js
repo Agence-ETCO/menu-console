@@ -17,6 +17,7 @@ export const TextButton = styled.button`
   border: none;
   outline: none;
   border-radius: 3px;
+  padding-top: 5px;
 `;
 
 export const NumberButton = styled.button`

@@ -59,10 +59,6 @@ export const User = styled.div`
   display: flex;
   align-items: center;
   text-align: right;
-
-  /* Gris */
-
   color: #939598;
   margin-left: 50px;
-  margin-right: 50px;
 `;

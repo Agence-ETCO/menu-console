@@ -160,7 +160,8 @@ const CraftList = (props) => {
         </Container2>
 
         <Subtitle>
-          Vous ne trouvez pas la bière de microbrasserie que vous souhaitez avoir à votre carte? Ajoutez-là ici.
+          <p>Vous ne trouvez pas la bière de microbrasserie que</p>
+          <p>vous souhaitez avoir à votre carte? Ajoutez-là ici.</p>
         </Subtitle>
         {(_.isEmpty(state.micro1) && ( props.step === 9 || props.step === 11)) && (
           <AddButton

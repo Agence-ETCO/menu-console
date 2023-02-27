@@ -155,7 +155,7 @@ export const IconContainer = styled.div`
   justify-content: space-between;
   margin-left: 0;
   span {
-    margin-top: 10px;
+    margin-top: 3px;
   }
 `;
 export const Container2 = styled.div``;

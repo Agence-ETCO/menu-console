@@ -16,6 +16,7 @@ export const Button = styled.button`
   border-radius: 8px;
   margin-left: 100px;
   margin-top: 25px;
+  padding-top: 5px;
 `;
 export const CloseButton = styled.button`
   z-index: 200;

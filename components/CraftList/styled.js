@@ -83,6 +83,9 @@ export const Subtitle = styled.div`
   margin-left: 30px;
   padding-bottom: 40px;
   border-bottom: 1px solid #939598;
+  p {
+    margin-bottom: 0px !important;
+  }
 `;
 
 export const Subtitle2 = styled.div`
@@ -188,4 +191,5 @@ export const AddButton = styled.button`
   margin-left: 30px;
   text-transform: uppercase;
   border: none;
+  padding-top: 5px;
 `;

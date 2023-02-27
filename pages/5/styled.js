@@ -136,6 +136,7 @@ export const ButtonContainer2 = styled.div`
   min-width: 560px;
   padding-bottom: 70px;
   border-bottom: 1px solid #939598;
+  align-items: flex-end;
 `;
 
 export const StyledButton = styled.button`

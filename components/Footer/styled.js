@@ -118,11 +118,13 @@ export const Stage = styled.div`
   font-size: 19px;
   line-height: 22px;
   letter-spacing: 0.05em;
-  width: 300px;
-  margin-left: 100px;
+  width: 350px;
+  margin-left: auto;
   div {
     padding-left: 15px;
   }
+  min-width 300px;
+
 `;
 export const Select1 = styled.span`
   font-weight: 400;

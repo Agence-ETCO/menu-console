@@ -319,6 +319,7 @@ const Page5 = () => {
   console.log(state.selections);
 
   const validateButtonHC = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (state.selectedPack === 0) {
       setStep(5);
       setButtons(_.range(6, selectedPack + 1));
@@ -328,7 +329,6 @@ const Page5 = () => {
       addPack(selectedPack);
     } else if (step < 12) {
       setStep(step + 1);
-
     }
   }
 

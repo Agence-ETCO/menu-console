@@ -15,6 +15,7 @@ export const SubContainer = styled.div`
   margin: auto;
   margin-bottom: 129px;
   //width: auto;
+  min-width: 650px;
 `;
 
 export const Title = styled.div`
