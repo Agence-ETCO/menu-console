@@ -39,8 +39,8 @@ const Page2 = () => {
   const quantity = 2;
   const selections = state.selections.filter(
     (option) =>
-      (option.attributes && option.attributes.category === "White Wine") ||
-      option.category === "White Wine"
+      (option.attributes && option.attributes.category === "SPARKLING, ROSÉ AND ORANGE WINES") ||
+      option.category === "SPARKLING, ROSÉ AND ORANGE WINES"
   );
   const selection = (
     <span style={{ fontSize: "21px" }}>

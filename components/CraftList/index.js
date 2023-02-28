@@ -76,14 +76,14 @@ const CraftList = (props) => {
       if (state.micro1 && state.micro1.id) {
         //removeSelection(state.micro1.id);
       }
-      addSelection(data);
+      //addSelection(data);
       addMicro01(data);
       onChange(true);
     } else {
       if (state.micro2 && state.micro2.id) {
         //removeSelection(state.micro2.id);
       }
-      addSelection(data);
+      //addSelection(data); 
       addMicro02(data);
       onChange(true);
     }
@@ -130,7 +130,7 @@ const CraftList = (props) => {
       <>
         <Container2>
           {craftBeerOptions.filter(
-            (option) => props.step === 12 ? microSelections[0].id !== option.id : true
+            (option) => props.step === 12 || props.step === 10 && microSelections[0]  ? microSelections[0].id !== option.id : true
           ).map((option, i) => (
             <MiniBeerCard
               index={i + 1}
@@ -165,6 +165,7 @@ const CraftList = (props) => {
         </Subtitle>
         {(_.isEmpty(state.micro1) && ( props.step === 9 || props.step === 11)) && (
           <AddButton
+            disabled = {props.disabled}
             onClick={() => handleClick()}>
             Ajouter
           </AddButton>
@@ -187,6 +188,7 @@ const CraftList = (props) => {
 
         {(_.isEmpty(state.micro2) && !( props.step === 9 || props.step === 11)) && (
           <AddButton
+            disabled = {props.disabled}
             onClick={() => handleClick()}>
             Ajouter
           </AddButton>

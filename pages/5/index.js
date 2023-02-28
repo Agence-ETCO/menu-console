@@ -96,19 +96,22 @@ const Page5 = () => {
       setPack(state.selectedPack);
       setStep(keg ? parseInt(keg) : 5);
       setButtons(_.range(6, state.selectedPack + 1));
-      const temp = state.selections.filter((el) => el.category === "Craft Beer" || el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
+
+      const temp = state.selections.filter((el) => el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
       const length = temp.length;
 
-      temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { 
-        removeSelection(elem);
-        if (elem === 999999001) {
-          removeMicro01();
-        }
-  
-        if (elem === 999999002) {
-          removeMicro02();
-        } });
+      if (step % 2 == 0  && !_.isEmpty(state.micro2)) {           
+        removeMicro01();
+        removeMicro02();
+      }
+      if (step % 2 == 1  && !_.isEmpty(state.micro1)) {
+        removeMicro02();
+      }
 
+      if(step - 6 - length < 0 ) {temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { 
+        removeSelection(elem);
+       });
+      }
 
       // for (let i = 0 ; i < 3; i++) {
       //   console.log('temp', temp, temp.length > step - 6, step);
@@ -319,7 +322,8 @@ const Page5 = () => {
   console.log(state.selections);
 
   const validateButtonHC = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0,0);
+    console.log(state);
     if (state.selectedPack === 0) {
       setStep(5);
       setButtons(_.range(6, selectedPack + 1));
@@ -334,20 +338,22 @@ const Page5 = () => {
 
   const goToStep = async (_step) => {
     if (_step < step) {setStep(_step)
-      const temp = state.selections.filter((el) => el.category === "Craft Beer" || el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
+      const temp = state.selections.filter((el) => el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
       const length = temp.length;
 
-      temp.map(el => el.id).slice(step - 6 - length).forEach(elem => { 
-        removeSelection(elem)
-        if (elem === 999999001) {
-          removeMicro01();
-        }
-  
-        if (elem === 999999002) {
-          removeMicro02();
-        }
-      });
+      if (_step % 2 == 0  && !_.isEmpty(state.micro2)) {           
+        removeMicro01();
+        removeMicro02();
+      }
+      if (_step % 2 == 1  && !_.isEmpty(state.micro1)) {
+        removeMicro02();
+      }
 
+      console.log('ssss', _step - 6 - length, length );
+      if(_step - 6 - length < 0 ) {temp.map(el => el.id).slice(_step - 6 - length).forEach(elem => { 
+        removeSelection(elem);
+       });
+      }
     };
   }
 
@@ -560,7 +566,7 @@ const Page5 = () => {
                 La recommandation de St-Hubert.
               </SubTitle>
               <Subcontainer2>
-                {nonPreselect.filter((item) => (item.id == 1723 || item.id == 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id == 1796 || item.id == 1797) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     recommanded={true}
                     index={key + 1}
@@ -583,7 +589,7 @@ const Page5 = () => {
                 Vous pouvez aussi choisir parmi les bières suivantes.
               </SubTitle>
               <Subcontainer2>
-                {nonPreselect.filter((item) => (item.id !== 1723 && item.id !== 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id !== 1796 && item.id !== 1797) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     index={key + 1}
                     type={option.attributes.descriptionFr}
@@ -619,8 +625,8 @@ const Page5 = () => {
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return step === 7 ? (item.id == 1765 || item.id == 1766) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
-                    : (item.id == 1724 || item.id == 1725) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                  return step === 7 ? (item.id == 1798 || item.id == 1799) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                    : (item.id == 1800 || item.id == 1801) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
                     recommanded={true}
@@ -645,8 +651,8 @@ const Page5 = () => {
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return step === 7 ? !([1765, 1766].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
-                    : !([1724, 1725].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                  return step === 7 ? !([1798, 1799].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                    : !([1800, 1801].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
                     index={key + 1}
@@ -675,7 +681,7 @@ const Page5 = () => {
 *   
 *************************************************************/}
           {state.selectedPack === 8 && step === 8 && (
-            <CraftList limit={limit} step={step} />
+            <CraftList limit={limit} step={step} disabled = {!disabled()}/>
           ) }
            {state.selectedPack !== 8 && step === 8 && (
               <div>
@@ -684,7 +690,7 @@ const Page5 = () => {
                 </SubTitle>
                 <Subcontainer2>
                   {nonPreselect.filter((item) => {
-                    return step === 7 ? (item.id == 1765 || item.id == 1766) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                    return step === 7 ? (item.id == 1800 || item.id == 1801) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                       : (item.id == 1724 || item.id == 1725) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                   }).map((option, key) => (
                     <BeerCard
@@ -710,7 +716,7 @@ const Page5 = () => {
                 </SubTitle>
                 <Subcontainer2>
                   {nonPreselect.filter((item) => {
-                    return step === 7 ? !([1765, 1766].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                    return step === 7 ? !([1800, 1801].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                       : !([1724, 1725].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                   }).map((option, key) => (
                     <BeerCard
@@ -746,8 +752,7 @@ const Page5 = () => {
                 La recommandation de St-Hubert.
               </SubTitle>
               <Subcontainer2>
-                {/* {beerList.filter((item) => (item.id == 1762 || item.id == 1763)).map((option, key) => ( */}
-                {beerList.filter((item) => (item.id == 1762 || item.id == 1763) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {beerList.filter((item) => (item.id == 1802 || item.id == 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     recommanded={true}
                     index={key + 1}
@@ -792,7 +797,7 @@ const Page5 = () => {
             </div>
           ) }
            {state.selectedPack !== 12 && (step === 9 || step === 10) && (
-            <CraftList limit={limit} step={step} />
+            <CraftList limit={limit} step={step} disabled = {!disabled()}/>
           )}
 
 {/* /************************************************************
@@ -802,7 +807,7 @@ const Page5 = () => {
 *************************************************************/}
 
           {state.selectedPack === 12 && (step === 11 || step === 12) && (
-            <CraftList limit={limit} step={step} />
+            <CraftList limit={limit} step={step} disabled = {!disabled()}/>
           )}
 
           {/* {( step === 12) && (

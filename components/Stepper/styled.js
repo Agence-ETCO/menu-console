@@ -16,7 +16,8 @@ export const TextButton = styled.button`
   text-transform: uppercase;
   border: none;
   outline: none;
-  border-radius: 3px;
+  border-radius: ${(props) =>
+    props.color === colors.orange ? '3px' : '0'};
   padding-top: 5px;
 `;
 
@@ -33,7 +34,8 @@ export const NumberButton = styled.button`
   letter-spacing: 0.05em;
   text-transform: uppercase;
   border: none;
-  border-radius: 3px;
+  border-radius: ${(props) =>
+    props.color === colors.orange ? '3px' : '0'};
   outline: none;
 `;
 

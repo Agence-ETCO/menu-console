@@ -70,8 +70,8 @@ const Page7 = () => {
     state.selections &&
     state.selections.filter(
       (option) =>
-        (option.attributes && option.attributes.category === "Orange") ||
-        option.category === "Orange"
+        (option.attributes && option.attributes.category === "SPARKLING, ROSÉ AND ORANGE WINES") ||
+        option.category === "SPARKLING, ROSÉ AND ORANGE WINES"
     );
 
   const handleClick = () => {
@@ -247,14 +247,7 @@ const Page7 = () => {
           {orange.length === 0 ? (
             <Text>{page7.noProduct}</Text>
           ) : (
-            state.selections &&
-            state.selections
-              .filter(
-                (option) =>
-                  (option.attributes &&
-                    option.attributes.category === "Orange") ||
-                  option.category === "Orange"
-              )
+            orange
               .map((option, key) => (
                 <WineCard
                   key={`page6_option_a_${key}`}
