@@ -260,12 +260,12 @@ const Page5 = () => {
 
     const menuItems = state.selections.map((option) => option.id);
 
-    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
-      (n) => n !== undefined
-    );
+    // const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+    //   (n) => n !== undefined
+    // );
 
     const menuData = {
-      menu_items: totalItems,
+      menu_items: menuItems,
       craftOptions: {
         options: craftSelections,
         craft1,
@@ -323,7 +323,6 @@ const Page5 = () => {
 
   const validateButtonHC = () => {
     window.scrollTo(0,0);
-    console.log(state);
     if (state.selectedPack === 0) {
       setStep(5);
       setButtons(_.range(6, selectedPack + 1));
@@ -331,8 +330,10 @@ const Page5 = () => {
       removeMicro01();
       removeMicro02();
       addPack(selectedPack);
-    } else if (step < 12) {
+    } else if (step < state.selectedPack) {
       setStep(step + 1);
+    }else {
+      handleClick1()
     }
   }
 

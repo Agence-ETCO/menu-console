@@ -69,13 +69,14 @@ const Page6 = () => {
 
     const menuItems = state.selections.map((option) => option.id);
 
-    const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
-      (n) => n !== undefined
-    );
+    // const totalItems = [...menuItems, state.micro1.id, state.micro2.id].filter(
+    //   (n) => n !== 999999002 || n !== 999999001
+    // );
     const menuData = {
-      menu_items: totalItems,
+      menu_items: menuItems,
       franchisee: userID,
     };
+    console.log('menuData', menuData);
 
     putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
       .then((response) => {
@@ -85,6 +86,10 @@ const Page6 = () => {
         console.log(err);
       });
   };
+
+  const disabled = () => {
+      return selections.filter(el => el.attributes.category === "Non-Alcoholic").length < min  ;
+    }
 
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -203,6 +208,7 @@ const Page6 = () => {
         redirection={ true }
         href={"/7"}
         stage={page6.next}
+        disabled={disabled()}
         handleClick={handleClick}
       />
     </>
