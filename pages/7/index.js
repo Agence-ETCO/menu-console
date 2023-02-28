@@ -615,6 +615,9 @@ const Page7 = () => {
                     }
                     option={option}
                     step={step}
+                    beerMaker={
+                      (option.attributes && option.attributes.beerMaker) ||
+                      ""}
                   />
                 </Subcontainer1>
               )

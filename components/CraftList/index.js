@@ -22,6 +22,7 @@ import {
 
 } from "./styled.js";
 import MiniBeerCard from "../MiniBeerCard";
+import MiniBeerMomentCard from "../MiniBeerMomentCard";
 
 const CraftList = (props) => {
   const {
@@ -94,8 +95,14 @@ const CraftList = (props) => {
     setSelected(value);
   };
 
+
+
+  const beerOfTheMoment = state.data.filter(
+    (option) => (option.attributes.category === "Craft Beer"  && option.attributes.title.includes("Bière du moment") )
+  );
+
   const craftBeerOptions = state.data.filter(
-    (option) => option.attributes.category === "Craft Beer"
+    (option) => option.attributes.category === "Craft Beer" && !option.attributes.title.includes("Bière du moment")
   );
 
   const handleClick = () => {
@@ -147,15 +154,25 @@ const CraftList = (props) => {
               option={option}
               order={props.order}
             />
+          ))}
 
-            // <CraftBeerCard
-            //   key={`craftlist_${i}`}
-            //   value={option}
-            //   option={option}
-            //   order={props.order}
-            //   onChange={onChange}
-            //   handleClick2={handleClick2}
-            // />
+{beerOfTheMoment.filter(
+            (option) => props.step === 12 || props.step === 10 && microSelections[0]  ? microSelections[0].id !== option.id : true
+          ).map((option, i) => (
+            <MiniBeerMomentCard
+              index={i + 1}
+              type={option.attributes.descriptionFr}
+              key={option.id}
+              value={option.id}
+              alcohol={option.attributes.alcohol}
+              description={option.attributes.descriptionFr}
+              saqCode={option.attributes.saqCode}
+              prices={option.attributes.cost}
+              limit={props.limit}
+              beerMaker={option.attributes.beerMaker}
+              option={option}
+              order={props.order}
+            />
           ))}
         </Container2>
 
