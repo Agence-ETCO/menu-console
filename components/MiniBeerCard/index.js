@@ -30,13 +30,13 @@ const MiniBeerCard = (props) => {
     }
 
     if (
-      (props.value === "01" && state.micro1 && state.micro1.id === option.id)
+      ( state.micro1 && state.micro1.id === option.id)
     ) {
       return true;
     }
 
     if (
-      (props.value === "02" && state.micro2 && state.micro2.id === option.id)
+      ( state.micro2 && state.micro2.id === option.id)
     ) {
       return true;
     }

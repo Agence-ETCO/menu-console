@@ -691,8 +691,7 @@ const Page5 = () => {
                 </SubTitle>
                 <Subcontainer2>
                   {nonPreselect.filter((item) => {
-                    return step === 7 ? (item.id == 1800 || item.id == 1801) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
-                      : (item.id == 1724 || item.id == 1725) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                    return (item.id == 1800 || item.id == 1801) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                   }).map((option, key) => (
                     <BeerCard
                       recommanded={true}

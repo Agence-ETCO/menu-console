@@ -133,13 +133,30 @@ const Page7 = () => {
     setShowAlert(false);
   };
 
+
   useEffect(() => {
+    const temp = state.selections
+    .filter(
+      (option) =>
+        (option.attributes &&
+          option.attributes.category === "Craft Beer") ||
+        option.category === "Craft Beer"
+    );
+
     if (state.micro1.id || state.micro1.title) {
-      setCraftBeer([...craftBeer, state.micro1]);
+      setCraftBeer(craftBeer.concat([state.micro1]))
     }
+
+    if (temp.length > 0) {
+      setCraftBeer(craftBeer.concat(temp))
+    }
+
     if (state.micro2.id || state.micro2.title) {
-      setCraftBeer([...craftBeer, state.micro1, state.micro2]);
+      setCraftBeer(craftBeer.concat([state.micro2]))
+
     }
+    console.log('craftBeer',craftBeer);
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -147,6 +164,7 @@ const Page7 = () => {
     state.micro1.title,
     state.micro2.id,
     state.micro2.title,
+    state.selections
   ]);
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -554,18 +572,12 @@ const Page7 = () => {
               )}
 
 {state.selections &&
-            state.selections
-              .filter(
-                (option) =>
-                  (option.attributes &&
-                    option.attributes.category === "Craft Beer") ||
-                  option.category === "Craft Beer"
-              )
+            craftBeer
               .map((option, key) => (
 
                 <Subcontainer1 key={`page7_option_c_${key}`}>
                   <KegTitleContainer>
-                    <KegTitle>Ligne {key + state.selectedPack -1}:</KegTitle>
+                    <KegTitle>Ligne {key + state.selectedPack }:</KegTitle>
                     <Link href={"/5?keg=" + (key + 6 + state.selections
               .filter(
                 (option) =>
@@ -593,7 +605,7 @@ const Page7 = () => {
                     }
                     description={
                       (option.attributes && option.attributes.descriptionFr) ||
-                      option.descriptionFr
+                      option.type
                     }
                     option={option}
                     step={step}
