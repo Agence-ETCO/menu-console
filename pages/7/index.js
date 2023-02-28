@@ -143,28 +143,34 @@ const Page7 = () => {
         option.category === "Craft Beer"
     );
 
+    const craft = [];
+
     if (state.micro1.id || state.micro1.title) {
-      setCraftBeer(craftBeer.concat([state.micro1]))
+      //setCraftBeer(craftBeer.concat([state.micro1]))
+      craft = craft.concat([state.micro1]);
     }
 
     if (temp.length > 0) {
       setCraftBeer(craftBeer.concat(temp))
+      craft = craft.concat(temp);
     }
 
     if (state.micro2.id || state.micro2.title) {
-      setCraftBeer(craftBeer.concat([state.micro2]))
-
+      //setCraftBeer(craftBeer.concat([state.micro2]))
+      craft = craft.concat([state.micro2]);
     }
-    console.log('craftBeer',craftBeer);
+    setCraftBeer(craft);
+
+    console.log('craftBeer',craftBeer, craft, temp.length);
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    state.selections,
     state.micro1.id,
     state.micro1.title,
     state.micro2.id,
-    state.micro2.title,
-    state.selections
+    state.micro2.title
   ]);
   useEffect(() => {
     if (state.selections.length === 0) {
