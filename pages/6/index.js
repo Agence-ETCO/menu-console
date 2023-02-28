@@ -187,6 +187,7 @@ const Page6 = () => {
               )
               .map((option) => (
                 <BeerCard2
+                recommanded={option.id===1804}
                   key={option.id}
                   value={option.id}
                   title={option.attributes.title}

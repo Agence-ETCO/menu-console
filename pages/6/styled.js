@@ -68,6 +68,8 @@ export const Subcontainer2 = styled.div`
   label {
     margin-left: 30px;
   }
+  display: flex;
+  align-items: flex-end;
 `;
 
 export const Subcontainer3 = styled.div`
