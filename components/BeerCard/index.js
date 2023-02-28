@@ -102,16 +102,16 @@ const BeerCard = (props) => {
                   {pricesForRegion.length > 0 && (
                     <tr>
                       <td>
-                        {/* {pricesForRegion[0] && pricesForRegion[0].Price}{" "}
-                      {pricesForRegion[0] && "$"} */}
+                        {pricesForRegion.filter(el => el.size === "Bottle")[0] && pricesForRegion.filter(el => el.size === "Bottle")[0].Price}{" "}
+                      {pricesForRegion.filter(el => el.size === "Bottle")[0] && "$"}
                       </td>
                       <td>
-                        {pricesForRegion[0] && pricesForRegion[0].Price}{" "}
-                        {pricesForRegion[0] && "$"}
+                      {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && pricesForRegion.filter(el => el.size === "Draft 20 oz")[0].Price}{" "}
+                      {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && "$"}
                       </td>
                       <td>
-                        {pricesForRegion[1] && pricesForRegion[1].Price}{" "}
-                        {pricesForRegion[1] && "$"}
+                      {pricesForRegion.filter(el => el.size === "Pitcher")[0] && pricesForRegion.filter(el => el.size === "Pitcher")[0].Price}{" "}
+                      {pricesForRegion.filter(el => el.size === "Pitcher")[0] && "$"}
                       </td>
                     </tr>
                   )}
