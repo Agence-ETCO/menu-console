@@ -14,7 +14,7 @@ import {
 } from "./styled";
 
 const Page1 = () => {
-  const image = "https://rsh.nyc3.digitaloceanspaces.com/images%2Fpetit%20cartable2-sans%20close%20cut.png"
+  const image = "https://rsh.nyc3.digitaloceanspaces.com/images%2Fst-huber-menu.jpg"
   return (
     <>
       <Header step={1} />

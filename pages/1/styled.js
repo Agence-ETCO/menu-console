@@ -24,7 +24,7 @@ export const ImageContainer = styled.div`
   height: 402px;
   margin-right: auto;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1270px) {
     left: -350px;
   }
   @media (max-width: 1000px) {
