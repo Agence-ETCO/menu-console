@@ -31,6 +31,7 @@ import {
   KegTitle
 } from "./styled";
 import MiniBeerCard from "../../components/MiniBeerCard";
+import MiniBeerMomentCard from "../../components/MiniBeerMomentCard";
 
 const Page7 = () => {
   const {
@@ -136,12 +137,12 @@ const Page7 = () => {
 
   useEffect(() => {
     const temp = state.selections
-    .filter(
-      (option) =>
-        (option.attributes &&
-          option.attributes.category === "Craft Beer") ||
-        option.category === "Craft Beer"
-    );
+      .filter(
+        (option) =>
+          (option.attributes &&
+            option.attributes.category === "Craft Beer") ||
+          option.category === "Craft Beer"
+      );
 
     const craft = [];
 
@@ -161,7 +162,7 @@ const Page7 = () => {
     }
     setCraftBeer(craft);
 
-    console.log('craftBeer',craftBeer, craft, temp.length);
+    console.log('craftBeer', craftBeer, craft, temp.length);
 
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -233,8 +234,8 @@ const Page7 = () => {
   }, []);
 
   useEffect(() => {
-    if (state.previousStep < 5) {
-      addPreviousStep(5);
+    if (state.previousStep < 6) {
+      addPreviousStep(6);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -577,20 +578,26 @@ const Page7 = () => {
               )
               )}
 
-{state.selections &&
+          {state.selections &&
             craftBeer
               .map((option, key) => (
 
                 <Subcontainer1 key={`page7_option_c_${key}`}>
                   <KegTitleContainer>
-                    <KegTitle>Ligne {key + state.selectedPack }:</KegTitle>
+                    <KegTitle>Ligne {(key + 6 + state.selections
+                      .filter(
+                        (option) =>
+                          (option.attributes &&
+                            option.attributes.category === "Beer") ||
+                          option.category === "Beer"
+                      ).length)}:</KegTitle>
                     <Link href={"/5?keg=" + (key + 6 + state.selections
-              .filter(
-                (option) =>
-                  (option.attributes &&
-                    option.attributes.category === "Beer") ||
-                  option.category === "Beer"
-              ).length )}>
+                      .filter(
+                        (option) =>
+                          (option.attributes &&
+                            option.attributes.category === "Beer") ||
+                          option.category === "Beer"
+                      ).length)}>
                       <Button>
                         {" "}
                         <Image src={image} width={19} height={19} alt="" />
@@ -599,31 +606,53 @@ const Page7 = () => {
                     </Link>
 
                   </KegTitleContainer>
-                  <MiniBeerCard
-                    value={option.id}
-                    title={
-                      (option.attributes && option.attributes.title) ||
-                      option.title
-                    }
-                    alcohol={
-                      (option.attributes && option.attributes.alcohol) ||
-                      option.alcohol
-                    }
-                    description={
-                      (option.attributes && option.attributes.descriptionFr) ||
-                      option.type
-                    }
-                    option={option}
-                    step={step}
-                    beerMaker={
-                      (option.attributes && option.attributes.beerMaker) ||
-                      ""}
-                  />
+                  {(option.attributes && option.attributes.title.includes("Bière du moment") || (option.title && option.title.includes("Bière du moment"))) && (
+                    <MiniBeerMomentCard
+                      value={option.id}
+                      title={
+                        (option.attributes && option.attributes.title) ||
+                        option.title
+                      }
+                      alcohol={
+                        (option.attributes && option.attributes.alcohol) ||
+                        option.alcohol
+                      }
+                      description={
+                        (option.attributes && option.attributes.descriptionFr) ||
+                        option.type
+                      }
+                      option={option}
+                      step={step}
+                      beerMaker={
+                        (option.attributes && option.attributes.beerMaker) ||
+                        ""}
+                    />
+                  ) || (
+                      <MiniBeerCard
+                        value={option.id}
+                        title={
+                          (option.attributes && option.attributes.title) ||
+                          option.title
+                        }
+                        alcohol={
+                          (option.attributes && option.attributes.alcohol) ||
+                          option.alcohol
+                        }
+                        description={
+                          (option.attributes && option.attributes.descriptionFr) ||
+                          option.type
+                        }
+                        option={option}
+                        step={step}
+                        beerMaker={
+                          (option.attributes && option.attributes.beerMaker) ||
+                          ""}
+                      />)}
                 </Subcontainer1>
               )
               )}
         </Subcontainer>
-        
+
         {/* Bières non alcoolisées */}
         <TitleContainer>
           <Title>{"Sans alcool"}</Title>{" "}

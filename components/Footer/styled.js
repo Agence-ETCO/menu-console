@@ -13,7 +13,8 @@ export const Button = styled.button`
   letter-spacing: 0.1em;
   border: none;
   background-color: ${colors.yellow};
-  margin-left: ${(props) => (props.align ? "" : "20%")};
+  margin-left: ${(props) => (props.align ? "" : "auto")};
+  min-width:300px;
 `;
 
 export const StyledLink = styled.button`
@@ -83,7 +84,8 @@ export const Container1 = styled.div`
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  //justify-content: center;
+  justify-content: space-evenly;
   width: 1300px;
   margin-right: auto;
   margin-left: auto;
@@ -119,7 +121,7 @@ export const Stage = styled.div`
   line-height: 22px;
   letter-spacing: 0.05em;
   width: 350px;
-  margin-left: auto;
+  margin-right: auto;
   div {
     padding-left: 15px;
   }

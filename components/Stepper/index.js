@@ -11,8 +11,7 @@ const tooltips = {
   3: 'Vins blancs',
   4: 'Vins rouges',
   5: 'Bières',
-  6: 'Bières non alcoolisées',
-  7: 'Résumé',
+  6: 'Bières non alcoolisées'
 };
 
 const Stepper = (props) => {
@@ -32,7 +31,7 @@ const Stepper = (props) => {
       </Link>
       {buttonOptions.map((element, key) => (
         <Link
-          href={(state.previousStep >= element ? `/${element}` : "") + (element === 5 ? `/?keg=${state.selectedPack}` : "") }
+          href={(state.previousStep >= element ? `/${element}` : "") + ((element === 5 && state.previousStep >= element ) ? `/?keg=${state.selectedPack}` : "") }
           key={`link_${key}`}
         >
           <Tooltip title={tooltips[key + 1]} arrow placement="top" PopperProps={{
@@ -70,7 +69,7 @@ const Stepper = (props) => {
           </Tooltip>
         </Link>
       ))}
-      <Link href={state.previousStep >= 6 ? "/7" : ""}>
+      <Link href={state.previousStep >= 7 ? "/7" : ""}>
         <TextButton
           color={props.step === 7 ? `${colors.orange}` : `${colors.black}`}
         >

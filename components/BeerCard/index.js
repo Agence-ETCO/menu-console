@@ -95,7 +95,7 @@ const BeerCard = (props) => {
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">Bouteille / Cannette</th>
+                    <th scope="col">Bouteille</th>
                     <th scope="col">Pression 20 oz</th>
                     <th scope="col">Pichet 60 oz</th>
                   </tr>

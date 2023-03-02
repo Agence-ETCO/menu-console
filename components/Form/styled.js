@@ -15,7 +15,7 @@ export const Button = styled.button`
   border: none;
   border-radius: 8px;
   margin-left: 100px;
-  margin-top: 25px;
+  margin-top: 35px;
   padding-top: 5px;
 `;
 export const CloseButton = styled.button`
@@ -77,6 +77,7 @@ export const Subtitle = styled.div`
   color: #3c3c3c;
   width: 454px;
   margin-bottom: 24px;
+  margin-top: 15px;
 `;
 
 export const Label = styled.label`
@@ -92,6 +93,7 @@ export const Label = styled.label`
   span {
     margin-left: 15px;
   }
+  margin-top: 15px;
 `;
 export const Input = styled.input`
   width: 453px;

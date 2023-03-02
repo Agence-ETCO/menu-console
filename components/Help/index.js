@@ -20,14 +20,14 @@ const Help = (props) => {
             </CloseButton>
             <Title>{"Contactez-nous! "}</Title>
             <Subtitle>
-              {"Marie-Simone Monette"}
-              <div>{"Chef marketing, menu et projets spéciaux"}</div>
+              {"Sylvie Lefebvre"}
+              <div>{"Coordonnatrice marketing"}</div>
             </Subtitle>
             <Subtitle2>
               {" "}
-              <div>{"514-210-5450"}</div>{" "}
-              <a href="mailto:msmonette@st-hubert.com">
-                {"msmonette@st-hubert.com"}
+              <div>{"514-885-8426"}</div>{" "}
+              <a href="mailto:Slefebvre@st-hubert.com">
+                {"Slefebvre@st-hubert.com"}
               </a>
             </Subtitle2>
           </BoxContainer>

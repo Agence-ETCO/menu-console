@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 import Vector from "../Vector";
 import {
   Container,
@@ -12,7 +14,11 @@ import {
 } from "./styled.js";
 
 const Footer = (props) => {
-  //const {redirection = "true"} = props;
+  const {
+    state
+  } = useContext(AppContext);
+  console.log('state.previousStep', state.previousStep);
+  const link = state.previousStep < 6 ? props.href : "/7/" ;
   return (
     <Container1>
       <Container>
@@ -32,12 +38,12 @@ const Footer = (props) => {
           </>
         )}
         {props.startText  && (
-          <Link href={props.href}>
+          <Link href={link}>
             <StyledLink first={props.first}>{props.startText}</StyledLink>
           </Link>
         )}
         {props.buttonText && props.redirection == true && (
-          <Link href={props.href}>
+          <Link href={link}>
             <StyledLink
               first={props.first}
               disabled={props.disabled}

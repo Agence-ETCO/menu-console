@@ -138,7 +138,7 @@ const Page5 = () => {
 
   const stage =
     step === 12
-      ? "BIÈRES NON ALCOOLISÉES"
+      ? "SANS ALCOOL"
       : step === 0
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
         : "BIÈRES EN FÛT LIGNE " + (step + 1);
@@ -462,7 +462,7 @@ const Page5 = () => {
 
           {step === 5 && (
             <SubTitle1>
-              Les lignes de 1 à 5 ont été présélectionnées par St-Hubert.
+              Les lignes 1 à 5 correspondent aux bières Labatt obligatoires.
             </SubTitle1>
           )}
 
@@ -478,8 +478,11 @@ const Page5 = () => {
                 <SubTitle1>
                   Choisissez une bière de microbrasserie parmi celles-ci.
                 </SubTitle1>
+              ) || step == 6 && (<SubTitle1>
+                Choisissez une bière blanche pour la ligne 6. 
+              </SubTitle1>
               ) || (<SubTitle1>
-                Choisir une bière pour la ligne {step} .
+                Choisissez une bière pour la ligne {step} .
               </SubTitle1>)}
               </>
           )}
@@ -563,13 +566,10 @@ const Page5 = () => {
 
           {step === 6 && (
             <div>
-              <SubTitle>
-                La recommandation de St-Hubert.
-              </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => (item.id == 1796 || item.id == 1797) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
-                    recommanded={true}
+                    recommanded={false}
                     index={key + 1}
                     type={option.attributes.descriptionFr}
                     key={option.id}
@@ -586,7 +586,7 @@ const Page5 = () => {
                 ))}
               </Subcontainer2>
 
-              <SubTitle>
+              {/* <SubTitle>
                 Vous pouvez aussi choisir parmi les bières suivantes.
               </SubTitle>
               <Subcontainer2>
@@ -606,7 +606,7 @@ const Page5 = () => {
                     imageUrl={option.attributes.imageURL}
                   />
                 ))}
-              </Subcontainer2>
+              </Subcontainer2> */}
 
 
             </div>
@@ -622,7 +622,7 @@ const Page5 = () => {
           {state.selectedPack !== 6 && step === 7 && (
             <div>
               <SubTitle>
-                La recommandation de St-Hubert.
+              St-Hubert vous recommande de choisir une bière IPA.
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
@@ -648,7 +648,7 @@ const Page5 = () => {
               </Subcontainer2>
 
               <SubTitle>
-                Vous pouvez aussi choisir parmi les bières suivantes.
+              Sinon vous pouvez aussi choisir parmi les bières suivantes.
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
@@ -687,7 +687,7 @@ const Page5 = () => {
            {state.selectedPack !== 8 && step === 8 && (
               <div>
                 <SubTitle>
-                  La recommandation de St-Hubert.
+                St-Hubert vous recommande de choisir une bière Session Ale.
                 </SubTitle>
                 <Subcontainer2>
                   {nonPreselect.filter((item) => {
@@ -712,12 +712,11 @@ const Page5 = () => {
                 </Subcontainer2>
 
                 <SubTitle>
-                  Vous pouvez aussi choisir parmi les bières suivantes.
+                Sinon vous pouvez aussi choisir parmi les bières suivantes.
                 </SubTitle>
                 <Subcontainer2>
                   {nonPreselect.filter((item) => {
-                    return step === 7 ? !([1800, 1801].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
-                      : !([1724, 1725].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
+                    return !([1800, 1801].includes(item.id) || selections.slice(0, step - 6).map(el => el.id).includes(item.id))
                   }).map((option, key) => (
                     <BeerCard
                       index={key + 1}
@@ -749,10 +748,10 @@ const Page5 = () => {
           {state.selectedPack === 12 && (step === 9 || step === 10) && (
             <div>
               <SubTitle>
-                La recommandation de St-Hubert.
+              St-Hubert vous recommande de choisir une bière parmi celles-ci.
               </SubTitle>
               <Subcontainer2>
-                {beerList.filter((item) => (item.id == 1802 || item.id == 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {preselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     recommanded={true}
                     index={key + 1}
@@ -772,10 +771,10 @@ const Page5 = () => {
               </Subcontainer2>
 
               <SubTitle>
-                Vous pouvez aussi choisir parmi les bières suivantes.
+              Sinon vous pouvez doubler une des 5 bières Labatt obligatoires.
               </SubTitle>
               <Subcontainer2>
-                {beerList.filter((item) => (item.id !== 1723 && item.id !== 1764) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id !== 1802 && item.id !== 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     index={key + 1}
                     type={option.attributes.descriptionFr}
@@ -820,7 +819,7 @@ const Page5 = () => {
         returnButtonText={footer.return}
         returnHref={"/4"}
         noReturn={step === 0 ? false : true}
-        buttonText={(step === 0 || step !== state.selectedPack) ? "Continuer" : footer.buttonText}
+        buttonText={footer.buttonText}
         redirection={(step === 0 || step !== state.selectedPack) ? false : true}
         href={"/6"}
         stage={stage}

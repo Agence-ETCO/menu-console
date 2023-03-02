@@ -64,7 +64,7 @@ const BeerCard4 = (props) => {
                 <tbody>
                   {pricesForRegion.length > 0 && (
                     <tr>
-                      <th scope="col">Bouteille / Cannette</th>
+                      <th scope="col">Bouteille</th>
                       <th scope="col">Pression 20 oz</th>
                       <th scope="col">Pichet 60 oz</th>
                     </tr>

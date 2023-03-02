@@ -108,7 +108,7 @@ export const Tag = styled.div`
     align-items: center;
     text-align: center;
     letter-spacing: 0.05em;
-    color: #FFFFFF;
+    color: #000000;
 
   }
 `;

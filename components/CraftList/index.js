@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Image from "next/image";
-import image from "../../public/close.svg";
+import image from "../../public/edit.svg";
 import CraftBeerCard from "../../components/CraftBeerCard";
 import Arrow from "../../components/Arrow";
 import Form from "../../components/Form";
@@ -19,6 +19,7 @@ import {
   Container3,
   AddButton,
   ButtonContainer,
+  Button
 
 } from "./styled.js";
 import MiniBeerCard from "../MiniBeerCard";
@@ -27,7 +28,7 @@ import MiniBeerMomentCard from "../MiniBeerMomentCard";
 const CraftList = (props) => {
   const {
     state,
-    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02  },
+    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02 },
   } = useContext(AppContext);
   const [showForm, setShowForm] = useState(false);
   const [beer, setBeer] = useState("");
@@ -55,7 +56,7 @@ const CraftList = (props) => {
   console.log(props.order);
   const onFormSubmit = () => {
     const data = {
-      id: ( props.step === 9 || props.step === 11) ? 999999001 : 999999002,
+      id: (props.step === 9 || props.step === 11) ? 999999001 : 999999002,
       beerMaker: producer,
       title: beer,
       type,
@@ -98,7 +99,7 @@ const CraftList = (props) => {
 
 
   const beerOfTheMoment = state.data.filter(
-    (option) => (option.attributes.category === "Craft Beer"  && option.attributes.title.includes("Bière du moment") )
+    (option) => (option.attributes.category === "Craft Beer" && option.attributes.title.includes("Bière du moment"))
   );
 
   const craftBeerOptions = state.data.filter(
@@ -115,7 +116,16 @@ const CraftList = (props) => {
   const microSelections = state.selections.filter(
     (option) => option.attributes && option.attributes.category === "Craft Beer"
   );
-  console.log(state, props.step);
+  
+  const modify = (value) => {
+    if (value === "01") {
+      removeMicro01();
+    } else {
+      removeMicro02();
+    }
+    handleClick()
+  }
+
   return (
     <>
       <Form
@@ -137,7 +147,7 @@ const CraftList = (props) => {
       <>
         <Container2>
           {craftBeerOptions.filter(
-            (option) => props.step === 12 || props.step === 10 && microSelections[0]  ? microSelections[0].id !== option.id : true
+            (option) => props.step === 12 || props.step === 10 && microSelections[0] ? microSelections[0].id !== option.id : true
           ).map((option, i) => (
             <MiniBeerCard
               index={i + 1}
@@ -156,8 +166,8 @@ const CraftList = (props) => {
             />
           ))}
 
-{beerOfTheMoment.filter(
-            (option) => props.step === 12 || props.step === 10 && microSelections[0]  ? microSelections[0].id !== option.id : true
+          {beerOfTheMoment.filter(
+            (option) => props.step === 12 || props.step === 10 && microSelections[0] ? microSelections[0].id !== option.id : true
           ).map((option, i) => (
             <MiniBeerMomentCard
               index={i + 1}
@@ -180,49 +190,64 @@ const CraftList = (props) => {
           <p>Vous ne trouvez pas la bière de microbrasserie que</p>
           <p>vous souhaitez avoir à votre carte? Ajoutez-là ici.</p>
         </Subtitle>
-        {(_.isEmpty(state.micro1) && ( props.step === 9 || props.step === 11)) && (
+        {(_.isEmpty(state.micro1) && (props.step === 9 || props.step === 11)) && (
           <AddButton
-            disabled = {props.disabled}
+            disabled={props.disabled}
             onClick={() => handleClick()}>
             Ajouter
           </AddButton>
         )}
         <Container1>
-          {(_.isEmpty(state.micro1) == false && ( props.step === 9 || props.step === 11)) && (
-            <MiniBeerCard
-              index={1}
-              key={"01"}
-              value={"01"}
-              title={state.micro1.title}
-              alcohol={state.micro1.alcohol}
-              description={state.micro1.type}
-              beerMaker={state.micro1.beerMaker}
-              limit={props.limit}
-              option={state.micro1}
-            />
+          {(_.isEmpty(state.micro1) == false && (props.step === 9 || props.step === 11)) && (
+            <div>
+              <Button onClick={() => modify("01")} >
+                {" "}
+                <Image src={image} width={19} height={19} alt="" />
+                <span>MODIFIER</span>
+              </Button>
+
+              <MiniBeerCard
+                index={1}
+                key={"01"}
+                value={"01"}
+                title={state.micro1.title}
+                alcohol={state.micro1.alcohol}
+                description={state.micro1.type}
+                beerMaker={state.micro1.beerMaker}
+                limit={props.limit}
+                option={state.micro1}
+              />
+            </div>
           )}
         </Container1>
 
-        {(_.isEmpty(state.micro2) && !( props.step === 9 || props.step === 11)) && (
+        {(_.isEmpty(state.micro2) && !(props.step === 9 || props.step === 11)) && (
           <AddButton
-            disabled = {props.disabled}
+            disabled={props.disabled}
             onClick={() => handleClick()}>
             Ajouter
           </AddButton>
         )}
         <Container1>
-          {(_.isEmpty(state.micro2) == false && !( props.step === 9 || props.step === 11)) && (
-            <MiniBeerCard
-              index={2}
-              key={"02"}
-              value={"02"}
-              title={state.micro2.title}
-              alcohol={state.micro2.alcohol}
-              description={state.micro2.type}
-              beerMaker={state.micro2.beerMaker}
-              limit={props.limit}
-              option={state.micro2}
-            />
+          {(_.isEmpty(state.micro2) == false && !(props.step === 9 || props.step === 11)) && (
+            <div>
+              <Button onClick={() => modify("02")}>
+                {" "}
+                <Image src={image} width={19} height={19} alt="" />
+                <span>MODIFIER</span>
+              </Button>
+              <MiniBeerCard
+                index={2}
+                key={"02"}
+                value={"02"}
+                title={state.micro2.title}
+                alcohol={state.micro2.alcohol}
+                description={state.micro2.type}
+                beerMaker={state.micro2.beerMaker}
+                limit={props.limit}
+                option={state.micro2}
+              />
+            </div>
           )}
         </Container1>
       </>

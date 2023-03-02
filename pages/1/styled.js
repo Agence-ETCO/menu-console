@@ -36,7 +36,7 @@ export const Subcontainer = styled.div`
   color: ${colors.black};
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 570px;
 `;
 

@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "../Logo";
 import Stepper from "../Stepper";
 import Help from "../Help";
 import { Container, HeaderContainer, Nav, Container1, User } from "./styled";
 import { nav, header } from "../../fr";
+import { getUser } from "../../lib/store";
 
-const Header = ({ step, userUid }) => {
+const Header = ({ step }) => {
   const [showHelp, setShowHelp] = useState(false);
+  const [userUid, setUserUid] = useState(null);
+
+  useEffect(() => {
+    const user = getUser();
+
+    if (user) {
+      setUserUid(user.uid);
+    }
+  }, []);
 
   const handleClick = () => {
     setShowHelp(!showHelp);

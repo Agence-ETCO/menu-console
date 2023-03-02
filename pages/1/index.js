@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer/index";
-import image from "../../public/couverture.png";
+//import image from "../../public/couverture.png";
 import { page1, footer } from "../../fr";
 import {
   Container,
@@ -14,6 +14,7 @@ import {
 } from "./styled";
 
 const Page1 = () => {
+  const image = "https://rsh.nyc3.digitaloceanspaces.com/images%2Fpetit%20cartable2-sans%20close%20cut.png"
   return (
     <>
       <Header step={1} />

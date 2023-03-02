@@ -157,22 +157,22 @@ export const IconContainer = styled.div`
   span {
     margin-top: 3px;
   }
+  display: flex;
+  align-items: center;
 `;
 export const Container2 = styled.div``;
 export const Icons = styled.div`
   display: flex;
   flex-direcyion: row;
   div {
+    width: 20px;
+    height: 20px;
     margin-right: 15px;
   }
   svg {
     width: 20px;
     height: 20px;
     margin-right: 15px;
-  }
-
-  svg:first-child {
-    margin-leftt: 25px;
   }
 `;
 

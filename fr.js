@@ -98,7 +98,7 @@ export const nav = {
 };
 
 export const header = {
-  user: "Rôtisserie 456"
+  user: "Rôtisserie"
 };
 
 export const legend = {

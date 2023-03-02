@@ -2,30 +2,26 @@ import styled from "styled-components";
 import { colors } from "../../constants";
 
 export const Button = styled.button`
-  color: ${colors.yellow};
-  background-color: ${colors.black};
-  min-width: 260px;
-  width: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 69px;
-  border: 0;
+  display: inline-block;
+  width: 160px;
+  height: 44px;
+  background-color: #EBEBEB;
+  border: 1px solid #000000;
   border-radius: 9px;
-  font-family: "GTWalsheimBold";
+  font-family: "GTWalsheimRegular";
   font-style: normal;
   font-weight: 700;
-  font-size: 27px;
-  line-height: 32px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 20px;
-  padding-bottom: 15px;
-
-  :disabled {
-    opacity: 0.3;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #000000;
+  margin-left: 40px;
+  margin-bottom: 20px;
+  span {
+    margin-left: 15px;
   }
+  left: 243px;
+  position: relative;
 `;
 export const CloseButton = styled.button`
   z-index: 200;
@@ -161,7 +157,6 @@ export const Container3 = styled.div`
 export const Container1 = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: -20px;
 `;
 
 export const Container2 = styled.div`
@@ -174,7 +169,8 @@ export const Container2 = styled.div`
 `;
 
 export const AddButton = styled.button`
-  background: #FFE110;
+  background: ${(props) => (props.disabled ? "gray" : "#FFE110")};
+  opacity: ${(props) => (props.disabled ? "0.85" : "1")};
   border-radius: 8px;
   width: 248px;
   height: 68px;

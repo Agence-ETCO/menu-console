@@ -52,6 +52,9 @@ const MiniBeerCard = (props) => {
       (selection) => selection.id === option.id
     );
 
+    if (option.id === 999999001 || option.id === 999999002) {
+      checked = option;
+    }
 
     if (checked) {
       removeSelection(option.id);
@@ -64,9 +67,6 @@ const MiniBeerCard = (props) => {
         removeMicro02();
         return false;
       }
-      // if(option.id === 999999001 ) {
-
-      // }
     } else if (!checked && props.limit) {
       addSelection(option);
     } else if (!checked && !props.limit) {

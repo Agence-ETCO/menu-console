@@ -153,8 +153,8 @@ const Page6 = () => {
   }, []);
 
   useEffect(() => {
-    if (state.previousStep < 4) {
-      addPreviousStep(4);
+    if (state.previousStep < 5) {
+      addPreviousStep(5);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

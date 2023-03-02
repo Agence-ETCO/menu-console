@@ -70,6 +70,7 @@ export const Subtitle = styled.div`
   font-size: 17px;
   line-height: 24px;
   color: #262626;
+  margin-top: 20px;
   div {
     font-family: "GTWalsheimRegular";
     font-style: normal;
@@ -88,7 +89,7 @@ export const Subtitle2 = styled.div`
   line-height: 24px;
   color: #3c3c3c;
   width: 454px;
-  margin-top: 20px;
+  //margin-top: 20px;
   margin-bottom: 50px;
   a {
     text-decoration: underline;
