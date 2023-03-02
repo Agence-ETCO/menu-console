@@ -147,7 +147,14 @@ const CraftList = (props) => {
       <>
         <Container2>
           {craftBeerOptions.filter(
-            (option) => props.step === 12 || props.step === 10 && microSelections[0] ? microSelections[0].id !== option.id : true
+            (option) => {
+              console.log('microSelections[0]', microSelections);
+              if (microSelections[0] && (props.step === 12 || props.step === 10) ) {
+                return microSelections[0].id !== option.id ;
+              } else {
+                return true;
+              }
+            }
           ).map((option, i) => (
             <MiniBeerCard
               index={i + 1}
@@ -167,8 +174,14 @@ const CraftList = (props) => {
           ))}
 
           {beerOfTheMoment.filter(
-            (option) => props.step === 12 || props.step === 10 && microSelections[0] ? microSelections[0].id !== option.id : true
-          ).map((option, i) => (
+            (option) => {
+              console.log('microSelections[0]', microSelections);
+              if (microSelections[0] && (props.step === 12 || props.step === 10) ) {
+                return microSelections[0].id !== option.id ;
+              } else {
+                return true;
+              }
+            }).map((option, i) => (
             <MiniBeerMomentCard
               index={i + 1}
               type={option.attributes.descriptionFr}
