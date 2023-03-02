@@ -751,7 +751,7 @@ const Page5 = () => {
               St-Hubert vous recommande de choisir une bière parmi celles-ci.
               </SubTitle>
               <Subcontainer2>
-                {preselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     recommanded={true}
                     index={key + 1}
@@ -774,7 +774,7 @@ const Page5 = () => {
               Sinon vous pouvez doubler une des 5 bières Labatt obligatoires.
               </SubTitle>
               <Subcontainer2>
-                {nonPreselect.filter((item) => (item.id !== 1802 && item.id !== 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
+                { preselect.filter((item) => (item.id !== 1802 && item.id !== 1803) && !(selections.slice(0, step - 6).map(el => el.id).includes(item.id))).map((option, key) => (
                   <BeerCard
                     index={key + 1}
                     type={option.attributes.descriptionFr}
