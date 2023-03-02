@@ -125,7 +125,7 @@ const CraftList = (props) => {
     }
     handleClick()
   }
-
+console.log(state);
   return (
     <>
       <Form
@@ -148,8 +148,7 @@ const CraftList = (props) => {
         <Container2>
           {craftBeerOptions.filter(
             (option) => {
-              console.log('microSelections[0]', microSelections);
-              if (microSelections[0] && (props.step === 12 || props.step === 10) ) {
+              if (_.isEmpty(state.micro1) && microSelections[0] && (props.step === 12 || props.step === 10) ) {
                 return microSelections[0].id !== option.id ;
               } else {
                 return true;
@@ -175,8 +174,7 @@ const CraftList = (props) => {
 
           {beerOfTheMoment.filter(
             (option) => {
-              console.log('microSelections[0]', microSelections);
-              if (microSelections[0] && (props.step === 12 || props.step === 10) ) {
+              if (_.isEmpty(state.micro1) && microSelections[0] && (props.step === 12 || props.step === 10) ) {
                 return microSelections[0].id !== option.id ;
               } else {
                 return true;
