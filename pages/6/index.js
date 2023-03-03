@@ -186,7 +186,7 @@ const Page6 = () => {
           {state.data &&
             state.data
               .filter(
-                (option) => option.attributes || option.attributes.category === "Non-Alcoholic"
+                (option) => option.attributes && option.attributes.category === "Non-Alcoholic"
               )
               .map((option) => (
                 <BeerCard2
