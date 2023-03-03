@@ -30,8 +30,8 @@ const Page = () => {
     setUser(user);
 
     const res = await fetchCurrentUser().then(async () => {
-      if (!_.isEmpty(res.franchisee_s_menu)) {
-        if (res.franchisee_s_menu.id) {
+
+        if (!_.isEmpty(res.franchisee_s_menu) && res.franchisee_s_menu.id) {
           getMenuId(res.franchisee_s_menu.id);
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
@@ -50,7 +50,6 @@ const Page = () => {
           if (res.franchisee_s_menu.craftOptions.craft2.title) {
             addMicro02(res.franchisee_s_menu.craftOptions.craft2);
           }
-        }
       } else {
         const data = {
           menu_items: [],
