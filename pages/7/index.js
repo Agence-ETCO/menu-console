@@ -38,12 +38,15 @@ const Page7 = () => {
     state,
     actions: {
       addPreviousStep,
+      addPack,
+      removeMicro01,
+      removeMicro02,
+      receivePack,
       receiveSelections,
       receiveCraftOptions,
       addMicro01,
       addMicro02,
       getMenuId,
-      receivePack,
       receiveBeerSelections
     },
   } = useContext(AppContext);
@@ -185,7 +188,7 @@ const Page7 = () => {
           getMenuId(res.franchisee_s_menu.id);
 
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
-          receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
+          if (res.franchisee_s_menu.craftOptions.beers) {receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)}
 
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
           if (res.franchisee_s_menu.craftOptions.craft1.title) {
@@ -242,6 +245,19 @@ const Page7 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const unselectKegN = () => {
+    addPreviousStep(4);
+    receiveBeerSelections([0, 0, 0, 0, 0, 0, 0])
+    // for (let i = 0; i < 7; i++) {
+    //   removeBeerSelection(i);
+    // }
+    setButtons([]);
+    removeMicro01();
+    removeMicro02();
+    setStep(0);
+    addPack(0);
+  }
 
   return (
     <>
@@ -515,13 +531,13 @@ const Page7 = () => {
         {/* Bières */}
         <TitleContainer>
           <Title>Bières en fût</Title>
-          {/* <Link href={"/5?keg=0"}>
+          <Link href={"/5"} onClick={() => unselectKegN()}>
             <Button>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
               <span>ÉDITER</span>
             </Button>
-          </Link> */}
+          </Link>
         </TitleContainer>
 
         <Subcontainer>
