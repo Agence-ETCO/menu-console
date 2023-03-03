@@ -76,7 +76,7 @@ const Page5 = () => {
       setButtons(_.range(6, state.selectedPack + 1));
     }
 
-  }, [router.isReady]);
+  }, [router.isReady, state.selectedPack, keg]);
 
 
 
