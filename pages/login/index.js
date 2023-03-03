@@ -38,7 +38,7 @@ const Page = () => {
       getMenuId(resMenu.data.id);
     }
     if (res.isSubmitted === true) {
-      router.push("/7");
+      router.push("/8");
     } else {
       router.push("/");
     }
