@@ -31,6 +31,7 @@ const Page6 = () => {
       addPreviousStep,
       addPack,
       removePack,
+      receiveBeerSelections
     },
   } = useContext(AppContext);
   const min = 1;

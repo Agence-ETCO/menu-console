@@ -30,6 +30,7 @@ const WelcomePage = () => {
       addMicro01,
       addMicro02,
       getMenuId,
+      receiveBeerSelections
     },
   } = useContext(AppContext);
 

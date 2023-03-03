@@ -28,6 +28,7 @@ const Page3 = () => {
       addMicro01,
       addMicro02,
       getMenuId,
+      receiveBeerSelections
     },
   } = useContext(AppContext);
 

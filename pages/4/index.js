@@ -30,6 +30,7 @@ const Page4 = () => {
       receiveCraftOptions,
       addMicro01,
       addMicro02,
+      receiveBeerSelections
     },
   } = useContext(AppContext);
 

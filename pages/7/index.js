@@ -44,6 +44,7 @@ const Page7 = () => {
       addMicro02,
       getMenuId,
       receivePack,
+      receiveBeerSelections
     },
   } = useContext(AppContext);
   const router = useRouter();
