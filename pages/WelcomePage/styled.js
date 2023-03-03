@@ -50,7 +50,6 @@ export const Date = styled.span`
   font-weight: 700;
   font-size: 17px;
   line-height: 23px;
-  color: #e30826;
 `;
 export const Contact = styled.span`
   ont-family: "GTWalsheimRegular";
