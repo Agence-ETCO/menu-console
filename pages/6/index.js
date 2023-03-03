@@ -89,7 +89,7 @@ const Page6 = () => {
   };
 
   const disabled = () => {
-      return selections.filter(el => el.attributes.category === "Non-Alcoholic").length < min  ;
+      return selections.filter(el => el.attributes && el.attributes.category === "Non-Alcoholic").length < min  ;
     }
 
   useEffect(() => {
