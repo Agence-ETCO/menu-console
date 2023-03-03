@@ -3,21 +3,12 @@ import { useRouter } from "next/router";
 import { login, fetchAPI, postAPI, fetchCurrentUser } from "../../lib/api";
 import { AppContext } from "../../context/AppContext";
 import { setToken, setUser } from "../../lib/store";
-import * as _ from "lodash";
 
 const Page = () => {
   const {
     state,
-    actions: { 
-      receiveData,
-      receiveSelections,
-      receivePack,
-      receiveCraftOptions,
-      addMicro01,
-      addMicro02,
-      getMenuId, },
+    actions: { getMenuId },
   } = useContext(AppContext);
-  
 
   const [display, setDisplay] = useState("");
   const router = useRouter();
@@ -29,46 +20,28 @@ const Page = () => {
     setToken(jwt);
     setUser(user);
 
-    const res = await fetchCurrentUser().then(async () => {
+    const res = await fetchCurrentUser();
 
-        if (!_.isEmpty(res.franchisee_s_menu) && res.franchisee_s_menu.id) {
-          getMenuId(res.franchisee_s_menu.id);
-          if (res.franchisee_s_menu.menu_items.length > 0) {
-            receiveSelections(res.franchisee_s_menu.menu_items);
-          }
-          if(!_.isEmpty(res.franchisee_s_menu.craftOptions)){
-            receiveCraftOptions(res.franchisee_s_menu.craftOptions);
-            receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
-  
-            receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
-          }
-
-          if (res.franchisee_s_menu.craftOptions.craft1.title) {
-            addMicro01(res.franchisee_s_menu.craftOptions.craft1);
-          }
-
-          if (res.franchisee_s_menu.craftOptions.craft2.title) {
-            addMicro02(res.franchisee_s_menu.craftOptions.craft2);
-          }
-      } else {
-        const data = {
-          menu_items: [],
-          craftOptions: {},
-          franchisee: user.id,
-        };
-  
-        const resMenu = await postAPI("api/franchisees-menus", data).then(()=>{getMenuId(resMenu.data.id);});
+    if (res.franchisee_s_menu) {
+      if (res.franchisee_s_menu.id) {
+        getMenuId(res.franchisee_s_menu.id);
       }
-      if (res.isSubmitted === true) {
-        router.push("/8");
-      } else {
-        router.push("/");
-      }
-    }).catch((err) => {
-      console.log(err);
-    });
+    } else {
+      const data = {
+        menu_items: [],
+        craftOptions: {},
+        franchisee: user.id,
+      };
 
-    
+      const resMenu = await postAPI("api/franchisees-menus", data);
+
+      getMenuId(resMenu.data.id);
+    }
+    if (res.isSubmitted === true) {
+      router.push("/8");
+    } else {
+      router.push("/");
+    }
   };
 
   useEffect(() => {
