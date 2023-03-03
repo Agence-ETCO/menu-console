@@ -322,15 +322,15 @@ const Page7 = () => {
                   }
                   taste={
                     (option.attributes && option.attributes.tasteFr) ||
-                    option.taste
+                    option.tasteFr
                   }
                   location={
                     (option.attributes && option.attributes.location) ||
                     option.location
                   }
                   country={
-                    (option.attributes && option.attributes.country) ||
-                    option.country
+                    (option.attributes && option.attributes.countryFr) ||
+                    option.countryFr
                   }
                   sugar={
                     (option.attributes && option.attributes.sugar) ||
@@ -407,15 +407,15 @@ const Page7 = () => {
                   }
                   taste={
                     (option.attributes && option.attributes.tasteFr) ||
-                    option.taste
+                    option.tasteFr
                   }
                   location={
                     (option.attributes && option.attributes.location) ||
                     option.location
                   }
                   country={
-                    (option.attributes && option.attributes.country) ||
-                    option.country
+                    (option.attributes && option.attributes.countryFr) ||
+                    option.countryFr
                   }
                   sugar={
                     (option.attributes && option.attributes.sugar) ||
@@ -500,8 +500,8 @@ const Page7 = () => {
                     option.location
                   }
                   country={
-                    (option.attributes && option.attributes.country) ||
-                    option.country
+                    (option.attributes && option.attributes.countryFr) ||
+                    option.countryFr
                   }
                   sugar={
                     (option.attributes && option.attributes.sugar) ||

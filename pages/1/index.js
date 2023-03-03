@@ -37,7 +37,7 @@ const Page1 = () => {
         buttonText={page1.buttonText}
         redirection={ true }
         href={"/2"}
-        stage={"MOUSSEUX ET ORANGE"}
+        stage={"MOUSSEUX ET VINS ORANGES"}
       />
     </>
   );

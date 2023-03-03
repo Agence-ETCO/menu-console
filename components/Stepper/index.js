@@ -20,7 +20,6 @@ const Stepper = (props) => {
 
   return (
     <Container>
-      <Link href={state.previousStep >= -1 ? "/" : ""}>
         <TextButton
           color={
             props.step === -1 ? `${colors.orange}` : "rgba(147, 149, 152, 0.15)"
@@ -28,12 +27,7 @@ const Stepper = (props) => {
         >
           {"bienvenue"}
         </TextButton>
-      </Link>
       {buttonOptions.map((element, key) => (
-        <Link
-          href={(state.previousStep >= element ? `/${element}` : "") }
-          key={`link_${key}`}
-        >
           <Tooltip title={tooltips[key + 1]} arrow placement="top" PopperProps={{
             sx: {
               "& .MuiTooltip-tooltip": {
@@ -67,15 +61,14 @@ const Stepper = (props) => {
               {element}
             </NumberButton>
           </Tooltip>
-        </Link>
+
       ))}
-      <Link href={state.previousStep >= 7 ? "/7" : ""}>
+
         <TextButton
           color={props.step === 7 ? `${colors.orange}` : `${colors.black}`}
         >
           {"Résumé"}
         </TextButton>
-      </Link>
     </Container>
   );
 };

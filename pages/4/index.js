@@ -180,7 +180,7 @@ const Page4 = () => {
                   description={option.attributes.descriptionFr}
                   taste={option.attributes.tasteFr}
                   location={option.attributes.location}
-                  country={option.attributes.country}
+                  country={option.attributes.countryFr}
                   sugar={option.attributes.sugar}
                   saqCode={option.attributes.saqCode}
                   prices={option.attributes.cost}

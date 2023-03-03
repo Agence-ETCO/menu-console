@@ -19,6 +19,7 @@ export const TextButton = styled.button`
   border-radius: ${(props) =>
     props.color === colors.orange ? '3px' : '0'};
   padding-top: 5px;
+  cursor: default;
 `;
 
 export const NumberButton = styled.button`
@@ -37,6 +38,7 @@ export const NumberButton = styled.button`
   border-radius: ${(props) =>
     props.color === colors.orange ? '3px' : '0'};
   outline: none;
+  cursor: default;
 `;
 
 export const Container = styled.div`

@@ -186,7 +186,7 @@ const Page2 = () => {
                   }
                   taste={option.attributes.tasteFr || option.tasteFr}
                   location={option.attributes.location || option.location}
-                  country={option.attributes.country || option.country}
+                  country={option.attributes.countryFr || option.countryFr}
                   sugar={option.attributes.sugar || option.sugar}
                   saqCode={option.attributes.saqCode || option.saqCode}
                   prices={option.attributes.cost || option.cost}

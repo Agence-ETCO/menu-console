@@ -49,7 +49,7 @@ export const CustomContainer = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   margin-left: 30px;
 `;
 
