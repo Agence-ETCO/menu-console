@@ -87,7 +87,7 @@ const Page2 = () => {
           receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
 
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
-
+          console.log('Pack ',res.franchisee_s_menu.craftOptions.pack );
           if (res.franchisee_s_menu.craftOptions.craft1.title) {
             addMicro01(res.franchisee_s_menu.craftOptions.craft1);
           }
