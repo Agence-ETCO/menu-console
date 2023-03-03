@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { login, fetchAPI, postAPI, fetchCurrentUser } from "../../lib/api";
 import { AppContext } from "../../context/AppContext";
 import { setToken, setUser } from "../../lib/store";
+import * as _ from "lodash";
 
 const Page = () => {
   const {
@@ -29,16 +30,18 @@ const Page = () => {
     setUser(user);
 
     const res = await fetchCurrentUser().then(async () => {
-      if (res.franchisee_s_menu) {
+      if (!_.isEmpty(res.franchisee_s_menu)) {
         if (res.franchisee_s_menu.id) {
           getMenuId(res.franchisee_s_menu.id);
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
           }
-          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
-          receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
-
-          receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+          if(!_.isEmpty(res.franchisee_s_menu.craftOptions)){
+            receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+            receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
+  
+            receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+          }
 
           if (res.franchisee_s_menu.craftOptions.craft1.title) {
             addMicro01(res.franchisee_s_menu.craftOptions.craft1);
