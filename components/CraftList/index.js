@@ -169,7 +169,9 @@ console.log(state.beerSelections);
               order={props.order}
             />
           ))}
-
+              <Subtitle>
+              Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici l’automne.
+              </Subtitle>
           {beerOfTheMoment.filter(
             (option) => {
               return !(state.beerSelections.filter((el,key)=> key != props.step - 6).includes(option.id));
@@ -193,8 +195,7 @@ console.log(state.beerSelections);
         </Container2>
 
         <Subtitle>
-          <p>Vous ne trouvez pas la bière de microbrasserie que</p>
-          <p>vous souhaitez avoir à votre carte? Ajoutez-là ici.</p>
+          <p>Si vous ne trouvez pas la bière de microbrasserie que vous souhaitez avoir à votre carte, ajoutez-la ici.</p>
         </Subtitle>
         {(_.isEmpty(state.micro1) && (props.step === 9 || props.step === 11)) && (
           <AddButton
