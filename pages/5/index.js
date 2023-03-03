@@ -105,7 +105,7 @@ const Page5 = () => {
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
         : "BIÈRES EN FÛT LIGNE " + (step + 1);
 
-  const limit = state.beerSelections[step-6] === 0;
+  const limit = step  ? state.beerSelections[step-6] === 0 : state.beerSelections[0] === 0;
   const disabled = () => {
     if (state.selectedPack === 0) {
       return selectedPack === 0;
