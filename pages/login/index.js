@@ -20,28 +20,47 @@ const Page = () => {
     setToken(jwt);
     setUser(user);
 
-    const res = await fetchCurrentUser();
+    const res = await fetchCurrentUser().then(async () => {
+      if (res.franchisee_s_menu) {
+        if (res.franchisee_s_menu.id) {
+          getMenuId(res.franchisee_s_menu.id);
+          if (res.franchisee_s_menu.menu_items.length > 0) {
+            receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+          receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
 
-    if (res.franchisee_s_menu) {
-      if (res.franchisee_s_menu.id) {
-        getMenuId(res.franchisee_s_menu.id);
+          receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
+
+          if (res.franchisee_s_menu.craftOptions.craft1.title) {
+            addMicro01(res.franchisee_s_menu.craftOptions.craft1);
+          }
+
+          if (res.franchisee_s_menu.craftOptions.craft2.title) {
+            addMicro02(res.franchisee_s_menu.craftOptions.craft2);
+          }
+        }
+      } else {
+        const data = {
+          menu_items: [],
+          craftOptions: {},
+          franchisee: user.id,
+        };
+  
+        const resMenu = await postAPI("api/franchisees-menus", data);
+  
+        getMenuId(resMenu.data.id);
       }
-    } else {
-      const data = {
-        menu_items: [],
-        craftOptions: {},
-        franchisee: user.id,
-      };
+      if (res.isSubmitted === true) {
+        router.push("/8");
+      } else {
+        router.push("/");
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
 
-      const resMenu = await postAPI("api/franchisees-menus", data);
-
-      getMenuId(resMenu.data.id);
-    }
-    if (res.isSubmitted === true) {
-      router.push("/8");
-    } else {
-      router.push("/");
-    }
+    
   };
 
   useEffect(() => {
