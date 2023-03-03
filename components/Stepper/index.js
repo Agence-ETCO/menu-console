@@ -31,7 +31,7 @@ const Stepper = (props) => {
       </Link>
       {buttonOptions.map((element, key) => (
         <Link
-          href={(state.previousStep >= element ? `/${element}` : "") + ((element === 5 && state.previousStep >= element ) ? `/?keg=${state.selectedPack}` : "") }
+          href={(state.previousStep >= element ? `/${element}` : "") }
           key={`link_${key}`}
         >
           <Tooltip title={tooltips[key + 1]} arrow placement="top" PopperProps={{
