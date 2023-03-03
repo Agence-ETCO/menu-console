@@ -83,6 +83,7 @@ const Page2 = () => {
             getMenuId(res.franchisee_s_menu.id);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+          receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
 
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
 
