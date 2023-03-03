@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import { AppContext } from "../../context/AppContext";
 import BeerCard4 from "../../components/BeerCard4";
 
-const BeerList = () => {
+const BeerList = (props) => {
   const {
     state,
     actions: {},
@@ -28,6 +28,7 @@ const BeerList = () => {
     <>
       {preselect.map((option, key) => (
         <BeerCard4
+          tag={props.option || ""}
           index={key+1} 
           key={option.id}
           value={option.id}

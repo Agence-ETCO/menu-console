@@ -1,10 +1,11 @@
 import React, { createContext, useReducer } from "react";
+import update from 'react-addons-update';
 
 const initialState = {
   previousStep: 0,
   data: [],
   selections: [],
-  beerSelections: [],
+  beerSelections: [0, 0, 0, 0, 0, 0, 0], 
   micro1: {},
   micro2: {},
   selectedPack: 0,
@@ -35,11 +36,20 @@ const reducer = (state, action) => {
         selections: [...state.selections, action.value],
       };
 
+      // case "add-beer-selection":
+      // return {
+      //   ...state,
+      //   beerSelections: [...state.beerSelections, action.value],
+      // };
+
       case "add-beer-selection":
-      return {
-        ...state,
-        beerSelections: [...state.beerSelections, action.value],
-      };
+        return update(state, { 
+          beerSelections: { 
+            [action.id]: {
+              $set: action.payload
+            }
+          }
+        });
 
     case "add-pack":
       return {
@@ -55,13 +65,23 @@ const reducer = (state, action) => {
         ),
       };
 
+      // case "remove-beer-selection":
+      //   return {
+      //     ...state,
+      //     beerSelections: state.beerSelections.filter(
+      //       (selection) => selection.id !== action.value
+      //     ),
+      //   };
+
       case "remove-beer-selection":
-        return {
-          ...state,
-          beerSelections: state.beerSelections.filter(
-            (selection) => selection.id !== action.value
-          ),
-        };
+      return update(state, { 
+        beerSelections: { 
+          [action.id]: {
+            $set: 0
+          }
+        }
+      });
+  
 
     case "filter-selections":
       return {
@@ -163,17 +183,18 @@ export const AppProvider = ({ children }) => {
     });
   };
 
-  const addBeerSelection = (value) => {
+  const addBeerSelection = (id, payload) => {
     dispatch({
       type: "add-beer-selection",
-      value: value,
+      id: id,
+      payload: payload,
     });
   };
 
-  const removeBeerSelection = (value) => {
+  const removeBeerSelection = (id) => {
     dispatch({
       type: "remove-beer-selection",
-      value: value,
+      id: id,
     });
   };
 

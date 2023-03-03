@@ -20,7 +20,6 @@ import {
   AddButton,
   ButtonContainer,
   Button
-
 } from "./styled.js";
 import MiniBeerCard from "../MiniBeerCard";
 import MiniBeerMomentCard from "../MiniBeerMomentCard";
@@ -28,7 +27,8 @@ import MiniBeerMomentCard from "../MiniBeerMomentCard";
 const CraftList = (props) => {
   const {
     state,
-    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02 },
+    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02,   addBeerSelection
+    },
   } = useContext(AppContext);
   const [showForm, setShowForm] = useState(false);
   const [beer, setBeer] = useState("");
@@ -80,6 +80,7 @@ const CraftList = (props) => {
       }
       //addSelection(data);
       addMicro01(data);
+      addBeerSelection(props.step-6, data.id);
       onChange(true);
     } else {
       if (state.micro2 && state.micro2.id) {
@@ -87,6 +88,7 @@ const CraftList = (props) => {
       }
       //addSelection(data); 
       addMicro02(data);
+      addBeerSelection(props.step-6, data.id);
       onChange(true);
     }
   };
@@ -147,15 +149,11 @@ console.log(state);
       <>
         <Container2>
           {craftBeerOptions.filter(
-            (option) => {
-              if (_.isEmpty(state.micro1) && microSelections[0] && (props.step === 12 || props.step === 10) ) {
-                return microSelections[0].id !== option.id ;
-              } else {
-                return true;
-              }
+            (option) => { return !(state.beerSelections.filter((el,key)=> key != props.step - 6).includes(option.id));
             }
           ).map((option, i) => (
             <MiniBeerCard
+            beerStep={props.step}
               index={i + 1}
               type={option.attributes.descriptionFr}
               key={option.id}
@@ -174,13 +172,10 @@ console.log(state);
 
           {beerOfTheMoment.filter(
             (option) => {
-              if (_.isEmpty(state.micro1) && microSelections[0] && (props.step === 12 || props.step === 10) ) {
-                return microSelections[0].id !== option.id ;
-              } else {
-                return true;
-              }
+              return !(state.beerSelections.filter((el,key)=> key != props.step - 6).includes(option.id));
             }).map((option, i) => (
             <MiniBeerMomentCard
+            beerStep={props.step}
               index={i + 1}
               type={option.attributes.descriptionFr}
               key={option.id}
@@ -218,6 +213,7 @@ console.log(state);
               </Button>
 
               <MiniBeerCard
+              beerStep={props.step}
                 index={1}
                 key={"01"}
                 value={"01"}
@@ -248,6 +244,7 @@ console.log(state);
                 <span>MODIFIER</span>
               </Button>
               <MiniBeerCard
+              beerStep={props.step}
                 index={2}
                 key={"02"}
                 value={"02"}

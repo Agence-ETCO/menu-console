@@ -80,7 +80,8 @@ export const Subtitle = styled.div`
   padding-bottom: 40px;
   border-bottom: 1px solid #939598;
   p {
-    margin-bottom: 0px !important;
+    margin-bottom: 5px !important;
+    margin-top: 5px !important;
   }
 `;
 

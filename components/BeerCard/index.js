@@ -46,8 +46,10 @@ const BeerCard = (props) => {
     );
 
     if (checked) {
+      removeBeerSelection(props.beerStep-6)
       removeSelection(option.id);
     } else if (!checked && props.limit) {
+      addBeerSelection(props.beerStep-6, option.id)
       addSelection(option);
     } else if (!checked && !props.limit) {
       return;
@@ -57,7 +59,7 @@ const BeerCard = (props) => {
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
     : props.prices;
-
+console.log('beerSelections',state.beerSelections);
   return (
     <>
       <div>

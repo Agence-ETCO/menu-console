@@ -33,7 +33,7 @@ const BeerCard4 = (props) => {
     <>
       <Container>
         <Title>
-          Ligne {props.index} : {props.type}
+          Ligne {props.index} : {props.type} {props.tag}
         </Title>
         <Label checked>
           {/* <Lock3 />  */}

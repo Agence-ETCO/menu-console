@@ -17,7 +17,7 @@ import {
 const MiniBeerMomentCard = (props) => {
   const {
     state,
-    actions: { addSelection, removeSelection, addMicro01, addMicro02, removeMicro01, removeMicro02 },
+    actions: { addSelection, removeSelection, addMicro01, addMicro02, removeMicro01, removeMicro02, addBeerSelection, removeBeerSelection, },
   } = useContext(AppContext);
 
   const region = useUserRegion();
@@ -56,19 +56,9 @@ const MiniBeerMomentCard = (props) => {
 
     if (checked) {
       removeSelection(option.id);
-      if (option.id === 999999001) {
-        removeMicro01();
-        return false;
-      }
-
-      if (option.id === 999999002) {
-        removeMicro02();
-        return false;
-      }
-      // if(option.id === 999999001 ) {
-
-      // }
+      removeBeerSelection(props.beerStep)
     } else if (!checked && props.limit) {
+      addBeerSelection(props.beerStep, option.id);
       addSelection(option);
     } else if (!checked && !props.limit) {
       return;

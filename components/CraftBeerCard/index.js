@@ -26,7 +26,7 @@ import {
 const CraftBeerCard = (props) => {
   const {
     state,
-    actions: { addMicro01, addMicro02, removeMicro01, removeMicro02 },
+    actions: { addMicro01, addMicro02, removeMicro01, removeMicro02,removeBeerSelection, addBeerSelection },
   } = useContext(AppContext);
 
   const region = useUserRegion();
