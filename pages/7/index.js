@@ -65,8 +65,6 @@ const Page7 = () => {
         option.category === "Beer"
     );
     
-    //var _beers = [];
-    useEffect(() => {
       var array = []
       for (let i = 0; i < beer.length; i++) {
         var temp = beer.find((item)=>{
@@ -76,9 +74,8 @@ const Page7 = () => {
           array.push(temp);
         }
       }
-      console.log('_beers', _beers );
-      setBeer[array];
-    },[state.beerSelections, beer])
+      console.log('_beers', array );
+  
   
   const nonAlcohol =
     state.selections &&
@@ -558,7 +555,7 @@ const Page7 = () => {
 
         <Subcontainer>
           <BeerList option={"pré-selectionnée"} />
-          { beer
+          { array
               .map((option, key) => (
 
                 <Subcontainer1 key={`page7_option_c_${key}`} >
