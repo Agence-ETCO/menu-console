@@ -89,7 +89,8 @@ const Page6 = () => {
   };
 
   const disabled = () => {
-      return selections.filter(el => el.attributes && el.attributes.category === "Non-Alcoholic").length < min  ;
+      return selections.filter(el => el.attributes && el.attributes.category === "Non-Alcoholic" ||
+      option.category === "Non-Alcoholic").length < min  ;
     }
 
   useEffect(() => {
@@ -185,7 +186,7 @@ const Page6 = () => {
           {state.data &&
             state.data
               .filter(
-                (option) => option.attributes.category === "Non-Alcoholic"
+                (option) => option.attributes || option.attributes.category === "Non-Alcoholic"
               )
               .map((option) => (
                 <BeerCard2
