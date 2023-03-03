@@ -56,9 +56,9 @@ const MiniBeerMomentCard = (props) => {
 
     if (checked) {
       removeSelection(option.id);
-      removeBeerSelection(props.beerStep)
+      removeBeerSelection(props.beerStep-6)
     } else if (!checked && props.limit) {
-      addBeerSelection(props.beerStep, option.id);
+      addBeerSelection(props.beerStep-6, option.id);
       addSelection(option);
     } else if (!checked && !props.limit) {
       return;

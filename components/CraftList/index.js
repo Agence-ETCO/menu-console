@@ -127,7 +127,7 @@ const CraftList = (props) => {
     }
     handleClick()
   }
-console.log(state);
+console.log(state.beerSelections);
   return (
     <>
       <Form
