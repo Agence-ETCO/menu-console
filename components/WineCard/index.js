@@ -141,18 +141,6 @@ const WineCard = (props) => {
             <IconContainer>
               <span> Code saq {props.saqCode || ""}</span>
               <Icons>
-                {props.isFromQuebec &&
-                  (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
-                {props.isOrange &&
-                  (isChecked(props.option) ? (
-                    <Container2>
-                      <Image src={imageO} width={20} height={23} alt="" />
-                    </Container2>
-                  ) : (
-                    <IconO />
-                  ))}
-                {props.isOrganic &&
-                  (isChecked(props.option) ? <IconBioDark /> : <IconBio />)}
                 {props.isCellier &&
                   (isChecked(props.option) ? (
                     <Container2>
@@ -161,6 +149,8 @@ const WineCard = (props) => {
                   ) : (
                     <IconC />
                   ))}
+                {props.isOrganic &&
+                  (isChecked(props.option) ? <IconBioDark /> : <IconBio />)}
                 {props.isNature &&
                   (isChecked(props.option) ? (
                     <Container2>
@@ -169,6 +159,16 @@ const WineCard = (props) => {
                   ) : (
                     <IconN />
                   ))}
+                {props.isOrange &&
+                  (isChecked(props.option) ? (
+                    <Container2>
+                      <Image src={imageO} width={20} height={23} alt="" />
+                    </Container2>
+                  ) : (
+                    <IconO />
+                  ))}
+                {props.isFromQuebec &&
+                  (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
               </Icons>
             </IconContainer>
           </TextContainer>
