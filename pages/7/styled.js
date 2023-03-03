@@ -45,6 +45,14 @@ export const TitleContainer = styled.div`
   margin-left: 30px;
 `;
 
+export const CustomContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 30px;
+`;
+
 export const Title1 = styled.div`
   font-family: "GTWalsheimBold";
   font-weight: 700;
@@ -123,6 +131,23 @@ export const Button = styled.button`
   span {
     margin-left: 15px;
   }
+`;
+
+export const Chip = styled.button`
+  width: 32px;
+  height: 32px;
+  border: 1.2381px solid #BDBDBD;
+  font-family: "GTWalsheimRegular";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13.2063px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #3C3C3C;
+  border-radius: 50%;
+  background-color: #BDBDBD ;
+  margin-left: 15px;
 `;
 
 

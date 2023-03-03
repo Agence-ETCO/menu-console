@@ -12,6 +12,7 @@ import BeerList from "../../components/BeerList";
 import AlertBox from "../../components/AlertBox";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
+import imageKeg from "../../public/Fut.svg";
 import { putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 import { page2, page3, page4, page7, footer } from "../../fr";
@@ -20,6 +21,7 @@ import {
   Subcontainer,
   Title,
   TitleContainer,
+  CustomContainer,
   Subcontainer1,
   Subtitle1,
   Title1,
@@ -28,7 +30,8 @@ import {
   Button,
   Text,
   KegTitleContainer,
-  KegTitle
+  KegTitle,
+  Chip
 } from "./styled";
 import MiniBeerCard from "../../components/MiniBeerCard";
 import MiniBeerMomentCard from "../../components/MiniBeerMomentCard";
@@ -544,6 +547,9 @@ const Page7 = () => {
         {/* Bières */}
         <TitleContainer>
           <Title>Bières en fût</Title>
+          <CustomContainer>
+          <Image src={imageKeg} width={60} height={80} alt=""></Image>
+          <Chip>{state.selectedPack}</Chip>
           <Link href={"/5"}>
             <Button onClick={() => unselectKegN()}>
               {" "}
@@ -551,6 +557,7 @@ const Page7 = () => {
               <span>ÉDITER</span>
             </Button>
           </Link>
+          </CustomContainer>
         </TitleContainer>
 
         <Subcontainer>
