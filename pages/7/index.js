@@ -263,7 +263,7 @@ const Page7 = () => {
             <Button>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
-              <span>MODIFIER</span>
+              <span>ÉDITER</span>
             </Button>
           </Link>
 
@@ -344,7 +344,7 @@ const Page7 = () => {
             <Button>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
-              <span>MODIFIER</span>
+              <span>ÉDITER</span>
             </Button>
           </Link>
 
@@ -430,7 +430,7 @@ const Page7 = () => {
             <Button>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
-              <span>MODIFIER</span>
+              <span>ÉDITER</span>
             </Button>
           </Link>
 
@@ -516,14 +516,14 @@ const Page7 = () => {
             <Button>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
-              <span>MODIFIER</span>
+              <span>ÉDITER</span>
             </Button>
           </Link>
 
         </TitleContainer>
 
         <Subcontainer>
-          <BeerList />
+          <BeerList option={"pré-selectionnée"} />
           {state.selections &&
             state.selections
               .filter(
@@ -541,7 +541,7 @@ const Page7 = () => {
                       <Button>
                         {" "}
                         <Image src={image} width={19} height={19} alt="" />
-                        <span>MODIFIER</span>
+                        <span>ÉDITER</span>
                       </Button>
                     </Link>
 
@@ -601,7 +601,7 @@ const Page7 = () => {
                       <Button>
                         {" "}
                         <Image src={image} width={19} height={19} alt="" />
-                        <span>MODIFIER</span>
+                        <span>ÉDITER</span>
                       </Button>
                     </Link>
 
@@ -660,7 +660,7 @@ const Page7 = () => {
             <Button>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
-              <span>MODIFIER</span>
+              <span>ÉDITER</span>
             </Button>
           </Link>
 
