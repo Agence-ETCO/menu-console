@@ -47,9 +47,7 @@ const Page = () => {
           franchisee: user.id,
         };
   
-        const resMenu = await postAPI("api/franchisees-menus", data);
-  
-        getMenuId(resMenu.data.id);
+        const resMenu = await postAPI("api/franchisees-menus", data).then(()=>{getMenuId(resMenu.data.id);});
       }
       if (res.isSubmitted === true) {
         router.push("/8");
