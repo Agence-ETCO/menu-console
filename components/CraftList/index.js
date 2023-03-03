@@ -132,7 +132,7 @@ const CraftList = (props) => {
   return (
     <>
       <SubTitle>
-        St-Hubert vous recommande de choisir une bière IPA.
+      Sélectionnez les bières de microbrasseries que vous souhaitez avoir dans votre carte des alcools.
       </SubTitle>
       <Form
         showForm={showForm}
@@ -175,7 +175,7 @@ const CraftList = (props) => {
             />
           ))}
           <Subtitle>
-            Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici l’automne.
+          <p>Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici l’automne.</p>
           </Subtitle>
           {beerOfTheMoment.filter(
             (option) => {

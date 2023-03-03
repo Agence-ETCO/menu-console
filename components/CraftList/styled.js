@@ -72,17 +72,13 @@ export const Subtitle = styled.div`
   font-family: "GTWalsheimRegular";
   font-weight: 400;
   font-size: 27px;
-  line-height: 23px;
+  line-height: 32px;
   //width: 500px;
   margin-top: 60px;
   margin-bottom: 30px;
   margin-left: 30px;
   padding-bottom: 40px;
   border-bottom: 1px solid #939598;
-  p {
-    margin-bottom: 5px !important;
-    margin-top: 5px !important;
-  }
 `;
 
 export const Subtitle2 = styled.div`
@@ -196,7 +192,7 @@ export const SubTitle = styled.div`
   font-family: "GTWalsheimRegular";
   font-weight: 400;
   font-size: 27px;
-  line-height: 23px;
+  line-height: 32px;
   //width: 500px;
   margin-top: 60px;
   margin-bottom: 30px;
