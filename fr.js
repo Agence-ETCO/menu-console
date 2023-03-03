@@ -7,7 +7,7 @@ export const welcomePage = {
   body2:
     "afin de vous assurer d’obtenir votre carte des alcools dans les délais prévus.",
   help: "Besoin d'aide?",
-  contact: "Contactez-nous",
+  contact: "Contactez-nous.",
   buttonText: "commencer",
 };
 
