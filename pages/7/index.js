@@ -53,6 +53,7 @@ const Page7 = () => {
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
+  const [_beers, setBeer] = useState([]);
   const userID = useUserID();
   const step = 7;
 
@@ -63,6 +64,22 @@ const Page7 = () => {
         (option.attributes && option.attributes.category === "Beer") ||
         option.category === "Beer"
     );
+    
+    //var _beers = [];
+    useEffect(() => {
+      var array = []
+      for (let i = 0; i < beer.length; i++) {
+        var temp = beer.find((item)=>{
+          return item.id == state.beerSelections[i]
+        });
+        if(temp) {
+          array.push(temp);
+        }
+      }
+      console.log('_beers', _beers );
+      setBeer[array];
+    },[state.beerSelections, beer])
+  
   const nonAlcohol =
     state.selections &&
     state.selections.filter(
@@ -252,12 +269,11 @@ const Page7 = () => {
     // for (let i = 0; i < 7; i++) {
     //   removeBeerSelection(i);
     // }
-    setButtons([]);
     removeMicro01();
     removeMicro02();
-    setStep(0);
     addPack(0);
   }
+
 
   return (
     <>
@@ -531,8 +547,8 @@ const Page7 = () => {
         {/* Bières */}
         <TitleContainer>
           <Title>Bières en fût</Title>
-          <Link href={"/5"} onClick={() => unselectKegN()}>
-            <Button>
+          <Link href={"/5"}>
+            <Button onClick={() => unselectKegN()}>
               {" "}
               <Image src={image} width={19} height={19} alt="" />
               <span>ÉDITER</span>
@@ -542,14 +558,7 @@ const Page7 = () => {
 
         <Subcontainer>
           <BeerList option={"pré-selectionnée"} />
-          {state.selections &&
-            state.selections
-              .filter(
-                (option) =>
-                  (option.attributes &&
-                    option.attributes.category === "Beer") ||
-                  option.category === "Beer"
-              )
+          { beer
               .map((option, key) => (
 
                 <Subcontainer1 key={`page7_option_c_${key}`} >

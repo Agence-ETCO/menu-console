@@ -750,7 +750,7 @@ console.log('previous', state.previousStep );
         returnHref={"/4"}
         noReturn={step === 0 ? false : true}
         buttonText={step === 5 ? "Continuer" : footer.buttonText}
-        redirection={((step === 0 || step !== state.selectedPack) )? false : true}
+        redirection={((step === 0 || step !== state.selectedPack) && state.previousStep < 6 )? false : true}
         href={"/6"}
         stage={stage}
         handleClick={validateButtonHC}
