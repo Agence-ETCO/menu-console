@@ -4,16 +4,10 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import BeerCard from "../../components/BeerCard";
 import BeerCard4 from "../../components/BeerCard4";
-import DropDown from "../../components/DropDown";
 import useUserID from "../../lib/useUserID";
-import { Subtitle } from "../../components/Help/styled";
-import HintBox from "../../components/HintBox";
 import MinMax from "../../components/MinMax";
-import MiniBeerCard from "../../components/MiniBeerCard";
-import Form from "../../components/Form";
 import { AppContext } from "../../context/AppContext";
 import { putAPI, putAPI1, fetchCurrentUser, fetchAPI, login } from "../../lib/api";
-import Bubble from "../../components/Bubble";
 import { getUser } from "../../lib/store";
 import { page5, footer } from "../../fr";
 import image from "../../public/Fut.svg";
@@ -24,10 +18,7 @@ import {
   SubTitle,
   Subcontainer,
   Container,
-  Subcontainer1,
   Subcontainer2,
-  Subcontainer3,
-  Title,
   ButtonContainer2,
   StyledButton,
   StyledButtonLong,
@@ -37,13 +28,9 @@ import {
   Container3,
   Container4,
   Main,
-  Text,
-  Text1,
   Title2,
-  Choice,
   Chip,
   TitleContainer,
-  AddButton
 } from "./styled";
 import CraftList from "../../components/CraftList";
 
@@ -63,10 +50,8 @@ const Page5 = () => {
       addMicro01,
       addMicro02,
       getMenuId,
-      addSelection,
       removeSelection,
-      beerSelections,
-      removeBeerSelection
+      receiveBeerSelections
     },
   } = useContext(AppContext);
 
@@ -131,9 +116,10 @@ const Page5 = () => {
   };
 
   const unselectKegN = () => {
-    for (let i = 0; i < 7; i++) {
-      removeBeerSelection(i);
-    }
+    receiveBeerSelections([0, 0, 0, 0, 0, 0, 0])
+    // for (let i = 0; i < 7; i++) {
+    //   removeBeerSelection(i);
+    // }
     setButtons([]);
     removeMicro01();
     removeMicro02();
@@ -207,7 +193,7 @@ const Page5 = () => {
         craft1,
         craft2,
         pack: state.selectedPack,
-        beers: beerSelections,
+        beers: state.beerSelections,
       },
       franchisee: userID,
     };
@@ -217,7 +203,7 @@ const Page5 = () => {
       craft1,
       craft2,
       pack: state.selectedPack,
-      beers: beerSelections,
+      beers: state.beerSelections,
     });
 
     putAPI(`api/franchisees-menus/${state.menuId}?populate=deep`, menuData)
@@ -253,9 +239,10 @@ const Page5 = () => {
     if (state.selectedPack === 0) {
       setStep(5);
       setButtons(_.range(6, selectedPack + 1));
-      for (let i = 0; i < 7; i++) {
-        removeBeerSelection(i);
-      }
+      // for (let i = 0; i < 7; i++) {
+      //   removeBeerSelection(i);
+      // }
+      receiveBeerSelections([0, 0, 0, 0, 0, 0, 0])
       filterSelections("Beer");
       filterSelections("Craft Beer");
       removeMicro01();
@@ -300,7 +287,7 @@ const Page5 = () => {
             getMenuId(res.franchisee_s_menu.id);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
-
+          receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
 
           if (res.franchisee_s_menu.craftOptions.craft1.title) {

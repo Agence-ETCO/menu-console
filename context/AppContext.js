@@ -135,6 +135,13 @@ const reducer = (state, action) => {
         craftOptions: action.value,
       };
 
+    case "receive-beer-selections":
+      return {
+        ...state,
+        beerSelections: action.value,
+      };
+
+
     case "receive-pack":
       return {
         ...state,
@@ -165,6 +172,13 @@ export const AppProvider = ({ children }) => {
   const receiveSelections = (value) => {
     dispatch({
       type: "receive-selections",
+      value: value,
+    });
+  };
+
+  const receiveBeerSelections = (value) => {
+    dispatch({
+      type: "receive-beer-selections",
       value: value,
     });
   };
@@ -277,6 +291,7 @@ export const AppProvider = ({ children }) => {
         actions: {
           receiveData,
           receiveSelections,
+          receiveBeerSelections,
           addSelection,
           removeSelection,
           addBeerSelection,
