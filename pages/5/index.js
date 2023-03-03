@@ -71,9 +71,14 @@ const Page5 = () => {
   useEffect(() => {
     if (!router.isReady) return;
     if (state.selectedPack !== 0) {
-      setPack(state.selectedPack);
-      setStep(keg ? parseInt(keg) : 5);
-      setButtons(_.range(6, state.selectedPack + 1));
+      if(keg ===0){
+        console.log('hhhherrrr', keg);
+        unselectKegN()
+      } else {
+        setPack(state.selectedPack);
+        setStep(keg ? parseInt(keg) : 5);
+        setButtons(_.range(6, state.selectedPack + 1));
+      }
     }
 
   }, [router.isReady, state.selectedPack, keg]);
@@ -100,7 +105,7 @@ const Page5 = () => {
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
         : "BIÈRES EN FÛT LIGNE " + (step + 1);
 
-  const limit = selections.length + craftOptions.length !== step - 5;
+  const limit = state.beerSelections[step-6] === 0;
   const disabled = () => {
     if (state.selectedPack === 0) {
       return selectedPack === 0;
@@ -114,8 +119,9 @@ const Page5 = () => {
   const handleClick = (item) => {
     setPack(item);
   };
-
+console.log('previous', state.previousStep );
   const unselectKegN = () => {
+    addPreviousStep(4);
     receiveBeerSelections([0, 0, 0, 0, 0, 0, 0])
     // for (let i = 0; i < 7; i++) {
     //   removeBeerSelection(i);
@@ -229,6 +235,7 @@ const Page5 = () => {
       setStep(0);
       addPack(0);
       setPack(0);
+      addPreviousStep(4);
     } else setStep(step - 1);
   }
 
@@ -236,6 +243,10 @@ const Page5 = () => {
 
   const validateButtonHC = () => {
     window.scrollTo(0,0);
+    if (state.previousStep >= 6){
+      return;
+    }
+
     if (state.selectedPack === 0) {
       setStep(5);
       setButtons(_.range(6, selectedPack + 1));
@@ -362,7 +373,8 @@ const Page5 = () => {
           (state.selectedPack === 10 && step === 9)||
           (state.selectedPack === 8 && step === 8))  && (<Title1>Microbrasserie</Title1>)  ||
             (<Title1>Bières en fût </Title1>)}
-            {state.selectedPack !== 0 && (<Chip onClick={() => unselectKegN()} >{state.selectedPack}</Chip>)}
+            {state.selectedPack !== 0 && (<Chip >{state.selectedPack}</Chip>)}
+            {/* {state.selectedPack !== 0 && (<Chip onClick={() => unselectKegN()} >{state.selectedPack}</Chip>)} */}
           </TitleContainer>
           {/* {state.selectedPack > 0 && (
             <MinMax stage={4} number={state.selectedPack} />
@@ -740,7 +752,7 @@ const Page5 = () => {
         returnHref={"/4"}
         noReturn={step === 0 ? false : true}
         buttonText={step === 5 ? "Continuer" : footer.buttonText}
-        redirection={(step === 0 || step !== state.selectedPack) ? false : true}
+        redirection={((step === 0 || step !== state.selectedPack) && state.previousStep < 6 )? false : true}
         href={"/6"}
         stage={stage}
         handleClick={validateButtonHC}

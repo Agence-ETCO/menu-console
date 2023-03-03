@@ -515,7 +515,13 @@ const Page7 = () => {
         {/* Bières */}
         <TitleContainer>
           <Title>Bières en fût</Title>
-
+          {/* <Link href={"/5?keg=0"}>
+            <Button>
+              {" "}
+              <Image src={image} width={19} height={19} alt="" />
+              <span>ÉDITER</span>
+            </Button>
+          </Link> */}
         </TitleContainer>
 
         <Subcontainer>

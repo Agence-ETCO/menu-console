@@ -41,6 +41,7 @@ const WineCard = (props) => {
   const region = useUserRegion();
 
   const isChecked = (option) => {
+
     if (
       option &&
       state.selections.find((selection) => selection.id === option.id)
@@ -51,7 +52,7 @@ const WineCard = (props) => {
   };
 
   const handleCheckboxChange = (option) => {
-    if (props.step === 6) {
+    if (props.step === 7) {
       return null;
     }
 

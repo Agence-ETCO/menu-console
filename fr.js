@@ -61,8 +61,8 @@ export const page5 = {
 
 export const page6 = {
   title: "Sans alcool",
-  subtitle: "Choisissez jusqu’à 2 produits sans alcool ",
-  next: "Résumé de votre sélection "
+  subtitle: "Choisissez jusqu’à 2 produits sans alcool.",
+  next: "Résumé de votre sélection"
 };
 
 export const page7 = {

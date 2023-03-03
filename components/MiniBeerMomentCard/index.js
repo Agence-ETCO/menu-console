@@ -46,7 +46,7 @@ const MiniBeerMomentCard = (props) => {
   };
 
   const handleCheckboxChange = (option) => {
-    if (props.step === 6) {
+    if (props.step === 7) {
       return null;
     }
     let checked = state.selections.find(

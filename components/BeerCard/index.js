@@ -24,7 +24,7 @@ const BeerCard = (props) => {
   const region = useUserRegion();
 
   const isChecked = (option) => {
-    if (props.step === 6) {
+    if (props.step === 7) {
       return true;
     }
     if (
@@ -37,7 +37,7 @@ const BeerCard = (props) => {
   };
 
   const handleCheckboxChange = (option) => {
-    if (props.step === 6) {
+    if (props.step === 7) {
       return null;
     }
 

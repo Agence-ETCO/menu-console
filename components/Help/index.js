@@ -25,7 +25,7 @@ const Help = (props) => {
             </Subtitle>
             <Subtitle2>
               {" "}
-              <div>{"514-885-8426"}</div>{" "}
+              <div>{"514 885-8426"}</div>{" "}
               <a href="mailto:Slefebvre@st-hubert.com">
                 {"Slefebvre@st-hubert.com"}
               </a>
