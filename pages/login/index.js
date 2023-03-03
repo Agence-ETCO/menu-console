@@ -7,8 +7,16 @@ import { setToken, setUser } from "../../lib/store";
 const Page = () => {
   const {
     state,
-    actions: { getMenuId },
+    actions: { 
+      receiveData,
+      receiveSelections,
+      receivePack,
+      receiveCraftOptions,
+      addMicro01,
+      addMicro02,
+      getMenuId, },
   } = useContext(AppContext);
+  
 
   const [display, setDisplay] = useState("");
   const router = useRouter();
