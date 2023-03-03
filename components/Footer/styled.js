@@ -66,7 +66,7 @@ export const StyledButton = styled.button`
   line-height: 32px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-left: 50px;
+  margin-left: ${(props) => (props.first ? "50px" : "-200px")};
   margin-right: 50px;
 `;
 
