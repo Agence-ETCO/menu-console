@@ -51,7 +51,7 @@ const Page5 = () => {
       addMicro02,
       getMenuId,
       removeSelection,
-      receiveBeerSelections
+      receiveBeerSelections,
     },
   } = useContext(AppContext);
 
@@ -71,14 +71,9 @@ const Page5 = () => {
   useEffect(() => {
     if (!router.isReady) return;
     if (state.selectedPack !== 0) {
-      if(keg ===0){
-        console.log('hhhherrrr', keg);
-        unselectKegN()
-      } else {
         setPack(state.selectedPack);
         setStep(keg ? parseInt(keg) : 5);
         setButtons(_.range(6, state.selectedPack + 1));
-      }
     }
 
   }, [router.isReady, state.selectedPack, keg]);
@@ -105,6 +100,7 @@ const Page5 = () => {
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
         : "BIÈRES EN FÛT LIGNE " + (step + 1);
 
+  console.log('beerSelections ',state.beerSelections);
   const limit = step  ? state.beerSelections[step-6] === 0 : state.beerSelections[0] === 0;
   const disabled = () => {
     if (state.selectedPack === 0) {
@@ -131,6 +127,7 @@ console.log('previous', state.previousStep );
     removeMicro02();
     setStep(0);
     addPack(0);
+    router.push("/5");
   }
 
   useEffect(() => {
@@ -373,8 +370,8 @@ console.log('previous', state.previousStep );
           (state.selectedPack === 10 && step === 9)||
           (state.selectedPack === 8 && step === 8))  && (<Title1>Microbrasserie</Title1>)  ||
             (<Title1>Bières en fût </Title1>)}
-            {state.selectedPack !== 0 && (<Chip >{state.selectedPack}</Chip>)}
-            {/* {state.selectedPack !== 0 && (<Chip onClick={() => unselectKegN()} >{state.selectedPack}</Chip>)} */}
+            {/* {state.selectedPack !== 0 && (<Chip >{state.selectedPack}</Chip>)} */}
+            {state.selectedPack !== 0 && (<Chip onClick={() => unselectKegN()} >{state.selectedPack}</Chip>)}
           </TitleContainer>
           {/* {state.selectedPack > 0 && (
             <MinMax stage={4} number={state.selectedPack} />
@@ -752,7 +749,7 @@ console.log('previous', state.previousStep );
         returnHref={"/4"}
         noReturn={step === 0 ? false : true}
         buttonText={step === 5 ? "Continuer" : footer.buttonText}
-        redirection={((step === 0 || step !== state.selectedPack) && state.previousStep < 6 )? false : true}
+        redirection={((step === 0 || step !== state.selectedPack) )? false : true}
         href={"/6"}
         stage={stage}
         handleClick={validateButtonHC}
