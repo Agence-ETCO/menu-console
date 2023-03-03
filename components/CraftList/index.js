@@ -19,7 +19,8 @@ import {
   Container3,
   AddButton,
   ButtonContainer,
-  Button
+  Button,
+  SubTitle
 } from "./styled.js";
 import MiniBeerCard from "../MiniBeerCard";
 import MiniBeerMomentCard from "../MiniBeerMomentCard";
@@ -27,7 +28,7 @@ import MiniBeerMomentCard from "../MiniBeerMomentCard";
 const CraftList = (props) => {
   const {
     state,
-    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02,   addBeerSelection
+    actions: { addSelection, addMicro01, addMicro02, removeSelection, removeMicro01, removeMicro02, addBeerSelection
     },
   } = useContext(AppContext);
   const [showForm, setShowForm] = useState(false);
@@ -80,7 +81,7 @@ const CraftList = (props) => {
       }
       //addSelection(data);
       addMicro01(data);
-      addBeerSelection(props.step-6, data.id);
+      addBeerSelection(props.step - 6, data.id);
       onChange(true);
     } else {
       if (state.micro2 && state.micro2.id) {
@@ -88,7 +89,7 @@ const CraftList = (props) => {
       }
       //addSelection(data); 
       addMicro02(data);
-      addBeerSelection(props.step-6, data.id);
+      addBeerSelection(props.step - 6, data.id);
       onChange(true);
     }
   };
@@ -118,7 +119,7 @@ const CraftList = (props) => {
   const microSelections = state.selections.filter(
     (option) => option.attributes && option.attributes.category === "Craft Beer"
   );
-  
+
   const modify = (value) => {
     if (value === "01") {
       removeMicro01();
@@ -127,9 +128,12 @@ const CraftList = (props) => {
     }
     handleClick()
   }
-console.log(state.beerSelections);
+  console.log(state.beerSelections);
   return (
     <>
+      <SubTitle>
+        St-Hubert vous recommande de choisir une bière IPA.
+      </SubTitle>
       <Form
         showForm={showForm}
         handleClick={handleClick}
@@ -149,11 +153,12 @@ console.log(state.beerSelections);
       <>
         <Container2>
           {craftBeerOptions.filter(
-            (option) => { return !(state.beerSelections.filter((el,key)=> key != props.step - 6).includes(option.id));
+            (option) => {
+              return !(state.beerSelections.filter((el, key) => key != props.step - 6).includes(option.id));
             }
           ).map((option, i) => (
             <MiniBeerCard
-            beerStep={props.step}
+              beerStep={props.step}
               index={i + 1}
               type={option.attributes.descriptionFr}
               key={option.id}
@@ -169,29 +174,29 @@ console.log(state.beerSelections);
               order={props.order}
             />
           ))}
-              <Subtitle>
-              Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici l’automne.
-              </Subtitle>
+          <Subtitle>
+            Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici l’automne.
+          </Subtitle>
           {beerOfTheMoment.filter(
             (option) => {
-              return !(state.beerSelections.filter((el,key)=> key != props.step - 6).includes(option.id));
+              return !(state.beerSelections.filter((el, key) => key != props.step - 6).includes(option.id));
             }).map((option, i) => (
-            <MiniBeerMomentCard
-            beerStep={props.step}
-              index={i + 1}
-              type={option.attributes.descriptionFr}
-              key={option.id}
-              value={option.id}
-              alcohol={option.attributes.alcohol}
-              description={option.attributes.descriptionFr}
-              saqCode={option.attributes.saqCode}
-              prices={option.attributes.cost}
-              limit={props.limit}
-              beerMaker={option.attributes.beerMaker}
-              option={option}
-              order={props.order}
-            />
-          ))}
+              <MiniBeerMomentCard
+                beerStep={props.step}
+                index={i + 1}
+                type={option.attributes.descriptionFr}
+                key={option.id}
+                value={option.id}
+                alcohol={option.attributes.alcohol}
+                description={option.attributes.descriptionFr}
+                saqCode={option.attributes.saqCode}
+                prices={option.attributes.cost}
+                limit={props.limit}
+                beerMaker={option.attributes.beerMaker}
+                option={option}
+                order={props.order}
+              />
+            ))}
         </Container2>
 
         <Subtitle>
@@ -214,7 +219,7 @@ console.log(state.beerSelections);
               </Button>
 
               <MiniBeerCard
-              beerStep={props.step}
+                beerStep={props.step}
                 index={1}
                 key={"01"}
                 value={"01"}
@@ -245,7 +250,7 @@ console.log(state.beerSelections);
                 <span>MODIFIER</span>
               </Button>
               <MiniBeerCard
-              beerStep={props.step}
+                beerStep={props.step}
                 index={2}
                 key={"02"}
                 value={"02"}

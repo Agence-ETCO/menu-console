@@ -395,15 +395,7 @@ console.log('previous', state.previousStep );
 
           {step > 5 && (
             <>
-            {((state.selectedPack === 12 && step === 11) ||
-              (state.selectedPack === 12 && step === 12) ||
-              (state.selectedPack === 10 && step === 10) ||
-              (state.selectedPack === 10 && step === 9)||
-              (state.selectedPack === 8 && step === 8)) && (
-                <SubTitle1>
-                  Choisissez une bière de microbrasserie parmi celles-ci.
-                </SubTitle1>
-              ) || step == 6 && (<SubTitle1>
+            { step == 6 && (<SubTitle1>
                 Choisissez une bière blanche pour la ligne 6. 
               </SubTitle1>
               ) || (<SubTitle1>

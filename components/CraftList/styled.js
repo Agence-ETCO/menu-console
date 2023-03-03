@@ -190,3 +190,17 @@ export const AddButton = styled.button`
   border: none;
   padding-top: 5px;
 `;
+
+export const SubTitle = styled.div`
+  color: ${colors.black};
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 23px;
+  //width: 500px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #939598;
+`;
