@@ -296,6 +296,7 @@ console.log('previous', state.previousStep );
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
           receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)
+          console.log('res.franchisee_s_menu.craftOptions.beers', res.franchisee_s_menu.craftOptions.beers);
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
 
           if (res.franchisee_s_menu.craftOptions.craft1.title) {
