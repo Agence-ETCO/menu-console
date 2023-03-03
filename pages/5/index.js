@@ -350,12 +350,9 @@ const Page5 = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const user = getUser();
-    if (user) {
-      setIsCorona(user.hasCorona);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const user = getUser();
+  // }, []);
 
   useEffect(() => {
     if (state.previousStep < 4) {
