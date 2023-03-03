@@ -101,7 +101,7 @@ const Page5 = () => {
         : "BIÈRES EN FÛT LIGNE " + (step + 1);
 
   console.log('beerSelections ',state.beerSelections, state);
-  const limit = step  ? state.beerSelections[step-6] === 0 : state.beerSelections[0] === 0;
+  const limit = state.beerSelections  ? state.beerSelections[step-6] === 0 : state.beerSelections[0] === 0;
   const disabled = () => {
     if (state.selectedPack === 0) {
       return selectedPack === 0;
