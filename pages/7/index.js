@@ -325,8 +325,8 @@ const Page7 = () => {
                     option.tasteFr
                   }
                   location={
-                    (option.attributes && option.attributes.location) ||
-                    option.location
+                    (option.attributes && option.attributes.locationFr) ||
+                    option.locationFr
                   }
                   country={
                     (option.attributes && option.attributes.countryFr) ||
@@ -410,8 +410,8 @@ const Page7 = () => {
                     option.tasteFr
                   }
                   location={
-                    (option.attributes && option.attributes.location) ||
-                    option.location
+                    (option.attributes && option.attributes.locationFr) ||
+                    option.locationFr
                   }
                   country={
                     (option.attributes && option.attributes.countryFr) ||
@@ -496,8 +496,8 @@ const Page7 = () => {
                     option.tasteFr
                   }
                   location={
-                    (option.attributes && option.attributes.location) ||
-                    option.location
+                    (option.attributes && option.attributes.locationFr) ||
+                    option.locationFr
                   }
                   country={
                     (option.attributes && option.attributes.countryFr) ||

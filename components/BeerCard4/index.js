@@ -56,7 +56,7 @@ const BeerCard4 = (props) => {
             </ImageContainer>
             <TextContainer checked>
               <div>
-                {props.title} ({props.alcohol})
+                {props.title} ({props.alcohol} %)
               </div>
               <div> {props.description} </div>
 
