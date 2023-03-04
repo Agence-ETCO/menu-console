@@ -55,7 +55,7 @@ export const StyledCheckbox = styled.div`
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
-  margin-left: 20px;
+  margin-left: 10px;
   div:nth-child(1) {
     margin-bottom: 5px;
     font-family: "GTWalsheimBold";
@@ -140,4 +140,22 @@ export const RecommandedChip = styled.div`
     letter-spacing: 0.05em;
     color: #000000;
   }
+`;
+
+export const Sugar = styled.div`
+  color: ${(props) =>
+    props.checked
+      ? "rgba(255,255,255, 0.5)"
+      : "rgba(35, 31, 32, 0.5)"} !important;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 20px;
+  letter-spacing: 0.15em;
+  span {
+    text-transform: none !important;
+  }
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid rgba(147, 149, 152, 0.5);
 `;

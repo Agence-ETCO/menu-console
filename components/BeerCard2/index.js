@@ -12,7 +12,8 @@ import {
   TextContainer,
   SubContainer,
   ImageContainer,
-  RecommandedChip
+  RecommandedChip,
+  Sugar
 } from "./styled.js";
 
 const BeerCard2 = (props) => {
@@ -88,6 +89,10 @@ const BeerCard2 = (props) => {
                 {props.title} ({props.alcohol} %)
               </div>
               <div> {props.description || ""} </div>
+              <Sugar checked={isChecked(props.option)}>
+                {`Sucre :`}
+                <span> {props.sugar}</span>
+              </Sugar>
               <table>
                 <tbody>
                   <tr>

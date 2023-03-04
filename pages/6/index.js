@@ -200,6 +200,7 @@ const Page6 = () => {
                   prices={option.attributes.cost}
                   option={option}
                   imageUrl={option.attributes.imageURL}
+                  sugar={option.attributes.sugar}
                 />
               ))}
         </Subcontainer2>
