@@ -28,7 +28,7 @@ const Stepper = (props) => {
           {"bienvenue"}
         </TextButton>
       {buttonOptions.map((element, key) => (
-          <Tooltip title={tooltips[key + 1]} arrow placement="top" PopperProps={{
+          <Tooltip key={`link_${key}`} title={tooltips[key + 1]} arrow placement="top" PopperProps={{
             sx: {
               "& .MuiTooltip-tooltip": {
                 // color: "deepskyblue",
