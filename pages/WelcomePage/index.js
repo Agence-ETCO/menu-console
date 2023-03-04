@@ -124,7 +124,7 @@ const WelcomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const date = "10 mars 2023";
+  const date = "14 mars 2023";
 
   return (
     <>
