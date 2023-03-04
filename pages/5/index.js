@@ -71,9 +71,9 @@ const Page5 = () => {
   useEffect(() => {
     if (!router.isReady) return;
     if (state.selectedPack !== 0) {
-        setPack(state.selectedPack);
-        setStep(keg ? parseInt(keg) : 5);
-        setButtons(_.range(6, state.selectedPack + 1));
+      setPack(state.selectedPack);
+      setStep(keg ? parseInt(keg) : 5);
+      setButtons(_.range(6, state.selectedPack + 1));
     }
 
   }, [router.isReady, state.selectedPack, keg]);
@@ -100,14 +100,14 @@ const Page5 = () => {
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
         : "BIÈRES EN FÛT LIGNE " + (step + 1);
 
-  console.log('beerSelections ',state.beerSelections, state);
-  const limit = state.beerSelections  ? state.beerSelections[step-6] === 0 : state.beerSelections[0] === 0;
+  console.log('beerSelections ', state.beerSelections, state);
+  const limit = state.beerSelections ? state.beerSelections[step - 6] === 0 : state.beerSelections[0] === 0;
   const disabled = () => {
     if (state.selectedPack === 0) {
       return selectedPack === 0;
     }
     if (state.selectedPack !== 0 && step > 5) {
-      return state.beerSelections[step-6]? false : true;
+      return state.beerSelections[step - 6] ? false : true;
     }
     return false;
   }
@@ -115,7 +115,7 @@ const Page5 = () => {
   const handleClick = (item) => {
     setPack(item);
   };
-console.log('previous', state.previousStep );
+  console.log('previous', state.previousStep);
   const unselectKegN = () => {
     addPreviousStep(4);
     receiveBeerSelections([0, 0, 0, 0, 0, 0, 0])
@@ -239,8 +239,8 @@ console.log('previous', state.previousStep );
   console.log(state.selections);
 
   const validateButtonHC = () => {
-    window.scrollTo(0,0);
-    if (state.previousStep >= 6){
+    window.scrollTo(0, 0);
+    if (state.previousStep >= 6) {
       return;
     }
 
@@ -258,7 +258,7 @@ console.log('previous', state.previousStep );
       addPack(selectedPack);
     } else if (step < state.selectedPack) {
       setStep(step + 1);
-    }else {
+    } else {
       handleClick1()
     }
   }
@@ -269,17 +269,18 @@ console.log('previous', state.previousStep );
       const temp = state.selections.filter((el) => el.attributes.category === "Craft Beer" || el.attributes.category === "Beer");
       const length = temp.length;
 
-      if (_step % 2 == 0  && !_.isEmpty(state.micro2)) {           
+      if (_step % 2 == 0 && !_.isEmpty(state.micro2)) {
         removeMicro01();
         removeMicro02();
       }
-      if (_step % 2 == 1  && !_.isEmpty(state.micro1)) {
+      if (_step % 2 == 1 && !_.isEmpty(state.micro1)) {
         removeMicro02();
       }
 
-      if(_step - 6 - length < 0 ) {temp.map(el => el.id).slice(_step - 6 - length).forEach(elem => { 
-        removeSelection(elem);
-       });
+      if (_step - 6 - length < 0) {
+        temp.map(el => el.id).slice(_step - 6 - length).forEach(elem => {
+          removeSelection(elem);
+        });
       }
     };
   }
@@ -295,7 +296,7 @@ console.log('previous', state.previousStep );
             getMenuId(res.franchisee_s_menu.id);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
-          if (res.franchisee_s_menu.craftOptions.beers) {receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)}
+          if (res.franchisee_s_menu.craftOptions.beers) { receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers) }
           console.log('res.franchisee_s_menu.craftOptions.beers', res.franchisee_s_menu.craftOptions.beers);
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
 
@@ -365,12 +366,12 @@ console.log('previous', state.previousStep );
       <Main>
         <Subcontainer>
           <TitleContainer>
-          {((state.selectedPack === 12 && step === 11) ||
-          (state.selectedPack === 12 && step === 12) ||
-          (state.selectedPack === 10 && step === 10) ||
-          (state.selectedPack === 10 && step === 9)||
-          (state.selectedPack === 8 && step === 8))  && (<Title1>Microbrasserie</Title1>)  ||
-            (<Title1>Bières en fût </Title1>)}
+            {((state.selectedPack === 12 && step === 11) ||
+              (state.selectedPack === 12 && step === 12) ||
+              (state.selectedPack === 10 && step === 10) ||
+              (state.selectedPack === 10 && step === 9) ||
+              (state.selectedPack === 8 && step === 8)) && (<Title1>Microbrasserie</Title1>) ||
+              (<Title1>Bières en fût </Title1>)}
             {/* {state.selectedPack !== 0 && (<Chip >{state.selectedPack}</Chip>)} */}
             {state.selectedPack !== 0 && (<Chip onClick={() => unselectKegN()} >{state.selectedPack}</Chip>)}
           </TitleContainer>
@@ -391,17 +392,17 @@ console.log('previous', state.previousStep );
             </SubTitle1>
           )}
 
-          
+
 
           {step > 5 && (
             <>
-            { step == 6 && (<SubTitle1>
-                Choisissez une bière blanche pour la ligne 6. 
+              {step == 6 && (<SubTitle1>
+                Choisissez une bière blanche pour la ligne 6.
               </SubTitle1>
               ) || (<SubTitle1>
                 Choisissez une bière pour la ligne {step}.
               </SubTitle1>)}
-              </>
+            </>
           )}
 
           <Buttons>
@@ -424,7 +425,7 @@ console.log('previous', state.previousStep );
                     <StyledButtonLong
                       key={`page5_Fut_${5}`}
                       active={step === 5}
-                      // onClick={() => goToStep(5)}
+                    // onClick={() => goToStep(5)}
                     >
                       1 à 5
                     </StyledButtonLong>
@@ -435,7 +436,7 @@ console.log('previous', state.previousStep );
                       <StyledButton
                         key={`page5_Fut_${key}`}
                         active={step === (item)}
-                        // onClick={() => goToStep(item)}
+                      // onClick={() => goToStep(item)}
                       >
                         {item}
                       </StyledButton>
@@ -475,7 +476,7 @@ console.log('previous', state.previousStep );
             </Subcontainer2>
           )}
 
-{/* /************************************************************
+          {/* /************************************************************
 *   
 *                 step 6 
 *   
@@ -484,7 +485,7 @@ console.log('previous', state.previousStep );
           {step === 6 && (
             <div>
               <Subcontainer2>
-                {nonPreselect.filter((item) => (item.id == 1796 || item.id == 1797) && !(state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id))).map((option, key) => (
+                {nonPreselect.filter((item) => (item.id == 1796 || item.id == 1797) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))).map((option, key) => (
                   <BeerCard
                     recommanded={false}
                     beerStep={step}
@@ -531,7 +532,7 @@ console.log('previous', state.previousStep );
           )}
 
 
-{/* /************************************************************
+          {/* /************************************************************
 *   
 *                 step 7 
 *   
@@ -540,11 +541,11 @@ console.log('previous', state.previousStep );
           {state.selectedPack !== 6 && step === 7 && (
             <div>
               <SubTitle>
-              St-Hubert vous recommande de choisir une bière IPA.
+                St-Hubert vous recommande de choisir une bière IPA.
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return (item.id == 1798 || item.id == 1799) && !(state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id)) 
+                  return (item.id == 1798 || item.id == 1799) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
                     recommanded={true}
@@ -566,14 +567,14 @@ console.log('previous', state.previousStep );
               </Subcontainer2>
 
               <SubTitle>
-              Sinon vous pouvez aussi choisir parmi les bières suivantes.
+                Sinon vous pouvez aussi choisir parmi les bières suivantes.
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return !([1798, 1799].includes(item.id) || state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id))
+                  return !([1798, 1799].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
-                  beerStep={step}
+                    beerStep={step}
                     index={key + 1}
                     type={option.attributes.descriptionFr}
                     key={option.id}
@@ -594,72 +595,72 @@ console.log('previous', state.previousStep );
             </div>
           )}
 
-{/* /************************************************************
+          {/* /************************************************************
 *                   step 8
 *                 
 *   
 *************************************************************/}
           {state.selectedPack === 8 && step === 8 && (
-            <CraftList limit={limit} step={step} disabled = {!disabled()}/>
-          ) }
-           {state.selectedPack !== 8 && step === 8 && (
-              <div>
-                <SubTitle>
+            <CraftList limit={limit} step={step} disabled={!disabled()} />
+          )}
+          {state.selectedPack !== 8 && step === 8 && (
+            <div>
+              <SubTitle>
                 St-Hubert vous recommande de choisir une bière Session Ale.
-                </SubTitle>
-                <Subcontainer2>
-                  {nonPreselect.filter((item) => {
-                    return (item.id == 1800 || item.id == 1801) && !(state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id))
-                  }).map((option, key) => (
-                    <BeerCard
+              </SubTitle>
+              <Subcontainer2>
+                {nonPreselect.filter((item) => {
+                  return (item.id == 1800 || item.id == 1801) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                }).map((option, key) => (
+                  <BeerCard
                     beerStep={step}
-                      recommanded={true}
-                      index={key + 1}
-                      type={option.attributes.descriptionFr}
-                      key={option.id}
-                      value={option.id}
-                      title={option.attributes.title}
-                      alcohol={option.attributes.alcohol}
-                      description={option.attributes.descriptionFr}
-                      saqCode={option.attributes.saqCode}
-                      prices={option.attributes.cost}
-                      limit={limit}
-                      option={option}
-                      imageUrl={option.attributes.imageURL}
-                    />
-                  ))}
-                </Subcontainer2>
+                    recommanded={true}
+                    index={key + 1}
+                    type={option.attributes.descriptionFr}
+                    key={option.id}
+                    value={option.id}
+                    title={option.attributes.title}
+                    alcohol={option.attributes.alcohol}
+                    description={option.attributes.descriptionFr}
+                    saqCode={option.attributes.saqCode}
+                    prices={option.attributes.cost}
+                    limit={limit}
+                    option={option}
+                    imageUrl={option.attributes.imageURL}
+                  />
+                ))}
+              </Subcontainer2>
 
-                <SubTitle>
+              <SubTitle>
                 Sinon vous pouvez aussi choisir parmi les bières suivantes.
-                </SubTitle>
-                <Subcontainer2>
-                  {nonPreselect.filter((item) => {
-                    return !([1800, 1801].includes(item.id) || state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id))
-                  }).map((option, key) => (
-                    <BeerCard
+              </SubTitle>
+              <Subcontainer2>
+                {nonPreselect.filter((item) => {
+                  return !([1800, 1801].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                }).map((option, key) => (
+                  <BeerCard
                     beerStep={step}
-                      index={key + 1}
-                      type={option.attributes.descriptionFr}
-                      key={option.id}
-                      value={option.id}
-                      title={option.attributes.title}
-                      alcohol={option.attributes.alcohol}
-                      description={option.attributes.descriptionFr}
-                      saqCode={option.attributes.saqCode}
-                      prices={option.attributes.cost}
-                      limit={limit}
-                      option={option}
-                      imageUrl={option.attributes.imageURL}
-                    />
-                  ))}
-                </Subcontainer2>
+                    index={key + 1}
+                    type={option.attributes.descriptionFr}
+                    key={option.id}
+                    value={option.id}
+                    title={option.attributes.title}
+                    alcohol={option.attributes.alcohol}
+                    description={option.attributes.descriptionFr}
+                    saqCode={option.attributes.saqCode}
+                    prices={option.attributes.cost}
+                    limit={limit}
+                    option={option}
+                    imageUrl={option.attributes.imageURL}
+                  />
+                ))}
+              </Subcontainer2>
 
 
-              </div>
-            )}
+            </div>
+          )}
 
-{/* /************************************************************
+          {/* /************************************************************
 *                   step 9 and 10
 *                 
 *   
@@ -667,37 +668,41 @@ console.log('previous', state.previousStep );
 
           {state.selectedPack === 12 && (step === 9 || step === 10) && (
             <div>
-              <SubTitle>
-              St-Hubert vous recommande de choisir une bière parmi celles-ci.
-              </SubTitle>
-              <Subcontainer2>
-                {nonPreselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id))).map((option, key) => (
-                  <BeerCard
-                  beerStep={step}
-                    recommanded={true}
-                    index={key + 1}
-                    type={option.attributes.descriptionFr}
-                    key={option.id}
-                    value={option.id}
-                    title={option.attributes.title}
-                    alcohol={option.attributes.alcohol}
-                    description={option.attributes.descriptionFr}
-                    saqCode={option.attributes.saqCode}
-                    prices={option.attributes.cost}
-                    limit={limit}
-                    option={option}
-                    imageUrl={option.attributes.imageURL}
-                  />
-                ))}
-              </Subcontainer2>
+              {!_.isEmpty(nonPreselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id)))) && (
+                <>
+                  <SubTitle>
+                    St-Hubert vous recommande de choisir une bière parmi celles-ci.
+                  </SubTitle>
 
+                  <Subcontainer2>
+                    {nonPreselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))).map((option, key) => (
+                      <BeerCard
+                        beerStep={step}
+                        recommanded={true}
+                        index={key + 1}
+                        type={option.attributes.descriptionFr}
+                        key={option.id}
+                        value={option.id}
+                        title={option.attributes.title}
+                        alcohol={option.attributes.alcohol}
+                        description={option.attributes.descriptionFr}
+                        saqCode={option.attributes.saqCode}
+                        prices={option.attributes.cost}
+                        limit={limit}
+                        option={option}
+                        imageUrl={option.attributes.imageURL}
+                      />
+                    ))}
+                  </Subcontainer2>
+                </>
+              )}
               <SubTitle>
-              Sinon vous pouvez doubler une des 5 bières Labatt obligatoires.
+                Sinon vous pouvez doubler une des 5 bières Labatt obligatoires.
               </SubTitle>
               <Subcontainer2>
-                { preselect.filter((item) => (item.id !== 1802 && item.id !== 1803) && !(state.beerSelections.filter((el,key)=> key != step - 6).includes(item.id))).map((option, key) => (
+                {preselect.filter((item) => (item.id !== 1802 && item.id !== 1803) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))).map((option, key) => (
                   <BeerCard
-                  beerStep={step}
+                    beerStep={step}
                     index={key + 1}
                     type={option.attributes.descriptionFr}
                     key={option.id}
@@ -716,19 +721,19 @@ console.log('previous', state.previousStep );
 
 
             </div>
-          ) }
-           {state.selectedPack !== 12 && (step === 9 || step === 10) && (
-            <CraftList limit={limit} step={step} disabled = {!disabled()}/>
+          )}
+          {state.selectedPack !== 12 && (step === 9 || step === 10) && (
+            <CraftList limit={limit} step={step} disabled={!disabled()} />
           )}
 
-{/* /************************************************************
+          {/* /************************************************************
 *                   step 11 and 12
 *                 
 *   
 *************************************************************/}
 
           {state.selectedPack === 12 && (step === 11 || step === 12) && (
-            <CraftList limit={limit} step={step} disabled = {!disabled()}/>
+            <CraftList limit={limit} step={step} disabled={!disabled()} />
           )}
 
           {/* {( step === 12) && (
@@ -742,7 +747,7 @@ console.log('previous', state.previousStep );
         returnHref={"/4"}
         noReturn={step === 0 ? false : true}
         buttonText={step === 5 ? "Continuer" : footer.buttonText}
-        redirection={((step === 0 || step !== state.selectedPack) && state.previousStep < 6 )? false : true}
+        redirection={((step === 0 || step !== state.selectedPack) && state.previousStep < 6) ? false : true}
         href={"/6"}
         stage={stage}
         handleClick={validateButtonHC}
