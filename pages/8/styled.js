@@ -49,7 +49,7 @@ export const Body = styled.div`
   font-size: 19px;
   line-height: 24px;
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Button = styled.button`
