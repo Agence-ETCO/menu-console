@@ -46,7 +46,7 @@ export const StyledCheckbox = styled.div`
 export const TextContainer = styled.div`
   color: ${(props) => (props.checked ? "white" : "#231f20")};
   text-align: left;
-  margin-left: 20px;
+  margin-left: 10px;
   width: 280px;
   div:nth-child(1) {
     margin-bottom: 5px;
