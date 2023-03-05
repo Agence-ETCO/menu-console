@@ -132,7 +132,7 @@ const CraftList = (props) => {
   return (
     <>
       <SubTitle>
-      Sélectionnez les bières de microbrasseries que vous souhaitez avoir dans votre carte des alcools.
+      Choisissez une bière de microbrasserie parmi celles-ci.
       </SubTitle>
       <Form
         showForm={showForm}

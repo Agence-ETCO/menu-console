@@ -567,7 +567,7 @@ const Page7 = () => {
 
                 <Subcontainer1 key={`page7_option_c_${key}`} >
                   <KegTitleContainer>
-                    <KegTitle>Ligne {key + 6}:</KegTitle>
+                    <KegTitle>Ligne {key + 6} :</KegTitle>
                     <Link href={"/5?keg=" + (key + 6)}>
                       <Button>
                         {" "}
@@ -621,7 +621,7 @@ const Page7 = () => {
                           (option.attributes &&
                             option.attributes.category === "Beer") ||
                           option.category === "Beer"
-                      ).length)}:</KegTitle>
+                      ).length)} :</KegTitle>
                     <Link href={"/5?keg=" + (key + 6 + state.selections
                       .filter(
                         (option) =>
