@@ -696,6 +696,32 @@ const Page5 = () => {
                   </Subcontainer2>
                 </>
               )}
+
+              <SubTitle>
+                Sinon vous pouvez aussi choisir parmi les bières suivantes.
+              </SubTitle>
+              <Subcontainer2>
+                {nonPreselect.filter((item) => {
+                  return !([1802, 1803].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                }).map((option, key) => (
+                  <BeerCard
+                    beerStep={step}
+                    index={key + 1}
+                    type={option.attributes.descriptionFr}
+                    key={option.id}
+                    value={option.id}
+                    title={option.attributes.title}
+                    alcohol={option.attributes.alcohol}
+                    description={option.attributes.descriptionFr}
+                    saqCode={option.attributes.saqCode}
+                    prices={option.attributes.cost}
+                    limit={limit}
+                    option={option}
+                    imageUrl={option.attributes.imageURL}
+                  />
+                ))}
+              </Subcontainer2>
+
               <SubTitle>
                 Sinon vous pouvez doubler une des 5 bières Labatt obligatoires.
               </SubTitle>
