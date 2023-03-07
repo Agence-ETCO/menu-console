@@ -96,6 +96,11 @@ const Page7 = () => {
         option.category === "SPARKLING, ROSÉ AND ORANGE WINES"
     );
 
+
+  const handleClick = () => {
+    setShowAlert(true);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (state.menuId === 0) {
