@@ -50,7 +50,9 @@ const Page7 = () => {
       addMicro01,
       addMicro02,
       getMenuId,
-      receiveBeerSelections
+      receiveBeerSelections,
+      isSubmitted,
+      setIsSubmitted
     },
   } = useContext(AppContext);
   const router = useRouter();
@@ -156,6 +158,11 @@ const Page7 = () => {
     setShowAlert(false);
   };
 
+  useEffect(() => {
+    if(isSubmitted) {
+      router.push("/8");
+    }
+  }, [router]);
 
   useEffect(() => {
     const temp = state.selections
@@ -205,6 +212,7 @@ const Page7 = () => {
 
           if (res.isSubmitted) {
             router.push("/8");
+            setIsSubmitted(true);
           }
 
           getMenuId(res.franchisee_s_menu.id);

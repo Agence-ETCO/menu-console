@@ -12,6 +12,8 @@ const initialState = {
   craftOptions: {},
   nonAlcohol: 0,
   menuId: 0,
+  isSubmitted: false
+  
 };
 
 export const AppContext = React.createContext(initialState);
@@ -22,6 +24,12 @@ const reducer = (state, action) => {
       return {
         ...state,
         data: action.value,
+      };
+
+      case "set-isSubmitted":
+      return {
+        ...state,
+        selections: action.value,
       };
 
     case "receive-selections":
@@ -283,6 +291,15 @@ export const AppProvider = ({ children }) => {
       value: value,
     });
   };
+
+  const setIsSubmitted = (value) => {
+    dispatch({
+      type: "set-isSubmitted",
+      value: value,
+    });
+  };
+
+
 
   return (
     <AppContext.Provider

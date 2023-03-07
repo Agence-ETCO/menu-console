@@ -32,7 +32,9 @@ const Page6 = () => {
       addPreviousStep,
       addPack,
       removePack,
-      receiveBeerSelections
+      receiveBeerSelections,
+      isSubmitted,
+      setIsSubmitted
     },
   } = useContext(AppContext);
   const min = 1;
@@ -95,6 +97,13 @@ const Page6 = () => {
       el.category === "Non-Alcoholic").length < min  ;
     }
 
+    useEffect(() => {
+      if(isSubmitted) {
+        router.push("/8");
+      }
+    }, [router]);
+
+
   useEffect(() => {
     if (state.selections.length === 0) {
       fetchCurrentUser()
@@ -102,8 +111,9 @@ const Page6 = () => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
           }
-          if (res.isSubmitted) {
+                    if (res.isSubmitted) {
             router.push("/8");
+            setIsSubmitted(true);
           }
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);

@@ -29,7 +29,9 @@ const Page2 = () => {
       addMicro01,
       addMicro02,
       getMenuId,
-      receiveBeerSelections
+      receiveBeerSelections,
+      isSubmitted,
+      setIsSubmitted
     },
   } = useContext(AppContext);
   const router = useRouter();
@@ -51,6 +53,12 @@ const Page2 = () => {
     </span>
   );
   const limit = max - selections.length - 1 >= 0;
+
+  useEffect(() => {
+    if(isSubmitted) {
+      router.push("/8");
+    }
+  }, [router]);
 
   useEffect(() => {
     const user = getUser();
@@ -82,8 +90,9 @@ const Page2 = () => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
           }
-          if (res.isSubmitted) {
+                    if (res.isSubmitted) {
             router.push("/8");
+            setIsSubmitted(true);
           }
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);

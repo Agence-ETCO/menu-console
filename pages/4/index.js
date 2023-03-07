@@ -31,7 +31,9 @@ const Page4 = () => {
       receiveCraftOptions,
       addMicro01,
       addMicro02,
-      receiveBeerSelections
+      receiveBeerSelections,
+      isSubmitted,
+      setIsSubmitted
     },
   } = useContext(AppContext);
 
@@ -82,6 +84,11 @@ const Page4 = () => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    if(isSubmitted) {
+      router.push("/8");
+    }
+  }, [router]);
 
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -90,8 +97,9 @@ const Page4 = () => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
           }
-          if (res.isSubmitted) {
+                    if (res.isSubmitted) {
             router.push("/8");
+            setIsSubmitted(true);
           }
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);

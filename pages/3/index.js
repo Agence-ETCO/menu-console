@@ -29,7 +29,9 @@ const Page3 = () => {
       addMicro01,
       addMicro02,
       getMenuId,
-      receiveBeerSelections
+      receiveBeerSelections,
+      isSubmitted,
+      setIsSubmitted
     },
   } = useContext(AppContext);
   const router = useRouter();
@@ -74,6 +76,11 @@ const Page3 = () => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    if(isSubmitted) {
+      router.push("/8");
+    }
+  }, [router]);
 
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -82,8 +89,9 @@ const Page3 = () => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
           }
-          if (res.isSubmitted) {
+                    if (res.isSubmitted) {
             router.push("/8");
+            setIsSubmitted(true);
           }
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);

@@ -52,6 +52,8 @@ const Page5 = () => {
       getMenuId,
       removeSelection,
       receiveBeerSelections,
+      isSubmitted,
+      setIsSubmitted
     },
   } = useContext(AppContext);
 
@@ -284,6 +286,11 @@ const Page5 = () => {
       }
     };
   }
+  useEffect(() => {
+    if(isSubmitted) {
+      router.push("/8");
+    }
+  }, [router]);
 
   useEffect(() => {
     if (state.selections.length === 0) {
@@ -295,8 +302,9 @@ const Page5 = () => {
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);
           }
-          if (res.isSubmitted) {
+                    if (res.isSubmitted) {
             router.push("/8");
+            setIsSubmitted(true);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
           if (res.franchisee_s_menu.craftOptions.beers) { receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers) }
