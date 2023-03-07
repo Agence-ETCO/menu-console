@@ -668,41 +668,13 @@ const Page5 = () => {
 
           {state.selectedPack === 12 && (step === 9 || step === 10) && (
             <div>
-              {!_.isEmpty(nonPreselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id)))) && (
-                <>
-                  <SubTitle>
-                    St-Hubert vous recommande de choisir une bière parmi celles-ci.
-                  </SubTitle>
-
-                  <Subcontainer2>
-                    {nonPreselect.filter((item) => (item.id == 1802 || item.id == 1803) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))).map((option, key) => (
-                      <BeerCard
-                        beerStep={step}
-                        recommanded={true}
-                        index={key + 1}
-                        type={option.attributes.descriptionFr}
-                        key={option.id}
-                        value={option.id}
-                        title={option.attributes.title}
-                        alcohol={option.attributes.alcohol}
-                        description={option.attributes.descriptionFr}
-                        saqCode={option.attributes.saqCode}
-                        prices={option.attributes.cost}
-                        limit={limit}
-                        option={option}
-                        imageUrl={option.attributes.imageURL}
-                      />
-                    ))}
-                  </Subcontainer2>
-                </>
-              )}
 
               <SubTitle>
-                Sinon vous pouvez aussi choisir parmi les bières suivantes.
+              St-Hubert vous recommande de choisir une bière parmi celles-ci.
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return !([1802, 1803].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  return !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
                     beerStep={step}
