@@ -15,6 +15,7 @@ import {
 } from "./styled";
 import useUserID from "../../lib/useUserID";
 import Legend from "../../components/Legend";
+import { useRouter } from "next/router";
 
 const Page4 = () => {
   const {
@@ -37,6 +38,7 @@ const Page4 = () => {
   const min = 2;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
+  const router = useRouter();
 
   const max = 4;
   const quantity = 18;

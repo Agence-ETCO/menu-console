@@ -15,6 +15,7 @@ import {
 } from "./styled";
 import { getUser } from "../../lib/store";
 import Legend from "../../components/Legend";
+import { useRouter } from "next/router";
 
 const Page3 = () => {
   const {
@@ -31,6 +32,7 @@ const Page3 = () => {
       receiveBeerSelections
     },
   } = useContext(AppContext);
+  const router = useRouter();
 
   const min = 1;
   const [counter, setCounter] = useState(0);

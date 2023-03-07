@@ -15,6 +15,7 @@ import {
 import { getUser } from "../../lib/store";
 import Legend from "../../components/Legend";
 import HintBox from "../../components/HintBox";
+import { useRouter } from "next/router";
 
 const Page2 = () => {
   const {
@@ -31,6 +32,7 @@ const Page2 = () => {
       receiveBeerSelections
     },
   } = useContext(AppContext);
+  const router = useRouter();
 
   const min = 0;
   const [counter, setCounter] = useState(0);

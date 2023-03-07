@@ -16,6 +16,7 @@ import {
   Title,
 } from "./styled";
 import useUserID from "../../lib/useUserID";
+import { useRouter } from "next/router";
 
 const Page6 = () => {
   const {
@@ -38,6 +39,7 @@ const Page6 = () => {
   const max = 2;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
+  const router = useRouter();
 
   const selection = (
     <span style={{ fontSize: "21px" }}>
