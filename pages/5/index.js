@@ -295,6 +295,9 @@ const Page5 = () => {
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);
           }
+          if (res.isSubmitted) {
+            router.push("/8");
+          }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
           if (res.franchisee_s_menu.craftOptions.beers) { receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers) }
           console.log('res.franchisee_s_menu.craftOptions.beers', res.franchisee_s_menu.craftOptions.beers);

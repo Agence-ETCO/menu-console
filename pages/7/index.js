@@ -57,7 +57,6 @@ const Page7 = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
   const [_beers, setBeer] = useState([]);
-  const [disabled, setDisabled] = useState(false);
   const userID = useUserID();
   const step = 7;
 
@@ -96,14 +95,6 @@ const Page7 = () => {
         (option.attributes && option.attributes.category === "SPARKLING, ROSÉ AND ORANGE WINES") ||
         option.category === "SPARKLING, ROSÉ AND ORANGE WINES"
     );
-
-  const handleClick = () => {
-    if(disabled){
-      router.push("/8");
-    } else {
-      setShowAlert(true);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -208,9 +199,7 @@ const Page7 = () => {
           }
 
           if (res.isSubmitted) {
-           setDisabled(true);
-          }else {
-            setDisabled(false);
+            router.push("/8");
           }
 
           getMenuId(res.franchisee_s_menu.id);

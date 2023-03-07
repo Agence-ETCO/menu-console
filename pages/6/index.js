@@ -100,6 +100,9 @@ const Page6 = () => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
           }
+          if (res.isSubmitted) {
+            router.push("/8");
+          }
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);
           }
