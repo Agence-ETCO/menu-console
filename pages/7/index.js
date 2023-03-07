@@ -105,7 +105,7 @@ const Page7 = () => {
     if (state.menuId === 0) {
       fetchCurrentUser()
         .then((res) => {
-          if (res.franchisee_s_menu) {
+          if (res.franchisee_s_menu && !res.isSubmitted) {
             if (res.franchisee_s_menu.id) {
               getMenuId(res.franchisee_s_menu.id);
             }
