@@ -87,7 +87,7 @@ export const alertBox = {
   title: "IMPORTANT",
   body: "Une fois soumise, vous ne pourrez plus changer vos choix.",
   question:
-    " Êtes-vous certain de vouloir soumettre votre sélection pour votre carte des alcools.",
+    " Êtes-vous certain de vouloir soumettre votre sélection pour votre carte des alcools?",
   buttonText1: "soumettre maintenant",
   buttonText2: "annuler",
 };
