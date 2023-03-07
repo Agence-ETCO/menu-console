@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useEffect, useContext } from "react";
 import Header from "../../components/Header";
 import { page8 } from "../../fr";
@@ -14,6 +15,15 @@ import {
 
 const Page8 = () => {
   const userID = useUserID();
+  const router = useRouter();
+
+  useEffect(() => { 
+    if (router.asPath === '/8/') {
+      window.onpopstate = () => { 
+        history.go(1);
+      };
+    }
+  }, [router]);
 
   const link = userID
     ? ` https://pdf.selections-sthubert.ca/preview/${userID}`
