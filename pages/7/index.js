@@ -57,6 +57,7 @@ const Page7 = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
   const [_beers, setBeer] = useState([]);
+  const [disabled, setDisabled] = useState(false);
   const userID = useUserID();
   const step = 7;
 
@@ -97,7 +98,11 @@ const Page7 = () => {
     );
 
   const handleClick = () => {
-    setShowAlert(true);
+    if(disabled){
+      router.push("/8");
+    } else {
+      setShowAlert(true);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -105,7 +110,7 @@ const Page7 = () => {
     if (state.menuId === 0) {
       fetchCurrentUser()
         .then((res) => {
-          if (res.franchisee_s_menu && !res.isSubmitted) {
+          if (res.franchisee_s_menu) {
             if (res.franchisee_s_menu.id) {
               getMenuId(res.franchisee_s_menu.id);
             }
@@ -200,6 +205,12 @@ const Page7 = () => {
         .then((res) => {
           if (res.franchisee_s_menu.menu_items.length > 0) {
             receiveSelections(res.franchisee_s_menu.menu_items);
+          }
+
+          if (res.isSubmitted) {
+           setDisabled(true);
+          }else {
+            setDisabled(false);
           }
 
           getMenuId(res.franchisee_s_menu.id);
