@@ -10,12 +10,15 @@ import BeerCard3 from "../../components/BeerCard3";
 import WineCard from "../../components/WineCard";
 import BeerList from "../../components/BeerList";
 import AlertBox from "../../components/AlertBox";
+import AlertBox2 from "../../components/AlertBox2";
 import { AppContext } from "../../context/AppContext";
 import image from "../../public/edit.svg";
 import imageKeg from "../../public/Fut.svg";
 import { putAPI1, fetchCurrentUser, fetchAPI } from "../../lib/api";
 import useUserID from "../../lib/useUserID";
 import { page2, page3, page4, page7, footer } from "../../fr";
+import * as _ from "lodash";
+
 import {
   Container,
   Subcontainer,
@@ -57,6 +60,7 @@ const Page7 = () => {
   } = useContext(AppContext);
   const router = useRouter();
   const [showAlert, setShowAlert] = useState(false);
+  const [showAlert2, setShowAlert2] = useState(false);
   const [craftBeer, setCraftBeer] = useState([]);
   const [_beers, setBeer] = useState([]);
   const userID = useUserID();
@@ -100,7 +104,25 @@ const Page7 = () => {
 
 
   const handleClick = () => {
-    setShowAlert(true);
+    if (_.isEmpty(state.selections
+      .filter(
+        (option) =>
+          (option.attributes &&
+            option.attributes.category === "White Wine") ||
+          option.category === "White Wine"
+      )) || _.isEmpty(state.selections
+        .filter(
+          (option) =>
+            (option.attributes &&
+              option.attributes.category === "Red Wine") ||
+            option.category === "Red Wine"
+        ))  || _.isEmpty(beer)
+            || _.isEmpty(nonAlcohol)) {
+      //alert("Votre sélection est incomplète! Veuillez vérifier le résumé et ajouter les items qui manquent! Merci !");
+      setShowAlert2(true);
+    } else {
+      setShowAlert(true);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -156,6 +178,10 @@ const Page7 = () => {
 
   const onCancel = () => {
     setShowAlert(false);
+  };
+
+  const closeAlert = () => {
+    setShowAlert2(false);
   };
 
   useEffect(() => {
@@ -294,6 +320,10 @@ const Page7 = () => {
         showAlert={showAlert}
         onCancel={onCancel}
         handleSubmit={handleSubmit}
+      />
+      <AlertBox2
+        showAlert={showAlert2}
+        onCancel={closeAlert}
       />
       <Header step={7} />
       <Container>
