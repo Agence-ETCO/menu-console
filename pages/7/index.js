@@ -353,7 +353,7 @@ const Page7 = () => {
             orange
               .map((option, key) => (
                 <WineCard
-                  key={`page6_option_a_${key}`}
+                  // key={`page6_option_a_${key}`}
                   value={option.id}
                   title={
                     (option.attributes && option.attributes.title) ||
