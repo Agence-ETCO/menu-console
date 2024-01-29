@@ -12,13 +12,11 @@ export const welcomePage = {
 };
 
 export const page1 = {
-  title: "Le retour du petit cartable",
+  title: "",
   body: "",
-  body1:
-    "Votre carte des alcools sera dorénavant insérée dans le petit cartable et inclura une nouvelle section boissons, entrées et desserts.",
-  body2:
-    "Commençons maintenant la sélection de vos choix. Une fois votre sélection complétée, nous procéderons au montage visuel de votre carte des alcools, nous la ferons imprimer, puis nous la livrerons directement à votre restaurant. ",
+  body1: "Commençons maintenant la sélection de vos choix. Une fois votre sélection complétée, nous procéderons au montage visuel de votre carte des alcools, nous la ferons imprimer, puis nous la livrerons directement à votre restaurant.",
   buttonText: "CONTINUER",
+  next: "Mousseux, rosés et orange"
 };
 
 // export const page1 = {
@@ -32,7 +30,7 @@ export const page1 = {
 // };
 
 export const page2 = {
-  title: "Mousseux et vins orange",
+  title: "Mousseux, rosés et orange",
   body: "Souhaitez-vous ajouter un mousseux ou un vin orange à votre carte? (Optionnel)",
   buttonText: "VALIDER",
   hintbox: "Votre choix s’ajoutera à la sélection des vins obligatoires.",
@@ -61,7 +59,7 @@ export const page5 = {
 
 export const page6 = {
   title: "Sans alcool",
-  subtitle: "Choisissez jusqu’à 2 produits sans alcool.",
+  subtitle: "Choisissez jusqu’à 2 produits sans alcool (Optionnel).",
   next: "Résumé de votre sélection"
 };
 

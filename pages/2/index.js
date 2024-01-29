@@ -189,7 +189,7 @@ const Page2 = () => {
         <Subcontainer2>
           {state.data &&
             state.data
-              .filter((option) => option.attributes.category === "SPARKLING, ROSÉ AND ORANGE WINES")
+              .filter((option) => option.attributes.category === "SPARKLING, ROSÉ AND ORANGE WINES" && option.attributes.isOptional == true )
               .map((option, key) => (
                 <WineCard
                   key={`page2_option_${key}`}

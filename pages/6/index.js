@@ -37,7 +37,7 @@ const Page6 = () => {
       setIsSubmitted
     },
   } = useContext(AppContext);
-  const min = 1;
+  const min = 0;
   const max = 2;
   const [counter, setCounter] = useState(0);
   const userID = useUserID();
@@ -201,7 +201,7 @@ const Page6 = () => {
           {state.data &&
             state.data
               .filter(
-                (option) => option.attributes && option.attributes.category === "Non-Alcoholic"
+                (option) => option.attributes && option.attributes.category === "Non-Alcoholic" && option.attributes.isOptional == true
               )
               .map((option) => (
                 <BeerCard2
