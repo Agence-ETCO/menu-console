@@ -116,8 +116,7 @@ const Page7 = () => {
             (option.attributes &&
               option.attributes.category === "Red Wine") ||
             option.category === "Red Wine"
-        ))  || _.isEmpty(beer)
-            || _.isEmpty(nonAlcohol)) {
+        ))  || _.isEmpty(beer)) {
       //alert("Votre sélection est incomplète! Veuillez vérifier le résumé et ajouter les items qui manquent! Merci !");
       setShowAlert2(true);
     } else {
@@ -719,7 +718,7 @@ const Page7 = () => {
                         option={option}
                         step={step}
                         beerMaker={
-                          (option.attributes && option.attributes.beerMaker) ||
+                          (option.attributes && option.attributes.beerMaker) || option.beerMaker ||
                           ""}
                       />)}
                 </Subcontainer1>
