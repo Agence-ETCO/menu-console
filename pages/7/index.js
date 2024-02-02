@@ -679,7 +679,7 @@ const Page7 = () => {
                     </Link>
 
                   </KegTitleContainer>
-                  {(option.attributes && option.attributes.title.includes("Bière du moment") || (option.title && option.title.includes("Bière du moment"))) && (
+                  {(option.attributes && option.attributes.title.includes("Beer of the moment") || (option.title && option.title.includes("Beer of the moment"))) && (
                     <MiniBeerMomentCard
                       value={option.id}
                       title={

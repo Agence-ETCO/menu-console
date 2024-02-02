@@ -102,11 +102,11 @@ const CraftList = (props) => {
 
 
   const beerOfTheMoment = state.data.filter(
-    (option) => (option.attributes.category === "Craft Beer" && option.attributes.title.includes("Bière du moment"))
+    (option) => (option.attributes.category === "Craft Beer" && option.attributes.title.includes("Beer of the moment"))
   );
 
   const craftBeerOptions = state.data.filter(
-    (option) => option.attributes.category === "Craft Beer" && !option.attributes.title.includes("Bière du moment")
+    (option) => option.attributes.category === "Craft Beer" && !option.attributes.title.includes("Beer of the moment")
   );
 
   const handleClick = () => {
