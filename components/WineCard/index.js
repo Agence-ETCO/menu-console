@@ -132,7 +132,7 @@ const WineCard = (props) => {
                     <td></td>
                     {/* <td> {pricesForRegion[0].Price} $</td>
                     <td>{pricesForRegion[1].Price} $</td> */}
-                    <td>{pricesForRegion[0].Price} $</td>
+                    <td>{parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})} $</td>
                   </tr>
                 )}
               </tbody>

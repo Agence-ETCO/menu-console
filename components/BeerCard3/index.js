@@ -71,7 +71,7 @@ const BeerCard3 = (props) => {
                     <td>
                       {props.prices &&
                         props.index &&
-                        pricesForRegion[props.index[0]].Price}
+                        parseFloat(pricesForRegion[props.index[0]].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}
                       {!props.index && "11,75 $"}
                       {props.prices &&
                         props.index &&
@@ -82,7 +82,7 @@ const BeerCard3 = (props) => {
                       {props.prices &&
                         props.index &&
                         props.index[1] &&
-                        pricesForRegion[props.index[1]].Price}
+                        parseFloat(pricesForRegion[props.index[1]].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}
                       {!props.index && "29,00 $"}
                       {props.prices &&
                         props.index &&

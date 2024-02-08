@@ -110,13 +110,13 @@ const BeerCard2 = (props) => {
                   </tr>
                   {pricesForRegion && (
                     <tr>
-                      <td>{pricesForRegion[0] && pricesForRegion[0].Price} $</td>
+                      <td>{pricesForRegion[0] && parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})} $</td>
                       <td>
-                        {pricesForRegion[1] && pricesForRegion[1].Price}
+                        {pricesForRegion[1] && parseFloat(pricesForRegion[1].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}
                         {pricesForRegion[1] && " $"}
                       </td>
                       <td>
-                        {pricesForRegion[2] && pricesForRegion[2].Price}
+                        {pricesForRegion[2] && parseFloat(pricesForRegion[2].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}
                         {pricesForRegion[2] && " $"}
                       </td>
                     </tr>

@@ -101,11 +101,11 @@ const BeerCard = (props) => {
                       {pricesForRegion[0] && "$"} */}
                     </td>
                     <td>
-                      {pricesForRegion[0] && pricesForRegion[0].Price}{" "}
+                      {pricesForRegion[0] && parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion[0] && "$"}
                     </td>
                     <td>
-                      {pricesForRegion[1] && pricesForRegion[1].Price}{" "}
+                      {pricesForRegion[1] && parseFloat(pricesForRegion[1].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion[1] && "$"}
                     </td>
                   </tr>

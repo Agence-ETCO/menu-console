@@ -104,15 +104,15 @@ console.log('beerSelections',state.beerSelections);
                   {pricesForRegion.length > 0 && (
                     <tr>
                       <td>
-                        {pricesForRegion.filter(el => el.size === "Bottle")[0] && pricesForRegion.filter(el => el.size === "Bottle")[0].Price}{" "}
+                        {pricesForRegion.filter(el => el.size === "Bottle")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Bottle")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion.filter(el => el.size === "Bottle")[0] && "$"}
                       </td>
                       <td>
-                      {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && pricesForRegion.filter(el => el.size === "Draft 20 oz")[0].Price}{" "}
+                      {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Draft 20 oz")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && "$"}
                       </td>
                       <td>
-                      {pricesForRegion.filter(el => el.size === "Pitcher")[0] && pricesForRegion.filter(el => el.size === "Pitcher")[0].Price}{" "}
+                      {pricesForRegion.filter(el => el.size === "Pitcher")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Pitcher")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion.filter(el => el.size === "Pitcher")[0] && "$"}
                       </td>
                     </tr>

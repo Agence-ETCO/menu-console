@@ -1,6 +1,6 @@
 export const welcomePage = {
   greeting: "Bonjour!",
-  title: "Personnalisez votre nouvelle carte des alcools",
+  title: "Personnalisez votre carte des alcools",
   body: "Afin de proposer une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les meilleurs produits pour votre marché.",
   dateLimite: "IMPORTANT :",
   body1: "veuillez compléter votre sélection au plus tard le",
