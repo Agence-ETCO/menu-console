@@ -208,7 +208,7 @@ const Page6 = () => {
                 recommanded={option.id===1804}
                   key={option.id}
                   value={option.id}
-                  title={option.attributes.title}
+                  title={option.attributes.titleFr}
                   alcohol={option.attributes.alcohol}
                   description={option.attributes.description}
                   saqCode={option.attributes.saqCode}

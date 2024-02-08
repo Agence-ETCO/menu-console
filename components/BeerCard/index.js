@@ -90,7 +90,7 @@ console.log('beerSelections',state.beerSelections);
             </ImageContainer>
             <TextContainer checked={isChecked(props.option)}>
               <div>
-                {props.title} ({props.alcohol} %)
+                {props.title} <span>({props.alcohol} %)</span>
               </div>
               <div> {props.description} </div>
 

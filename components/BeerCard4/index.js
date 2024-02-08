@@ -56,7 +56,7 @@ const BeerCard4 = (props) => {
             </ImageContainer>
             <TextContainer checked>
               <div>
-                {props.title} ({props.alcohol} %)
+                {props.title} <span>({props.alcohol} %)</span>
               </div>
               <div> {props.description} </div>
 
@@ -73,15 +73,15 @@ const BeerCard4 = (props) => {
                     (pricesForRegion.length === 3 ? (
                       <tr>
                         <td>
-                          {pricesForRegion[0].Price}{" "}
+                          {parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                           {pricesForRegion[0] && parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2}) && " $"}
                         </td>
                         <td>
-                          {pricesForRegion[1].Price}{" "}
+                          {parseFloat(pricesForRegion[1].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                           {pricesForRegion[1] && parseFloat(pricesForRegion[1].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2}) && " $"}
                         </td>
                         <td>
-                          {pricesForRegion[2].Price}{" "}
+                          {parseFloat(pricesForRegion[2].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                           {pricesForRegion[2] && parseFloat(pricesForRegion[2].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2}) && " $"}
                         </td>
                       </tr>

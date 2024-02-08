@@ -65,6 +65,9 @@ export const TextContainer = styled.div`
     line-height: 25px;
     min-height: 50px;
   }
+  span {
+    white-space:nowrap;
+  }
   div:nth-child(2) {
     color: ${(props) => (props.checked ? "rgba(255,255,255, 0.5)" : "#231f20")};
     margin-bottom: 5px;

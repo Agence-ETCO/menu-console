@@ -92,7 +92,7 @@ const MiniBeerCard = (props) => {
         <SubContainer>
           <TextContainer checked={isChecked(props.option)}>
             <div >
-              {props.title} ({props.alcohol} %)
+              {props.title} <span>({props.alcohol} %)</span>
             </div>
             <div>{props.beerMaker}</div>
             <div> {props.description} </div>
