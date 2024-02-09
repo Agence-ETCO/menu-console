@@ -18,7 +18,7 @@ const BeerList = (props) => {
         option.attributes.title.includes("Michelob Ultra") ||
         option.attributes.title.includes("Stella Artois") ||
         option.attributes.title.includes("Corona") ||
-        option.attributes.title.includes("Archibald Chipie")
+        option.attributes.title.includes("Chipie")
       ) {
         preselect.push(option);
       }
