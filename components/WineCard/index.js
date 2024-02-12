@@ -123,7 +123,7 @@ const WineCard = (props) => {
               <tbody>
                 <tr>
                   <th scope="col">6 oz</th>
-                  <th scope="col">9 oz</th>
+                  <th scope="col">1/4 L</th>
                   <th scope="col">Bouteille</th>
                 </tr>
                 {pricesForRegion.length > 0 && (

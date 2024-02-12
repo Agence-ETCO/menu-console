@@ -96,7 +96,7 @@ const Page5 = () => {
   );
 
   const stage =
-    step === 12
+    step === state.selectedPack
       ? "SANS ALCOOL"
       : step === 0
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
@@ -582,7 +582,11 @@ const Page5 = () => {
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return !([2418, 2419, 2420, 2421].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  if (state.selectedPack === 12) {
+                    return !([2418, 2419, 2420, 2421].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  } else {
+                    return !([2418, 2419].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  }
                 }).map((option, key) => (
                   <BeerCard
                     beerStep={step}
