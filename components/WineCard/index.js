@@ -11,6 +11,7 @@ import IconQ from "../IconQ";
 import IconQDark from "../IconQDark";
 import IconBotteledQC from "../../public/Icone_Embouteille_QC_Blanc.svg";
 import IconBotteledQCDark from "../../public/Icone_Embouteille_QC_Noir.svg";
+import IconBotteledQGrey from "../../public/Icone_Embouteille_QC_GRIS.svg";
 import IconO from "../IconO";
 import IconC from "../IconC";
 import IconN from "../IconN";
@@ -171,16 +172,11 @@ console.log(props);
                   ))}
                 {props.isFromQuebec &&
                   (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
-                {props.isOrange &&
-                  (isChecked(props.option) ? (
+                {props.isBottledInQuebec &&
                     <Container2>
-                      <Image src={IconBotteledQC} width={20} height={23} alt="" />
+                      <Image src={IconBotteledQGrey} width={20} height={23} alt="" />
                     </Container2>
-                  ) : (
-                    <Container2>
-                    <Image src={IconBotteledQCDark} width={20} height={23} alt="" />
-                  </Container2>
-                  ))}
+                 }
               </Icons>
             </IconContainer>
           </TextContainer>
