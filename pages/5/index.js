@@ -96,7 +96,7 @@ const Page5 = () => {
   );
 
   const stage =
-    step === state.selectedPack
+    ( step === state.selectedPack && step != 0 )
       ? "SANS ALCOOL"
       : step === 0
         ? "BIÈRES EN FÛT: LIGNE 1 À 5"
