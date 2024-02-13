@@ -214,6 +214,7 @@ const Page2 = () => {
                   isNature={option.attributes.isNature || option.isNature}
                   isOrange={option.attributes.isOrange || option.isOrange}
                   isCellier={option.attributes.isCellier || option.isCellier}
+                  isBottledInQuebec={option.attributes.isBottledInQuebec || option.isBottledInQuebec}
                 />
               ))}
         </Subcontainer2>

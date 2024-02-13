@@ -9,6 +9,8 @@ import imageN from "../../public/N-icon.svg";
 import IconBio from "../IconBio";
 import IconQ from "../IconQ";
 import IconQDark from "../IconQDark";
+import IconBotteledQC from "../../public/Icone_Embouteille_QC_Blanc.svg";
+import IconBotteledQCDark from "../../public/Icone_Embouteille_QC_Noir.svg";
 import IconO from "../IconO";
 import IconC from "../IconC";
 import IconN from "../IconN";
@@ -73,7 +75,7 @@ const WineCard = (props) => {
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
     : props.prices;
-
+console.log(props);
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -169,6 +171,16 @@ const WineCard = (props) => {
                   ))}
                 {props.isFromQuebec &&
                   (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
+                {props.isOrange &&
+                  (isChecked(props.option) ? (
+                    <Container2>
+                      <Image src={IconBotteledQC} width={20} height={23} alt="" />
+                    </Container2>
+                  ) : (
+                    <Container2>
+                    <Image src={IconBotteledQCDark} width={20} height={23} alt="" />
+                  </Container2>
+                  ))}
               </Icons>
             </IconContainer>
           </TextContainer>
