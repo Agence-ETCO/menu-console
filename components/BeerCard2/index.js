@@ -47,8 +47,10 @@ const BeerCard2 = (props) => {
 
     if (checked) {
       removeSelection(option.id);
-    } else {
+    } else if (!checked && props.limit) {
       addSelection(option);
+    } else if (!checked && !props.limit) {
+      return;
     }
   };
 

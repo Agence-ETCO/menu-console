@@ -55,6 +55,8 @@ const Page6 = () => {
       option.category === "Non-Alcoholic"
   );
 
+  const limit = max - selections.length - 1 >= 0;
+  
   useEffect(() => {
     if (state.data.length === 0) {
       fetchAPI("/api/menu-items?populate=deep")
@@ -216,6 +218,7 @@ const Page6 = () => {
                   option={option}
                   imageUrl={option.attributes.imageURL}
                   sugar={option.attributes.sugar}
+                  limit={limit}
                 />
               ))}
         </Subcontainer2>
