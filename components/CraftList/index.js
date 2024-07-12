@@ -175,7 +175,7 @@ const CraftList = (props) => {
             />
           ))}
           <Subtitle>
-          <p>Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici l’automne.</p>
+          <p>Bière du moment signifie qu’un produit de cette microbrasserie est offert sans préciser le nom de la bière. Ceci vous permet de changer de bière d’ici le printemps.</p>
           </Subtitle>
           {beerOfTheMoment.filter(
             (option) => {

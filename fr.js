@@ -14,9 +14,9 @@ export const welcomePage = {
 export const page1 = {
   title: "",
   body: "",
-  body1: "Commençons maintenant la sélection de vos choix. Une fois votre sélection complétée, nous procéderons au montage visuel de votre carte des alcools, nous la ferons imprimer, puis nous la livrerons directement à votre restaurant.",
+  body1: "Commençons maintenant la sélection de vos choix.",
   buttonText: "CONTINUER",
-  next: "Mousseux, rosés et orange"
+  next: "Mousseux"
 };
 
 // export const page1 = {
@@ -30,8 +30,8 @@ export const page1 = {
 // };
 
 export const page2 = {
-  title: "Mousseux, rosés et orange",
-  body: "Souhaitez-vous ajouter un mousseux ou un vin orange à votre carte? (Optionnel)",
+  title: "Mousseux",
+  body: "Souhaitez-vous ajouter un mousseux?",
   buttonText: "VALIDER",
   hintbox: "Votre choix s’ajoutera à la sélection des vins obligatoires.",
   next: "VINS BLANCS"
@@ -59,7 +59,7 @@ export const page5 = {
 
 export const page6 = {
   title: "Sans alcool",
-  subtitle: "Choisissez jusqu’à 2 produits sans alcool (Optionnel).",
+  subtitle: "Choisissez jusqu’à 1 produits sans alcool (Optionnel).",
   next: "Résumé de votre sélection"
 };
 
@@ -74,7 +74,7 @@ export const page7 = {
 export const page8 = {
   title: "Merci",
   subtitle:
-    "Votre sélection a été enregistrée avec succès. Nous procéderons à l’impression de votre carte des alcools personnalisée dans les meilleurs délais.  ",
+    "Votre sélection a été enregistrée avec succès.",
   body1:
     " Dans quelques instants, nous vous ferons parvenir un courriel de confirmation afin de vous fournir un récapitulatif de votre sélection. ",
   body2:

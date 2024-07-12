@@ -333,7 +333,7 @@ const Page7 = () => {
           </Subtitle1>
           <Subtitle1>{page7.subtitle2}</Subtitle1>
         </Subcontainer1>
-        {/* Mousseux et orange */}
+        {/* Mousseux */}
         <TitleContainer>
           <Title>{page2.title}</Title>{" "}
           <Link href={"/2"}>

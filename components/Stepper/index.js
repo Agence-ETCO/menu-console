@@ -7,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 
 const tooltips = {
   1: 'Votre menu',
-  2: 'Mousseux et orange',
+  2: 'Mousseux',
   3: 'Vins blancs',
   4: 'Vins rouges',
   5: 'Bières',
