@@ -40,7 +40,7 @@ const Page2 = () => {
   const [counter, setCounter] = useState(0);
   const [userId, setUserId] = useState(null);
 
-  const max = 2;
+  const max = 1;
   const quantity = 2;
   const selections = state.selections.filter(
     (option) =>
