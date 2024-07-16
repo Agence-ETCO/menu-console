@@ -31,7 +31,7 @@ export const page1 = {
 
 export const page2 = {
   title: "Mousseux",
-  body: "Souhaitez-vous ajouter un mousseux?",
+  body: "Souhaitez-vous ajouter un mousseux ?",
   buttonText: "VALIDER",
   hintbox: "Votre choix s’ajoutera à la sélection des vins obligatoires.",
   next: "VINS BLANCS"
@@ -59,7 +59,7 @@ export const page5 = {
 
 export const page6 = {
   title: "Sans alcool",
-  subtitle: "Choisissez jusqu’à 1 produits sans alcool (Optionnel).",
+  subtitle: "Choisissez jusqu’à 1 produit sans alcool (Optionnel).",
   next: "Résumé de votre sélection"
 };
 
