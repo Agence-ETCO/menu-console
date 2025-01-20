@@ -86,14 +86,14 @@ export const TextContainer = styled.div`
     font-family: "GTWalsheimRegular";
     font-weight: 400;
     color: ${(props) =>
-      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
     font-size: 13px;
     line-height: 15px;
     text-transform: uppercase;
   }
 
   table {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     td {
       width: 90px;
     }
@@ -101,7 +101,7 @@ export const TextContainer = styled.div`
       font-family: "GTWalsheimRegular";
       font-weight: 400;
       color: ${(props) =>
-        props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+      props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
       font-size: 14px;
       line-height: 17px;
     }
@@ -111,6 +111,14 @@ export const TextContainer = styled.div`
       font-size: 15px;
       line-height: 18px;
     }
+  }
+  
+  label {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+    margin-left: 0 !important;
+    gap: 15px;
   }
 `;
 export const SubContainer = styled.div`

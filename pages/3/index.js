@@ -214,6 +214,7 @@ const Page3 = () => {
                   isNature={option.attributes.isNature || option.isNature}
                   isOrange={option.attributes.isOrange || option.isOrange}
                   isCellier={option.attributes.isCellier || option.isCellier}
+                  showGlassOption = {true}
                 />
               ))}
         </Subcontainer2>

@@ -6,6 +6,7 @@ const initialState = {
   data: [],
   selections: [],
   beerSelections: [0, 0, 0, 0, 0, 0, 0], 
+  wineOptions: {},
   micro1: {},
   micro2: {},
   selectedPack: 0,
@@ -59,6 +60,15 @@ const reducer = (state, action) => {
           }
         });
 
+        case "add-wine-options":
+        return {
+          ...state,
+          wineOptions: {
+            ...state.wineOptions,
+            [action.id]: action.payload, 
+          },
+        };
+
     case "add-pack":
       return {
         ...state,
@@ -89,6 +99,13 @@ const reducer = (state, action) => {
           }
         }
       });
+
+      case "remove-wine-options":
+        const { [action.id]: _, ...remainingWineOptions } = state.wineOptions;
+        return {
+          ...state,
+          wineOptions: remainingWineOptions,
+        };
   
 
     case "filter-selections":
@@ -213,9 +230,24 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  const addWineOptions = (id, payload) => {
+    dispatch({
+      type: "add-wine-options",
+      id: id,
+      payload: payload,
+    });
+  };
+
   const removeBeerSelection = (id) => {
     dispatch({
       type: "remove-beer-selection",
+      id: id,
+    });
+  };
+
+  const removeWineOptions = (id) => {
+    dispatch({
+      type: "remove-wine-options",
       id: id,
     });
   };
@@ -313,6 +345,8 @@ export const AppProvider = ({ children }) => {
           removeSelection,
           addBeerSelection,
           removeBeerSelection,
+          addWineOptions,
+          removeWineOptions,
           removeMicro01,
           removeMicro02,
           addMicro01,

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Image from "next/image";
 import { AppContext } from "../../context/AppContext";
 import { getColor } from "../../lib/helpers";
@@ -38,8 +38,23 @@ import {
 const WineCard = (props) => {
   const {
     state,
-    actions: { addSelection, removeSelection },
+    actions: { addSelection, removeSelection, addWineOptions, removeWineOptions },
   } = useContext(AppContext);
+
+  const [glassChecked, setGlassChecked] = useState(false);
+
+  const handleGlassCheckboxChange = (event) => {
+    const isChecked = event.target.checked;
+    setGlassChecked(isChecked);
+
+    if (isChecked) {
+      // Add wine option when checked
+      addWineOptions(props.value, { "glass": true });
+    } else {
+      // Remove wine option when unchecked
+      removeWineOptions(props.value);
+    }
+  };
 
   const region = useUserRegion();
 
@@ -76,7 +91,7 @@ const WineCard = (props) => {
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === region)
     : props.prices;
-console.log(props);
+  console.log(props);
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -135,12 +150,21 @@ console.log(props);
                     <td></td>
                     {/* <td> {pricesForRegion[0].Price} $</td>
                     <td>{pricesForRegion[1].Price} $</td> */}
-                    <td>{parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})} $</td>
+                    <td>{parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $</td>
                   </tr>
                 )}
               </tbody>
             </table>
-
+            {props.showGlassOption == true && (
+              <label>
+                <input
+                  type="checkbox"
+                  checked={glassChecked}
+                  onChange={handleGlassCheckboxChange}
+                />
+                Verre ???
+              </label>
+            )}
             <IconContainer>
               <span> Code saq {props.saqCode || ""}</span>
               <Icons>
@@ -173,10 +197,10 @@ console.log(props);
                 {props.isFromQuebec &&
                   (isChecked(props.option) ? <IconQDark /> : <IconQ />)}
                 {props.isBottledInQuebec &&
-                    <Container2>
-                      <Image src={IconBotteledQGrey} width={20} height={23} alt="" />
-                    </Container2>
-                 }
+                  <Container2>
+                    <Image src={IconBotteledQGrey} width={20} height={23} alt="" />
+                  </Container2>
+                }
               </Icons>
             </IconContainer>
           </TextContainer>
