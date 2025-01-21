@@ -310,11 +310,12 @@ const Page5 = () => {
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
 
-          if (res.franchisee_s_menu.craftOptions.wineOptions ) {
-            res.franchisee_s_menu.craftOptions.wineOptions.forEach(element => {
-              addWineOptions(element);
+                   const wineOptions = res.franchisee_s_menu.craftOptions.wineOptions
+          if ( wineOptions ) {
+            Object.entries(wineOptions).forEach(([key, value]) => {
+              addWineOptions(key, { "glass": value });
             });
-          } 
+          }  
 
           if (res.franchisee_s_menu.craftOptions.beers) { receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers) }
           console.log('res.franchisee_s_menu.craftOptions.beers', res.franchisee_s_menu.craftOptions.beers);

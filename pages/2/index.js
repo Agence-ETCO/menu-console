@@ -100,9 +100,12 @@ const Page2 = () => {
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
 
-          if (res.franchisee_s_menu.craftOptions.wineOptions ) {
-            res.franchisee_s_menu.craftOptions.wineOptions.forEach(element => {
-              addWineOptions(element);
+          console.log('wineOptions ',res.franchisee_s_menu.craftOptions.wineOptions);
+          
+          const wineOptions = res.franchisee_s_menu.craftOptions.wineOptions
+          if ( wineOptions ) {
+            Object.entries(wineOptions).forEach(([key, value]) => {
+              addWineOptions(key, { "glass": value });
             });
           }       
 
