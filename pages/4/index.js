@@ -33,7 +33,8 @@ const Page4 = () => {
       addMicro02,
       receiveBeerSelections,
       isSubmitted,
-      setIsSubmitted
+      setIsSubmitted,
+      addWineOptions
     },
   } = useContext(AppContext);
 
@@ -73,6 +74,9 @@ const Page4 = () => {
     const menuItems = state.selections.map((option) => option.id);
     const menuData = {
       menu_items: [...menuItems],
+      craftOptions: {
+        wineOptions: state.wineOptions,
+      },
       franchisee: userID,
     };
 
@@ -105,6 +109,13 @@ const Page4 = () => {
             getMenuId(res.franchisee_s_menu.id);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+
+          if (res.franchisee_s_menu.craftOptions.wineOptions ) {
+            res.franchisee_s_menu.craftOptions.wineOptions.forEach(element => {
+              addWineOptions(element);
+            });
+          } 
+
           if (res.franchisee_s_menu.craftOptions.beers) {receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)}
 
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);

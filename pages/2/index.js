@@ -31,7 +31,8 @@ const Page2 = () => {
       getMenuId,
       receiveBeerSelections,
       isSubmitted,
-      setIsSubmitted
+      setIsSubmitted,
+      addWineOptions
     },
   } = useContext(AppContext);
   const router = useRouter();
@@ -98,6 +99,12 @@ const Page2 = () => {
             getMenuId(res.franchisee_s_menu.id);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+
+          if (res.franchisee_s_menu.craftOptions.wineOptions ) {
+            res.franchisee_s_menu.craftOptions.wineOptions.forEach(element => {
+              addWineOptions(element);
+            });
+          }       
 
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
           console.log('Pack ',res.franchisee_s_menu.craftOptions.pack );

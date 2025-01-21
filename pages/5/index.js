@@ -53,7 +53,8 @@ const Page5 = () => {
       removeSelection,
       receiveBeerSelections,
       isSubmitted,
-      setIsSubmitted
+      setIsSubmitted,
+      addWineOptions
     },
   } = useContext(AppContext);
 
@@ -199,6 +200,7 @@ const Page5 = () => {
         craft2,
         pack: state.selectedPack,
         beers: state.beerSelections,
+        wineOptions: state.wineOptions,
       },
       franchisee: userID,
     };
@@ -307,6 +309,13 @@ const Page5 = () => {
             setIsSubmitted(true);
           }
           receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+
+          if (res.franchisee_s_menu.craftOptions.wineOptions ) {
+            res.franchisee_s_menu.craftOptions.wineOptions.forEach(element => {
+              addWineOptions(element);
+            });
+          } 
+
           if (res.franchisee_s_menu.craftOptions.beers) { receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers) }
           console.log('res.franchisee_s_menu.craftOptions.beers', res.franchisee_s_menu.craftOptions.beers);
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);

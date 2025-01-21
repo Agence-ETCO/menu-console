@@ -41,9 +41,14 @@ const WineCard = (props) => {
     actions: { addSelection, removeSelection, addWineOptions, removeWineOptions },
   } = useContext(AppContext);
 
-  const [glassChecked, setGlassChecked] = useState(false);
+  const [glassChecked, setGlassChecked] = useState(
+    () => !!state.wineOptions[props.value]?.glass // Initialize with the value from state.wineOptions
+  );
 
   const handleGlassCheckboxChange = (event) => {
+    if (props.step === 7) {
+      return null;
+    }
     const isChecked = event.target.checked;
     setGlassChecked(isChecked);
 
@@ -89,7 +94,7 @@ const WineCard = (props) => {
 
   const color = props.taste && getColor(props.taste);
   const pricesForRegion = region
-    ? props.prices.filter((option) => option.region === region)
+    ? props.prices.filter((option) => option.region === 'QC')
     : props.prices;
   console.log(props);
   return (
@@ -146,11 +151,18 @@ const WineCard = (props) => {
                 </tr>
                 {pricesForRegion.length > 0 && (
                   <tr>
-                    <td></td>
-                    <td></td>
-                    {/* <td> {pricesForRegion[0].Price} $</td>
-                    <td>{pricesForRegion[1].Price} $</td> */}
-                    <td>{parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $</td>
+                      <td>
+                      {pricesForRegion.filter(el => el.size === "Glass")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Glass")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
+                      {pricesForRegion.filter(el => el.size === "Glass")[0] && "$"}
+                      </td>
+                      <td>
+                      {pricesForRegion.filter(el => el.size === "1/4 L")[0] && parseFloat(pricesForRegion.filter(el => el.size === "1/4 L")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
+                      {pricesForRegion.filter(el => el.size === "1/4 L")[0] && "$"}
+                      </td>
+                      <td>
+                        {pricesForRegion.filter(el => el.size === "Bottle")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Bottle")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
+                      {pricesForRegion.filter(el => el.size === "Bottle")[0] && "$"}
+                      </td>
                   </tr>
                 )}
               </tbody>

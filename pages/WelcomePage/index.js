@@ -30,7 +30,8 @@ const WelcomePage = () => {
       addMicro01,
       addMicro02,
       getMenuId,
-      receiveBeerSelections
+      receiveBeerSelections,
+      addWineOptions
     },
   } = useContext(AppContext);
 
@@ -59,7 +60,14 @@ const WelcomePage = () => {
           if (res.franchisee_s_menu.id) {
             getMenuId(res.franchisee_s_menu.id);
           }
-          receiveCraftOptions(res.franchisee_s_menu.craftOptions);
+          receiveCraftOptions(res.franchisee_s_menu.craftOptions); 
+
+          if (res.franchisee_s_menu.craftOptions.wineOptions ) {
+            res.franchisee_s_menu.craftOptions.wineOptions.forEach(element => {
+              addWineOptions(element);
+            });
+          } 
+          
           if (res.franchisee_s_menu.craftOptions.beers) {receiveBeerSelections(res.franchisee_s_menu.craftOptions.beers)}
 
           receivePack(res.franchisee_s_menu.craftOptions.pack || 0);
