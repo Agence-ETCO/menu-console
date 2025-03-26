@@ -14,6 +14,35 @@ export const Label = styled.label`
   margin-bottom: 40px;
 `;
 
+export const GlassLabel = styled.label`
+  color: ${(props) =>
+    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  -webkit-letter-spacing: 0.15em;
+  -moz-letter-spacing: 0.15em;
+  -ms-letter-spacing: 0.15em;
+  letter-spacing: 0.15em;
+  margin-bottom: 10px !important;
+`;
+
+export const SaqCode = styled.div`
+  color: ${(props) =>
+    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(35, 31, 32, 0.5)"};
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  -webkit-letter-spacing: 0.15em;
+  -moz-letter-spacing: 0.15em;
+  -ms-letter-spacing: 0.15em;
+  letter-spacing: 0.15em;
+`;
+
+
+
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   border: 0;
   clip: rect(0 0 0 0);

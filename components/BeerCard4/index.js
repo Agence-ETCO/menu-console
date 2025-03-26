@@ -9,12 +9,14 @@ import CheckMark from "../CheckMark.js";
 import {
   Container,
   Label,
+  GlassLabel,
   TextContainer,
   SubContainer,
   ImageContainer,
   Title,
   CheckboxContainer,
-  StyledCheckbox
+  StyledCheckbox,
+  SaqCode,
 } from "./styled.js";
 
 const BeerCard4 = (props) => {
@@ -64,7 +66,7 @@ const BeerCard4 = (props) => {
                 <tbody>
                   {pricesForRegion.length > 0 && (
                     <tr>
-                      <th scope="col">Bouteille</th>
+                      {/* <th scope="col">Bouteille</th> */}
                       <th scope="col">Pression 20 oz</th>
                       <th scope="col">Pichet 60 oz</th>
                     </tr>
@@ -72,10 +74,10 @@ const BeerCard4 = (props) => {
                   {pricesForRegion.length > 0 &&
                     (pricesForRegion.length === 3 ? (
                       <tr>
-                        <td>
+                        {/* <td>
                           {parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                           {pricesForRegion[0] && parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2}) && " $"}
-                        </td>
+                        </td> */}
                         <td>
                           {parseFloat(pricesForRegion[1].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                           {pricesForRegion[1] && parseFloat(pricesForRegion[1].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2}) && " $"}
@@ -87,10 +89,10 @@ const BeerCard4 = (props) => {
                       </tr>
                     ) : (
                       <tr>
-                        <td>
+                        {/* <td> */}
                           {/*  {pricesForRegion[0].Price}{" "}
                       {pricesForRegion[0] && pricesForRegion[0].Price && " $"} */}
-                        </td>
+                       {/*  </td> */}
 
                         <td>
                           {pricesForRegion[0] && parseFloat(pricesForRegion[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}
@@ -105,7 +107,7 @@ const BeerCard4 = (props) => {
                 </tbody>
               </table>
               {props.saqCode && (
-                <div>Saq code {props.saqCode || ""}</div>
+                <SaqCode>SAQ CODE {props.saqCode || ""}</SaqCode>
               )}
             </TextContainer>
           </SubContainer>

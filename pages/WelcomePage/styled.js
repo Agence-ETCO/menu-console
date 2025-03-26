@@ -44,6 +44,15 @@ export const Body1 = styled.span`
   margin-left: 5px;
   margin-right: 5px;
 `;
+export const Body2 = styled.span`
+  font-family: "GTWalsheimRegular";
+  font-style: normal;
+  font-weight: 400;
+  display: block;
+  font-size: 17px;
+  line-height: 23px;
+  margin-top: 20px;
+`;
 export const Date = styled.span`
   display: inline-block;
   font-family: "GTWalsheimBold";

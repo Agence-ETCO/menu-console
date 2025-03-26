@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "../Logo";
 import Stepper from "../Stepper";
+import Image from "next/image";
 import Help from "../Help";
 import { Container, HeaderContainer, Nav, Container1, User } from "./styled";
 import { nav, header } from "../../fr";
@@ -27,7 +28,8 @@ const Header = ({ step }) => {
     <HeaderContainer>
       <Container1>
         <Container>
-          <Logo />
+          <Image src="https://rsh.nyc3.digitaloceanspaces.com/images/St-Hubert_Logo_avec_logotype_RGB.png" width={120} height={144.44} alt="logo" />
+         {/*  <Logo /> */}
           <Help showHelp={showHelp} handleClick={handleClick} />
           <Nav>
             <ul>

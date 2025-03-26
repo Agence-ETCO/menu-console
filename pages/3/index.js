@@ -48,6 +48,9 @@ const Page3 = () => {
       (option.attributes && option.attributes.category === "White Wine") ||
       option.category === "White Wine"
   );
+
+
+  
   const selection = (
     <span style={{ fontSize: "21px" }}>
       {counter}/{max}
@@ -184,7 +187,14 @@ const Page3 = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   
+  const currentWines = state.data.filter((option) => option.attributes.category === "White Wine" && option.attributes.isOptional == true );
+
+  currentWines.sort(function(a , b) {
+    return a.attributes.cost[0].Price - b.attributes.cost[0].Price;
+  });
+
   return (
     <>
       <Header step={3} />
@@ -200,8 +210,7 @@ const Page3 = () => {
         </Subcontainer1>
         <Subcontainer2>
           {state.data &&
-            state.data
-              .filter((option) => option.attributes.category === "White Wine" && option.attributes.isOptional == true )
+            currentWines
               .map((option, key) => (
                 <WineCard
                   key={`page3_option_${key}`}

@@ -180,6 +180,12 @@ const Page4 = () => {
     setCounter(updatedCounter);
   }, [selections]);
 
+  const currentWines = state.data.filter((option) => option.attributes.category === "Red Wine" && option.attributes.isOptional == true );
+
+  currentWines.sort(function(a , b) {
+    return a.attributes.cost[0].Price - b.attributes.cost[0].Price;
+  });
+
   return (
     <>
       <Header step={4} />
@@ -195,8 +201,7 @@ const Page4 = () => {
         </Subcontainer1>
         <Subcontainer2>
           {state.data &&
-            state.data
-              .filter((option) => option.attributes.category === "Red Wine" && option.attributes.isOptional == true )
+            currentWines
               .map((option, key) => (
                 <WineCard
                   key={`page4_option_${key}`}

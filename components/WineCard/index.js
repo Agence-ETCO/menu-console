@@ -22,6 +22,8 @@ import {
   HiddenCheckbox,
   StyledCheckbox,
   Label,
+  GlassLabel,
+  SaqCode,
   TextContainer,
   SubContainer,
   Circle,
@@ -96,7 +98,7 @@ const WineCard = (props) => {
   const pricesForRegion = region
     ? props.prices.filter((option) => option.region === 'QC')
     : props.prices;
-  console.log(props);
+
   return (
     <>
       <Label checked={isChecked(props.option)}>
@@ -167,18 +169,19 @@ const WineCard = (props) => {
                 )}
               </tbody>
             </table>
+
             {props.showGlassOption == true && (
-              <label>
+              <GlassLabel checked={isChecked(props.option)}>
                 <input
                   type="checkbox"
                   checked={glassChecked}
                   onChange={handleGlassCheckboxChange}
                 />
-                Verre ???
-              </label>
+                JE SOUHAITE OFFRIR CE VIN AU VERRE ET AU ¼ L
+              </GlassLabel>
             )}
             <IconContainer>
-              <span> Code saq {props.saqCode || ""}</span>
+              <SaqCode checked={isChecked(props.option)}> CODE SAQ {props.saqCode || ""}</SaqCode>
               <Icons>
                 {props.isCellier &&
                   (isChecked(props.option) ? (

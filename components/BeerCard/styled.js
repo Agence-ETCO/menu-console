@@ -16,6 +16,30 @@ export const Label = styled.label`
   z-index: 9;
 `;
 
+export const SaqCode = styled.div`
+  color: rgba(35, 31, 32, 0.5) !important;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  -webkit-letter-spacing: 0.15em;
+  -moz-letter-spacing: 0.15em;
+  -ms-letter-spacing: 0.15em;
+  letter-spacing: 0.15em;
+`;
+
+export const GlassLabel = styled.label`
+  color: rgba(35, 31, 32, 0.5) !important;
+  font-family: "GTWalsheimRegular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  -webkit-letter-spacing: 0.15em;
+  -moz-letter-spacing: 0.15em;
+  -ms-letter-spacing: 0.15em;
+  letter-spacing: 0.15em;
+`;
+
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
   border: 0;
   clip: rect(0 0 0 0);

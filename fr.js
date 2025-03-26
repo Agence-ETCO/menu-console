@@ -9,6 +9,7 @@ export const welcomePage = {
   help: "Besoin d'aide?",
   contact: "Contactez-nous.",
   buttonText: "commencer",
+  newFeatureText: "NOUVEAUTÉ : pour chacun des vins Cellier que vous sélectionnerez, vous devrez indiquer si vous souhaitez également vendre le vin au verre et au ¼ L; ainsi, les prix au verre et au ¼ L apparaîtront dans votre carte pour les vins Cellier que vous aurez choisi de vendre dans ces formats."
 };
 
 export const page1 = {

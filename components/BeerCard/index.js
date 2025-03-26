@@ -9,6 +9,8 @@ import {
   HiddenCheckbox,
   StyledCheckbox,
   Label,
+  GlassLabel,
+  SaqCode,
   TextContainer,
   SubContainer,
   ImageContainer,
@@ -97,16 +99,16 @@ console.log('beerSelections',state.beerSelections);
               <table>
                 <tbody>
                   <tr>
-                    <th scope="col">Bouteille</th>
+                    {/* <th scope="col">Bouteille</th> */}
                     <th scope="col">Pression 20 oz</th>
                     <th scope="col">Pichet 60 oz</th>
                   </tr>
                   {pricesForRegion.length > 0 && (
                     <tr>
-                      <td>
+                      {/* <td>
                         {pricesForRegion.filter(el => el.size === "Bottle")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Bottle")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion.filter(el => el.size === "Bottle")[0] && "$"}
-                      </td>
+                      </td> */}
                       <td>
                       {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && parseFloat(pricesForRegion.filter(el => el.size === "Draft 20 oz")[0].Price).toLocaleString("fr-fr", { minimumFractionDigits: 2, maximumFractionDigits: 2})}{" "}
                       {pricesForRegion.filter(el => el.size === "Draft 20 oz")[0] && "$"}
@@ -121,7 +123,7 @@ console.log('beerSelections',state.beerSelections);
               </table>
 
               {props.saqCode && (
-                <div>Saq code {props.saqCode || ""}</div>
+                <SaqCode>CODE SAQ {props.saqCode || ""}</SaqCode>
               )}
             </TextContainer>
           </SubContainer>
