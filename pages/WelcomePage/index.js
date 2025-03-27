@@ -147,11 +147,12 @@ const WelcomePage = () => {
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
         <Subcontainer>
+          <Body2>{welcomePage.newFeatureText}</Body2>
           <DateLimit>{welcomePage.dateLimite}</DateLimit>
           <Body1>{welcomePage.body1}</Body1>
           <Date>{date}</Date>
-          <Body2>{welcomePage.newFeatureText}</Body2>
           <Body1>{welcomePage.body2}</Body1>
+          
           <Body>Merci de votre collaboration. </Body>
         </Subcontainer>
         <Ending>
