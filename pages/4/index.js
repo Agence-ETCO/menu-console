@@ -182,6 +182,8 @@ const Page4 = () => {
 
   const currentWines = state.data.filter((option) => option.attributes.category === "Red Wine" && option.attributes.isOptional == true );
 
+  console.log(currentWines);
+
   currentWines.sort(function(a , b) {
     return a.attributes.cost[0].Price - b.attributes.cost[0].Price;
   });

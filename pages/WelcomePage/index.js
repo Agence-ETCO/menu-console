@@ -150,8 +150,8 @@ const WelcomePage = () => {
           <DateLimit>{welcomePage.dateLimite}</DateLimit>
           <Body1>{welcomePage.body1}</Body1>
           <Date>{date}</Date>
-          <Body1>{welcomePage.body2}</Body1>
           <Body2>{welcomePage.newFeatureText}</Body2>
+          <Body1>{welcomePage.body2}</Body1>
           <Body>Merci de votre collaboration. </Body>
         </Subcontainer>
         <Ending>
