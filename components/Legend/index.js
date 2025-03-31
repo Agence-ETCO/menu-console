@@ -18,10 +18,10 @@ const Legend = (props) => {
             <Title>{legend.title}</Title>
             <TwoColumns>
               <Column>
-                <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-terroir.svg"></Img></Icon><span>Alcool du terroir</span></Row>
+                <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-terroir.svg"></Img></Icon><span>Origine Québec</span></Row>
                 <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-bio.svg"></Img></Icon><span>Biologique</span></Row>
-                <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-embouteille.svg"></Img></Icon><span>Embouteillé au Québec</span></Row>
-                <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-origin.svg"></Img></Icon><span>Origine Québec</span></Row>
+                {/* <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-embouteille.svg"></Img></Icon><span>Embouteillé au Québec</span></Row> */}
+                <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-origin.svg"></Img></Icon><span>Préparé ou embouteillé <br />au Québec</span></Row>
               </Column>
               <Column>
                 <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-cellier.svg"></Img></Icon><span>Cellier</span></Row>
