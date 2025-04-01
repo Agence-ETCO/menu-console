@@ -52,7 +52,7 @@ export const Body2 = styled.span`
   font-size: 17px;
   line-height: 23px;
   margin-top: 20px;
-  color: red;
+  color: #e30826;
 `;
 export const Date = styled.span`
   display: inline-block;

@@ -15,8 +15,10 @@ export const Label = styled.label`
 `;
 
 export const GlassLabel = styled.label`
-  color: ${(props) =>
-    props.checked ? "rgba(255,255,255, 0.5)" : "rgba(226, 0, 0, 1)"};
+  color: #e30826;
+      background: white;
+    border-radius: 6px;
+    padding: 10px 4px;
   font-family: "GTWalsheimRegular";
   font-weight: 400;
   font-size: 13px;
