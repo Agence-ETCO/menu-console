@@ -150,21 +150,30 @@ const Page5 = () => {
   const preselect = [];
   const nonPreselect = [];
 
+  const preselectOrder = [
+    "Budweiser",
+    "Bud Light",
+    "Michelob Ultra",
+    "Stella Artois",
+    "Chipie"
+  ];
+
   const beerList = state.data
     .filter(
       (option) => option.attributes && option.attributes.category === "Beer"
     );
 
+  preselectOrder.forEach((beerName) => {
+    beerList.forEach((option) => {
+      if (option.attributes.title.includes(beerName)) {
+        preselect.push(option);
+      }
+    });
+  });
+  console.log(beerList);
   beerList.forEach((option) => {
-    if (
-      option.attributes.title.includes("Budweiser") ||
-      option.attributes.title.includes("Michelob Ultra") ||
-      option.attributes.title.includes("Stella Artois") ||
-      option.attributes.title.includes("Corona") ||
-      option.attributes.title.includes("Chipie")
-    ) {
-      preselect.push(option);
-    } else {
+
+    if (!preselect.includes(option)) {
       nonPreselect.push(option);
     }
   });
@@ -592,11 +601,11 @@ const Page5 = () => {
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  if (state.selectedPack === 12) {
-                    return !([2418, 2419, 2420, 2421].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
-                  } else {
-                    return !([2418, 2419].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
-                  }
+                  // if (state.selectedPack === 12) {
+                    return !([2418, 2419 ].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  // } else {
+                    // return !([2418, 2419].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  // }
                 }).map((option, key) => (
                   <BeerCard
                     beerStep={step}
@@ -723,7 +732,7 @@ const Page5 = () => {
                 Sinon vous pouvez doubler une des 5 bières Labatt obligatoires.
               </SubTitle>
               <Subcontainer2>
-                {preselect.filter((item) => (item.id !== 2422 && item.id !== 2423) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))).map((option, key) => (
+                {preselect.filter((item) => (item.id !== 2422) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))).map((option, key) => (
                   <BeerCard
                     beerStep={step}
                     index={key + 1}

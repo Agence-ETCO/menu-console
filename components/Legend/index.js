@@ -26,7 +26,6 @@ const Legend = (props) => {
               <Column>
                 <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-cellier.svg"></Img></Icon><span>Cellier</span></Row>
                 <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-nature.svg"></Img></Icon><span>Nature</span></Row>
-                <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-orange.svg"></Img></Icon><span>Orange</span></Row>
                 <Row><Icon><Img src="https://rsh.nyc3.digitaloceanspaces.com/images%2Ficon-microbrasserie.svg"></Img></Icon><span>Microbrasserie artisanale locale</span></Row>
               </Column>
             </TwoColumns>
