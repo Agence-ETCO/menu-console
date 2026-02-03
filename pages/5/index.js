@@ -644,7 +644,7 @@ const Page5 = () => {
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return (item.id == 2420 || item.id == 2421) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  return (item.id == 2414 || item.id == 2555) && !(state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
                     beerStep={step}
@@ -670,7 +670,7 @@ const Page5 = () => {
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
-                  return !([2420, 2421].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
+                  return !([2414, 2555].includes(item.id) || state.beerSelections.filter((el, key) => key != step - 6).includes(item.id))
                 }).map((option, key) => (
                   <BeerCard
                     beerStep={step}
