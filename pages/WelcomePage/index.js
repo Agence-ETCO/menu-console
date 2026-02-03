@@ -134,7 +134,7 @@ const WelcomePage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const date = "8 avril 2025";
+  const date = "24 février 2026";
 
   return (
     <>
@@ -147,7 +147,8 @@ const WelcomePage = () => {
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
         <Subcontainer>
-          <Body2>{welcomePage.newFeatureText}</Body2>
+          <Body>{welcomePage.newFeatureText}</Body>
+          <Body>{welcomePage.newFeatureText2}</Body>
           <DateLimit>{welcomePage.dateLimite}</DateLimit>
           <Body1>{welcomePage.body1}</Body1>
           <Date>{date}</Date>

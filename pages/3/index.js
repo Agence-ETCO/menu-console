@@ -37,7 +37,7 @@ const Page3 = () => {
   } = useContext(AppContext);
   const router = useRouter();
 
-  const min = 1;
+  const min = 0;
   const [counter, setCounter] = useState(0);
   const [userId, setUserId] = useState(null);
 
