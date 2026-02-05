@@ -147,11 +147,11 @@ const WelcomePage = () => {
         </Greeting>
         <Title>{welcomePage.title}</Title>
         <Body>{welcomePage.body}</Body>
-        {/* <BodyNewLine >{welcomePage.bodyNewLine}</BodyNewLine> */}
+        <BodyNewLine >{welcomePage.bodyNewLine}</BodyNewLine>
         <Subcontainer>
           <Body >{welcomePage.newFeatureText}</Body>
-          {/* <BodyNewLine >{welcomePage.newFeatureTextLine2}</BodyNewLine>
-          <BodyNewLine >{welcomePage.newFeatureTextLine3}</BodyNewLine> */}
+          <BodyNewLine >{welcomePage.newFeatureTextLine2}</BodyNewLine>
+          <BodyNewLine >{welcomePage.newFeatureTextLine3}</BodyNewLine>
           <Body>{welcomePage.newFeatureText2}</Body>
           <DateLimit>{welcomePage.dateLimite}</DateLimit>
           <Body1>{welcomePage.body1}</Body1>

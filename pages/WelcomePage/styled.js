@@ -42,7 +42,6 @@ export const BodyNewLine = styled.div`
   font-weight: 400;
   font-size: 17px;
   line-height: 23px;
-  margin-top: 8px;
 `;
 
 export const Body1 = styled.span`
