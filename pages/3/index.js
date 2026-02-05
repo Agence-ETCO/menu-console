@@ -206,6 +206,7 @@ const Page3 = () => {
               {page3.body}
             </SubTitle>
           </div>
+          
           <MinMax min={min} max={max} />
         </Subcontainer1>
         <Subcontainer2>
@@ -215,7 +216,7 @@ const Page3 = () => {
                 <WineCard
                   key={`page3_option_${key}`}
                   value={option.id}
-                  title={option.attributes.title || option.tile}
+                  title={option.attributes.titleFr || option.tile}
                   description={
                     option.attributes.descriptionFr || option.descriptionFr
                   }

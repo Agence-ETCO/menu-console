@@ -35,6 +35,16 @@ export const Body = styled.div`
   line-height: 23px;
   margin-top: 40px;
 `;
+
+export const BodyNewLine = styled.div`
+  font-family: "GTWalsheimRegular";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 23px;
+  margin-top: 8px;
+`;
+
 export const Body1 = styled.span`
   font-family: "GTWalsheimRegular";
   font-style: normal;
