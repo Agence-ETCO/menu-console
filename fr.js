@@ -1,7 +1,8 @@
 export const welcomePage = {
   greeting: "Bonjour!",
   title: "Personnalisez votre carte des alcools",
-  body: "Afin de vous permettre de proposer une carte parfaitement adaptée à votre clientèle, nous vous invitons à sélectionner les produits les plus appropriés à votre marché.",
+  body: "Afin de vous permettre de proposer une carte parfaitement adaptée à votre clientèle,",
+  bodyNewLine : "nous vous invitons à sélectionner les produits les plus appropriés à votre marché.",
   dateLimite: "IMPORTANT :",
   body1: "merci de compléter votre sélection au plus tard le",
   body2:
@@ -9,21 +10,9 @@ export const welcomePage = {
   help: "Besoin d'aide?",
   contact: "Contactez-nous.",
   buttonText: "commencer",
-  newFeatureText: "Pour la sélection des vins Cellier, le nombre de choix a été ajusté : de 0 à 3 vins blancs et de 0 à 4 vins rouges. Si la sélection déjà présente sur la carte répond à vos besoins, il n'est pas nécessaire d'ajouter des vins supplémentaires. Cette année, la carte offrira une sélection de 10 vins blancs et 10 vins rouges",
-  newFeatureText2: "Pour chaque vin Cellier sélectionné, vous devrez indiquer si vous souhaitez le proposer au verre et au ¼ L. Les prix correspondants à ces formats apparaîtront sur votre carte pour les vins Cellier que vous aurez choisi de proposer dans ces formats."
-
-  // body: "Afin de vous permettre de proposer une carte parfaitement adaptée à votre clientèle,",
-  // bodyNewLine : "nous vous invitons à sélectionner les produits les plus appropriés à votre marché.",
-  // dateLimite: "IMPORTANT :",
-  // body1: "merci de compléter votre sélection au plus tard le",
-  // body2:
-  //   "afin de garantir la réception de votre carte des alcools dans les délais prévus.",
-  // help: "Besoin d'aide?",
-  // contact: "Contactez-nous.",
-  // buttonText: "commencer",
-  // newFeatureText: "Pour la sélection des vins Cellier, le nombre de choix a été ajusté : de 0 à 3 vins blancs",
-  // newFeatureTextLine2: "et de 0 à 4 vins rouges. Si la sélection déjà présente sur la carte répond à vos besoins, il n'est pas nécessaire d'ajouter des vins supplémentaires. Cette année, la carte offrira une sélection ",
-  // newFeatureTextLine3: "de 10 vins blancs et 10 vins rouges.",
+  newFeatureText: "Pour la sélection des vins Cellier, le nombre de choix a été ajusté : de 0 à 3 vins blancs et",
+  newFeatureTextLine2: "de 0 à 4 vins rouges. Si la sélection déjà présente sur la carte répond à vos besoins, il n'est pas nécessaire d'ajouter des vins supplémentaires. Cette année, la carte offrira une sélection ",
+  newFeatureTextLine3: "de 10 vins blancs et 10 vins rouges.",
 };
 
 export const page1 = {
