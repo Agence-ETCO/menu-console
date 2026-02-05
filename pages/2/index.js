@@ -204,7 +204,7 @@ const Page2 = () => {
                 <WineCard
                   key={`page2_option_${key}`}
                   value={option.id}
-                  title={option.attributes.title || option.tile}
+                  title={option.attributes.titleFr || option.tile}
                   description={
                     option.attributes.descriptionFr || option.descriptionFr
                   }

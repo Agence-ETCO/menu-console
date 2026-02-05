@@ -108,15 +108,15 @@ const Page7 = () => {
     if (_.isEmpty(state.selections
       .filter(
         (option) =>
-          (option.attributes &&
-            option.attributes.category === "White Wine") ||
-          option.category === "White Wine"
+          (option.attributes //&&
+            /*option.attributes.category === "White Wine"*/) //||
+          /*option.category === "White Wine"*/
       )) || _.isEmpty(state.selections
         .filter(
           (option) =>
-            (option.attributes &&
-              option.attributes.category === "Red Wine") ||
-            option.category === "Red Wine"
+            (option.attributes //&&
+              /*option.attributes.category === "Red Wine"*/) //||
+            //option.category === "Red Wine"
         ))  || _.isEmpty(beer)) {
       //alert("Votre sélection est incomplète! Veuillez vérifier le résumé et ajouter les items qui manquent! Merci !");
       setShowAlert2(true);

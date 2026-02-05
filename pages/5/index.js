@@ -640,7 +640,7 @@ const Page5 = () => {
           {state.selectedPack !== 8 && step === 8 && (
             <div>
               <SubTitle>
-                St-Hubert vous recommande de choisir une bière Session Ale.
+                St-Hubert vous recommande de choisir une bière lager mexicaine.
               </SubTitle>
               <Subcontainer2>
                 {nonPreselect.filter((item) => {
